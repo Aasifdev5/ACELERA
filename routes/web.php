@@ -6,14 +6,16 @@ use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\BlogCategoryController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\CategoryController;
+
 use App\Http\Controllers\Admin\LanguageController;
 use App\Http\Controllers\Admin\RoleController;
+
 use App\Http\Controllers\Admin\TagController;
-
 use App\Http\Controllers\EmailAppController;
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\FacebookSocialiteController;
-
 use App\Http\Controllers\FundController;
+
 use App\Http\Controllers\GoogleController;
 
 use App\Http\Controllers\MailTemplateController;
@@ -23,12 +25,12 @@ use App\Http\Controllers\Pages;
 use App\Http\Controllers\QRCodeController;
 
 use App\Http\Controllers\ResetPasswordController;
-
 use App\Http\Controllers\SubscriptionPlanController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\VerificationController;
 
+use App\Http\Controllers\VerificationController;
 use Illuminate\Support\Facades\Route;
+
 
 
 
@@ -72,6 +74,11 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
     Route::post('update_profile', [UserController::class, 'update_profile']);
     Route::get('/Payment', [UserController::class, 'Payment'])->name('Payment')->middleware('isLoggedIn');
     Route::get('/finish', [UserController::class, 'finish'])->name('finish')->middleware('isLoggedIn');
+    Route::get('/userNotifications', [UserController::class, 'userNotifications'])->name('userNotifications');
+    Route::get('/chat', [ChatController::class, 'index'])->name('chat.index');
+    Route::get('/chat/messages', [ChatController::class, 'getChatMessages'])->name('chat.messages');
+    Route::post('/chat/send', [ChatController::class, 'sendChatMessage'])->name('chat.send');
+
     Route::get('/MyPendingProject', [UserController::class, 'MyPendingProject'])->name('MyPendingProject')->middleware('isLoggedIn');
     Route::get('/news-category/{id}', [UserController::class, 'news_category'])->name('news_category');
     Route::get('/MyProject', [UserController::class, 'MyProject'])->name('MyProject')->middleware('isLoggedIn');

@@ -26,6 +26,7 @@ use App\Models\Task;
 use App\Models\Transactions;
 use App\Models\User;
 use App\Notifications\VerifyEmailNotification;
+use App\Traits\SendNotification;
 use Carbon\Carbon;
 use DateTime;
 use DateTimeZone;
@@ -442,6 +443,7 @@ function putPermanentEnv($key, $value)
 
 class Admin extends Controller
 {
+    use SendNotification;
     public function admin()
     {
         return view('admin.admin');
@@ -482,10 +484,8 @@ class Admin extends Controller
         $notification->is_seen = 'yes';
         $notification->save();
 
-        if (is_null($notification->target_url))
-        {
+        if (is_null($notification->target_url)) {
             return redirect(url()->previous());
-
         } else {
             return redirect($notification->target_url);
         }
@@ -493,11 +493,9 @@ class Admin extends Controller
 
     public function markAllAsReadNotification(Request $request)
     {
-        if(auth()->user()->role == 1){
+        if (auth()->user()->role == 1) {
             Notification::where('user_type', 1)->where('is_seen', 'no')->orderBy('created_at', 'DESC')->update(['is_seen' => 'yes']);
-        }
-
-        else{
+        } else {
             Notification::where('user_id', auth()->user()->id)->where('user_type', 2)->where('is_seen', 'no')->update(['is_seen' => 'yes']);
         }
         return back();
@@ -556,7 +554,7 @@ class Admin extends Controller
             return view('admin/users', compact('user_session', 'usersData'));
         }
     }
-       public function country(Request $request)
+    public function country(Request $request)
     {
         if (Session::has('LoggedIn')) {
             $countries = Country::all();
@@ -938,7 +936,7 @@ class Admin extends Controller
     {
 
 
-
+        // dd($request->all());
         $slug = unique_slug($request->title);
 
         // Retrieve the existing campaign by its ID
@@ -986,6 +984,26 @@ class Admin extends Controller
         $campaign->start_date = $request->start_date;
         $campaign->end_date = $request->end_date;
 
+         // Check if status is approved
+         if ($request->status == "1") {
+            $text = 'Project has been approved.';
+        }
+        // Check if status is rejected
+        elseif ($request->status == "-1") {
+            $text = 'Project has been rejected.';
+        }
+        // If status is neither approved nor rejected, handle accordingly
+        else {
+            $text = 'Project status is unknown.';
+        }
+
+        // Assuming you're constructing a URL for the project details using $slug
+        $target_url = url('project-details', ['slug' => $slug]);
+
+        // Assuming you're sending some API request with parameters
+        // Adjust this part according to your API sending mechanism
+        $this->sendForApi($text, 2, $target_url, 1, 1);
+
         // Handle OG image updates (similar logic as image update)
         // Note: If og_image is also expected to be updated in this form, you should check if og_image file exists before deleting the previous one.
         if ($request->hasFile('og_image')) {
@@ -1010,6 +1028,7 @@ class Admin extends Controller
             // If the update is successful, return success message
             return back()->with('success', 'Campaign updated successfully');
         }
+
 
         // If the update fails, return error message
         return back()->with('fail', 'Failed to update campaign');

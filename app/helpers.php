@@ -30,7 +30,7 @@ function getCurrentLanguageName()
 {
     static $language;
 
-    if (! empty($language)) {
+    if (!empty($language)) {
         return $language;
     }
 
@@ -48,7 +48,7 @@ function get_default_language()
 
     return 'en';
 }
-if (! function_exists('lang_path')) {
+if (!function_exists('lang_path')) {
     /**
      * Get the path to the language folder.
      *
@@ -83,7 +83,11 @@ function adminNotifications()
 }
 function userNotifications()
 {
-    return \App\Models\Notification::where('user_type', 2)->where('is_seen', 'no')->orderBy('created_at', 'DESC')->paginate(5);
+    return  \App\Models\Notification::where('user_type', 2)
+        ->where('is_seen', 'no')
+        ->orderByDesc('created_at')
+        ->paginate(5);
+
 }
 function toastrMessage($type, $message)
 {
@@ -92,7 +96,7 @@ function toastrMessage($type, $message)
         'message' => $message
     ]);
 }
-if (! function_exists('str_slug')) {
+if (!function_exists('str_slug')) {
     /**
      * Generate a URL friendly "slug" from a given string.
      *
@@ -106,17 +110,23 @@ if (! function_exists('str_slug')) {
         return Str::slug($title, $separator, $language);
     }
 }
-function get_option($option_key = '')
+function get_option($option_key, $default = NULL)
 {
-    $options = config('options');
-    if (isset($options[$option_key])) {
-        return $options[$option_key];
-    }
+    $system_settings = config('settings');
 
-    return $option_key;
+    if ($option_key && isset($system_settings[$option_key])) {
+        return $system_settings[$option_key];
+    } elseif ($option_key && isset($system_settings[strtolower($option_key)])) {
+        return $system_settings[strtolower($option_key)];
+    } elseif ($option_key && isset($system_settings[strtoupper($option_key)])) {
+        return $system_settings[strtoupper($option_key)];
+    } else {
+        return $default;
+    }
 }
-function getCategory(){
-    $category = Category::orderby('id','desc')->take(6)->get();
+function getCategory()
+{
+    $category = Category::orderby('id', 'desc')->take(6)->get();
     return $category;
 }
 function unique_slug($title = '', $model = 'Campaign')
@@ -126,13 +136,13 @@ function unique_slug($title = '', $model = 'Campaign')
     $nSlug = $slug;
     $i = 0;
 
-    $model = str_replace(' ', '', "\App\Models\ ".$model);
+    $model = str_replace(' ', '', "\App\Models\ " . $model);
     while (($model::whereSlug($nSlug)->count()) > 0) {
         $i++;
-        $nSlug = $slug.'-'.$i;
+        $nSlug = $slug . '-' . $i;
     }
     if ($i > 0) {
-        $newSlug = substr($nSlug, 0, strlen($slug)).'-'.$i;
+        $newSlug = substr($nSlug, 0, strlen($slug)) . '-' . $i;
     } else {
         $newSlug = $slug;
     }
@@ -203,21 +213,20 @@ function getAvatarUrl()
  */
 function getUserImageInitial($userId, $name)
 {
-    return getAvatarUrl()."?name=$name&size=100&rounded=true&color=fff&background=".getRandomColor($userId);
+    return getAvatarUrl() . "?name=$name&size=100&rounded=true&color=fff&background=" . getRandomColor($userId);
 }
 
 
-function getApplicationsettings(){
-    $general_setting=GeneralSetting::find('1');
+function getApplicationsettings()
+{
+    $general_setting = GeneralSetting::find('1');
     return $general_setting;
 }
 function getImageFile($file)
 {
-    if($file != ''){
+    if ($file != '') {
         return asset($file);
-    }
-    else{
+    } else {
         return asset('frontend/assets/img/no-image.png');
     }
 }
-

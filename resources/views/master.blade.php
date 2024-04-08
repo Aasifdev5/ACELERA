@@ -16,6 +16,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('site_favicon/') }}<?php echo '/' . $general_setting->site_favicon; ?>" />
     <link rel="manifest" href="{{ asset('assets/images/favicons/site.webmanifest') }}" />
     <meta name="description" content="{{ $general_setting->site_description }}" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com/">
@@ -67,6 +68,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('admin/css/flag-icon.css') }}">
     <!-- Feather icon-->
     <link rel="stylesheet" type="text/css" href="{{ asset('admin/css/feather-icon.css') }}">
+
     <style>
 
 
@@ -156,7 +158,8 @@
                                                                                     @if (!empty(\App\Models\User::getUserInfo($notification->sender_id)->profile_photo))
                                                                                         <img src="{{ asset('profile_photo/') }}<?php echo '/' . \App\Models\User::getUserInfo($notification->sender_id)->profile_photo; ?>"
                                                                                             alt="img"
-                                                                                            class="radius-50" style="width: 50px; height: 50px; border-radius: 50%;">
+                                                                                            class="radius-50"
+                                                                                            style="width: 50px; height: 50px; border-radius: 50%;">
                                                                                     @else
                                                                                         <img src="{{ asset('149071.png') }}"
                                                                                             alt="dummy-avatar"
@@ -203,24 +206,35 @@
                                         </div>
                                         <!-- Notification Dropdown End -->
                                     </li>
+
+
+
                                     <li class="nav-item dropdown">
                                         <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown"
                                             role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                            <i class="icon-account"></i> {{ $user_session->name }} Account <span
+                                            @if (!empty(\App\Models\User::getUserInfo($user_session->id)->profile_photo))
+                                                <img src="{{ asset('profile_photo/') }}<?php echo '/' . \App\Models\User::getUserInfo($user_session->id)->profile_photo; ?>"
+                                                    class="rounded-circle user-image" width="25px" height="25px"
+                                                    alt="{{ $user_session->name }}">
+                                            @else
+                                                <img src="{{ asset('149071.png') }}" alt="dummy-avatar"
+                                                    style="width: 25px; height: 25px;">
+                                            @endif  {{ $user_session->name }} Account <span
                                                 class="caret"></span>
                                         </a>
                                         <ul class="shadow-box dropdown-menu" aria-labelledby="navbarDropdown">
-                                            <li><a class="dropdown-item" href="{{ url('dashboard') }}">Dashboard</a>
+                                            <li><a class="dropdown-item" href="{{ url('dashboard') }}"><i
+                                                        class="icofont icofont-finger-print"></i> Dashboard</a>
                                             </li>
 
                                             <li class="nav-item">
                                                 <a class="nav-link" href="{{ url('edit_profile') }}">
-                                                    <i class="fa fa-user"></i> Edit Profile
+                                                    <i class="icofont icofont-user-male"></i> Edit Profile
                                                 </a>
                                             </li>
                                             <li class="nav-item">
                                                 <a class="nav-link" href="{{ url('change_password') }}">
-                                                    <i class="fa fa-lock"></i> Change Password
+                                                    <i class="icofont icofont-ui-lock"></i> Change Password
                                                 </a>
                                             </li>
                                             <li class="nav-item">
@@ -231,8 +245,9 @@
                                         </ul>
                                     </li>
                                 @else
-                                    <li style="margin-right:18px"><a href="{{ url('Userlogin') }}"> <i class="icon-account"></i> Login</a></li>
-                                    <li><a href="{{ url('signup') }}"> /  Register</a></li>
+                                    <li style="margin-right:18px"><a href="{{ url('Userlogin') }}"> <i
+                                                class="icon-account"></i> Login</a></li>
+                                    <li><a href="{{ url('signup') }}"> / Register</a></li>
                                 @endif
 
                             </ul>
@@ -310,12 +325,12 @@
                                 </div>
                                 <div class="main-menu__btn-box">
                                     @if (!empty($user_session))
-                                    <a href="{{ url('CreateProject') }}" class="thm-btn main-menu__btn"><i
-                                            class="icon-plus-symbol"></i>Add a Project</a>
-                                            @else
-                                            <a href="{{ url('signup') }}" class="thm-btn main-menu__btn"><i
+                                        <a href="{{ url('CreateProject') }}" class="thm-btn main-menu__btn"><i
                                                 class="icon-plus-symbol"></i>Add a Project</a>
-                                            @endif
+                                    @else
+                                        <a href="{{ url('signup') }}" class="thm-btn main-menu__btn"><i
+                                                class="icon-plus-symbol"></i>Add a Project</a>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -558,15 +573,16 @@
     <script src="{{ asset('assets/vendors/circleType/jquery.lettering.min.js') }}"></script>
     <!-- template js -->
     <script src="{{ asset('assets/js/qrowd.js') }}"></script>
+    <script src="{{ asset('js/notification.js') }}"></script>
     <script src="{{ asset('assets/js/search-blog-list.js') }}"></script>
     <script src="{{ asset('assets/js/blog-comment-reply.js') }}"></script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
 
     <script
-    src="{{ asset('admin/js/laravel.pixelstrap.com_endless_assets_js_datatable_datatables_datatable.custom.js') }}">
-</script>
-<script src="{{ asset('admin/js/jquery.dataTables.min.js') }}"></script>
+        src="{{ asset('admin/js/laravel.pixelstrap.com_endless_assets_js_datatable_datatables_datatable.custom.js') }}">
+    </script>
+    <script src="{{ asset('admin/js/jquery.dataTables.min.js') }}"></script>
 
     <!-- Toastr JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>

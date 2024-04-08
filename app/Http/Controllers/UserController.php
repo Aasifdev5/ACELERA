@@ -16,29 +16,30 @@ use App\Models\Country;
 use App\Models\GeneralSetting;
 
 
+use App\Models\Notification;
+
 use App\Models\Page;
+
 
 use App\Models\PasswordReset;
 
 
+
 use App\Models\Role;
-
-
-
 use App\Models\User;
+
+
 use App\Notifications\NewUserRegisteredNotification;
 
 
 use App\Notifications\ResetPasswordNotification;
 
-
 use App\Notifications\UserRegisteredNotification;
 
 use App\Notifications\VerifyEmailNotification;
-
 use App\Traits\SendNotification;
-use Carbon\Carbon;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
@@ -102,10 +103,12 @@ class UserController extends Controller
         $project = Campaign::where('status', 1)->get();
         $freshproject = Campaign::Orderby('id', 'desc')->take(10)->get();
         $blogs = Blog::all();
-
+        $notificationCount = Notification::where('user_type', 2)
+        ->where('is_seen', 'no')
+        ->count();
 
         $general_setting = GeneralSetting::find('1');
-        return view('index', compact('categories', 'user_session', 'freshproject', 'pages', 'general_setting', 'project', 'blogs'));
+        return view('index', compact('categories', 'user_session', 'freshproject', 'pages', 'general_setting', 'project', 'blogs', 'notificationCount'));
     }
     public function projects()
     {
@@ -226,7 +229,10 @@ class UserController extends Controller
 
             $pages = Page::all();
             $user_session = User::where('id', Session::get('LoggedIn'))->first();
-            $campaign = Campaign::where('user_id', Session::get('LoggedIn'))->where('status',0)->get();
+            $campaign = Campaign::where('user_id', Session::get('LoggedIn'))
+                ->whereIn('status', [0, -1])
+                ->get();
+
 
             $general_setting = GeneralSetting::find('1');
             return view('myprojects', compact('campaign', 'user_session',  'general_setting', 'pages'));
@@ -234,13 +240,21 @@ class UserController extends Controller
             return Redirect()->with('fail', 'You have to login first');
         }
     }
+    function userNotifications()
+    {
+        $notifications = Notification::where('user_type', 2)
+            ->where('is_seen', 'no')
+            ->orderByDesc('created_at')
+            ->paginate(5);
+        return response()->json($notifications);
+    }
     public function MyPendingProject()
     {
         if (Session::has('LoggedIn')) {
 
             $pages = Page::all();
             $user_session = User::where('id', Session::get('LoggedIn'))->first();
-            $campaign = Campaign::where('user_id', Session::get('LoggedIn'))->where('status',0)->get();
+            $campaign = Campaign::where('user_id', Session::get('LoggedIn'))->where('status', 0)->get();
 
             $general_setting = GeneralSetting::find('1');
             return view('mypendingproject', compact('campaign', 'user_session', 'general_setting', 'pages'));
@@ -254,7 +268,7 @@ class UserController extends Controller
 
             $pages = Page::all();
             $user_session = User::where('id', Session::get('LoggedIn'))->first();
-            $campaign = Campaign::where('user_id', Session::get('LoggedIn'))->where('status',1)->get();
+            $campaign = Campaign::where('user_id', Session::get('LoggedIn'))->where('status', 1)->get();
 
             $general_setting = GeneralSetting::find('1');
             return view('myActiveproject', compact('campaign', 'user_session', 'general_setting', 'pages'));
@@ -275,9 +289,7 @@ class UserController extends Controller
             $user_session = User::where('id', Session::get('LoggedIn'))->first();
             // dd($request->id);
             return view('edit_courses', compact('countries', 'user_session', 'project_detail', 'category', 'general_setting', 'pages'));
-        }
-
-        else {
+        } else {
             return Redirect()->with('fail', 'You have to login first');
         }
     }

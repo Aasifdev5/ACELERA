@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 08, 2024 at 07:56 AM
+-- Generation Time: Apr 08, 2024 at 08:42 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -265,7 +265,7 @@ INSERT INTO `campaigns` (`id`, `user_id`, `category_id`, `title`, `slug`, `short
 (30, 1, 6, 'Aut distinctio molestiae accusamus sint reprehenderit aut et.', 'aut-distinctio-molestiae-accusamus-sint-reprehenderit-aut-et', 'Magnam exercitationem sunt ut odit. Hic veritatis magni qui.', '<p>Dolorum architecto in non aliquid omnis reiciendis quae. Accusamus non nam consectetur laborum culpa dignissimos.</p>', 0.00, 5348.50, NULL, NULL, 35.22, 471.95, 91652508, '6502675', 'end_date', 3089, 'uploads/Projects/1712133411-jp1OBYXhvg.jpg', 'uploads/meta/1712066037-7OswKZKvlc.jpg', NULL, 'https://via.placeholder.com/640x480.png/00ff88?text=ad', 1, 2, '14596 Tate GardensSouth Ethelyn, FL 70648-6204', 0, 0, '2019-02-21', NULL, '2024-01-01 01:59:33', '2024-04-02 07:18:55', '2024-04-03 03:06:51'),
 (31, 1, 15, 'Dolor asperiores suscipit magni numquam.', 'dolor-asperiores-suscipit-magni-numquam', 'Officia repellat eum est quod eum nobis. Deserunt perferendis ut maiores cupiditate officia exercitationem. Labore est nesciunt eos quos aperiam ratione.', '<p>Accusantium iusto quis modi aut ut. Sed id unde praesentium. Beatae molestias dicta pariatur eum. Nihil voluptatum nisi id et aut quo. Est iusto velit praesentium pariatur maiores dolor.</p>', 0.00, 8549.32, NULL, NULL, 43.69, 4719.36, 2949203, '2406410', 'goal_achieve', 14809561, 'uploads/Projects/1712066183-qzmE2mOJVn.jpg', 'uploads/meta/1712066183-H316sGeour.jpg', NULL, 'https://via.placeholder.com/640x480.png/0077cc?text=reprehenderit', 1, NULL, '204 Christiansen CrescentLake Allison, MT 70434-8739', 0, 0, '1975-02-05', NULL, '2009-06-23 04:05:43', '2024-04-02 07:18:55', '2024-04-02 08:26:23'),
 (32, 1, 3, 'Iste qui deleniti quidem velit dolor sint.', 'iste-qui-deleniti-quidem-velit-dolor-sint', 'Veritatis perspiciatis qui voluptatem et aut voluptatem. Voluptatum nesciunt et modi. Quaerat deleniti sit reprehenderit qui nemo.', '<p>Omnis sit iure magnam laborum. Occaecati pariatur illo recusandae dolore corrupti. Qui veniam error eos a minima. Ut illum labore dolor quae velit. Quis dolor quis minima voluptates nihil.</p>', 0.00, 1964.13, NULL, NULL, 77.86, 451.39, 3067026, '81598111', NULL, 7772, 'uploads/Projects/1712066128-skgCH5GYWr.jpg', 'uploads/meta/1712066128-PatM3tYXIm.jpg', NULL, 'https://via.placeholder.com/640x480.png/00eedd?text=quia', 1, 6, '359 Georgette ViaductWest Lacyport, AR 55365-3615', 0, 1, '2002-05-18', NULL, '2016-06-06 07:41:38', '2024-04-02 07:18:55', '2024-04-02 08:25:28'),
-(42, 3, 14, 'Unogesic MR 250mg/50mg/325mg Tablet wow', 'unogesic-mr-250mg50mg325mg-tablet-wow-1', 'MARKETER\r\nCurewell Drugs and Pharmaceuticals Pvt Ltd\r\nSALT COMPOSITION\r\nChlorzoxazone (250mg) + Diclofenac (50mg) + Paracetamol (325mg)\r\nSTORAGE\r\nStore below 30°C', '<p>Unogesic MR 250mg/50mg/325mg Tablet is a combination medicine used in the treatment of pain due to muscle spasms. It improves the movement of muscles and provides relief from pain and discomfort associated with muscle spasms. Unogesic MR 250mg/50mg/325mg Tablet should be taken with food. This will prevent you from getting an upset stomach. You should take it regularly as advised by your doctor. Do not take more or use it for a longer duration than recommended by your doctor. Using this medicine can cause some common side effects such as nausea, vomiting, heartburn, stomach pain, diarrhea, loss of appetite, and dryness in the mouth. If any of these side effects bother you or do not go away with time, you should let your doctor know. Your doctor may help with ways to reduce or prevent these side effects. The medicine may not be suitable for everybody. Before taking it, let your doctor know if you have any problems with your heart, kidneys, or liver. To make sure it is safe for you, let your doctor also know all the other medicines you are taking. Pregnant and breastfeeding mothers should first consult their doctors before using the medicine. USES OF UNOGESIC MR TABLET Treatment of Pain due to muscle spasm BENEFITS OF UNOGESIC MR TABLET In Treatment of Pain due to muscle spasm Unogesic MR 250mg/50mg/325mg Tablet is a combination medicine that is used to relieve pain, inflammation, and swelling in conditions that affect muscles. Also, it effectively relieves muscle stiffness or spasm, thereby improving muscle movement. It works by blocking chemical messengers in the brain that tell us we have pain. Take it as it is prescribed to get the most benefit. Do not take more or longer than needed as that can be dangerous. In general, you should take the lowest dose that works, for the shortest possible time. This will help you to go about your daily activities more easily and have a better, more active, quality of life.</p>', 0.00, 5000.00, NULL, NULL, 375.00, NULL, NULL, '1000', 'goal_achieve', NULL, 'uploads/Projects/1712465958-VfWv9yeUEp.jpg', 'uploads/meta/1712465958-QQawXoZ4ri.jpg', NULL, '', 1, 102, 'Indore, Madhaya Pradesh, India', 0, NULL, '2024-04-10', NULL, NULL, '2024-04-06 23:29:18', '2024-04-07 07:44:32');
+(42, 3, 14, 'Unogesic MR 250mg/50mg/325mg Tablet wow', 'unogesic-mr-250mg50mg325mg-tablet-wow-1', 'MARKETER\r\nCurewell Drugs and Pharmaceuticals Pvt Ltd\r\nSALT COMPOSITION\r\nChlorzoxazone (250mg) + Diclofenac (50mg) + Paracetamol (325mg)\r\nSTORAGE\r\nStore below 30°C', '<p>Unogesic MR 250mg/50mg/325mg Tablet is a combination medicine used in the treatment of pain due to muscle spasms. It improves the movement of muscles and provides relief from pain and discomfort associated with muscle spasms. Unogesic MR 250mg/50mg/325mg Tablet should be taken with food. This will prevent you from getting an upset stomach. You should take it regularly as advised by your doctor. Do not take more or use it for a longer duration than recommended by your doctor. Using this medicine can cause some common side effects such as nausea, vomiting, heartburn, stomach pain, diarrhea, loss of appetite, and dryness in the mouth. If any of these side effects bother you or do not go away with time, you should let your doctor know. Your doctor may help with ways to reduce or prevent these side effects. The medicine may not be suitable for everybody. Before taking it, let your doctor know if you have any problems with your heart, kidneys, or liver. To make sure it is safe for you, let your doctor also know all the other medicines you are taking. Pregnant and breastfeeding mothers should first consult their doctors before using the medicine. USES OF UNOGESIC MR TABLET Treatment of Pain due to muscle spasm BENEFITS OF UNOGESIC MR TABLET In Treatment of Pain due to muscle spasm Unogesic MR 250mg/50mg/325mg Tablet is a combination medicine that is used to relieve pain, inflammation, and swelling in conditions that affect muscles. Also, it effectively relieves muscle stiffness or spasm, thereby improving muscle movement. It works by blocking chemical messengers in the brain that tell us we have pain. Take it as it is prescribed to get the most benefit. Do not take more or longer than needed as that can be dangerous. In general, you should take the lowest dose that works, for the shortest possible time. This will help you to go about your daily activities more easily and have a better, more active, quality of life.</p>', NULL, 5000.00, NULL, NULL, 375.00, NULL, NULL, '1000', 'goal_achieve', NULL, 'uploads/Projects/1712465958-VfWv9yeUEp.jpg', 'uploads/meta/1712465958-QQawXoZ4ri.jpg', NULL, '', 1, 102, 'Indore, Madhaya Pradesh, India', 0, NULL, '2024-04-10', NULL, NULL, '2024-04-06 23:29:18', '2024-04-08 03:29:54');
 
 -- --------------------------------------------------------
 
@@ -300,6 +300,70 @@ INSERT INTO `categories` (`id`, `uuid`, `name`, `image`, `is_feature`, `slug`, `
 (9, 'a1d1c370-5ce4-4bbc-9b27-5e8645282259', 'Technology', 'uploads/category/1711873546-zEEkXFlIHs.png', 'no', 'Technology', NULL, NULL, NULL, 'uploads/meta/1711873546-AhtaJbnpyt.png', 1, '2022-12-04 17:05:33', '2024-03-31 02:59:53'),
 (14, '86008391-2012-4caa-8a23-671590e5ce89', 'Medical', 'uploads/category/1711873644-7BrNKAri9h.png', 'no', 'Medical', NULL, NULL, NULL, 'uploads/meta/1711873644-LR7hxcxK2M.png', 1, '2024-03-31 01:43:56', '2024-03-31 02:57:24'),
 (15, 'd5a337f2-8f46-47ea-ab54-bb651bcafc2c', 'Videos', 'uploads/category/1711870592-6dexcokD6I.png', 'no', 'Videos', NULL, NULL, NULL, 'uploads/meta/1711870592-VnhTOQYtmd.png', 1, '2024-03-31 02:06:32', '2024-03-31 02:06:32');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `chats`
+--
+
+CREATE TABLE `chats` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `sender_id` int(11) NOT NULL,
+  `receiver_id` int(11) NOT NULL,
+  `campaign_id` int(11) NOT NULL,
+  `message` text NOT NULL,
+  `is_seen` tinyint(1) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `chats`
+--
+
+INSERT INTO `chats` (`id`, `sender_id`, `receiver_id`, `campaign_id`, `message`, `is_seen`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 3, 25, 0, 'THIS IS TESTING FROM FULL STACK DEV', 0, '2024-04-08 06:53:24', '2024-04-08 06:53:24', NULL),
+(2, 3, 25, 0, 'ret', 0, '2024-04-08 06:55:25', '2024-04-08 06:55:25', NULL),
+(3, 3, 25, 0, 'f', 0, '2024-04-08 06:57:24', '2024-04-08 06:57:24', NULL),
+(4, 3, 25, 0, 'sd', 0, '2024-04-08 07:02:12', '2024-04-08 07:02:12', NULL),
+(5, 3, 25, 0, 'funcking', 0, '2024-04-08 07:02:24', '2024-04-08 07:02:24', NULL),
+(6, 3, 25, 0, 'testing 555', 0, '2024-04-08 07:17:49', '2024-04-08 07:17:49', NULL),
+(7, 3, 25, 0, 'testing 555', 0, '2024-04-08 07:19:14', '2024-04-08 07:19:14', NULL),
+(8, 25, 26, 0, 'hi park', 0, '2024-04-08 09:04:07', '2024-04-08 09:04:07', NULL),
+(9, 25, 4, 0, 'how are you alex', 0, '2024-04-08 09:07:35', '2024-04-08 09:07:35', NULL),
+(10, 3, 25, 0, 'hey', 0, '2024-04-08 09:08:46', '2024-04-08 09:08:46', NULL),
+(11, 3, 25, 0, 'wow', 0, '2024-04-08 09:16:21', '2024-04-08 09:16:21', NULL),
+(12, 25, 3, 0, 'sd', 0, '2024-04-08 09:17:32', '2024-04-08 09:17:32', NULL),
+(13, 25, 3, 0, 'THIS IS TESTING FROM FULL STACK DEV', 0, '2024-04-08 09:17:55', '2024-04-08 09:17:55', NULL),
+(14, 3, 25, 0, 'fgdxgfgdf shitttttttttttttttttttttttt', 0, '2024-04-08 09:18:38', '2024-04-08 09:18:38', NULL),
+(15, 25, 3, 0, 'cfgdfg', 0, '2024-04-08 09:21:48', '2024-04-08 09:21:48', NULL),
+(16, 3, 25, 0, 'eneough', 0, '2024-04-08 09:24:08', '2024-04-08 09:24:08', NULL),
+(17, 25, 3, 0, 'aisa', 0, '2024-04-08 09:24:58', '2024-04-08 09:24:58', NULL),
+(18, 3, 25, 0, 'image', 0, '2024-04-08 09:25:28', '2024-04-08 09:25:28', NULL),
+(19, 3, 1, 0, 'Hey You', 0, '2024-04-08 12:06:11', '2024-04-08 12:06:11', NULL),
+(20, 1, 3, 0, 'what', 0, '2024-04-08 12:06:39', '2024-04-08 12:06:39', NULL),
+(21, 3, 1, 0, 'you get my idea', 0, '2024-04-08 12:07:46', '2024-04-08 12:07:46', NULL),
+(22, 1, 3, 0, 'now looks good', 0, '2024-04-08 12:59:16', '2024-04-08 12:59:16', NULL),
+(23, 3, 1, 0, 'yeah', 0, '2024-04-08 12:59:32', '2024-04-08 12:59:32', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `chat_messages`
+--
+
+CREATE TABLE `chat_messages` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `incoming_user_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `outgoing_user_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `message` longtext DEFAULT NULL,
+  `view` tinyint(4) DEFAULT 2 COMMENT '1=seen,2=not seen',
+  `created_user_type` tinyint(4) DEFAULT NULL COMMENT '1=student,2=instructor',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -11658,7 +11722,31 @@ INSERT INTO `notifications` (`id`, `uuid`, `sender_id`, `user_id`, `text`, `targ
 (2, '86e4b750-565a-4fac-9eb2-edbe34da1e7d', 26, 26, 'A new user has registered on the platform.', 'http://127.0.0.1:8000/admin/users', 'yes', 1, '2024-04-06 15:32:26', '2024-04-06 15:32:40'),
 (3, 'd5942781-fd42-4a4f-a1b8-6fcb70e389fa', 27, 27, 'A new user has registered on the platform.', 'http://127.0.0.1:8000/admin/users', 'yes', 1, '2024-04-06 15:38:55', '2024-04-06 15:40:21'),
 (5, '463b3d46-61cb-43d0-840f-d8782a681ed7', 3, 3, 'A new project has posted on the platform.', 'http://127.0.0.1:8000/project-details/unogesic-mr-250mg50mg325mg-tablet', 'yes', 1, '2024-04-06 23:29:18', '2024-04-07 01:21:04'),
-(6, '8f1b270b-7bd6-4f3b-a4de-c2c49dcf2210', 1, 1, 'A new blog has posted on the platform.', 'http://127.0.0.1:8000/blog_details/The%20Comprehensive%20Guide%20to%20Moving%20Averages%20for%20Data%20Science-664870', 'yes', 2, '2024-04-07 00:59:21', '2024-04-07 01:20:03');
+(6, '8f1b270b-7bd6-4f3b-a4de-c2c49dcf2210', 1, 1, 'A new blog has posted on the platform.', 'http://127.0.0.1:8000/blog_details/The%20Comprehensive%20Guide%20to%20Moving%20Averages%20for%20Data%20Science-664870', 'yes', 2, '2024-04-07 00:59:21', '2024-04-07 01:20:03'),
+(7, '8b0f91f7-1592-4493-a493-2efc7fbb05c5', 1, 1, 'Project has been approved.', 'http://127.0.0.1:8000/project-details/unogesic-mr-250mg50mg325mg-tablet-wow-1', 'yes', 2, '2024-04-08 01:45:49', '2024-04-08 01:46:03'),
+(8, 'db4ad196-4b04-4787-9758-ccd50e27c48a', 1, 1, 'Project has been rejected.', 'http://127.0.0.1:8000/project-details/unogesic-mr-250mg50mg325mg-tablet-wow', 'yes', 2, '2024-04-08 01:46:43', '2024-04-08 01:47:03'),
+(9, 'c6a9b67e-72b7-4358-a807-b90c5b6ab92c', 1, 1, 'Project has been approved.', 'http://127.0.0.1:8000/project-details/unogesic-mr-250mg50mg325mg-tablet-wow-1', 'yes', 2, '2024-04-08 02:25:54', '2024-04-08 02:37:26'),
+(10, '277f620a-efe5-44b7-afd5-966fd568e149', 1, 1, 'Project has been rejected.', 'http://127.0.0.1:8000/project-details/unogesic-mr-250mg50mg325mg-tablet-wow', 'yes', 2, '2024-04-08 02:37:47', '2024-04-08 02:49:18'),
+(11, 'bc21fd03-29fe-4779-9d68-29bc877186f4', 1, 1, 'Project has been approved.', 'http://127.0.0.1:8000/project-details/unogesic-mr-250mg50mg325mg-tablet-wow-1', 'yes', 2, '2024-04-08 02:56:03', '2024-04-08 03:07:23'),
+(12, '88187e09-3536-4325-898a-b603f2e0730b', 1, 1, 'Project has been rejected.', 'http://127.0.0.1:8000/project-details/unogesic-mr-250mg50mg325mg-tablet-wow', 'no', 2, '2024-04-08 03:07:42', '2024-04-08 03:07:42'),
+(13, '8d0f6055-3bf7-4305-a233-5d1f57d5a876', 1, 1, 'Project has been approved.', 'http://127.0.0.1:8000/project-details/unogesic-mr-250mg50mg325mg-tablet-wow-1', 'no', 2, '2024-04-08 03:29:54', '2024-04-08 03:29:54'),
+(14, 'd7d799f3-d49d-4297-9899-c56633013d90', 3, 3, 'testing 555', 'http://127.0.0.1:8000/chat', 'yes', 2, '2024-04-08 07:19:14', '2024-04-08 07:20:51'),
+(15, '9e0ecaaf-d24d-402b-a84d-4e33fc68c091', 25, 25, 'hi park', 'http://127.0.0.1:8000/chat', 'no', 2, '2024-04-08 09:04:07', '2024-04-08 09:04:07'),
+(16, '147464e2-e03b-49ca-a884-8dc78f84beb3', 25, 25, 'how are you alex', 'http://127.0.0.1:8000/chat', 'yes', 2, '2024-04-08 09:07:35', '2024-04-08 09:08:14'),
+(17, 'ce5e15ab-080d-47d5-a84d-8a83b5959eef', 3, 3, 'hey', 'http://127.0.0.1:8000/chat', 'yes', 2, '2024-04-08 09:08:46', '2024-04-08 09:09:07'),
+(18, '901b08dd-d3e5-4655-a780-4c2777b06ce3', 3, 3, 'wow', 'http://127.0.0.1:8000/chat', 'no', 2, '2024-04-08 09:16:21', '2024-04-08 09:16:21'),
+(19, 'cdbdb7b5-7f66-4f7e-a846-c59d44f09bd4', 25, 25, 'sd', 'http://127.0.0.1:8000/chat', 'no', 2, '2024-04-08 09:17:32', '2024-04-08 09:17:32'),
+(20, '4725ef43-a105-4c37-b0ef-766f9fd6af08', 25, 25, 'THIS IS TESTING FROM FULL STACK DEV', 'http://127.0.0.1:8000/chat', 'no', 2, '2024-04-08 09:17:55', '2024-04-08 09:17:55'),
+(21, 'db3b9734-f469-45e3-92db-a24a4100d033', 3, 3, 'fgdxgfgdf shitttttttttttttttttttttttt', 'http://127.0.0.1:8000/chat', 'yes', 2, '2024-04-08 09:18:38', '2024-04-08 09:19:06'),
+(22, '9f885d90-85a6-43e1-bf3d-9b1d22f8f25a', 25, 25, 'cfgdfg', 'http://127.0.0.1:8000/chat', 'no', 2, '2024-04-08 09:21:48', '2024-04-08 09:21:48'),
+(23, '581a8f36-8967-4daa-8400-6ac6e2679f75', 3, 3, 'eneough', 'http://127.0.0.1:8000/chat', 'no', 2, '2024-04-08 09:24:08', '2024-04-08 09:24:08'),
+(24, '9423e620-3f40-4cb0-8779-1a474e874ef4', 25, 25, 'aisa', 'http://127.0.0.1:8000/chat', 'no', 2, '2024-04-08 09:24:58', '2024-04-08 09:24:58'),
+(25, '87ac8bc4-2bdd-417d-874b-da159bd4eb84', 3, 3, 'image', 'http://127.0.0.1:8000/chat', 'no', 2, '2024-04-08 09:25:28', '2024-04-08 09:25:28'),
+(26, '8c0f2f73-2ef7-4dd1-96c9-84a5ef4b6d57', 3, 3, 'Hey You', 'http://127.0.0.1:8000/chat', 'no', 2, '2024-04-08 12:06:11', '2024-04-08 12:06:11'),
+(27, '092b3f10-ecbd-4b1b-b69b-abf41ab9f7ba', 1, 1, 'what', 'http://127.0.0.1:8000/chat', 'no', 2, '2024-04-08 12:06:39', '2024-04-08 12:06:39'),
+(28, '249c50a8-0441-4b9b-bba3-c49dfb93bb82', 3, 3, 'you get my idea', 'http://127.0.0.1:8000/chat', 'no', 2, '2024-04-08 12:07:46', '2024-04-08 12:07:46'),
+(29, '32bd5d4d-eceb-4965-85a3-2a33f1fedb5d', 1, 1, 'now looks good', 'http://127.0.0.1:8000/chat', 'no', 2, '2024-04-08 12:59:16', '2024-04-08 12:59:16'),
+(30, '84642293-89fe-4247-a2a7-a9d43cd155f6', 3, 3, 'yeah', 'http://127.0.0.1:8000/chat', 'no', 2, '2024-04-08 12:59:32', '2024-04-08 12:59:32');
 
 -- --------------------------------------------------------
 
@@ -15875,12 +15963,12 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `account_type`, `role`, `name`, `email`, `email_verified_at`, `password`, `custom_password`, `mobile_number`, `country`, `last_seen`, `is_online`, `is_active`, `status`, `about`, `photo_url`, `profile_photo`, `remember_token`, `ip_address`, `balance`, `is_system`, `is_subscribed`, `privacy`, `gender`, `created_by`, `deleted_at`, `language`, `is_super_admin`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 1, 'SUPER ADMINISTRADOR', 'admin@gmail.com', '2023-03-23 07:45:02', '$2y$10$9SbqzcUtyfeaf4019gajcOGQ4/k.XfIpeMXZp/ZERKUP0Z9GA02MK', NULL, '8878326802', 'india', '2024-04-07 07:34:56', 1, 1, 1, NULL, NULL, 'acl2.png', NULL, NULL, NULL, 1, 0, 1, 1, NULL, NULL, 'es', 1, '2023-03-23 07:45:02', '2024-04-07 07:34:56'),
+(1, 'admin', 1, 'SUPER ADMINISTRADOR', 'admin@gmail.com', '2023-03-23 07:45:02', '$2y$10$9SbqzcUtyfeaf4019gajcOGQ4/k.XfIpeMXZp/ZERKUP0Z9GA02MK', NULL, '8878326802', 'india', '2024-04-08 11:47:15', 1, 1, 1, NULL, NULL, 'acl2.png', NULL, NULL, NULL, 1, 0, 1, 1, NULL, NULL, 'es', 1, '2023-03-23 07:45:02', '2024-04-08 11:47:15'),
 (2, 'admin', NULL, 'Worker', 'worker@gmail.com', '2023-03-23 07:45:02', '$2y$10$TwlAHh5tVCO.ZGjAC74MVeFE0eltxZiYgB9.CTjimg7AOQXEiOlt.', NULL, '8878326802', 'india', '2024-01-29 17:12:05', 1, 1, 1, NULL, NULL, '68e78a4c175d72829e9bfa9592c76c35 (1).jpg', NULL, NULL, NULL, 1, 0, 1, 1, NULL, NULL, 'en', 0, '2023-03-23 07:45:02', '2024-01-29 17:12:05'),
-(3, 'creators', 2, 'arsh', 'arstech2a@gmail.com', '2024-03-29 23:19:10', 'Berlin@3sss', NULL, '591591987654321', NULL, '2024-04-07 05:32:00', 1, 1, 1, NULL, NULL, '68e78a4c175d72829e9bfa9592c76c35 (1).jpg', NULL, '127.0.0.1', NULL, 0, NULL, 1, NULL, NULL, NULL, 'en', 0, '2024-03-29 23:14:46', '2024-04-07 05:32:00'),
+(3, 'creators', 2, 'arsh', 'arstech2a@gmail.com', '2024-03-29 23:19:10', 'Berlin@3sss', NULL, '591591987654321', NULL, '2024-04-08 02:24:38', 1, 1, 1, NULL, NULL, '68e78a4c175d72829e9bfa9592c76c35 (1).jpg', NULL, '127.0.0.1', NULL, 0, NULL, 1, NULL, NULL, NULL, 'en', 0, '2024-03-29 23:14:46', '2024-04-08 02:24:38'),
 (4, 'creators', 2, 'alex', 'alex@gmail.com', '2024-03-29 23:19:10', 'Upwork', NULL, '591591591591987654321', NULL, '2024-04-01 05:32:23', 0, 1, 1, NULL, NULL, '1657090503-9ynVP5V0Tx.jpg', NULL, '127.0.0.1', NULL, 0, NULL, 1, NULL, NULL, NULL, 'en', 0, '2024-03-29 23:14:46', '2024-04-01 05:32:23'),
-(25, 'creators', NULL, 'Hales', 'hrnatrajinfotech@gmail.com', NULL, '64546465465465', NULL, '59198784654894658', NULL, NULL, 0, 1, 1, NULL, NULL, NULL, NULL, '127.0.0.1', NULL, 0, NULL, 1, NULL, NULL, NULL, '\'en\'', 0, '2024-04-06 15:26:38', '2024-04-06 15:26:38'),
-(26, 'backers', NULL, 'Arsh', 'hrnatrajinfotsdfech@gmail.com', NULL, '645654984489', NULL, '59187865613548', NULL, NULL, 0, 1, 1, NULL, NULL, NULL, NULL, '127.0.0.1', NULL, 0, NULL, 1, NULL, NULL, NULL, '\'en\'', 0, '2024-04-06 15:32:20', '2024-04-06 15:32:20'),
+(25, 'creators', NULL, 'Hales', 'hrnatrajinfotech@gmail.com', '2024-03-29 23:19:10', '64546465465465', NULL, '59198784654894658', NULL, '2024-04-08 07:20:42', 1, 1, 1, NULL, NULL, NULL, NULL, '127.0.0.1', NULL, 0, NULL, 1, NULL, NULL, NULL, '\'en\'', 0, '2024-04-06 15:26:38', '2024-04-08 07:20:42'),
+(26, 'backers', NULL, 'park', 'hrnatrajinfotsdfech@gmail.com', NULL, '645654984489', NULL, '59187865613548', NULL, NULL, 0, 1, 1, NULL, NULL, NULL, NULL, '127.0.0.1', NULL, 0, NULL, 1, NULL, NULL, NULL, '\'en\'', 0, '2024-04-06 15:32:20', '2024-04-06 15:32:20'),
 (27, 'creators', NULL, 'Muskan', 'muskan@gmail.com', NULL, 'Muskan123', NULL, '591789643210', NULL, NULL, 0, 1, 1, NULL, NULL, NULL, NULL, '127.0.0.1', NULL, 0, NULL, 1, NULL, NULL, NULL, '\'en\'', 0, '2024-04-06 15:38:50', '2024-04-06 15:38:50');
 
 --
@@ -15943,6 +16031,18 @@ ALTER TABLE `campaigns`
 ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `categories_uuid_unique` (`uuid`);
+
+--
+-- Indexes for table `chats`
+--
+ALTER TABLE `chats`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `chat_messages`
+--
+ALTER TABLE `chat_messages`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `cities`
@@ -16148,6 +16248,18 @@ ALTER TABLE `categories`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
+-- AUTO_INCREMENT for table `chats`
+--
+ALTER TABLE `chats`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+
+--
+-- AUTO_INCREMENT for table `chat_messages`
+--
+ALTER TABLE `chat_messages`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `cities`
 --
 ALTER TABLE `cities`
@@ -16205,7 +16317,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `notifications`
 --
 ALTER TABLE `notifications`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `pages`

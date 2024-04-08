@@ -17,9 +17,10 @@ Dashboard
                 <ul class="nav flex-column">
                     <li class="nav-item">
                         <a class="nav-link active" href="{{ url('dashboard') }}">
-                            <i class="fa fa-dashboard fa-fw"></i> Dashboard
+                            <i class="icofont icofont-finger-print"></i> Dashboard
                         </a>
                     </li>
+                    <li><a href="{{route('chat.index')}}" class="nav-link" ><i class="icofont icofont-social-google-buzz"></i> {{__('Chat')}}</a></li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('MyProject') }}">
                             <i class="fa fa-bullhorn"></i> My Projects
