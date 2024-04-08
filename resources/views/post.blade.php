@@ -1,8 +1,9 @@
-@extends('dashboard')
+@extends('master')
 @section('title')
-    Create Project
+Create Project
 @endsection
 @section('content')
+
     <div class="container" style="margin-bottom: 50px">
         <div class="row">
             <div class="col-md-10 col-xs-12">

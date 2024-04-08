@@ -190,14 +190,16 @@
                                                                         <div class="single-notification-item d-flex align-items-center">
                                                                             <div class="flex-shrink-0">
                                                                                 <div class="user-img-wrap position-relative radius-50">
-                                                                                    @if ($notification->sender->image_path)
-                                                                                        <img src="{{ asset($notification->sender->image_path) }}"
-                                                                                            alt="img" class="radius-50">
-                                                                                    @else
-                                                                                        <img src="{{ asset('149071.png') }}"
-                                                                                            alt="dummy-avatar"
-                                                                                            style="width: 50px; height: 50px; border-radius: 50%;">
-                                                                                    @endif
+
+                                                                                    @if (!empty(\App\Models\User::getUserInfo($notification->sender_id)->profile_photo))
+                                                                                    <img src="{{ asset('profile_photo/') }}<?php echo '/' . \App\Models\User::getUserInfo($notification->sender_id)->profile_photo; ?>"
+                                                                                        alt="img"
+                                                                                         style="width: 50px; height: 50px; border-radius: 50%;">
+                                                                                @else
+                                                                                    <img src="{{ asset('149071.png') }}"
+                                                                                        alt="dummy-avatar"
+                                                                                        style="width: 50px; height: 50px; border-radius: 50%;">
+                                                                                @endif
                                                                                 </div>
                                                                             </div>
                                                                             <div class="flex-grow-1 ms-2">

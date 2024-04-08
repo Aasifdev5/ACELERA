@@ -81,6 +81,10 @@ function adminNotifications()
 {
     return \App\Models\Notification::where('user_type', 1)->where('is_seen', 'no')->orderBy('created_at', 'DESC')->paginate(5);
 }
+function userNotifications()
+{
+    return \App\Models\Notification::where('user_type', 2)->where('is_seen', 'no')->orderBy('created_at', 'DESC')->paginate(5);
+}
 function toastrMessage($type, $message)
 {
     Session::flash('toastr_message', [

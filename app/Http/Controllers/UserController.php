@@ -99,7 +99,7 @@ class UserController extends Controller
         $user_session = User::where('id', Session::get('LoggedIn'))->first();
         $categories = Category::all();
         $pages = Page::all();
-        $project = Campaign::all();
+        $project = Campaign::where('status', 1)->get();
         $freshproject = Campaign::Orderby('id', 'desc')->take(10)->get();
         $blogs = Blog::all();
 
@@ -114,7 +114,7 @@ class UserController extends Controller
         $user_session = User::where('id', Session::get('LoggedIn'))->first();
         $title = 'Projects';
 
-        $campaigns = Campaign::all();
+        $campaigns = Campaign::where('status', 1)->get();
         $pages = Page::all();
         return view('list', compact('campaigns', 'user_session', 'title', 'pages'));
     }
@@ -122,6 +122,7 @@ class UserController extends Controller
     {
         $campaigns = Campaign::join('categories', 'campaigns.category_id', '=', 'categories.id')
             ->where('categories.name', $category)
+            ->where('campaigns.status', 1)
             ->select('campaigns.*')
             ->paginate(10);
 
@@ -176,7 +177,7 @@ class UserController extends Controller
         // event(new UserRegistered($user));
         $text = 'A new user has registered on the platform.';
         $target_url = route('users');
-        $this->sendForApi($text, 1, $target_url, $user->id,$user->id);
+        $this->sendForApi($text, 1, $target_url, $user->id, $user->id);
         $pages = Page::all();
         if ($user) {
             return view('feedback', compact('user', 'pages'));
@@ -218,6 +219,155 @@ class UserController extends Controller
         $projects = Campaign::inRandomOrder()->take(3)->get();
         $general_setting = GeneralSetting::find('1');
         return view('appointment', compact('campaign', 'user_session', 'projects', 'general_setting', 'pages'));
+    }
+    public function MyProject()
+    {
+        if (Session::has('LoggedIn')) {
+
+            $pages = Page::all();
+            $user_session = User::where('id', Session::get('LoggedIn'))->first();
+            $campaign = Campaign::where('user_id', Session::get('LoggedIn'))->where('status',0)->get();
+
+            $general_setting = GeneralSetting::find('1');
+            return view('myprojects', compact('campaign', 'user_session',  'general_setting', 'pages'));
+        } else {
+            return Redirect()->with('fail', 'You have to login first');
+        }
+    }
+    public function MyPendingProject()
+    {
+        if (Session::has('LoggedIn')) {
+
+            $pages = Page::all();
+            $user_session = User::where('id', Session::get('LoggedIn'))->first();
+            $campaign = Campaign::where('user_id', Session::get('LoggedIn'))->where('status',0)->get();
+
+            $general_setting = GeneralSetting::find('1');
+            return view('mypendingproject', compact('campaign', 'user_session', 'general_setting', 'pages'));
+        } else {
+            return Redirect()->with('fail', 'You have to login first');
+        }
+    }
+    public function MyActiveProject()
+    {
+        if (Session::has('LoggedIn')) {
+
+            $pages = Page::all();
+            $user_session = User::where('id', Session::get('LoggedIn'))->first();
+            $campaign = Campaign::where('user_id', Session::get('LoggedIn'))->where('status',1)->get();
+
+            $general_setting = GeneralSetting::find('1');
+            return view('myActiveproject', compact('campaign', 'user_session', 'general_setting', 'pages'));
+        } else {
+            return Redirect()->with('fail', 'You have to login first');
+        }
+    }
+    public function edit_project(Request $request)
+    {
+
+        if (Session::has('LoggedIn')) {
+
+            $project_detail = Campaign::where('id', $request->id)->first();
+            $category = Category::all();
+            $countries = Country::all();
+            $pages = Page::all();
+            $general_setting = GeneralSetting::find('1');
+            $user_session = User::where('id', Session::get('LoggedIn'))->first();
+            // dd($request->id);
+            return view('edit_courses', compact('countries', 'user_session', 'project_detail', 'category', 'general_setting', 'pages'));
+        }
+
+        else {
+            return Redirect()->with('fail', 'You have to login first');
+        }
+    }
+
+    public function update_project(Request $request)
+    {
+
+        $user_id = Session::get('LoggedIn');
+
+        $slug = unique_slug($request->title);
+
+        // Retrieve the existing campaign by its ID
+        $campaign = Campaign::findOrFail($request->id);
+
+        // Check if a new image is uploaded
+        if ($request->hasFile('image')) {
+            // Delete the previous image file if it exists
+            if ($campaign->image) {
+                // Construct the path to the previous image file
+                $previousImagePath = public_path($campaign->image);
+
+                // Check if the file exists before attempting to delete it
+                if (file_exists($previousImagePath)) {
+                    unlink($previousImagePath); // Delete the previous image file
+                }
+            }
+
+            // Handle the new image upload
+            $image = $request->file('image');
+            $destination = 'Projects';
+            $file_name = time() . '-' . Str::random(10) . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('uploads/' . $destination), $file_name);
+            $campaign->image = 'uploads/' . $destination . '/' . $file_name;
+        }
+
+        // Update other fields with the new values from the request
+        $campaign->user_id = $user_id;
+        $campaign->category_id = $request->category;
+        $campaign->title = $request->title;
+        $campaign->slug = $slug;
+        $campaign->description = $request->description;
+        $campaign->campaign_owner_commission = get_option('campaign_owner_commission');
+        $campaign->goal = $request->goal;
+        $campaign->min_amount = $request->min_amount;
+        $campaign->max_amount = $request->max_amount;
+        $campaign->recommended_amount = $request->recommended_amount;
+        $campaign->amount_prefilled = $request->amount_prefilled;
+        $campaign->end_method = $request->end_method;
+        $campaign->video = $request->video;
+        $campaign->status = 0; // Assuming status is set to 0 for update
+        $campaign->country_id = $request->country_id;
+        $campaign->address = $request->address;
+        $campaign->is_funded = 0; // Assuming is_funded is set to 0 for update
+        $campaign->start_date = $request->start_date;
+        $campaign->end_date = $request->end_date;
+
+        // Handle OG image updates (similar logic as image update)
+        // Note: If og_image is also expected to be updated in this form, you should check if og_image file exists before deleting the previous one.
+        if ($request->hasFile('og_image')) {
+            // Delete the previous OG image file if it exists
+            if ($campaign->og_image) {
+                $previousOgImagePath = public_path($campaign->og_image);
+                if (file_exists($previousOgImagePath)) {
+                    unlink($previousOgImagePath); // Delete the previous OG image file
+                }
+            }
+
+            // Handle the new OG image upload
+            $og_image = $request->file('og_image');
+            $destination = 'meta';
+            $file_name = time() . '-' . Str::random(10) . '.' . $og_image->getClientOriginalExtension();
+            $og_image->move(public_path('uploads/' . $destination), $file_name);
+            $campaign->og_image = 'uploads/' . $destination . '/' . $file_name;
+        }
+
+        // Save the updated campaign
+        if ($campaign->save()) {
+            // If the update is successful, return success message
+            return redirect('MyProject')->with('success', 'Project updated successfully');
+        }
+
+        // If the update fails, return error message
+        return back()->with('fail', 'Failed to update project');
+    }
+    public function Delete_project(Request $request)
+    {
+        $category = Campaign::find($request->id);
+        $category->delete();
+
+        return redirect('MyProject')->with('success', 'Deleted Succesuufully');
     }
     public function sendResetPasswordLink(Request $request)
     {
@@ -371,8 +521,9 @@ class UserController extends Controller
     {
         $category = Category::all();
         $countries = Country::all();
+        $user_session = User::where('id', Session::get('LoggedIn'))->first();
         $pages = Page::all();
-        return view('post', compact('countries', 'category', 'pages'));
+        return view('post', compact('countries', 'category', 'pages', 'user_session'));
     }
     public function ProjectStore(Request $request)
     {
@@ -446,6 +597,10 @@ class UserController extends Controller
         }
 
         $create = Campaign::create($data);
+        $text = 'A new project has posted on the platform.';
+        $target_url = url('project-details', ['slug' => $slug]);
+        $this->sendForApi($text, 1, $target_url, $user_id, $user_id);
+
         // dd($request->all());
         if ($create) {
             return back()->with('success', 'Project Created');
@@ -470,8 +625,8 @@ class UserController extends Controller
         if (Session::has('LoggedIn')) {
             $user_session = User::where('id', '=', Session::get('LoggedIn'))->first();
         }
-
-        return view('change_password', compact('user_session'));
+        $pages = Page::all();
+        return view('change_password', compact('user_session', 'pages'));
     }
     public function update_password(Request $request)
     {

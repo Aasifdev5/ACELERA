@@ -114,11 +114,18 @@
                         <p class="project-details-top__text">{{ $campaign->short_description }}.</p>
                         <div class="project-details-top__person">
                             <div class="project-details-top__person-img">
-                                <img src="assets/images/project/project-details-top-person-img-1.jpg" alt="">
+                                @if (!empty(\App\Models\User::getUserInfo($campaign->user_id)->profile_photo))
+                                <img src="{{ asset('profile_photo/') }}<?php echo '/' . \App\Models\User::getUserInfo($campaign->user_id)->profile_photo; ?>"
+                                    class="personal-avatar rounded-circle" width="100px" height="40px"
+                                    alt="avatar" id="profileImagePreview">
+                            @else
+                            <img src="{{ asset('149071.png') }}" alt="dummy-avatar"
+                            style="width: 50px; height: 50px;">
+                            @endif
                             </div>
                             <div class="project-details-top__person-content">
-                                <h5><span>by</span>Kevin Martin</h5>
-                                <p>2 Campaigns / 10 Backed</p>
+                                <h5><span>by</span> {{ \App\Models\User::getUserFullname($campaign->user_id) }}</h5>
+                                <p>{{ \App\Models\Campaign::where('user_id',$campaign->user_id)->get()->count() }} Campaigns / 10 Backed</p>
                             </div>
                         </div>
                         <ul class="list-unstyled project-details-top__money">

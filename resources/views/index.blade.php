@@ -357,7 +357,12 @@
                                         </div>
                                     </li>
                                 </ul>
+                                @if (!empty($user_session))
+                                <a href="{{ url('CreateProject') }}" class="thm-btn">Make it Happen</a>
+                                @else
                                 <a href="{{ url('signup') }}" class="thm-btn">Make it Happen</a>
+                                @endif
+
                             </div>
                         </div>
                         <div class="col-xl-6">
@@ -984,7 +989,12 @@
                     </div>
                 </div>
                 <div class="ready-one__right">
+                    @if (!empty($user_session))
+                    <a href="{{ url('CreateProject') }}" class="thm-btn ready-one__btn">Make it Happen</a>
+                    @else
                     <a href="{{ url('signup') }}" class="thm-btn ready-one__btn">Make it Happen</a>
+                    @endif
+
                 </div>
             </div>
         </div>

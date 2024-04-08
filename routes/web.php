@@ -59,7 +59,7 @@ Route::post('/ResetPassword', [UserController::class, 'ResetPassword'])->name('R
 Route::group(['middleware' => 'prevent-back-history'], function () {
     Route::get('/index', [UserController::class, 'index'])->name('index');
     Route::get('/', [UserController::class, 'index'])->name('index');
-    Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
+    Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard')->middleware('isLoggedIn');
     Route::post('/ProjectStore', [UserController::class, 'ProjectStore'])->name('ProjectStore');
     Route::get('/ad_photo', [UserController::class, 'ad_photo'])->name('ad_photo')->middleware('isLoggedIn');
     Route::post('/post-insert', [UserController::class, 'Ad_insert'])->name('Ad_insert')->middleware('isLoggedIn');
@@ -68,40 +68,38 @@ Route::group(['middleware' => 'prevent-back-history'], function () {
     Route::post('/post-insert-images', [UserController::class, 'ads_photos_upload'])->name('ads_photos_upload')->middleware('isLoggedIn');
     Route::get('/change_password', [UserController::class, 'change_password'])->name('change_password')->middleware('isLoggedIn');
     Route::post('/update_password', [UserController::class, 'update_password'])->name('update_password');
-    Route::get('/edit_profile', [UserController::class, 'edit_profile']);
+    Route::get('/edit_profile', [UserController::class, 'edit_profile'])->middleware('isLoggedIn');
     Route::post('update_profile', [UserController::class, 'update_profile']);
     Route::get('/Payment', [UserController::class, 'Payment'])->name('Payment')->middleware('isLoggedIn');
     Route::get('/finish', [UserController::class, 'finish'])->name('finish')->middleware('isLoggedIn');
-    Route::get('/thanks', [UserController::class, 'thanks'])->name('thanks')->middleware('isLoggedIn');
+    Route::get('/MyPendingProject', [UserController::class, 'MyPendingProject'])->name('MyPendingProject')->middleware('isLoggedIn');
     Route::get('/news-category/{id}', [UserController::class, 'news_category'])->name('news_category');
-    Route::get('/credits', [UserController::class, 'credits'])->name('credits')->middleware('isLoggedIn');
-    Route::get('/credit_buy_details/{id}', [UserController::class, 'credit_buy_details'])->name('credit_buy_details')->middleware('isLoggedIn');
+    Route::get('/MyProject', [UserController::class, 'MyProject'])->name('MyProject')->middleware('isLoggedIn');
+    Route::get('/MyActiveProject', [UserController::class, 'MyActiveProject'])->name('MyActiveProject')->middleware('isLoggedIn');
     Route::post('pay_credit/{id}', [UserController::class, 'pay_credit'])->name('pay_credit')->middleware('isLoggedIn');
     Route::get('page/{slug}', [Pages::class, 'get_page']);
     Route::post('contact_send', [Pages::class, 'contact_send']);
-
-
-
+    Route::get('/edit_project/{id}', [UserController::class, 'edit_project'])->name('edit_project')->middleware('isLoggedIn');
+    Route::post('/update_project', [UserController::class, 'update_project'])->name('update_project');
+    Route::get('/Delete_project/{id}', [UserController::class, 'Delete_project'])->name('Delete_project');
     Route::get('/news', [UserController::class, 'news'])->name('news');
     Route::get('/Details', [UserController::class, 'Details'])->name('Details')->middleware('isLoggedIn');
 
     Route::get('/CreateProject', [UserController::class, 'CreateProject'])->name('CreateProject')->middleware('isLoggedIn');
     Route::get('/signup', [UserController::class, 'signup'])->name('signup')->middleware('alreadyLoggedIn');
+
+    Route::get('/Userlogin', [UserController::class, 'Userlogin'])->name('Userlogin')->middleware('alreadyLoggedIn');
 });
 
 Route::post('/reg', [UserController::class, 'registration']);
-Route::get('/Statements', [UserController::class, 'Statements'])->name('Statements');
 
 Route::post('/log', [UserController::class, 'login'])->name('login');
 Route::get('/project-details/{slug}', [UserController::class, 'ProjectDetail'])->name('ProjectDetail');
-Route::post('ScheduleAppointment', [UserController::class, 'ScheduleAppointment']);
-Route::get('/edit_appointment/{id}', [UserController::class, 'edit_appointment'])->name('edit_appointment');
-Route::post('UpdateAppointment', [UserController::class, 'UpdateAppointment']);
+
 Route::get('/logout', [UserController::class, 'logout'])->name('logout');
-Route::get('/post_ad', [UserController::class, 'post_ad'])->name('post_ad');
+
 Route::get('/blog_details/{id}', [UserController::class, 'blog_details'])->name('blog_details');
 
-Route::get('/Userlogin', [UserController::class, 'Userlogin'])->name('Userlogin');
 Route::get('/projects', [UserController::class, 'projects'])->name('projects');
 Route::post('blog-comment', [UserController::class, 'blogCommentStore'])->name('blog-comment.store');
 Route::post('blog-comment-reply', [UserController::class, 'blogCommentReplyStore'])->name('blog-comment-reply.store');
@@ -125,12 +123,12 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('notification-url/{uuid}', [Admin::class, 'notificationUrl'])->name('notification.url');
         Route::post('mark-all-as-read', [Admin::class, 'markAllAsReadNotification'])->name('notification.all-read');
         Route::prefix('language')->group(function () {
-            Route::get('/', [LanguageController::class, 'index'])->name('language.index');
-            Route::get('create', [LanguageController::class, 'create'])->name('language.create');
+            Route::get('/', [LanguageController::class, 'index'])->name('language.index')->middleware('AdminIsLoggedIn');
+            Route::get('create', [LanguageController::class, 'create'])->name('language.create')->middleware('AdminIsLoggedIn');
             Route::post('store', [LanguageController::class, 'store'])->name('language.store');
-            Route::get('edit/{id}/{iso_code?}', [LanguageController::class, 'edit'])->name('language.edit');
+            Route::get('edit/{id}/{iso_code?}', [LanguageController::class, 'edit'])->name('language.edit')->middleware('AdminIsLoggedIn');
             Route::post('update/{id}', [LanguageController::class, 'update'])->name('language.update');
-            Route::get('translate/{id}', [LanguageController::class, 'translateLanguage'])->name('language.translate');
+            Route::get('translate/{id}', [LanguageController::class, 'translateLanguage'])->name('language.translate')->middleware('AdminIsLoggedIn');
             Route::post('update-translate/{id}', [LanguageController::class, 'updateTranslate'])->name('update.translate');
             Route::get('delete/{id}', [LanguageController::class, 'delete'])->name('language.delete');
             Route::post('import', [LanguageController::class, 'import'])->name('language.import');
@@ -138,41 +136,41 @@ Route::group(['prefix' => 'admin'], function () {
         });
 
         Route::group(['prefix' => 'role', 'as' => 'role.'], function () {
-            Route::get('/', [RoleController::class, 'index'])->name('index');
-            Route::get('create', [RoleController::class, 'create'])->name('create');
+            Route::get('/', [RoleController::class, 'index'])->name('index')->middleware('AdminIsLoggedIn');
+            Route::get('create', [RoleController::class, 'create'])->name('create')->middleware('AdminIsLoggedIn');
             Route::post('store', [RoleController::class, 'store'])->name('store');
-            Route::get('edit/{id}', [RoleController::class, 'edit'])->name('edit');
+            Route::get('edit/{id}', [RoleController::class, 'edit'])->name('edit')->middleware('AdminIsLoggedIn');
             Route::post('update/{id}', [RoleController::class, 'update'])->name('update');
             Route::get('delete/{id}', [RoleController::class, 'delete'])->name('delete');
         });
         Route::prefix('tag')->group(function () {
-            Route::get('/', [TagController::class, 'index'])->name('tag.index');
-            Route::get('create', [TagController::class, 'create'])->name('tag.create');
+            Route::get('/', [TagController::class, 'index'])->name('tag.index')->middleware('AdminIsLoggedIn');
+            Route::get('create', [TagController::class, 'create'])->name('tag.create')->middleware('AdminIsLoggedIn');
             Route::post('store', [TagController::class, 'store'])->name('tag.store');
-            Route::get('edit/{uuid}', [TagController::class, 'edit'])->name('tag.edit');
+            Route::get('edit/{uuid}', [TagController::class, 'edit'])->name('tag.edit')->middleware('AdminIsLoggedIn');
             Route::patch('update/{uuid}', [TagController::class, 'update'])->name('tag.update');
             Route::get('delete/{uuid}', [TagController::class, 'delete'])->name('tag.delete');
         });
         Route::prefix('category')->group(function () {
-            Route::get('/', [CategoryController::class, 'index'])->name('category.index');
-            Route::get('create', [CategoryController::class, 'create'])->name('category.create');
+            Route::get('/', [CategoryController::class, 'index'])->name('category.index')->middleware('AdminIsLoggedIn');
+            Route::get('create', [CategoryController::class, 'create'])->name('category.create')->middleware('AdminIsLoggedIn');
             Route::post('store', [CategoryController::class, 'store'])->name('category.store');
-            Route::get('edit/{uuid}', [CategoryController::class, 'edit'])->name('category.edit');
+            Route::get('edit/{uuid}', [CategoryController::class, 'edit'])->name('category.edit')->middleware('AdminIsLoggedIn');
             Route::post('update/{uuid}', [CategoryController::class, 'update'])->name('category.update');
             Route::get('delete/{uuid}', [CategoryController::class, 'delete'])->name('category.delete');
         });
         Route::group(['prefix' => 'blog', 'as' => 'blog.'], function () {
-            Route::get('/', [BlogController::class, 'index'])->name('index');
-            Route::get('create', [BlogController::class, 'create'])->name('create');
+            Route::get('/', [BlogController::class, 'index'])->name('index')->middleware('AdminIsLoggedIn');
+            Route::get('create', [BlogController::class, 'create'])->name('create')->middleware('AdminIsLoggedIn');
             Route::post('store', [BlogController::class, 'store'])->name('store');
-            Route::get('edit/{uuid}', [BlogController::class, 'edit'])->name('edit');
+            Route::get('edit/{uuid}', [BlogController::class, 'edit'])->name('edit')->middleware('AdminIsLoggedIn');
             Route::post('update/{uuid}', [BlogController::class, 'update'])->name('update');
             Route::get('delete/{uuid}', [BlogController::class, 'delete'])->name('delete');
-            Route::get('blog-comment-list', [BlogController::class, 'blogCommentList'])->name('blog-comment-list');
+            Route::get('blog-comment-list', [BlogController::class, 'blogCommentList'])->name('blog-comment-list')->middleware('AdminIsLoggedIn');
             Route::post('change-blog-comment-status', [BlogController::class, 'changeBlogCommentStatus'])->name('changeBlogCommentStatus');
             Route::get('blog-comment-delete/{id}', [BlogController::class, 'blogCommentDelete'])->name('blogComment.delete');
 
-            Route::get('blog-category-index', [BlogCategoryController::class, 'index'])->name('blog-category.index');
+            Route::get('blog-category-index', [BlogCategoryController::class, 'index'])->name('blog-category.index')->middleware('AdminIsLoggedIn');
             Route::post('blog-category-store', [BlogCategoryController::class, 'store'])->name('blog-category.store');
             Route::patch('blog-category-update/{uuid}', [BlogCategoryController::class, 'update'])->name('blog-category.update');
             Route::get('blog-category-delete/{uuid}', [BlogCategoryController::class, 'delete'])->name('blog-category.delete');
@@ -181,10 +179,7 @@ Route::group(['prefix' => 'admin'], function () {
 
 
         Route::get('login', [Admin::class, 'admin'])->name('admin')->middleware('AdminAlreadyLoggedIn');
-        Route::get('ads_list', [Admin::class, 'ads_list'])->name('ads_list')->middleware('AdminAlreadyLoggedIn');
-        Route::delete('ads_destroy/{id}', [Admin::class, 'ads_destroy']);
-        Route::get('paid_ads', [Admin::class, 'paid_ads'])->name('paid_ads')->middleware('AdminAlreadyLoggedIn');
-        Route::delete('paid_ads_destroy/{id}', [Admin::class, 'paid_ads_destroy']);
+
 
         Route::get('dashboard', [Admin::class, 'dashboard'])->name('dashboard')->middleware('AdminIsLoggedIn');
         Route::get('/add_category', [Admin::class, 'add_category'])->name('add_category')->middleware('AdminIsLoggedIn');
@@ -195,11 +190,8 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('/update_smtp_setting', [Admin::class, 'update_smtp_setting'])->name('update_smtp_setting')->middleware('AdminIsLoggedIn');
         Route::get('/website_setting', [Admin::class, 'website_setting'])->name('website_setting')->middleware('AdminIsLoggedIn');
         Route::post('/update_general_settings', [Admin::class, 'update_general_settings'])->name('update_general_settings')->middleware('AdminIsLoggedIn');
-        Route::get('/categories', [Admin::class, 'categories'])->name('categories')->middleware('AdminIsLoggedIn');
-        Route::get('/edit_category', [Admin::class, 'edit_category'])->name('edit_category')->middleware('AdminIsLoggedIn');
-        Route::post('/update_catagory', [Admin::class, 'update_catagory'])->name('update_catagory')->middleware('AdminIsLoggedIn');
-        Route::get('/Delete_Category', [Admin::class, 'Delete_Category'])->name('Delete_Category')->middleware('AdminIsLoggedIn');
-        Route::get('/Add_Course_list', [Admin::class, 'Add_Course_list'])->name('Add_Course_list')->middleware('AdminIsLoggedIn');
+
+
         Route::post('/update_course', [Admin::class, 'update_course'])->name('update_course')->middleware('AdminIsLoggedIn');
         Route::get('/Course_list', [Admin::class, 'Course_list'])->name('Course_list')->middleware('AdminIsLoggedIn');
         Route::post('/save_course', [Admin::class, 'save_course'])->name('save_course')->middleware('AdminIsLoggedIn');

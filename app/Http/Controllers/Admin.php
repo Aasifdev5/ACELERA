@@ -937,13 +937,13 @@ class Admin extends Controller
     public function update_course(Request $request)
     {
 
-        $user_id = Session::get('LoggedIn');
+
 
         $slug = unique_slug($request->title);
 
         // Retrieve the existing campaign by its ID
         $campaign = Campaign::findOrFail($request->id);
-
+        $user_id = $campaign->user_id;
         // Check if a new image is uploaded
         if ($request->hasFile('image')) {
             // Delete the previous image file if it exists

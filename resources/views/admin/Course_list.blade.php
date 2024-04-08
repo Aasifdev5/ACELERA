@@ -108,10 +108,5 @@
         <!-- Container-fluid Ends-->
     </div>
 
-    </div>
-    </div>
 
-    </body>
-
-    </html>
 @endsection

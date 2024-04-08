@@ -52,7 +52,12 @@ class User extends Authenticatable
     {
         $this->notify(new ResetPasswordNotification($token));
     }
+    public static function getUserInfo($id)
+    {
+        $userinfo = User::find($id);
 
+        return $userinfo;
+    }
 
     public static function getUserFullname($id)
     {

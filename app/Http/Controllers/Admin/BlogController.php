@@ -13,6 +13,7 @@ use App\Models\User;
 use App\Tools\Repositories\Crud;
 use App\Traits\General;
 use App\Traits\ImageSaveTrait;
+use App\Traits\SendNotification;
 use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -21,7 +22,7 @@ use Illuminate\Support\Str;
 
 class BlogController extends Controller
 {
-    use General, ImageSaveTrait;
+    use General, ImageSaveTrait,SendNotification;
 
     protected $model;
     public function __construct(Blog $blog)
@@ -107,7 +108,9 @@ class BlogController extends Controller
 
         // Create the blog record
         $blog = Blog::create($data);
-
+        $text = 'A new blog has posted on the platform.';
+        $target_url = url('blog_details', ['slug' => $slug]);
+        $this->sendForApi($text, 2, $target_url, $request->user_id, $request->user_id);
         // Attach tags to the blog if provided
         if ($request->tag_ids) {
             foreach ($request->tag_ids as $tag_id) {

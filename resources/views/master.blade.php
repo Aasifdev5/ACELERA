@@ -1,11 +1,13 @@
 <!DOCTYPE HTML>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     @php
         $general_setting = getApplicationsettings();
         $category = getCategory();
+        $adminNotifications = userNotifications();
     @endphp
     <title> Home || @yield('title') </title>
     <!-- favicons Icons -->
@@ -53,6 +55,18 @@
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/qrowd.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/qrowd-responsive.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('admin/css/datatables.css') }}">
+    <!-- Font Awesome-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('admin/css/fontawesome.css') }}">
+
+    <!-- ico-font-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('admin/css/icofont.css') }}">
+    <!-- Themify icon-->
+    {{-- <link rel="stylesheet" type="text/css" href="{{ asset('admin/css/themify.css') }}"> --}}
+    <!-- Flag icon-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('admin/css/flag-icon.css') }}">
+    <!-- Feather icon-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('admin/css/feather-icon.css') }}">
     <style>
 
 
@@ -106,11 +120,119 @@
                         <div class="main-header__login">
                             <ul class="list-unstyled main-header__login-list">
                                 @if (!empty($user_session))
-                                    <li><a href="{{ url('dashboard') }}"> <i class="icon-account"></i>
-                                            {{ $user_session->name }} Account</a></li>
+                                    <li class="admin-notification-menu position-relative">
+                                        <a href="#" class="btn btn-dropdown site-language position-relative"
+                                            id="dropdownNotification" data-bs-toggle="dropdown"
+                                            aria-expanded="false">
+                                            <span
+                                                style="position: absolute; top: 5px; left: 75%; transform: translate(-50%, -50%);"
+                                                class="badge rounded-pill bg-danger">
+                                                @if ($adminNotifications)
+                                                    {{ count($adminNotifications) }}
+                                                @else
+                                                    0
+                                                @endif
+                                            </span>
+                                            <!-- Fallback Icon -->
+                                            <i class="fa fa-bell"></i>
+                                        </a>
+
+
+                                        <!-- Notification Dropdown Start -->
+                                        <div class="dropdown-menu" aria-labelledby="dropdownNotification">
+                                            <ul class="dropdown-list custom-scrollbar">
+                                                @isset($adminNotifications)
+                                                    @forelse($adminNotifications as $notification)
+                                                        @if ($notification->sender)
+                                                            <li>
+                                                                <a href="{{ route('notification.url', [$notification->uuid]) }}"
+                                                                    class="message-user-item dropdown-item">
+                                                                    <div class="message-user-item-left">
+                                                                        <div
+                                                                            class="single-notification-item d-flex align-items-center">
+                                                                            <div class="flex-shrink-0">
+                                                                                <div
+                                                                                    class="user-img-wrap position-relative radius-50">
+                                                                                    @if (!empty(\App\Models\User::getUserInfo($notification->sender_id)->profile_photo))
+                                                                                        <img src="{{ asset('profile_photo/') }}<?php echo '/' . \App\Models\User::getUserInfo($notification->sender_id)->profile_photo; ?>"
+                                                                                            alt="img"
+                                                                                            class="radius-50" style="width: 50px; height: 50px; border-radius: 50%;">
+                                                                                    @else
+                                                                                        <img src="{{ asset('149071.png') }}"
+                                                                                            alt="dummy-avatar"
+                                                                                            style="width: 50px; height: 50px; border-radius: 50%;">
+                                                                                    @endif
+
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="flex-grow-1 ms-2">
+                                                                                <h6 class="color-heading font-14">
+                                                                                    {{ $notification->sender->name }}
+                                                                                </h6>
+                                                                                <p class="font-13 mb-0">
+                                                                                    {{ __($notification->text) }}
+                                                                                </p>
+                                                                                <div class="font-11 color-gray mt-1">
+                                                                                    {{ $notification->created_at->diffForHumans() }}
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </a>
+                                                            </li>
+                                                        @endif
+                                                    @empty
+                                                        <li>
+                                                            <p class="text-center">{{ __('No Data Found') }}</p>
+                                                        </li>
+                                                    @endforelse
+                                                @else
+                                                    <li>
+                                                        <p class="text-center">{{ __('No Notifications Found') }}</p>
+                                                    </li>
+                                                @endisset
+                                            </ul>
+                                            @if ($adminNotifications && count($adminNotifications) > 0)
+                                                <div class="dropdown-divider"></div>
+                                                <form action="{{ route('notification.all-read') }}" method="POST">
+                                                    @csrf
+                                                    <button type="submit"
+                                                        class="dropdown-item dropdown-footer">{{ __('Mark all as read') }}</button>
+                                                </form>
+                                            @endif
+                                        </div>
+                                        <!-- Notification Dropdown End -->
+                                    </li>
+                                    <li class="nav-item dropdown">
+                                        <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown"
+                                            role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <i class="icon-account"></i> {{ $user_session->name }} Account <span
+                                                class="caret"></span>
+                                        </a>
+                                        <ul class="shadow-box dropdown-menu" aria-labelledby="navbarDropdown">
+                                            <li><a class="dropdown-item" href="{{ url('dashboard') }}">Dashboard</a>
+                                            </li>
+
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="{{ url('edit_profile') }}">
+                                                    <i class="fa fa-user"></i> Edit Profile
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="{{ url('change_password') }}">
+                                                    <i class="fa fa-lock"></i> Change Password
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="{{ url('logout') }}">
+                                                    <i class="fa fa-sign-out"></i> Logout
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
                                 @else
-                                    <li><a href="{{ url('Userlogin') }}"> <i class="icon-account"></i> Login</a></li>
-                                    <li><a href="{{ url('signup') }}">Register</a></li>
+                                    <li style="margin-right:18px"><a href="{{ url('Userlogin') }}"> <i class="icon-account"></i> Login</a></li>
+                                    <li><a href="{{ url('signup') }}"> /  Register</a></li>
                                 @endif
 
                             </ul>
@@ -160,11 +282,11 @@
 
                                     <li class="{{ Request::is('page/contact') ? 'current' : '' }}">
                                         @foreach ($pages as $page)
-                                        @if ($page->page_slug == 'contact')
-                                            <a
-                                                href="{{ url('page/' . $page->page_slug) }}">{{ $page->page_title }}</a>
-                                        @endif
-                                    @endforeach
+                                            @if ($page->page_slug == 'contact')
+                                                <a
+                                                    href="{{ url('page/' . $page->page_slug) }}">{{ $page->page_title }}</a>
+                                            @endif
+                                        @endforeach
                                     </li>
                                 </ul>
                             </div>
@@ -187,8 +309,13 @@
                                         class="main-menu__search search-toggler icon-magnifying-glass"></a>
                                 </div>
                                 <div class="main-menu__btn-box">
-                                    <a href="{{ url('signup') }}" class="thm-btn main-menu__btn"><i
+                                    @if (!empty($user_session))
+                                    <a href="{{ url('CreateProject') }}" class="thm-btn main-menu__btn"><i
                                             class="icon-plus-symbol"></i>Add a Project</a>
+                                            @else
+                                            <a href="{{ url('signup') }}" class="thm-btn main-menu__btn"><i
+                                                class="icon-plus-symbol"></i>Add a Project</a>
+                                            @endif
                                 </div>
                             </div>
                         </div>
@@ -253,11 +380,11 @@
 
                                     <li>
                                         @foreach ($pages as $page)
-                                        @if ($page->page_slug == 'contact')
-                                            <a
-                                                href="{{ url('page/' . $page->page_slug) }}">{{ $page->page_title }}</a>
-                                        @endif
-                                    @endforeach
+                                            @if ($page->page_slug == 'contact')
+                                                <a
+                                                    href="{{ url('page/' . $page->page_slug) }}">{{ $page->page_title }}</a>
+                                            @endif
+                                        @endforeach
                                     </li>
                                 </ul>
                             </div>
@@ -360,7 +487,9 @@
 
             <ul class="mobile-nav__contact list-unstyled">
                 <li>
-                    <i class="fa fa-envelope"></i>
+                    <div class="icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
                     <a href="mailto:{{ $general_setting->site_email }}">{{ $general_setting->site_email }}</a>
                 </li>
                 <li>
@@ -434,7 +563,10 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
 
-
+    <script
+    src="{{ asset('admin/js/laravel.pixelstrap.com_endless_assets_js_datatable_datatables_datatable.custom.js') }}">
+</script>
+<script src="{{ asset('admin/js/jquery.dataTables.min.js') }}"></script>
 
     <!-- Toastr JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
