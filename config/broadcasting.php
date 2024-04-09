@@ -36,8 +36,8 @@ return [
             'secret' => get_option('pusher_app_secret'),
             'app_id' => get_option('pusher_app_id'),
             'options' => [
-                'cluster' => get_option('pusher_app_cluster'),
-                'useTLS' => true,
+                'cluster' => 'ap2',
+                'useTLS' => true
             ],
             'client_options' => [
                 // Guzzle client options: https://docs.guzzlephp.org/en/stable/request-options.html

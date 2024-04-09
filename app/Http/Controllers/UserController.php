@@ -662,8 +662,8 @@ class UserController extends Controller
     public function logout(Request $request)
     {
         if (Session::has('LoggedIn')) {
-
-
+            $data = User::find(Session::has('LoggedIn'));
+            $data->update(['is_online' => 0, 'last_seen' => Carbon::now()]);
             Session::forget('LoggedIn');
             $request->session()->invalidate();
             return redirect('/');

@@ -493,11 +493,14 @@ class Admin extends Controller
 
     public function markAllAsReadNotification(Request $request)
     {
-        if (auth()->user()->role == 1) {
-            Notification::where('user_type', 1)->where('is_seen', 'no')->orderBy('created_at', 'DESC')->update(['is_seen' => 'yes']);
-        } else {
-            Notification::where('user_id', auth()->user()->id)->where('user_type', 2)->where('is_seen', 'no')->update(['is_seen' => 'yes']);
-        }
+        $userId = $request->input('user_id');
+        $data = User::find($userId);
+
+
+
+        Notification::where('user_id', $userId)->where('is_seen', 'no')->update(['is_seen' => 'yes']);
+
+
         return back();
     }
     public function login(Request $request)
@@ -984,8 +987,8 @@ class Admin extends Controller
         $campaign->start_date = $request->start_date;
         $campaign->end_date = $request->end_date;
 
-         // Check if status is approved
-         if ($request->status == "1") {
+        // Check if status is approved
+        if ($request->status == "1") {
             $text = 'Project has been approved.';
         }
         // Check if status is rejected

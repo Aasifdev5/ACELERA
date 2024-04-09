@@ -199,9 +199,10 @@
                                                 <div class="dropdown-divider"></div>
                                                 <form action="{{ route('notification.all-read') }}" method="POST">
                                                     @csrf
-                                                    <button type="submit"
-                                                        class="dropdown-item dropdown-footer">{{ __('Mark all as read') }}</button>
+                                                    <input type="hidden" name="user_id" value="{{ $user_session->id }}">
+                                                    <button type="submit" class="dropdown-item dropdown-footer">{{ __('Mark all as read') }}</button>
                                                 </form>
+
                                             @endif
                                         </div>
                                         <!-- Notification Dropdown End -->

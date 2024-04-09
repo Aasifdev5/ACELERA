@@ -473,8 +473,7 @@
                                     <ul class="list">
                                         @foreach ($users as $user)
                                             <li class="clearfix"
-                                            onclick="openChat('{{ $user->id }}', '{{ $user->name }}', '{{ !empty(\App\Models\User::getUserInfo($user->id)->profile_photo) ? asset('profile_photo/' . \App\Models\User::getUserInfo($user->id)->profile_photo) : asset('149071.png') }}','{{ $user->last_seen }}');"
-                                            >
+                                                onclick="openChat('{{ $user->id }}', '{{ $user->name }}', '{{ !empty(\App\Models\User::getUserInfo($user->id)->profile_photo) ? asset('profile_photo/' . \App\Models\User::getUserInfo($user->id)->profile_photo) : asset('149071.png') }}','{{ $user->last_seen }}');">
                                                 @if (!empty(\App\Models\User::getUserInfo($user->id)->profile_photo))
                                                     <img src="{{ asset('profile_photo/') }}<?php echo '/' . \App\Models\User::getUserInfo($user->id)->profile_photo; ?>"
                                                         class="rounded-circle user-image" width="50px" height="50px"
@@ -571,10 +570,8 @@
     </div>
     </div>
 
-
     <script src="{{ asset('assets/vendors/jquery/jquery-3.6.0.min.js') }}"></script>
     <script>
-
         $(document).ready(function() {
             // Submit chat message form using AJAX
             $('#chat-form').submit(function(e) {
@@ -596,14 +593,27 @@
                     receiver_id: receiverId
                 },
                 success: function(response) {
-                    // console.log(response); // Log the response
+                    // Log the response for debugging
+                    console.log(response);
+
+                    // Display all messages received from the server
                     displayMessages(response.messages, senderId);
+
+                    // Call fetchChatMessages again after a short delay (e.g., 5 seconds)
+                    setTimeout(fetchChatMessages, 5000); // 5000 milliseconds = 5 seconds
                 },
                 error: function(xhr) {
                     console.log(xhr.responseText);
+
+                    // Retry fetching messages after a short delay (e.g., 5 seconds)
+                    setTimeout(fetchChatMessages, 5000); // 5000 milliseconds = 5 seconds
                 }
             });
         }
+
+        // Initial call to fetchChatMessages
+        fetchChatMessages();
+
 
         function openChat(receiverId, receiverName, receiverImage, lastSeen) {
             // Show the chat section
@@ -649,9 +659,6 @@
             var formattedDateTime = date.toLocaleDateString() + ' ' + strTime;
             return formattedDateTime;
         }
-
-
-
 
 
         function sendMessage() {
@@ -713,23 +720,20 @@
                         profilePhotoUrl = '{{ asset('149071.png') }}'; // Use default if error occurs
                     }
                 }
-                console.log(message.sender_name);
-                // Construct the HTML for the message
+
                 let messageHtml = `
-      <li>
-        <div class="message ${messageClass}">
+<li>
+  <div class="message ${messageClass} ">
     <img class="rounded-circle chat-user-img img-30 ${positionClass}" src="${profilePhotoUrl}" alt="" style="width: 40px; height: 40px;">
     <div class="message-data ${message.sender_id != senderId ? 'pull-right' : 'text-end'}">
-        <span class="message-data-time">${messageTime}</span>
+      <span class="message-data-time">${messageTime}</span>
     </div>
-    <div class="message-content ${bgColorClass}">
-
-        ${message.message}
+    <div class="message-content">
+      ${message.message}
     </div>
-</div>
-
-      </li>
-    `;
+  </div>
+</li>
+`;
 
                 // Append the message to the chat history container
                 $('.chat-history ul').append(messageHtml);
