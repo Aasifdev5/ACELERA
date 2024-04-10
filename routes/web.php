@@ -1,35 +1,51 @@
 <?php
 
 use App\Http\Controllers\Admin;
+use App\Http\Controllers\Admin\AboutUsController;
 use App\Http\Controllers\Admin\AdController;
+use App\Http\Controllers\Admin\BankController;
 use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\BlogCategoryController;
+
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\CategoryController;
 
+use App\Http\Controllers\Admin\ContactUsController;
+use App\Http\Controllers\Admin\CurrencyController;
+use App\Http\Controllers\Admin\HomeSettingController;
 use App\Http\Controllers\Admin\LanguageController;
+use App\Http\Controllers\Admin\LocationController;
+
 use App\Http\Controllers\Admin\RoleController;
 
+use App\Http\Controllers\Admin\SettingController;
+
+use App\Http\Controllers\Admin\SupportTicketController;
+
 use App\Http\Controllers\Admin\TagController;
-use App\Http\Controllers\EmailAppController;
+
 use App\Http\Controllers\ChatController;
+use App\Http\Controllers\EmailAppController;
 use App\Http\Controllers\FacebookSocialiteController;
+
 use App\Http\Controllers\FundController;
-
 use App\Http\Controllers\GoogleController;
-
 use App\Http\Controllers\MailTemplateController;
-
 use App\Http\Controllers\Pages;
-
 use App\Http\Controllers\QRCodeController;
-
 use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\SubscriptionPlanController;
 use App\Http\Controllers\UserController;
-
 use App\Http\Controllers\VerificationController;
 use Illuminate\Support\Facades\Route;
+
+
+
+
+
+
+
+
 
 
 
@@ -126,6 +142,160 @@ Route::group(['prefix' => 'admin'], function () {
         Route::resource('ads', AdController::class)->names('admin.ads');
         Route::get('/local/{ln}', function ($ln) {
             return redirect()->back()->with('local', $ln);
+        });
+        Route::group(['prefix' => 'settings', 'as' => 'settings.'], function () {
+            //Start:: General Settings
+            Route::get('general-settings', [SettingController::class, 'GeneralSetting'])->name('general_setting');
+            Route::post('general-settings-update', [SettingController::class, 'GeneralSettingUpdate'])->name('general_setting.cms.update');
+
+            Route::get('metas', [SettingController::class, 'metaIndex'])->name('meta.index');
+            Route::get('meta/edit/{uuid}', [SettingController::class, 'editMeta'])->name('meta.edit');
+            Route::post('meta/update/{uuid}', [SettingController::class, 'updateMeta'])->name('meta.update');
+
+            // Route::get('site-share-content', [SettingController::class, 'siteShareContent'])->name('site-share-content');
+            Route::get('map-api-key', [SettingController::class, 'mapApiKey'])->name('map-api-key')->middleware('isDemo');
+
+            Route::get('color-settings', [SettingController::class, 'colorSettings'])->name('color-settings');
+            Route::get('font-settings', [SettingController::class, 'fontSettings'])->name('font-settings');
+            //End:: General Settings
+
+
+            //Start:: Device Control Mode
+            Route::get('device-control-changes', [SettingController::class, 'deviceControl'])->name('device_control');
+            Route::post('device-control-changes', [SettingController::class, 'deviceControlChange'])->name('device_control.change');
+            //End:: Device Control Mode
+
+
+            //Start:: Social Login Settings
+            Route::get('social-login-settings', [SettingController::class, 'socialLoginSettings'])->name('social-login-settings')->middleware('isDemo');;
+            Route::post('social-settings-update', [SettingController::class, 'socialLoginSettingsUpdate'])->name('social-login-settings.update')->middleware('isDemo');;
+
+            //Start:: Cookie Settings
+            Route::get('cookie-settings', [SettingController::class, 'cookieSettings'])->name('cookie-settings');
+            Route::post('cookie-settings-update', [SettingController::class, 'cookieSettingsUpdate'])->name('cookie-settings.update');
+
+
+            //Start:: Currency Settings
+            Route::group(['prefix' => 'currency', 'as' => 'currency.'], function () {
+                Route::get('', [CurrencyController::class, 'index'])->name('index');
+                Route::post('currency', [CurrencyController::class, 'store'])->name('store');
+                Route::get('edit/{id}/{slug?}', [CurrencyController::class, 'edit'])->name('edit');
+                Route::patch('update/{id}', [CurrencyController::class, 'update'])->name('update');
+                Route::delete('delete/{id}', [CurrencyController::class, 'delete'])->name('delete');
+            });
+
+            //Start:: Home Settings
+            Route::get('theme-settings', [HomeSettingController::class, 'themeSettings'])->name('theme-setting');
+            Route::get('section-settings', [HomeSettingController::class, 'sectionSettings'])->name('section-settings');
+            Route::post('sectionSettingsStatusChange', [HomeSettingController::class, 'sectionSettingsStatusChange'])->name('sectionSettingsStatusChange');
+            Route::get('banner-section-settings', [HomeSettingController::class, 'bannerSection'])->name('banner-section');
+            Route::post('banner-section-settings', [HomeSettingController::class, 'bannerSectionUpdate'])->name('banner-section.update');
+            Route::get('special-feature-section-settings', [HomeSettingController::class, 'specialFeatureSection'])->name('special-feature-section');
+            Route::get('course-section-settings', [HomeSettingController::class, 'courseSection'])->name('course-section');
+            Route::get('category-course-section-settings', [HomeSettingController::class, 'categoryCourseSection'])->name('category-course-section');
+            Route::get('upcoming-course-section-settings', [HomeSettingController::class, 'upcomingCourseSection'])->name('upcoming-course-section');
+            Route::get('product-section-settings', [HomeSettingController::class, 'productSection'])->name('product-section');
+            Route::get('bundle-course-section-settings', [HomeSettingController::class, 'bundleCourseSection'])->name('bundle-course-section');
+            Route::get('top-category-section-settings', [HomeSettingController::class, 'topCategorySection'])->name('top-category-section');
+
+            Route::get('customer-say-section-settings', [HomeSettingController::class, 'customerSaySection'])->name('customer-say-section');
+            Route::get('achievement-section-settings', [HomeSettingController::class, 'achievementSection'])->name('achievement-section');
+            //End:: Home Settings
+
+            //Start:: Mail Config
+            Route::get('mail-configuration', [SettingController::class, 'mailConfiguration'])->name('mail-configuration')->middleware('isDemo');
+            Route::post('send-test-mail', [SettingController::class, 'sendTestMail'])->name('send.test.mail')->middleware('isDemo');
+            Route::post('save-setting', [SettingController::class, 'saveSetting'])->name('save.setting')->middleware('isDemo');
+            //End:: Mail Config
+
+
+
+            //Start:: FAQ Question & Answer
+            Route::get('faq-settings', [SettingController::class, 'faqCMS'])->name('faq.cms');
+            Route::get('faq-tab', [SettingController::class, 'faqTab'])->name('faq.tab');
+            Route::get('faq-question-settings', [SettingController::class, 'faqQuestion'])->name('faq.question');
+            Route::post('faq-question-settings', [SettingController::class, 'faqQuestionUpdate'])->name('faq.question.update');
+            //End:: FAQ Question & Answer
+
+            //Start:: Support Ticket
+            Route::group(['prefix' => 'support-ticket', 'as' => 'support-ticket.'], function () {
+                Route::get('/', [SettingController::class, 'supportTicketCMS'])->name('cms');
+                Route::get('question-answer', [SettingController::class, 'supportTicketQuesAns'])->name('question');
+                Route::post('question-answer', [SettingController::class, 'supportTicketQuesAnsUpdate'])->name('question.update');
+
+                Route::get('department', [SupportTicketController::class, 'Department'])->name('department');
+                Route::post('department', [SupportTicketController::class, 'DepartmentStore'])->name('department.store');
+                Route::delete('department-delete/{uuid}', [SupportTicketController::class, 'departmentDelete'])->name('department.delete');
+
+                Route::get('priority', [SupportTicketController::class, 'Priority'])->name('priority');
+                Route::post('priority', [SupportTicketController::class, 'PriorityStore'])->name('priority.store');
+                Route::delete('priorities-delete/{uuid}', [SupportTicketController::class, 'priorityDelete'])->name('priority.delete');
+
+                Route::get('services', [SupportTicketController::class, 'RelatedService'])->name('services');
+                Route::post('services', [SupportTicketController::class, 'RelatedServiceStore'])->name('services.store');
+                Route::delete('services-delete/{uuid}', [SupportTicketController::class, 'relatedServiceDelete'])->name('services.delete');
+            });
+            //End:: Support Ticket
+
+            // Start:: Contact Us
+            Route::get('contact-us-cms', [ContactUsController::class, 'contactUsCMS'])->name('contact.cms');
+            // End:: Contact Us
+
+            Route::get('payment-method', [SettingController::class, 'paymentMethod'])->name('payment_method_settings')->middleware('isDemo');
+
+            //start:: Bank
+            Route::group(['prefix' => 'bank'], function () {
+                Route::get('/', [BankController::class, 'index'])->name('bank.index');
+                Route::post('/store', [BankController::class, 'store'])->name('bank.store');
+                Route::get('/edit/{id}', [BankController::class, 'edit'])->name('bank.edit');
+                Route::patch('/update/{id}', [BankController::class, 'update'])->name('bank.update');
+                Route::get('/status/{id}', [BankController::class, 'status'])->name('bank.status');
+                Route::delete('delete/{id}', [BankController::class, 'delete'])->name('bank.delete');
+            });
+
+            // Start:: About Us
+            Route::group(['prefix' => 'about', 'as' => 'about.'], function () {
+                Route::get('about-us-gallery-area', [AboutUsController::class, 'galleryArea'])->name('gallery-area');
+                Route::post('about-us-gallery-area', [AboutUsController::class, 'galleryAreaUpdate'])->name('gallery-area.update');
+
+                Route::get('about-us-our-history', [AboutUsController::class, 'ourHistory'])->name('our-history');
+                Route::post('about-us-our-history', [AboutUsController::class, 'ourHistoryUpdate'])->name('our-history.update');
+
+                Route::get('about-us-upgrade-skill', [AboutUsController::class, 'upgradeSkill'])->name('upgrade-skill');
+                Route::post('about-us-upgrade-skill', [AboutUsController::class, 'upgradeSkillUpdate'])->name('upgrade-skill.update');
+
+                Route::get('about-us-team-member', [AboutUsController::class, 'teamMember'])->name('team-member');
+                Route::post('about-us-team-member', [AboutUsController::class, 'teamMemberUpdate'])->name('team-member.update');
+
+
+                Route::get('about-us-client', [AboutUsController::class, 'client'])->name('client');
+                Route::post('about-us-client', [AboutUsController::class, 'clientUpdate'])->name('client.update');
+            });
+            // End:: About Us
+            Route::group(['prefix' => 'locations', 'as' => 'location.'], function () {
+                Route::get('country', [LocationController::class, 'countryIndex'])->name('country.index');
+                Route::post('country', [LocationController::class, 'countryStore'])->name('country.store');
+                Route::get('country/{id}/{slug?}', [LocationController::class, 'countryEdit'])->name('country.edit');
+                Route::patch('country/{id}', [LocationController::class, 'countryUpdate'])->name('country.update');
+                Route::delete('country/delete/{id}', [LocationController::class, 'countryDelete'])->name('country.delete');
+
+                Route::get('state', [LocationController::class, 'stateIndex'])->name('state.index');
+                Route::post('state', [LocationController::class, 'stateStore'])->name('state.store');
+                Route::get('state/{id}/{slug?}', [LocationController::class, 'stateEdit'])->name('state.edit');
+                Route::patch('state/{id}', [LocationController::class, 'stateUpdate'])->name('state.update');
+                Route::delete('state/delete/{id}', [LocationController::class, 'stateDelete'])->name('state.delete');
+
+                Route::get('city', [LocationController::class, 'cityIndex'])->name('city.index');
+                Route::post('city', [LocationController::class, 'cityStore'])->name('city.store');
+                Route::get('city/{id}/{slug?}', [LocationController::class, 'cityEdit'])->name('city.edit');
+                Route::patch('city/{id}', [LocationController::class, 'cityUpdate'])->name('city.update');
+                Route::delete('city/delete/{id}', [LocationController::class, 'cityDelete'])->name('city.delete');
+            });
+
+
+
+
+
         });
         Route::get('notification-url/{uuid}', [Admin::class, 'notificationUrl'])->name('notification.url');
         Route::post('mark-all-as-read', [Admin::class, 'markAllAsReadNotification'])->name('notification.all-read');

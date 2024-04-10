@@ -9,7 +9,7 @@
         $category = getCategory();
         $adminNotifications = userNotifications();
     @endphp
-    <title> Home || @yield('title') </title>
+    <title> {{ $general_setting->site_name }} || @yield('title') </title>
     <!-- favicons Icons -->
     <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicons/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('site_favicon/') }}<?php echo '/' . $general_setting->site_favicon; ?>" />
@@ -220,7 +220,7 @@
                                             @else
                                                 <img src="{{ asset('149071.png') }}" alt="dummy-avatar"
                                                     style="width: 25px; height: 25px;">
-                                            @endif  {{ $user_session->name }} Account <span
+                                            @endif  {{ $user_session->name }}  <span
                                                 class="caret"></span>
                                         </a>
                                         <ul class="shadow-box dropdown-menu" aria-labelledby="navbarDropdown">
