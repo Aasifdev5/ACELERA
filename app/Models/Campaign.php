@@ -12,7 +12,7 @@ class Campaign extends Model
 
     public $guarded = [];
 
-    protected $dates = ['end_date'];
+
 
     protected $fillable=['image','og_image','user_id','category_id','title','slug','short_description','description','campaign_owner_commission','goal','min_amount','max_amount','recommended_amount','amount_prefilled','end_method','video','feature_image','status','country_id','address','is_funded','start_date','end_date'];
 

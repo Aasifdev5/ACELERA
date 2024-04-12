@@ -37,7 +37,9 @@ use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\SubscriptionPlanController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VerificationController;
+use App\Http\Middleware\SetLocale;
 use Illuminate\Support\Facades\Route;
+
 
 
 
@@ -74,8 +76,13 @@ Route::post('/ResetPassword', [UserController::class, 'ResetPassword'])->name('R
 
 
 
-Route::group(['middleware' => 'prevent-back-history'], function () {
+Route::group(['middleware' => 'prevent-back-history',SetLocale::class], function () {
+
     Route::get('/index', [UserController::class, 'index'])->name('index');
+    Route::get('/local/{ln}', function ($ln) {
+        return redirect()->back()->with('local', $ln);
+    });
+
     Route::get('/', [UserController::class, 'index'])->name('index');
     Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard')->middleware('isLoggedIn');
     Route::post('/ProjectStore', [UserController::class, 'ProjectStore'])->name('ProjectStore');
@@ -137,7 +144,7 @@ Route::get('/get-cities', [UserController::class, 'getCities'])->name('get-citie
 
 Route::group(['prefix' => 'admin'], function () {
 
-    Route::group(['middleware' => 'admin-prevent-back-history'], function () {
+    Route::group(['middleware' => 'admin-prevent-back-history',SetLocale::class], function () {
         Route::resource('banners', BannerController::class)->names('admin.banners');
         Route::resource('ads', AdController::class)->names('admin.ads');
         Route::get('/local/{ln}', function ($ln) {

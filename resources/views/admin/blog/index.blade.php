@@ -53,7 +53,7 @@
                                             <th>{{__('Image')}}</th>
                                             <th>{{__('Title')}}</th>
                                             <th>{{__('Category')}}</th>
-                                            <th>{{__('Status')}}</th>
+                                            {{-- <th>{{__('Status')}}</th> --}}
                                             <th>{{__('Name')}}</th>
                                             <th>{{__('Action')}}</th>
                                         </tr>
@@ -72,13 +72,13 @@
                                         <td>
                                             {{$blog->category ? $blog->category->name : '' }}
                                         </td>
-                                        <td>
+                                        {{-- <td>
                                             @if($blog->status == 1)
                                                 <span class="status bg-green">{{ __('Published') }}</span>
                                             @else
                                                 <span class="status bg-red">{{ __('Unpublished') }}</span>
                                             @endif
-                                        </td>
+                                        </td> --}}
 
                                         <td>
                                             {{ $blog->user ? $blog->user->name : '' }}

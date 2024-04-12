@@ -1,6 +1,6 @@
 @extends('master')
 @section('title')
-    SignUp
+    {{ __('SignUp') }}
 @endsection
 @section('content')
     <!--Page Header Start-->
@@ -19,11 +19,11 @@
         <div class="container">
             <div class="page-header__inner">
                 <ul class="thm-breadcrumb list-unstyled">
-                    <li><a href="/">Home</a></li>
+                    <li><a href="/">{{ __('Home') }}</a></li>
                     <li><span>/</span></li>
-                    <li>Register</li>
+                    <li>{{ __('Register') }}</li>
                 </ul>
-                <h2>Register</h2>
+                <h2>{{ __('Register') }}</h2>
             </div>
         </div>
     </section>
@@ -35,7 +35,7 @@
             <div class="row">
 
                 <div class="col-lg-12">
-                    <h3 class="login-register__title">Register</h3><!-- /.login-register__title -->
+                    <h3 class="login-register__title">{{ __('Register') }}</h3><!-- /.login-register__title -->
                     <form class="login-register__form" action="{{ url('reg') }}" method="post">
                         @if (Session::has('success'))
                             <div class="alert alert-success" style="background-color: green;">
@@ -49,7 +49,7 @@
                         @endif
                         @csrf
                         <div class="contact-form__input-box">
-                            <label class=""><i class="fa fa-asterisk"></i>Name</label>
+                            <label class=""><i class="fa fa-asterisk"></i>{{ __('Name') }}</label>
                             <input name="name" type="text" value="{{ old('name') }}" class="form-control">
                             <span class="text-danger">
                                 @error('name')
@@ -58,7 +58,7 @@
                             </span>
                         </div><!-- /.contact-form__input-box -->
                         <div class="contact-form__input-box">
-                            <label class="">Email</label>
+                            <label class="">{{ __('Email') }}</label>
                             <input name="email" type="email" placeholder="Email" autocomplete="off"
                                 value="{{ old('email') }}" class="form-control">
                             <span class="text-danger">
@@ -68,8 +68,8 @@
                             </span>
                         </div>
                         <div class="contact-form__input-box">
-                            <label class="control-label">Password</label>
-                            <input name="password" type="password" placeholder="Password" value="{{ old('password') }}"
+                            <label class="control-label">{{ __('Password') }}</label>
+                            <input name="password" type="password" placeholder="{{ __('') }}Password" value="{{ old('password') }}"
                                 autocomplete="new-password" class="form-control" id="password-input">
 
                             <span class="text-danger" style="color:red;">
@@ -79,7 +79,7 @@
                             </span>
                         </div>
                         <div class="contact-form__input-box">
-                            <label class="">Mobile Number</label>
+                            <label class="">{{ __('Mobile Number') }}</label>
                             <input name="mobile_number" type="text" placeholder="Mobile Number" autocomplete="off"
                                 value="{{ old('mobile_number') }}" class="form-control">
                             <span class="text-danger">
@@ -89,12 +89,12 @@
                             </span>
                         </div>
                         <div class="contact-form__input-box">
-                            <label class="">Account Type</label>
+                            <label class="">{{ __('Account Type') }}</label>
                             <select name="account_type" id="" class="form-control">
-                                <option value="">Please Select</option>
-                                <option value="creators">creators</option>
+                                <option value="">{{ __('Please Select') }}</option>
+                                <option value="creators">{{ __('creators') }}</option>
 
-                                <option value="backers">backers</option>
+                                <option value="backers">{{ __('backers') }}</option>
 
                             </select>
                             <span class="text-danger">
@@ -105,13 +105,13 @@
                         </div>
 
                         <div class="login-register__info">
-                            <button type="submit" class="thm-btn login-register__btn">Register</button>
+                            <button type="submit" class="thm-btn login-register__btn">{{ __('Register') }}</button>
 
                         </div><!-- /.login-register__info -->
 
                     </form>
                     <div class="login-register__info">
-                        <a href="{{ url('Userlogin') }}" class="thm-btn login-register__btn pull-right">Login</a>
+                        <a href="{{ url('Userlogin') }}" class="thm-btn login-register__btn pull-right">{{ __('Login') }}</a>
                         <!-- Register link -->
                     </div><!-- /.login-register__info -->
                 </div><!-- /.col-lg-6 -->

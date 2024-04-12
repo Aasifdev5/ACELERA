@@ -1,6 +1,6 @@
 @extends('master')
 @section('title')
-    Explore || {{ $title }}
+    {{ __('Explore') }} || {{ $title }}
 @endsection
 @section('content')
     <!--Page Header Start-->
@@ -19,9 +19,9 @@
         <div class="container">
             <div class="page-header__inner">
                 <ul class="thm-breadcrumb list-unstyled">
-                    <li><a href="/">Home</a></li>
+                    <li><a href="/">{{ __('Home') }}</a></li>
                     <li><span>/</span></li>
-                    <li>Explore</li>
+                    <li>{{ __('Explore') }}</li>
                 </ul>
                 <h2>{{ $title }}</h2>
             </div>
@@ -61,7 +61,7 @@
                                                 <i class="fa fa-clock"></i>
                                             </div>
                                             <div class="text">
-                                                <p>{{ $days_left }} Days Remaining</p>
+                                                <p>{{ $days_left }} {{ __('Days Remaining') }}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -92,11 +92,11 @@
                                                     No amount prefilled
                                                 @endif
                                             </span>
-                                            <br>Goal of ${{ $row->goal }}
+                                            <br>{{ __('Goal of') }} ${{ $row->goal }}
                                         </p>
                                         <p class="project-one__goals-one"><span class="odometer project-one__plus"
                                                 data-count="12"></span>
-                                            <br>Backers We Got
+                                            <br>{{ __('Backers We Got') }}
                                         </p>
                                     </div>
                                 </div>

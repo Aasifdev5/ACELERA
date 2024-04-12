@@ -273,13 +273,11 @@
                                 </div>
                             </div>
                             <ul class="profile-dropdown onhover-show-div p-20">
-                                <li><a href="{{ url('admin/edit_profile') }}"><i data-feather="user"></i> Edit
-                                        Profile</a></li>
+                                <li><a href="{{ url('admin/edit_profile') }}"><i data-feather="user"></i> {{ __('Edit Profile') }}</a></li>
 
-                                <li><a href="{{ url('admin/change_password') }}"><i data-feather="lock"></i> Change
-                                        Password</a></li>
-                                <li><a href="#"><i data-feather="settings"></i> Settings</a></li>
-                                <li><a href="{{ url('admin/logout') }}"><i data-feather="log-out"></i> Logout</a>
+                                <li><a href="{{ url('admin/change_password') }}"><i data-feather="lock"></i>{{ __('Change Password') }} </a></li>
+                                <li><a href="#"><i data-feather="settings"></i>{{ __('Settings') }} </a></li>
+                                <li><a href="{{ url('admin/logout') }}"><i data-feather="log-out"></i> {{ __('Logout') }}</a>
                                 </li>
                             </ul>
                         </li>
@@ -339,23 +337,22 @@
 
                             </li>
                             <li><a class="sidebar-header" href="#"><i
-                                        data-feather="settings"></i><span>Application Settings </span><i
+                                        data-feather="settings"></i><span>{{ __('Application Settings') }} </span><i
                                         class="fa fa-angle-right pull-right"></i></a>
                                 <ul class="sidebar-submenu">
 
-                                    <li><a href="{{ url('admin/smtp_setting') }}"><i class="fa fa-circle"></i>SMTP
-                                            Configuration
+                                    <li><a href="{{ url('admin/smtp_setting') }}"><i class="fa fa-circle"></i>{{ __('SMTP Configuration') }}
                                         </a></li>
                                     <li><a href="{{ url('admin/payment_gateway') }}"><i
-                                                class="fa fa-circle"></i>Payment Gateway Setting</a></li>
+                                                class="fa fa-circle"></i>{{ __('Payment Gateway') }}  </a></li>
                                     <li><a href="{{ url('admin/social_lite_login') }}"><i
-                                                class="fa fa-circle"></i>Socialite Login Setting</a></li>
+                                                class="fa fa-circle"></i>{{ __('Socialite Setting') }}</a></li>
                                     <li><a href="{{ url('admin/website_setting') }}"><i class="fa fa-circle"></i>
-                                            General Configuration</a></li>
+                                        {{ __('General Configuration') }} </a></li>
                                 </ul>
                             </li>
                             <li><a class="sidebar-header" href="{{ url('admin/banners') }}"><i
-                                        data-feather="monitor"></i><span>Home Page Setting </span></a></li>
+                                        data-feather="monitor"></i><span>{{ __('Home Page Setting') }} </span></a></li>
 
                             <li class="">
                                 <a class="has-arrow sidebar-header" href="#">
@@ -398,10 +395,10 @@
                             </li>
 
                             <li><a class="sidebar-header" href="{{ url('admin/pages') }}"><i
-                                        data-feather="book"></i><span>Pages </span></a> </li>
+                                        data-feather="book"></i><span>{{ __('Pages') }} </span></a> </li>
                             <li>
                                 <a href="{{ url('admin/mail-templates') }}" class="sidebar-header">
-                                    <i data-feather="mail"></i><span>Mail Templates </span>
+                                    <i data-feather="mail"></i><span>{{ __('Mail Templates') }} </span>
                                 </a>
                             </li>
                             <li>
@@ -419,44 +416,33 @@
                                 </ul>
                             </li>
                             <li><a class="sidebar-header" href="{{ url('admin/users') }}"><i
-                                        data-feather="users"></i><span>Users Management </span></a>
+                                        data-feather="users"></i><span>{{ __('Users Management') }} </span></a>
                             </li>
 
                             <li><a class="sidebar-header" href="#"><i data-feather="layers"></i><span>
-                                        Project Management </span><i class="fa fa-angle-right pull-right"></i></a>
+                                {{ __('Project Management') }} </span><i class="fa fa-angle-right pull-right"></i></a>
                                 <ul class="sidebar-submenu">
                                     <li>
                                         <a href="{{ route('category.index') }}">
                                             <i class="fa fa-circle"></i>
-                                            <span>Project Category</span>
+                                            <span>{{ __('Project Category') }}</span>
                                         </a>
                                     </li>
                                     {{-- <li><a href="categories"><i class="fa fa-circle"></i>Project Category</a></li> --}}
-                                    <li><a href="{{ url('admin/Course_list') }}"><i class="fa fa-circle"></i>Project
-                                            List
+                                    <li><a href="{{ url('admin/Course_list') }}"><i class="fa fa-circle"></i>{{ __('Project
+                                        List') }}
                                         </a></li>
 
                                 </ul>
                             </li>
 
                             <li><a class="sidebar-header" href="{{ url('admin/balance') }}"><i
-                                        data-feather="dollar-sign"></i><span>Balance </span></a></li>
+                                        data-feather="dollar-sign"></i><span>{{ __('Balance') }} </span></a></li>
 
                         </ul>
                     @endif
                     @if ($user_session->is_super_admin == 0 and $user_session->account_type == 'admin')
-                        <ul class="sidebar-menu">
-                            <li><a class="sidebar-header" href="{{ url('admin/banners') }}"><i
-                                        data-feather="book"></i><span>Bandera </span></a></li>
-                            <li><a class="sidebar-header" href="{{ url('admin/ads_list') }}"><i
-                                        data-feather="book"></i><span> Anuncios</span></a></li>
-                            <li><a class="sidebar-header" href="{{ url('admin/users') }}"><i
-                                        data-feather="users"></i><span>Gestion de Usuarios </span></a></li>
-                            <li><a class="sidebar-header" href="{{ url('admin/credit_reload') }}"><i
-                                        data-feather="book"></i>Recarga de crédito</a></li>
-                            <li><a class="sidebar-header" href="{{ url('admin/balance') }}"><i
-                                        data-feather="dollar-sign"></i><span>Balance </span></a></li>
-                        </ul>
+
                     @endif
                 </div>
             </div>

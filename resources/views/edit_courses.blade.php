@@ -1,6 +1,6 @@
 @extends('master')
 @section('title')
-Editar Project
+ {{ __('Edit Project') }}
 @endsection
 @section('content')
 
@@ -23,14 +23,14 @@ Editar Project
                 <input type="hidden" name="id" value="{{$project_detail->id}}">
                 <div class="panel panel-info">
                     <div class="panel-heading">
-                        <i class="fa fa-info-circle"></i> Feature Available Information
+                        <i class="fa fa-info-circle"></i> {{ __('Feature Available Information') }}
                     </div>
                 </div>
                 <div class="form-group {{ $errors->has('category') ? 'has-error' : '' }}">
-                    <label for="category" class="col-sm-4 control-label">Category <span class="field-required">*</span></label>
+                    <label for="category" class="col-sm-4 control-label">{{ __('Category') }} <span class="field-required">*</span></label>
                     <div class="col-sm-8">
                         <select class="form-control select2" name="category">
-                            <option value="">Select a Category</option>
+                            <option value="">{{ __('Select a Category') }}</option>
                             @foreach ($category as $cat)
                             <option value="{{ $cat->id }}" {{ $project_detail->category_id == $cat->id ? 'selected' : '' }}>{{ $cat->name }}</option>
                             @endforeach
@@ -40,16 +40,16 @@ Editar Project
                 </div>
 
                 <div class="form-group {{ $errors->has('title') ? 'has-error' : '' }}">
-                    <label for="title" class="col-sm-4 control-label">Title <span class="field-required">*</span></label>
+                    <label for="title" class="col-sm-4 control-label">{{ __('Title') }} <span class="field-required">*</span></label>
                     <div class="col-sm-8">
                         <input type="text" class="form-control" id="title" value="{{ $project_detail->title }}" name="title" placeholder="Title">
                         {!! $errors->has('title') ? '<p class="help-block">' . $errors->first('title') . '</p>' : '' !!}
-                        <p class="text-info">Great title information</p>
+                        <p class="text-info">{{ __('Great title information') }}</p>
                     </div>
                 </div>
 
                 <div class="form-group {{ $errors->has('short_description') ? 'has-error' : '' }}">
-                    <label for="short_description" class="col-sm-4 control-label">Short Description</label>
+                    <label for="short_description" class="col-sm-4 control-label">{{ __('Short Description') }}</label>
                     <div class="col-sm-8">
                         <textarea name="short_description" id="" class=" form-control" rows="3">{{ $project_detail->short_description }}</textarea>
                         {!! $errors->has('short_description') ? '<p class="help-block">' . $errors->first('short_description') . '</p>' : '' !!}
@@ -57,24 +57,24 @@ Editar Project
                 </div>
 
                 <div class="form-group {{ $errors->has('description') ? 'has-error' : '' }}">
-                    <label for="description" class="col-sm-3 control-label">Description <span class="field-required">*</span></label>
+                    <label for="description" class="col-sm-3 control-label">{{ __('Description') }} <span class="field-required">*</span></label>
                     <div class="col-sm-12">
-                        <div class="alert alert-info"> Image Insert Limitation </div>
+                        <div class="alert alert-info">{{ __('Image Insert Limitation') }}  </div>
                     </div>
                     <div class="col-sm-12">
                         <textarea name="description" class="editor form-control description" rows="8">{{ $project_detail->description }}</textarea>
                         {!! $errors->has('description') ? '<p class="help-block">' . $errors->first('description') . '</p>' : '' !!}
-                        <p class="text-info"> Description Info Text</p>
+                        <p class="text-info"> {{ __('Description Info Text') }}</p>
                     </div>
                 </div>
 
 
                 <div class="alert alert-info">
-                    <h3><i class="fa fa-money"></i> You Will Get 80% of Total Raised</h3>
+                    <h3><i class="fa fa-money"></i> {{ __('You Will Get 80% of Total Raised') }}</h3>
                 </div>
 
                 <div class="form-group {{ $errors->has('goal') ? 'has-error' : '' }}">
-                    <label for="goal" class="col-sm-4 control-label">Goal <span class="field-required">*</span></label>
+                    <label for="goal" class="col-sm-4 control-label">{{ __('Goal') }} <span class="field-required">*</span></label>
                     <div class="col-sm-8">
                         <input type="number" class="form-control" id="goal" value="{{ $project_detail->goal }}" name="goal" placeholder="Goal">
                         {!! $errors->has('goal') ? '<p class="help-block">' . $errors->first('goal') . '</p>' : '' !!}
@@ -82,7 +82,7 @@ Editar Project
                 </div>
 
                 <div class="form-group {{ $errors->has('recommended_amount') ? 'has-error' : '' }}">
-                    <label for="recommended_amount" class="col-sm-4 control-label">Recommended Amount</label>
+                    <label for="recommended_amount" class="col-sm-4 control-label">{{ __('Recommended Amount') }}</label>
                     <div class="col-sm-8">
                         <input type="number" class="form-control" id="recommended_amount" value="{{ $project_detail->recommended_amount }}" name="recommended_amount" placeholder="Recommended Amount">
                         {!! $errors->has('recommended_amount') ? '<p class="help-block">' . $errors->first('recommended_amount') . '</p>' : '' !!}
@@ -92,27 +92,27 @@ Editar Project
 
 
                 <div class="form-group {{ $errors->has('amount_prefilled') ? 'has-error' : '' }}">
-                    <label for="amount_prefilled" class="col-sm-4 control-label">Amount Prefilled</label>
+                    <label for="amount_prefilled" class="col-sm-4 control-label">{{ __('Amount Prefilled') }}</label>
                     <div class="col-sm-8">
                         <input type="text" class="form-control" id="amount_prefilled" value="{{ $project_detail->amount_prefilled }}" name="amount_prefilled" placeholder="Amount Prefilled">
                         {!! $errors->has('amount_prefilled') ? '<p class="help-block">' . $errors->first('amount_prefilled') . '</p>' : '' !!}
-                        <p class="text-info"> Amount Prefilled Info Text</p>
+                        <p class="text-info"> {{ __('Amount Prefilled Info Text') }}</p>
                     </div>
                 </div>
 
                 <div class="form-group {{ $errors->has('end_method') ? 'has-error' : '' }}">
-                    <label for="end_method" class="col-sm-4 control-label">Campaign End Method</label>
+                    <label for="end_method" class="col-sm-4 control-label">{{ __('Campaign End Method') }}</label>
                     <div class="col-sm-8">
                         <label>
-                            <input type="radio" name="end_method" value="goal_achieve" {{ $project_detail->end_method == 'goal_achieve' ? 'checked' : '' }}> After Goal Achieve
+                            <input type="radio" name="end_method" value="goal_achieve" {{ $project_detail->end_method == 'goal_achieve' ? 'checked' : '' }}>{{ __('After Goal Achieve') }}
                         </label> <br />
 
                         <label>
-                            <input type="radio" name="end_method" value="end_date" {{ $project_detail->end_method == 'end_date' ? 'checked' : '' }}> After End Date
+                            <input type="radio" name="end_method" value="end_date" {{ $project_detail->end_method == 'end_date' ? 'checked' : '' }}>{{ __('After End Date') }}
                         </label> <br />
 
                         {!! $errors->has('end_method') ? '<p class="help-block">' . $errors->first('end_method') . '</p>' : '' !!}
-                        <p class="text-info"> End Method Info Text</p>
+                        <p class="text-info">{{ __('End Method Info Text') }} </p>
                     </div>
                 </div>
 
@@ -135,11 +135,11 @@ Editar Project
 
 
                 <div class="form-group {{ $errors->has('video') ? 'has-error' : '' }}">
-                    <label for="video" class="col-sm-4 control-label">Video</label>
+                    <label for="video" class="col-sm-4 control-label">{{ __('Video') }}</label>
                     <div class="col-sm-8">
                         <input type="text" class="form-control" id="video" value="{{ old('video') }}" name="video" placeholder="Video">
                         {!! $errors->has('video') ? '<p class="help-block">' . $errors->first('video') . '</p>' : '' !!}
-                        <p class="text-info"> Video Info Text</p>
+                        <p class="text-info"> {{ __('Video Info Text') }}</p>
                     </div>
                 </div>
 
@@ -156,16 +156,16 @@ Editar Project
                     @if ($errors->has('og_image'))
                     <span class="text-danger"><i class="fas fa-exclamation-triangle"></i> {{ $errors->first('og_image') }}</span>
                     @endif
-                    <p><span class="text-black">{{ __('Accepted Files') }}:</span> PNG, JPG <br>
+                    <p><span class="text-black">{{ __('Accepted Files') }}:</span> {{ __('PNG, JPG') }} <br>
                         <span class="text-black">{{ __('Recommend Size') }}:</span> 1200 x 627
                     </p>
                 </div>
 
                 <div class="form-group {{ $errors->has('country_id') ? 'has-error' : '' }}">
-                    <label for="country_id" class="col-sm-4 control-label">Country <span class="field-required">*</span></label>
+                    <label for="country_id" class="col-sm-4 control-label">{{ __('Country') }} <span class="field-required">*</span></label>
                     <div class="col-sm-8">
                         <select class="form-control select2" name="country_id">
-                            <option value="">Select a Country</option>
+                            <option value="">{{ __('Select a Country') }}</option>
                             @foreach ($countries as $country)
                             @php
                             // Assuming $country['name'] is a JSON string
@@ -184,7 +184,7 @@ Editar Project
 
 
                 <div class="form-group {{ $errors->has('address') ? 'has-error' : '' }}">
-                    <label for="address" class="col-sm-4 control-label">Address</label>
+                    <label for="address" class="col-sm-4 control-label">{{ __('Address') }}</label>
                     <div class="col-sm-8">
                         <input type="text" class="form-control" id="address" value="{{ $project_detail->address }}" name="address" placeholder="Address">
                         {!! $errors->has('address') ? '<p class="help-block">' . $errors->first('address') . '</p>' : '' !!}
@@ -192,7 +192,7 @@ Editar Project
                 </div>
 
                 <div class="form-group {{ $errors->has('start_date') ? 'has-error' : '' }}">
-                    <label for="start_date" class="col-sm-4 control-label">Start Date</label>
+                    <label for="start_date" class="col-sm-4 control-label">{{ __('Start Date') }}</label>
                     <div class="col-sm-8">
                         <input type="date" class="form-control" id="start_date" value="{{ $project_detail->start_date }}" name="start_date" placeholder="Start Date">
                         {!! $errors->has('start_date') ? '<p class="help-block">' . $errors->first('start_date') . '</p>' : '' !!}
@@ -200,7 +200,7 @@ Editar Project
                 </div>
 
                 <div class="form-group {{ $errors->has('end_date') ? 'has-error' : '' }}">
-                    <label for="end_date" class="col-sm-4 control-label">End Date</label>
+                    <label for="end_date" class="col-sm-4 control-label">{{ __('End Date') }}</label>
                     <div class="col-sm-8">
                         <input type="date" class="form-control" id="end_date" value="{{ $project_detail->end_date }}" name="end_date" placeholder="End Date">
                         {!! $errors->has('end_date') ? '<p class="help-block">' . $errors->first('end_date') . '</p>' : '' !!}
@@ -211,7 +211,7 @@ Editar Project
                 <br>
                 <div class="form-group">
                     <div class="col-sm-offset-4 col-sm-8">
-                        <button type="submit" class="btn btn-primary">Update Project</button>
+                        <button type="submit" class="btn btn-primary">{{ __('Update Project') }}</button>
                     </div>
                 </div>
 

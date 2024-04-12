@@ -39,20 +39,20 @@
                         <div class="row">
                             <div class="col-xl-7 col-lg-8">
                                 <div class="main-slider__content">
-                                    <p class="main-slider__sub-title">Raising Money is Easy Now!</p>
-                                    <h2 class="main-slider__title">Ultimate <br> Crowdfunding
-                                        <br> Platforms
+                                    <p class="main-slider__sub-title">{{ __('Raising Money is Easy Now') }}!</p>
+                                    <h2 class="main-slider__title">{{ __('Ultimate') }}  <br> {{ __('Crowdfunding') }}
+                                        <br> {{ __('Platforms') }}
                                     </h2>
                                     <div class="main-slider__btn-box">
                                         @if (!empty($user_session))
-                                            <a href="{{ url('CreateProject') }}" class="thm-btn main-slider__btn"> Start a
-                                                Project</a>
+                                            <a href="{{ url('CreateProject') }}" class="thm-btn main-slider__btn">{{ __('Start a
+                                                Project') }} </a>
                                         @else
-                                            <a href="{{ url('signup') }}" class="thm-btn main-slider__btn"> Start a
-                                                Project</a>
+                                            <a href="{{ url('signup') }}" class="thm-btn main-slider__btn">{{ __('Start a
+                                                Project') }} </a>
                                         @endif
 
-                                        <a href="team.html" class="main-slider__btn-two">Speak with Expert</a>
+                                        <a href="team.html" class="main-slider__btn-two">{{ __('Speak with Expert') }} </a>
                                     </div>
                                 </div>
                             </div>
@@ -77,19 +77,20 @@
                         <div class="row">
                             <div class="col-xl-7 col-lg-8">
                                 <div class="main-slider__content">
-                                    <p class="main-slider__sub-title">Raising Money is Easy Now!</p>
-                                    <h2 class="main-slider__title">Ultimate <br> Crowdfunding
-                                        <br> Platforms
+                                    <p class="main-slider__sub-title">{{ __('Raising Money is Easy Now') }}!</p>
+                                    <h2 class="main-slider__title">{{ __('Ultimate') }}  <br> {{ __('Crowdfunding') }}
+                                        <br> {{ __('Platforms') }}
                                     </h2>
                                     <div class="main-slider__btn-box">
                                         @if (!empty($user_session))
-                                            <a href="{{ url('CreateProject') }}" class="thm-btn main-slider__btn"> Start a
-                                                Project</a>
+                                            <a href="{{ url('CreateProject') }}" class="thm-btn main-slider__btn">{{ __('Start a
+                                                Project') }} </a>
                                         @else
-                                            <a href="{{ url('signup') }}" class="thm-btn main-slider__btn"> Start a
-                                                Project</a>
+                                            <a href="{{ url('signup') }}" class="thm-btn main-slider__btn">{{ __('Start a
+                                                Project') }} </a>
                                         @endif
-                                        <a href="team.html" class="main-slider__btn-two">Speak with Expert</a>
+
+                                        <a href="team.html" class="main-slider__btn-two">{{ __('Speak with Expert') }} </a>
                                     </div>
                                 </div>
                             </div>
@@ -114,19 +115,20 @@
                         <div class="row">
                             <div class="col-xl-7 col-lg-8">
                                 <div class="main-slider__content">
-                                    <p class="main-slider__sub-title">Raising Money is Easy Now!</p>
-                                    <h2 class="main-slider__title">Ultimate <br> Crowdfunding
-                                        <br> Platforms
+                                    <p class="main-slider__sub-title">{{ __('Raising Money is Easy Now') }}!</p>
+                                    <h2 class="main-slider__title">{{ __('Ultimate') }}  <br> {{ __('Crowdfunding') }}
+                                        <br> {{ __('Platforms') }}
                                     </h2>
                                     <div class="main-slider__btn-box">
                                         @if (!empty($user_session))
-                                            <a href="{{ url('CreateProject') }}" class="thm-btn main-slider__btn"> Start a
-                                                Project</a>
+                                            <a href="{{ url('CreateProject') }}" class="thm-btn main-slider__btn">{{ __('Start a
+                                                Project') }} </a>
                                         @else
-                                            <a href="{{ url('signup') }}" class="thm-btn main-slider__btn"> Start a
-                                                Project</a>
+                                            <a href="{{ url('signup') }}" class="thm-btn main-slider__btn">{{ __('Start a
+                                                Project') }} </a>
                                         @endif
-                                        <a href="team.html" class="main-slider__btn-two">Speak with Expert</a>
+
+                                        <a href="team.html" class="main-slider__btn-two">{{ __('Speak with Expert') }} </a>
                                     </div>
                                 </div>
                             </div>
@@ -159,15 +161,15 @@
                     <div class="col-xl-6 col-lg-7">
                         <div class="categories-one__top-left">
                             <div class="section-title text-left">
-                                <span class="section-title__tagline">Explore categories</span>
-                                <h2 class="section-title__title">Check Which Category Intrest You</h2>
+                                <span class="section-title__tagline">{{ __('Explore categories') }}</span>
+                                <h2 class="section-title__title">{{ __('Check Which Category Intrest You') }}</h2>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="categories-one__backers ">
                     <div class="categories-one__backers-tagline">
-                        <p>Find it first on ACELERA.</p>
+                        <p>{{ __('Find it first on ACELERA.') }}</p>
                     </div>
                     <div class="categories-one__backers-box">
                         <div class="categories-one__backers-icon">
@@ -176,7 +178,7 @@
                         <div class="categories-one__backers-content">
                             <!-- <h3 class="count-text" data-stop="37400" data-speed="2000"></h3> -->
                             <h3 class="odometer" data-count="37400">00</h3>
-                            <p>Businesses Backers</p>
+                            <p>{{ __('Businesses Backers') }}</p>
                         </div>
                     </div>
                 </div>
@@ -204,8 +206,8 @@
 
                     </div>
                 </div>
-                <p class="categories-one__bottom-text">Discover projects just for you and get great recommendations
-                    when you <span>select your interests.</span> </p>
+                <p class="categories-one__bottom-text">{{ __('Discover projects just for you and get great recommendations
+                    when you select your interests.') }} </p>
             </div>
         </div>
     </section>
@@ -216,8 +218,8 @@
         <div class="container">
             <div class="project-one__top">
                 <div class="section-title text-center">
-                    <span class="section-title__tagline">Businesses You Can Back</span>
-                    <h2 class="section-title__title">Explore the Best Featured <br> Projects now </h2>
+                    <span class="section-title__tagline">{{ __('Businesses You Can Back') }}</span>
+                    <h2 class="section-title__title">{{ __('Explore the Best Featured') }} <br> {{ __('Projects now') }}  </h2>
                 </div>
             </div>
             <div class="project-one__bottom">
@@ -276,14 +278,14 @@
                                             <i class="fa fa-clock"></i>
                                         </div>
                                         <div class="text">
-                                            <p>{{ $days_left }} Days Remaining</p>
+                                            <p>{{ $days_left }} {{ __('Days Remaining') }}</p>
                                         </div>
                                     </div>
                                     <div class="progress-levels">
                                         <!--Skill Box-->
                                         <div class="progress-box">
                                             <div class="inner count-box">
-                                                <div class="text">Raised</div>
+                                                <div class="text">{{ __('Raised') }}</div>
                                                 <div class="bar">
                                                     <div class="bar-innner">
                                                         <div class="skill-percent">
@@ -298,13 +300,13 @@
                                         </div>
                                     </div>
                                     <div class="project-one__goals">
-                                        <p class="project-one__goals-one">Achieved:<span>$ @if ($amount_prefilled)
+                                        <p class="project-one__goals-one">{{ __('Achieved') }}:<span>$ @if ($amount_prefilled)
                                                     {{ implode(',', $amount_prefilled) }}
                                                 @else
                                                     No amount prefilled
                                                 @endif
                                             </span></p>
-                                        <p class="project-one__goals-one">Goal:<span>${{ $row->goal }}</span></p>
+                                        <p class="project-one__goals-one">{{ __('Goal') }}:<span>${{ $row->goal }}</span></p>
                                     </div>
                                 </div>
                             </div>
@@ -327,15 +329,15 @@
                         <div class="col-xl-6">
                             <div class="why-choose-one__left">
                                 <div class="section-title text-left">
-                                    <span class="section-title__tagline">our platform benefits</span>
-                                    <h2 class="section-title__title">Why you Should Choose <br> ACELERA Platform </h2>
+                                    <span class="section-title__tagline">{{ __('our platform benefits') }}</span>
+                                    <h2 class="section-title__title">{{ __('Why you Should Choose') }} <br> {{ __('ACELERA Platform') }} </h2>
                                 </div>
                                 <div class="why-choose-one__left-text">
-                                    <p>There are certain attributes of a profession and one has to catch hold of
+                                    <p>{{ __('There are certain attributes of a profession and one has to catch hold of
                                         them in
                                         order to work efficiently and grow in that business. I share my experience
                                         as an
-                                        interior designer, a profession of great esthetic.</p>
+                                        interior designer, a profession of great esthetic.') }}</p>
                                 </div>
                                 <ul class="why-choose-one__points list-unstyled">
                                     <li>
@@ -343,8 +345,8 @@
                                             <i class="icon-check-mark"></i>
                                         </div>
                                         <div class="content">
-                                            <h3 class="title">100% Success Rates</h3>
-                                            <p class="text">Lorem ipsum velit anod ips aliquet enean quis.</p>
+                                            <h3 class="title">{{ __('100% Success Rates') }}</h3>
+                                            <p class="text">{{ __('Lorem ipsum velit anod ips aliquet enean quis.') }}</p>
                                         </div>
                                     </li>
                                     <li>
@@ -352,15 +354,15 @@
                                             <i class="icon-check-mark"></i>
                                         </div>
                                         <div class="content">
-                                            <h3 class="title">Millions in Funding</h3>
-                                            <p class="text">Lorem ipsum velit anod ips aliquet enean quis.</p>
+                                            <h3 class="title">{{ __('Millions in Funding') }}</h3>
+                                            <p class="text">{{ __('Lorem ipsum velit anod ips aliquet enean quis.') }}</p>
                                         </div>
                                     </li>
                                 </ul>
                                 @if (!empty($user_session))
-                                <a href="{{ url('CreateProject') }}" class="thm-btn">Make it Happen</a>
+                                <a href="{{ url('CreateProject') }}" class="thm-btn">{{ __('Make it Happen') }}</a>
                                 @else
-                                <a href="{{ url('signup') }}" class="thm-btn">Make it Happen</a>
+                                <a href="{{ url('signup') }}" class="thm-btn">{{ __('Make it Happen') }}</a>
                                 @endif
 
                             </div>
@@ -372,9 +374,9 @@
                                         <img src="assets/images/resources/why-choose-1.1.jpg" alt="">
                                     </div>
                                     <div class="why-choose-one__trusted">
-                                        <p>Trusted by more <br> than <span class="odometer" data-count="3500">00</span>
+                                        <p>{{ __('Trusted by more') }} <br>{{ __('than') }}  <span class="odometer" data-count="3500">00</span>
                                             <br>
-                                            clients
+                                            {{ __('clients') }}
                                         </p>
                                     </div>
                                 </div>
@@ -401,7 +403,7 @@
                                 </div>
                                 <div class="counter-one__count-box">
                                     <h3 class="odometer" data-count="790">00</h3>
-                                    <p class="counter-one__text">Projects Completed</p>
+                                    <p class="counter-one__text">{{ __('Projects Completed') }}</p>
                                 </div>
                             </div>
                         </div>
@@ -418,7 +420,7 @@
                                 </div>
                                 <div class="counter-one__count-box">
                                     <h3 class="odometer" data-count="260">00</h3>
-                                    <p class="counter-one__text">Partner Fundings</p>
+                                    <p class="counter-one__text">{{ __('Partner Fundings') }}</p>
                                 </div>
                             </div>
                         </div>
@@ -436,7 +438,7 @@
                                 <div class="counter-one__count-box">
                                     <h3 class="odometer" data-count="86">00</h3>
                                     <span class="counter-one__letter">k</span>
-                                    <p class="counter-one__text">Raised to Date</p>
+                                    <p class="counter-one__text">{{ __('Raised to Date') }}</p>
                                 </div>
                             </div>
                         </div>
@@ -453,7 +455,7 @@
                                 </div>
                                 <div class="counter-one__count-box">
                                     <h3 class="odometer" data-count="940">00</h3>
-                                    <p class="counter-one__text">Happy Customers</p>
+                                    <p class="counter-one__text">{{ __('Happy Customers') }}</p>
                                 </div>
                             </div>
                         </div>
@@ -467,7 +469,7 @@
 
 
     <!--Newsletter Start-->
-    <section class="newsletter">
+    {{-- <section class="newsletter">
         <div class="container">
             <div class="row">
                 <div class="col-xl-6 col-lg-7">
@@ -496,7 +498,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
     <!--Newsletter End-->
 
     <!--Recommended One Start-->
@@ -504,8 +506,8 @@
         <div class="container">
             <div class="recommended-one__top">
                 <div class="section-title text-center">
-                    <span class="section-title__tagline">Businesses You Can Back</span>
-                    <h2 class="section-title__title">Recommended for you <br> Fresh Projects</h2>
+                    <span class="section-title__tagline">{{ __('Businesses You Can Back') }}</span>
+                    <h2 class="section-title__title">{{ __('Recommended for you') }} <br>{{ __('Fresh Projects') }} </h2>
                 </div>
             </div>
             <div class="recommended-one__bottom">
@@ -561,7 +563,7 @@
                                                     <i class="fa fa-clock"></i>
                                                 </div>
                                                 <div class="text">
-                                                    <p>{{ $days_left }} Days Remaining</p>
+                                                    <p>{{ $days_left }} {{ __('Days Remaining') }}</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -589,11 +591,11 @@
                                             @else
                                                 No amount prefilled
                                             @endif</span>
-                                                <br>Goal of ${{ $row->goal }}
+                                                <br>{{ __('Goal of') }} ${{ $row->goal }}
                                             </p>
                                             <p class="project-one__goals-one"><span class="odometer project-one__plus"
                                                     data-count="12"></span>
-                                                <br>Backers We Got
+                                                <br>{{ __('Backers We Got') }}
                                             </p>
                                         </div>
                                     </div>
@@ -610,7 +612,7 @@
     <!--Recommended One End-->
 
     <!--Individuals Work Start-->
-    <section class="individuals-work">
+    {{-- <section class="individuals-work">
         <div class="individuals-work__bg" data-jarallax data-speed="0.2" data-imgPosition="50% 0%"
             style="background-image: url(assets/images/backgrounds/individuals-bg.jpg);"></div>
         <div class="container">
@@ -628,7 +630,7 @@
                 </h3>
             </div>
         </div>
-    </section>
+    </section> --}}
     <!--Individuals Work End-->
 
     <!--Testimonial One Start-->
@@ -643,7 +645,7 @@
                                     <img src="assets/images/testimonial/testimonial-one-main-content-img-1.jpg"
                                         alt="">
                                     <div class="testimonial-one__review-box">
-                                        <p>their <br> Reviews</p>
+                                        <p>{{ __('their') }} <br>{{ __('Reviews') }} </p>
                                         <div class="testimonial-one__review-icon">
                                             <img src="assets/images/icon/comment-icon.png" alt="">
                                         </div>
@@ -654,8 +656,8 @@
                         <div class="col-xl-6 col-lg-6">
                             <div class="testimonial-one__main-content-right">
                                 <div class="section-title text-left">
-                                    <span class="section-title__tagline">Our Testimonials</span>
-                                    <h2 class="section-title__title">Reviews Directly from the ACELERA
+                                    <span class="section-title__tagline">{{ __('Our Testimonials') }}</span>
+                                    <h2 class="section-title__title">{{ __('Reviews Directly from the ACELERA') }}
                                     </h2>
                                 </div>
                                 <div class="swiper-container" id="testimonials-one__carousel">
@@ -668,10 +670,10 @@
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
                                             </div>
-                                            <p class="testimonial-one__text-1"> tried this smart piano and learned
+                                            <p class="testimonial-one__text-1">{{ __('tried this smart piano and learned
                                                 how to play music in a day. There are many variations of passages of
                                                 lorem ipsum but the majority have alteration in some form, by words
-                                                look. It has survived not only five centuries.</p>
+                                                look. It has survived not only five centuries.') }} </p>
                                             <div class="testimonial-one__client-info">
                                                 <div class="testimonial-one__client-details">
                                                     <div class="testimonial-one__client-img">
@@ -679,8 +681,8 @@
                                                             alt="">
                                                     </div>
                                                     <div class="testimonial-one__client-content">
-                                                        <h4>Kevin Copoer</h4>
-                                                        <p>CO Founder</p>
+                                                        <h4>{{ __('Kevin Copoer') }}</h4>
+                                                        <p>{{ __('CO Founder') }}</p>
                                                     </div>
                                                 </div>
                                                 <div class="testimonial-one__quote">
@@ -696,13 +698,13 @@
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
                                             </div>
-                                            <p class="testimonial-one__text-1"> tried this smart piano
+                                            <p class="testimonial-one__text-1"> {{ __('tried this smart piano
                                                 and learned
                                                 how to play music in a day. There are many variations of
                                                 passages of
                                                 lorem ipsum but the majority have alteration in some
                                                 form, by words
-                                                look. It has survived not only five centuries.</p>
+                                                look. It has survived not only five centuries.') }}</p>
                                             <div class="testimonial-one__client-info">
                                                 <div class="testimonial-one__client-details">
                                                     <div class="testimonial-one__client-img">
@@ -710,8 +712,8 @@
                                                             alt="">
                                                     </div>
                                                     <div class="testimonial-one__client-content">
-                                                        <h4>Sarah Albert</h4>
-                                                        <p>CO Founder</p>
+                                                        <h4>{{ __('Sarah Albert') }}</h4>
+                                                        <p>{{ __('CO Founder') }}</p>
                                                     </div>
                                                 </div>
                                                 <div class="testimonial-one__quote">
@@ -727,13 +729,13 @@
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
                                             </div>
-                                            <p class="testimonial-one__text-1"> tried this smart piano
+                                            <p class="testimonial-one__text-1">{{ __('tried this smart piano
                                                 and learned
                                                 how to play music in a day. There are many variations of
                                                 passages of
                                                 lorem ipsum but the majority have alteration in some
                                                 form, by words
-                                                look. It has survived not only five centuries.</p>
+                                                look. It has survived not only five centuries.') }} </p>
                                             <div class="testimonial-one__client-info">
                                                 <div class="testimonial-one__client-details">
                                                     <div class="testimonial-one__client-img">
@@ -741,8 +743,8 @@
                                                             alt="">
                                                     </div>
                                                     <div class="testimonial-one__client-content">
-                                                        <h4>Kevin Martin</h4>
-                                                        <p>CO Founder</p>
+                                                        <h4>{{ __('Kevin Martin') }}</h4>
+                                                        <p>{{ __('CO Founder') }}</p>
                                                     </div>
                                                 </div>
                                                 <div class="testimonial-one__quote">
@@ -758,13 +760,13 @@
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
                                             </div>
-                                            <p class="testimonial-one__text-1"> tried this smart piano
+                                            <p class="testimonial-one__text-1">{{ __('tried this smart piano
                                                 and learned
                                                 how to play music in a day. There are many variations of
                                                 passages of
                                                 lorem ipsum but the majority have alteration in some
                                                 form, by words
-                                                look. It has survived not only five centuries.</p>
+                                                look. It has survived not only five centuries.') }} </p>
                                             <div class="testimonial-one__client-info">
                                                 <div class="testimonial-one__client-details">
                                                     <div class="testimonial-one__client-img">
@@ -772,8 +774,8 @@
                                                             alt="">
                                                     </div>
                                                     <div class="testimonial-one__client-content">
-                                                        <h4>Jessica Brown</h4>
-                                                        <p>CO Founder</p>
+                                                        <h4>{{ __('Jessica Brown') }}</h4>
+                                                        <p>{{ __('CO Founder') }}</p>
                                                     </div>
                                                 </div>
                                                 <div class="testimonial-one__quote">
@@ -910,8 +912,8 @@
         <div class="news-one__bg-color"></div>
         <div class="container">
             <div class="section-title text-center">
-                <span class="section-title__tagline">Direct from the Blog Posts</span>
-                <h2 class="section-title__title">Checkout Latest News <br> and Articles</h2>
+                <span class="section-title__tagline">{{ __('Direct from the Blog Posts') }}</span>
+                <h2 class="section-title__title">{{ __('Checkout Latest News') }} <br> {{ __('and Articles') }}</h2>
             </div>
             <div class="row">
                 @foreach ($blogs as $row)
@@ -936,14 +938,14 @@
                                 <ul class="news-one__meta list-unstyled">
                                     <li>
                                         <a href="{{ url('blog_details/') }}{{ '/' . $row->slug }}"><i
-                                                class="fas fa-user-circle"></i>by Admin</a>
+                                                class="fas fa-user-circle"></i>{{ __('by Admin') }}</a>
                                     </li>
                                     <li>
                                         @php
                                             $blogComments = \App\Models\BlogComment::active()->where('blog_id', $row->id)->whereNull('parent_id')->get();
                                         @endphp
                                         <a href="{{ url('blog_details/') }}{{ '/' . $row->slug }}"><i
-                                                class="fas fa-comments"></i>{{ @$blogComments->count() }} Comments</a>
+                                                class="fas fa-comments"></i>{{ @$blogComments->count() }} {{ __('Comments') }}</a>
                                     </li>
                                 </ul>
                                 <h3 class="news-one__title"><a
@@ -951,7 +953,7 @@
                                 </h3>
                                 <div class="news-one__bottom">
                                     <div class="news-one__button">
-                                        <a href="{{ url('blog_details/') }}{{ '/' . $row->slug }}">Read more</a>
+                                        <a href="{{ url('blog_details/') }}{{ '/' . $row->slug }}">{{ __('Read more') }}</a>
                                     </div>
                                     <div class="news-one__arrow">
                                         <a href="{{ url('blog_details/') }}{{ '/' . $row->slug }}"><span
@@ -984,15 +986,15 @@
                         <span class="icon-fundraiser"></span>
                     </div>
                     <div class="content">
-                        <p>Your story starts from here</p>
-                        <h3>Ready to raise funds for idea?</h3>
+                        <p>{{ __('Your story starts from here') }}</p>
+                        <h3>{{ __('Ready to raise funds for idea?') }}</h3>
                     </div>
                 </div>
                 <div class="ready-one__right">
                     @if (!empty($user_session))
-                    <a href="{{ url('CreateProject') }}" class="thm-btn ready-one__btn">Make it Happen</a>
+                    <a href="{{ url('CreateProject') }}" class="thm-btn ready-one__btn">{{ __('Make it Happen') }}</a>
                     @else
-                    <a href="{{ url('signup') }}" class="thm-btn ready-one__btn">Make it Happen</a>
+                    <a href="{{ url('signup') }}" class="thm-btn ready-one__btn">{{ __('Make it Happen') }}</a>
                     @endif
 
                 </div>

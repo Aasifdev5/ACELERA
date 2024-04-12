@@ -56,7 +56,7 @@
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label">Cuerpo </label>
-                                            <textarea name="body" class="ckeditor">{{ old('body') }}</textarea>
+                                            <textarea name="body" class="editor">{{ old('body') }}</textarea>
                                         </div>
 
                                         <div class="row g-2">

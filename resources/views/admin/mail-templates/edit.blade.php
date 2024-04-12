@@ -62,7 +62,7 @@ Plantillas de Correo
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Cuerpo </label>
-                    <textarea name="body" class="ckeditor">{{ $mailTemplate->body }}</textarea>
+                    <textarea name="body" class="editor">{{ $mailTemplate->body }}</textarea>
                 </div>
                 <div class="alert alert-secondary mb-0">
                     <p class="mb-0"><strong>Códigos cortos</strong></p>

@@ -1,6 +1,6 @@
 @extends('master')
 @section('title')
-Forget Password
+ {{ __('Forget Password') }}
 @endsection
 @section('content')
 <main>

@@ -1,6 +1,6 @@
 @extends('master')
 @section('title')
-    Edit Profile
+     {{ __('Edit Profile') }}
 @endsection
 @section('content')
     <main>

@@ -1,6 +1,6 @@
 @extends('master')
 @section('title')
-    Chat
+{{ __('Chat') }}
 @endsection
 @section('content')
     <style>
@@ -549,7 +549,7 @@
                                                         <input class="form-control input-txt-bx" id="message"
                                                             type="text" name="message" placeholder="Type a message...">
                                                         <button class="btn btn-primary input-group-text"
-                                                            type="submit">SEND</button>
+                                                            type="submit">{{ __('SEND') }}</button>
                                                     </div>
                                                 </form>
                                             </div>

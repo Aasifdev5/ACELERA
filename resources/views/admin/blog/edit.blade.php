@@ -3,7 +3,7 @@
     {{ $title }}
 @endsection
 @section('content')
-    <div class="page-wrapper">
+    <div class="page-body">
         <div class="container-fluid">
             <!-- sign up page start-->
             <div class="auth-bg-video">
@@ -11,7 +11,7 @@
                     muted="" loop="">
                     <source src="{{ asset('admin/video/auth-bg.mp4') }}" type="video/mp4">
                 </video>
-                <div class="authentication-box" style="width: 1080px;">
+                <div class="col-sm-12">
                     <div class="text-center"><img src="assets/images/endless-logo.png" alt=""></div>
                     <div class="card mt-4 p-4">
 
