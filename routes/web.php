@@ -88,9 +88,9 @@ Route::group(['middleware' => 'prevent-back-history',SetLocale::class], function
     Route::post('/ProjectStore', [UserController::class, 'ProjectStore'])->name('ProjectStore');
     Route::get('/ad_photo', [UserController::class, 'ad_photo'])->name('ad_photo')->middleware('isLoggedIn');
     Route::post('/post-insert', [UserController::class, 'Ad_insert'])->name('Ad_insert')->middleware('isLoggedIn');
-    Route::get('/Billing', [UserController::class, 'Billing'])->name('Billing')->middleware('isLoggedIn');
+    Route::get('/back/{id}', [UserController::class, 'back'])->name('back')->middleware('isLoggedIn');
     Route::get('/visibity', [UserController::class, 'visibity'])->name('visibity')->middleware('isLoggedIn');
-    Route::post('/post-insert-images', [UserController::class, 'ads_photos_upload'])->name('ads_photos_upload')->middleware('isLoggedIn');
+    Route::post('/storeBack', [UserController::class, 'storeBack'])->name('storeBack');
     Route::get('/change_password', [UserController::class, 'change_password'])->name('change_password')->middleware('isLoggedIn');
     Route::post('/update_password', [UserController::class, 'update_password'])->name('update_password');
     Route::get('/edit_profile', [UserController::class, 'edit_profile'])->middleware('isLoggedIn');
@@ -150,6 +150,10 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/local/{ln}', function ($ln) {
             return redirect()->back()->with('local', $ln);
         });
+        Route::get('/qrcode', [QRCodeController::class, 'index'])->name('qrcode.index');
+        Route::get('/destroy_qrcode/{id}', [QRCodeController::class, 'destroy'])->name('destroy');
+        Route::post('/qrcode/generate', [QRCodeController::class, 'generateQrCode'])->name('qrcode.generate');
+        Route::get('/qrcode/download/{data}', [QRCodeController::class, 'downloadQrCode'])->name('qrcode.download');
         Route::group(['prefix' => 'settings', 'as' => 'settings.'], function () {
             //Start:: General Settings
             Route::get('general-settings', [SettingController::class, 'GeneralSetting'])->name('general_setting');
@@ -440,6 +444,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('/deposit', [FundController::class, 'deposit']);
         Route::post('/withdraw', [FundController::class, 'withdraw']);
         Route::get('/transactions_report', [Admin::class, 'transactions_report'])->name('transactions_report')->middleware('AdminIsLoggedIn');
+        Route::get('accept/{id}', [Admin::class, 'accept'])->name('accept');
     });
     Route::get('/forget_password', [Admin::class, 'forget_password'])->name('forget_password');
     Route::post('/log', [Admin::class, 'login'])->name('login');

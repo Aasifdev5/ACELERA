@@ -8,6 +8,7 @@
         $general_setting = getApplicationsettings();
         $category = getCategory();
         $adminNotifications = userNotifications();
+
     @endphp
     <title> {{ $general_setting->site_name }} || @yield('title') </title>
     <!-- favicons Icons -->
@@ -98,7 +99,7 @@
                 <div class="main-header__top-inner">
                     <div class="main-header__top-left">
                         <ul class="list-unstyled main-header__contact-list">
-                            <li>
+                            {{-- <li>
                                 <a href="#" class="btn btn-dropdown site-language" id="dropdownLanguage"
                                     data-bs-toggle="dropdown" aria-expanded="false">
                                     <img src="{{ asset(selectedLanguage(session()->get('local'))->flag) }}"
@@ -116,7 +117,7 @@
                                         </li>
                                     @endforeach
                                 </ul>
-                            </li>
+                            </li> --}}
                             <li>
                                 <div class="icon">
                                     <i class="fas fa-map-marker-alt"></i>

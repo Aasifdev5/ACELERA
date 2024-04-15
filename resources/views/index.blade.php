@@ -40,16 +40,20 @@
                             <div class="col-xl-7 col-lg-8">
                                 <div class="main-slider__content">
                                     <p class="main-slider__sub-title">{{ __('Raising Money is Easy Now') }}!</p>
-                                    <h2 class="main-slider__title">{{ __('Ultimate') }}  <br> {{ __('Crowdfunding') }}
+                                    <h2 class="main-slider__title">{{ __('Ultimate') }} <br> {{ __('Crowdfunding') }}
                                         <br> {{ __('Platforms') }}
                                     </h2>
                                     <div class="main-slider__btn-box">
                                         @if (!empty($user_session))
-                                            <a href="{{ url('CreateProject') }}" class="thm-btn main-slider__btn">{{ __('Start a
-                                                Project') }} </a>
+                                            <a href="{{ url('CreateProject') }}"
+                                                class="thm-btn main-slider__btn">{{ __('Start a
+                                                                                                                                                                                                                                                Project') }}
+                                            </a>
                                         @else
-                                            <a href="{{ url('signup') }}" class="thm-btn main-slider__btn">{{ __('Start a
-                                                Project') }} </a>
+                                            <a href="{{ url('signup') }}"
+                                                class="thm-btn main-slider__btn">{{ __('Start a
+                                                                                                                                                                                                                                                Project') }}
+                                            </a>
                                         @endif
 
                                         <a href="team.html" class="main-slider__btn-two">{{ __('Speak with Expert') }} </a>
@@ -78,16 +82,20 @@
                             <div class="col-xl-7 col-lg-8">
                                 <div class="main-slider__content">
                                     <p class="main-slider__sub-title">{{ __('Raising Money is Easy Now') }}!</p>
-                                    <h2 class="main-slider__title">{{ __('Ultimate') }}  <br> {{ __('Crowdfunding') }}
+                                    <h2 class="main-slider__title">{{ __('Ultimate') }} <br> {{ __('Crowdfunding') }}
                                         <br> {{ __('Platforms') }}
                                     </h2>
                                     <div class="main-slider__btn-box">
                                         @if (!empty($user_session))
-                                            <a href="{{ url('CreateProject') }}" class="thm-btn main-slider__btn">{{ __('Start a
-                                                Project') }} </a>
+                                            <a href="{{ url('CreateProject') }}"
+                                                class="thm-btn main-slider__btn">{{ __('Start a
+                                                                                                                                                                                                                                                Project') }}
+                                            </a>
                                         @else
-                                            <a href="{{ url('signup') }}" class="thm-btn main-slider__btn">{{ __('Start a
-                                                Project') }} </a>
+                                            <a href="{{ url('signup') }}"
+                                                class="thm-btn main-slider__btn">{{ __('Start a
+                                                                                                                                                                                                                                                Project') }}
+                                            </a>
                                         @endif
 
                                         <a href="team.html" class="main-slider__btn-two">{{ __('Speak with Expert') }} </a>
@@ -116,16 +124,20 @@
                             <div class="col-xl-7 col-lg-8">
                                 <div class="main-slider__content">
                                     <p class="main-slider__sub-title">{{ __('Raising Money is Easy Now') }}!</p>
-                                    <h2 class="main-slider__title">{{ __('Ultimate') }}  <br> {{ __('Crowdfunding') }}
+                                    <h2 class="main-slider__title">{{ __('Ultimate') }} <br> {{ __('Crowdfunding') }}
                                         <br> {{ __('Platforms') }}
                                     </h2>
                                     <div class="main-slider__btn-box">
                                         @if (!empty($user_session))
-                                            <a href="{{ url('CreateProject') }}" class="thm-btn main-slider__btn">{{ __('Start a
-                                                Project') }} </a>
+                                            <a href="{{ url('CreateProject') }}"
+                                                class="thm-btn main-slider__btn">{{ __('Start a
+                                                                                                                                                                                                                                                Project') }}
+                                            </a>
                                         @else
-                                            <a href="{{ url('signup') }}" class="thm-btn main-slider__btn">{{ __('Start a
-                                                Project') }} </a>
+                                            <a href="{{ url('signup') }}"
+                                                class="thm-btn main-slider__btn">{{ __('Start a
+                                                                                                                                                                                                                                                Project') }}
+                                            </a>
                                         @endif
 
                                         <a href="team.html" class="main-slider__btn-two">{{ __('Speak with Expert') }} </a>
@@ -206,8 +218,10 @@
 
                     </div>
                 </div>
-                <p class="categories-one__bottom-text">{{ __('Discover projects just for you and get great recommendations
-                    when you select your interests.') }} </p>
+                <p class="categories-one__bottom-text">
+                    {{ __('Discover projects just for you and get great recommendations
+                                                                                                    when you select your interests.') }}
+                </p>
             </div>
         </div>
     </section>
@@ -219,7 +233,8 @@
             <div class="project-one__top">
                 <div class="section-title text-center">
                     <span class="section-title__tagline">{{ __('Businesses You Can Back') }}</span>
-                    <h2 class="section-title__title">{{ __('Explore the Best Featured') }} <br> {{ __('Projects now') }}  </h2>
+                    <h2 class="section-title__title">{{ __('Explore the Best Featured') }} <br> {{ __('Projects now') }}
+                    </h2>
                 </div>
             </div>
             <div class="project-one__bottom">
@@ -288,25 +303,43 @@
                                                 <div class="text">{{ __('Raised') }}</div>
                                                 <div class="bar">
                                                     <div class="bar-innner">
-                                                        <div class="skill-percent">
-                                                            <span class="count-text" data-speed="3000"
-                                                                data-stop="70">0</span>
-                                                            <span class="percent">%</span>
-                                                        </div>
-                                                        <div class="bar-fill" data-percent="70"></div>
+                                                        <?php
+                                                        // Assuming you are in a view file or a blade template
+                                                        $campaign = new \App\Models\Campaign(); // Or you retrieve the campaign object from somewhere else
+
+                                                        // Output the percentage raised in your HTML
+
+                                                        ?>
+                                                        @foreach ($percentRaisedArray as $projectId => $percentRaised)
+                                                            @if ($row->id == $projectId)
+                                                                <div class="skill-percent">
+                                                                    <span class="count-text" data-speed="3000"
+                                                                        data-stop="{{ $percentRaised }}">0</span>
+                                                                    <span class="percent">%</span>
+                                                                </div>
+
+
+                                                                <div class="bar-fill"
+                                                                    data-percent="{{ $percentRaised }}"></div>
+                                                            @endif
+                                                        @endforeach
+
+
+
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="project-one__goals">
-                                        <p class="project-one__goals-one">{{ __('Achieved') }}:<span>$ @if ($amount_prefilled)
-                                                    {{ implode(',', $amount_prefilled) }}
-                                                @else
-                                                    No amount prefilled
-                                                @endif
+                                        <p class="project-one__goals-one">{{ __('Achieved') }}:<span>BS  @foreach ($totalRaisedArray as $projectId => $Raised)
+                                            @if ($row->id == $projectId)
+                                                {{ $Raised }}
+                                            @endif
+                                        @endforeach
                                             </span></p>
-                                        <p class="project-one__goals-one">{{ __('Goal') }}:<span>${{ $row->goal }}</span></p>
+                                        <p class="project-one__goals-one">
+                                            {{ __('Goal') }}:<span>BS {{ $row->goal }}</span></p>
                                     </div>
                                 </div>
                             </div>
@@ -330,14 +363,16 @@
                             <div class="why-choose-one__left">
                                 <div class="section-title text-left">
                                     <span class="section-title__tagline">{{ __('our platform benefits') }}</span>
-                                    <h2 class="section-title__title">{{ __('Why you Should Choose') }} <br> {{ __('ACELERA Platform') }} </h2>
+                                    <h2 class="section-title__title">{{ __('Why you Should Choose') }} <br>
+                                        {{ __('ACELERA Platform') }} </h2>
                                 </div>
                                 <div class="why-choose-one__left-text">
                                     <p>{{ __('There are certain attributes of a profession and one has to catch hold of
-                                        them in
-                                        order to work efficiently and grow in that business. I share my experience
-                                        as an
-                                        interior designer, a profession of great esthetic.') }}</p>
+                                                                                                                                                                                        them in
+                                                                                                                                                                                        order to work efficiently and grow in that business. I share my experience
+                                                                                                                                                                                        as an
+                                                                                                                                                                                        interior designer, a profession of great esthetic.') }}
+                                    </p>
                                 </div>
                                 <ul class="why-choose-one__points list-unstyled">
                                     <li>
@@ -346,7 +381,8 @@
                                         </div>
                                         <div class="content">
                                             <h3 class="title">{{ __('100% Success Rates') }}</h3>
-                                            <p class="text">{{ __('Lorem ipsum velit anod ips aliquet enean quis.') }}</p>
+                                            <p class="text">{{ __('Lorem ipsum velit anod ips aliquet enean quis.') }}
+                                            </p>
                                         </div>
                                     </li>
                                     <li>
@@ -355,14 +391,15 @@
                                         </div>
                                         <div class="content">
                                             <h3 class="title">{{ __('Millions in Funding') }}</h3>
-                                            <p class="text">{{ __('Lorem ipsum velit anod ips aliquet enean quis.') }}</p>
+                                            <p class="text">{{ __('Lorem ipsum velit anod ips aliquet enean quis.') }}
+                                            </p>
                                         </div>
                                     </li>
                                 </ul>
                                 @if (!empty($user_session))
-                                <a href="{{ url('CreateProject') }}" class="thm-btn">{{ __('Make it Happen') }}</a>
+                                    <a href="{{ url('CreateProject') }}" class="thm-btn">{{ __('Make it Happen') }}</a>
                                 @else
-                                <a href="{{ url('signup') }}" class="thm-btn">{{ __('Make it Happen') }}</a>
+                                    <a href="{{ url('signup') }}" class="thm-btn">{{ __('Make it Happen') }}</a>
                                 @endif
 
                             </div>
@@ -374,7 +411,8 @@
                                         <img src="assets/images/resources/why-choose-1.1.jpg" alt="">
                                     </div>
                                     <div class="why-choose-one__trusted">
-                                        <p>{{ __('Trusted by more') }} <br>{{ __('than') }}  <span class="odometer" data-count="3500">00</span>
+                                        <p>{{ __('Trusted by more') }} <br>{{ __('than') }} <span class="odometer"
+                                                data-count="3500">00</span>
                                             <br>
                                             {{ __('clients') }}
                                         </p>
@@ -567,7 +605,9 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <h3 class="recommended-one__title"><a href="{{ url('project-details/') }}{{ '/' . $row->slug }}">{{ $row->title }}</a></h3>
+                                        <h3 class="recommended-one__title"><a
+                                                href="{{ url('project-details/') }}{{ '/' . $row->slug }}">{{ $row->title }}</a>
+                                        </h3>
                                         <div class="progress-levels">
                                             <!--Skill Box-->
                                             <div class="progress-box">
@@ -575,38 +615,47 @@
                                                     <div class="bar">
                                                         <div class="bar-innner">
                                                             <div class="skill-percent">
-                                                                <span class="count-text" data-speed="3000"
-                                                                    data-stop="70">0</span>
-                                                                <span class="percent">%</span>
+                                                                @foreach ($percentRaisedArray as $projectId => $percentRaised)
+                                                                    @if ($row->id == $projectId)
+                                                                        <span class="count-text" data-speed="3000"
+                                                                            data-stop="{{ $percentRaised }}">0</span>
+                                                                        <span class="percent">%</span>
                                                             </div>
-                                                            <div class="bar-fill" data-percent="70"></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="project-one__goals">
-                                            <p class="project-one__goals-one"><span>$@if ($amount_prefilled)
-                                                {{ implode(',', $amount_prefilled) }}
-                                            @else
-                                                No amount prefilled
-                                            @endif</span>
-                                                <br>{{ __('Goal of') }} ${{ $row->goal }}
-                                            </p>
-                                            <p class="project-one__goals-one"><span class="odometer project-one__plus"
-                                                    data-count="12"></span>
-                                                <br>{{ __('Backers We Got') }}
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                                                            <div class="bar-fill" data-percent="{{ $percentRaised }}">
+                                                            </div>
+                    @endif
                     @endforeach
-
 
                 </div>
             </div>
+        </div>
+        </div>
+        </div>
+        <div class="project-one__goals">
+            <p class="project-one__goals-one"><span>BS
+                    @foreach ($totalRaisedArray as $projectId => $Raised)
+                        @if ($row->id == $projectId)
+                            {{ $Raised }}
+                        @endif
+                    @endforeach
+
+                </span>
+                <br>{{ __('Goal of') }} BS {{ $row->goal }}
+            </p>
+            <p class="project-one__goals-one"><span class="odometer project-one__plus"
+                    data-count="{{ \App\Models\Payment::where('campaign_id', $row->id)->where('accepted', 1)->get()->count() }}"></span>
+                <br>{{ __('Backers We Got') }}
+            </p>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        @endforeach
+
+
+        </div>
+        </div>
         </div>
     </section>
     <!--Recommended One End-->
@@ -670,10 +719,12 @@
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
                                             </div>
-                                            <p class="testimonial-one__text-1">{{ __('tried this smart piano and learned
-                                                how to play music in a day. There are many variations of passages of
-                                                lorem ipsum but the majority have alteration in some form, by words
-                                                look. It has survived not only five centuries.') }} </p>
+                                            <p class="testimonial-one__text-1">
+                                                {{ __('tried this smart piano and learned
+                                                                                                                                                                                                                                                how to play music in a day. There are many variations of passages of
+                                                                                                                                                                                                                                                lorem ipsum but the majority have alteration in some form, by words
+                                                                                                                                                                                                                                                look. It has survived not only five centuries.') }}
+                                            </p>
                                             <div class="testimonial-one__client-info">
                                                 <div class="testimonial-one__client-details">
                                                     <div class="testimonial-one__client-img">
@@ -698,13 +749,15 @@
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
                                             </div>
-                                            <p class="testimonial-one__text-1"> {{ __('tried this smart piano
-                                                and learned
-                                                how to play music in a day. There are many variations of
-                                                passages of
-                                                lorem ipsum but the majority have alteration in some
-                                                form, by words
-                                                look. It has survived not only five centuries.') }}</p>
+                                            <p class="testimonial-one__text-1">
+                                                {{ __('tried this smart piano
+                                                                                                                                                                                                                                                and learned
+                                                                                                                                                                                                                                                how to play music in a day. There are many variations of
+                                                                                                                                                                                                                                                passages of
+                                                                                                                                                                                                                                                lorem ipsum but the majority have alteration in some
+                                                                                                                                                                                                                                                form, by words
+                                                                                                                                                                                                                                                look. It has survived not only five centuries.') }}
+                                            </p>
                                             <div class="testimonial-one__client-info">
                                                 <div class="testimonial-one__client-details">
                                                     <div class="testimonial-one__client-img">
@@ -729,13 +782,15 @@
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
                                             </div>
-                                            <p class="testimonial-one__text-1">{{ __('tried this smart piano
-                                                and learned
-                                                how to play music in a day. There are many variations of
-                                                passages of
-                                                lorem ipsum but the majority have alteration in some
-                                                form, by words
-                                                look. It has survived not only five centuries.') }} </p>
+                                            <p class="testimonial-one__text-1">
+                                                {{ __('tried this smart piano
+                                                                                                                                                                                                                                                and learned
+                                                                                                                                                                                                                                                how to play music in a day. There are many variations of
+                                                                                                                                                                                                                                                passages of
+                                                                                                                                                                                                                                                lorem ipsum but the majority have alteration in some
+                                                                                                                                                                                                                                                form, by words
+                                                                                                                                                                                                                                                look. It has survived not only five centuries.') }}
+                                            </p>
                                             <div class="testimonial-one__client-info">
                                                 <div class="testimonial-one__client-details">
                                                     <div class="testimonial-one__client-img">
@@ -760,13 +815,15 @@
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
                                             </div>
-                                            <p class="testimonial-one__text-1">{{ __('tried this smart piano
-                                                and learned
-                                                how to play music in a day. There are many variations of
-                                                passages of
-                                                lorem ipsum but the majority have alteration in some
-                                                form, by words
-                                                look. It has survived not only five centuries.') }} </p>
+                                            <p class="testimonial-one__text-1">
+                                                {{ __('tried this smart piano
+                                                                                                                                                                                                                                                and learned
+                                                                                                                                                                                                                                                how to play music in a day. There are many variations of
+                                                                                                                                                                                                                                                passages of
+                                                                                                                                                                                                                                                lorem ipsum but the majority have alteration in some
+                                                                                                                                                                                                                                                form, by words
+                                                                                                                                                                                                                                                look. It has survived not only five centuries.') }}
+                                            </p>
                                             <div class="testimonial-one__client-info">
                                                 <div class="testimonial-one__client-details">
                                                     <div class="testimonial-one__client-img">
@@ -942,10 +999,14 @@
                                     </li>
                                     <li>
                                         @php
-                                            $blogComments = \App\Models\BlogComment::active()->where('blog_id', $row->id)->whereNull('parent_id')->get();
+                                            $blogComments = \App\Models\BlogComment::active()
+                                                ->where('blog_id', $row->id)
+                                                ->whereNull('parent_id')
+                                                ->get();
                                         @endphp
                                         <a href="{{ url('blog_details/') }}{{ '/' . $row->slug }}"><i
-                                                class="fas fa-comments"></i>{{ @$blogComments->count() }} {{ __('Comments') }}</a>
+                                                class="fas fa-comments"></i>{{ @$blogComments->count() }}
+                                            {{ __('Comments') }}</a>
                                     </li>
                                 </ul>
                                 <h3 class="news-one__title"><a
@@ -953,7 +1014,8 @@
                                 </h3>
                                 <div class="news-one__bottom">
                                     <div class="news-one__button">
-                                        <a href="{{ url('blog_details/') }}{{ '/' . $row->slug }}">{{ __('Read more') }}</a>
+                                        <a
+                                            href="{{ url('blog_details/') }}{{ '/' . $row->slug }}">{{ __('Read more') }}</a>
                                     </div>
                                     <div class="news-one__arrow">
                                         <a href="{{ url('blog_details/') }}{{ '/' . $row->slug }}"><span
@@ -992,9 +1054,10 @@
                 </div>
                 <div class="ready-one__right">
                     @if (!empty($user_session))
-                    <a href="{{ url('CreateProject') }}" class="thm-btn ready-one__btn">{{ __('Make it Happen') }}</a>
+                        <a href="{{ url('CreateProject') }}"
+                            class="thm-btn ready-one__btn">{{ __('Make it Happen') }}</a>
                     @else
-                    <a href="{{ url('signup') }}" class="thm-btn ready-one__btn">{{ __('Make it Happen') }}</a>
+                        <a href="{{ url('signup') }}" class="thm-btn ready-one__btn">{{ __('Make it Happen') }}</a>
                     @endif
 
                 </div>

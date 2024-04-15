@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Payment extends Model
 {
-    protected $guarded = [];
+    protected $fillable = ['name','payer_email','user_id','campaign_id','amount','accepted'];
 
     public function campaign()
     {

@@ -8,10 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Campaign extends Model
 {
-    use HasFactory;
-
-    public $guarded = [];
-
 
 
     protected $fillable=['image','og_image','user_id','category_id','title','slug','short_description','description','campaign_owner_commission','goal','min_amount','max_amount','recommended_amount','amount_prefilled','end_method','video','feature_image','status','country_id','address','is_funded','start_date','end_date'];
@@ -80,56 +76,8 @@ class Campaign extends Model
         return $this->hasMany(Payment::class);
     }
 
-    public function success_payments()
-    {
-        return $this->hasMany(Payment::class)->whereStatus('success');
-    }
 
-    public function total_raised()
-    {
-        $updateNow = true;
 
-        if ($this->total_funded_last_upated_at) {
-            $nowDate = Carbon::now();
-            $updatedAt = Carbon::createFromTimestamp(strtotime($this->total_funded_last_upated_at));
-
-            //Calculate every in 12 hours
-            if ($nowDate->diffInHours($updatedAt) < 12) {
-                $updateNow = false;
-            }
-        }
-
-        if ($updateNow) {
-            $this->updateTotalNow();
-        }
-
-        return $this->total_funded;
-    }
-
-    public function updateTotalNow()
-    {
-        $nowDate = Carbon::now();
-        $totalFunded = $this->success_payments()->sum('amount');
-        $totalPaymentsCount = $this->success_payments()->count();
-
-        $this->total_funded = $totalFunded;
-        $this->total_payments = $totalPaymentsCount;
-        $this->total_funded_last_upated_at = $nowDate->toDateTimeString();
-        $this->save();
-    }
-
-    public function percent_raised()
-    {
-        $raised = $this->total_raised();
-        $goal = $this->goal;
-
-        $percent = 0;
-        if ($raised > 0) {
-            $percent = round(($raised * 100) / $goal, 0, PHP_ROUND_HALF_DOWN);
-        }
-
-        return $percent;
-    }
 
     public function amount_raised()
     {
@@ -201,13 +149,5 @@ class Campaign extends Model
         return $query->where('is_staff_picks', 1);
     }
 
-    /**
-     * Requested withdrawal
-     *
-     * @since 1.7
-     */
-    public function requested_withdrawal()
-    {
-        return $this->hasOne(Withdrawal_request::class);
-    }
+
 }

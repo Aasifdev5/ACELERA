@@ -386,7 +386,7 @@
                                     </li>
                                 </ul>
                             </li>
-
+                            <li><a class="sidebar-header" href="{{ url('admin/qrcode') }}"><i class="fa fa-empire"></i>  QR CODE </a></li>
                             <li>
                                 <a class="sidebar-header" href="{{ route('role.index') }}">
                                     <i class="fa fa-key"></i>
@@ -436,8 +436,8 @@
                                 </ul>
                             </li>
 
-                            <li><a class="sidebar-header" href="{{ url('admin/balance') }}"><i
-                                        data-feather="dollar-sign"></i><span>{{ __('Balance') }} </span></a></li>
+                            <li><a class="sidebar-header" href="{{ url('admin/transactions_report') }}"><i
+                                        data-feather="dollar-sign"></i><span>{{ __('Recieve Fund') }} </span></a></li>
 
                         </ul>
                     @endif

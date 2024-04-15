@@ -5,40 +5,42 @@ namespace App\Http\Controllers;
 use App\Events\UserRegistered;
 use App\Mail\SendMailreset;
 
+use App\Models\BankDetails;
 use App\Models\Blog;
 use App\Models\BlogCategory;
 use App\Models\BlogComment;
 use App\Models\Campaign;
 use App\Models\Category;
-use App\Models\City;
 
+use App\Models\City;
 use App\Models\Country;
+
+
 use App\Models\GeneralSetting;
 
-
 use App\Models\Notification;
+
 
 use App\Models\Page;
 
 
-use App\Models\PasswordReset;
 
+use App\Models\PasswordReset;
+use App\Models\Payment;
 
 
 use App\Models\Role;
-use App\Models\User;
 
+
+use App\Models\User;
 
 use App\Notifications\NewUserRegisteredNotification;
 
-
 use App\Notifications\ResetPasswordNotification;
-
 use App\Notifications\UserRegisteredNotification;
 
 use App\Notifications\VerifyEmailNotification;
 use App\Traits\SendNotification;
-
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -101,15 +103,45 @@ class UserController extends Controller
         $categories = Category::all();
         $pages = Page::all();
         $project = Campaign::where('status', 1)->get();
-        $freshproject = Campaign::Orderby('id', 'desc')->take(10)->get();
+        $freshProjects = Campaign::orderBy('id', 'desc')->take(10)->get();
         $blogs = Blog::all();
         $notificationCount = Notification::where('user_type', 2)
-        ->where('is_seen', 'no')
-        ->count();
+            ->where('is_seen', 'no')
+            ->count();
+
+        $totalRaisedArray = [];
+        $percentRaisedArray = [];
+
+        foreach ($project as $row) {
+            $totalRaised = Payment::whereHas('campaign', function($query) use ($row) {
+                $query->where('id', $row->id);
+            })
+            ->where('accepted', 1)
+            ->sum('amount');
+
+            $percentRaised = intval(($totalRaised / $row->goal) * 100);
+
+
+            $totalRaisedArray[$row->id] = $totalRaised;
+            $percentRaisedArray[$row->id] = $percentRaised;
+        }
 
         $general_setting = GeneralSetting::find('1');
-        return view('index', compact('categories', 'user_session', 'freshproject', 'pages', 'general_setting', 'project', 'blogs', 'notificationCount'));
+
+        return view('index', compact(
+            'categories',
+            'user_session',
+            'freshProjects',
+            'pages',
+            'general_setting',
+            'project',
+            'blogs',
+            'notificationCount',
+            'totalRaisedArray',
+            'percentRaisedArray'
+        ));
     }
+
     public function projects()
     {
 
@@ -118,8 +150,24 @@ class UserController extends Controller
         $title = 'Projects';
 
         $campaigns = Campaign::where('status', 1)->get();
+        $totalRaisedArray = [];
+        $percentRaisedArray = [];
+
+        foreach ($campaigns as $row) {
+            $totalRaised = Payment::whereHas('campaign', function($query) use ($row) {
+                $query->where('id', $row->id);
+            })
+            ->where('accepted', 1)
+            ->sum('amount');
+
+            $percentRaised = intval(($totalRaised / $row->goal) * 100);
+
+
+            $totalRaisedArray[$row->id] = $totalRaised;
+            $percentRaisedArray[$row->id] = $percentRaised;
+        }
         $pages = Page::all();
-        return view('list', compact('campaigns', 'user_session', 'title', 'pages'));
+        return view('list', compact('campaigns', 'user_session', 'title', 'pages','totalRaisedArray','percentRaisedArray'));
     }
     public function project_category($category)
     {
@@ -131,9 +179,24 @@ class UserController extends Controller
 
         $user_session = User::where('id', Session::get('LoggedIn'))->first();
         $title = $category;
+        $totalRaisedArray = [];
+        $percentRaisedArray = [];
 
+        foreach ($campaigns as $row) {
+            $totalRaised = Payment::whereHas('campaign', function($query) use ($row) {
+                $query->where('id', $row->id);
+            })
+            ->where('accepted', 1)
+            ->sum('amount');
+
+            $percentRaised = intval(($totalRaised / $row->goal) * 100);
+
+
+            $totalRaisedArray[$row->id] = $totalRaised;
+            $percentRaisedArray[$row->id] = $percentRaised;
+        }
         $pages = Page::all();
-        return view('project_category', compact('campaigns', 'title', 'user_session', 'pages'));
+        return view('project_category', compact('campaigns', 'title', 'user_session', 'pages','totalRaisedArray','percentRaisedArray'));
     }
     public function Userlogin()
     {
@@ -220,8 +283,31 @@ class UserController extends Controller
         $user_session = User::where('id', Session::get('LoggedIn'))->first();
         $campaign = Campaign::where('slug', $slug)->first();
         $projects = Campaign::inRandomOrder()->take(3)->get();
+        $totalRaised = Payment::whereHas('campaign', function($query) use ($campaign) {
+            $query->where('id', $campaign->id);
+        })
+        ->where('accepted', 1)
+        ->sum('amount');
+        $totalRaisedArray = [];
+        $percentRaisedArray = [];
+
+        foreach ($projects as $row) {
+            $totalRaised = Payment::whereHas('campaign', function($query) use ($row) {
+                $query->where('id', $row->id);
+            })
+            ->where('accepted', 1)
+            ->sum('amount');
+
+            $percentRaised = intval(($totalRaised / $row->goal) * 100);
+
+
+            $totalRaisedArray[$row->id] = $totalRaised;
+            $percentRaisedArray[$row->id] = $percentRaised;
+        }
+        $percentRaised = intval(($totalRaised / $campaign->goal) * 100);
+
         $general_setting = GeneralSetting::find('1');
-        return view('appointment', compact('campaign', 'user_session', 'projects', 'general_setting', 'pages'));
+        return view('appointment', compact('campaign', 'user_session', 'projects', 'percentRaised','general_setting', 'pages','totalRaisedArray','percentRaisedArray'));
     }
     public function MyProject()
     {
@@ -619,6 +705,48 @@ class UserController extends Controller
         }
 
         return back()->with('fail', 'Something went wrong');
+    }
+
+    public function back($id)
+    {
+        $campaign = campaign::where('id', $id)->first();
+        $qrcode =  BankDetails::orderby('id', 'desc')->first();
+        $user_session = User::where('id', Session::get('LoggedIn'))->first();
+        $pages = Page::all();
+        return view('back', compact('qrcode', 'campaign', 'pages', 'user_session'));
+    }
+    public function storeBack(Request $request)
+    {
+        // dd($request->all());
+        // Store credit reload request
+        $request->validate([
+            'amount' => 'required|numeric',
+            'payment_receipt' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+
+        $backer = User::find($request->user_id);
+        $Payment = new Payment([
+            'name'=>$backer->name,
+            'payer_email'=>$backer->email,
+            'user_id' => $request->user_id,
+            'campaign_id' => $request->campaign_id,
+            'amount' => $request->amount,
+            'accepted' => false,
+        ]);
+
+        if ($request->hasFile('payment_receipt')) {
+            $payment_receipt = $request->file('payment_receipt');
+            $imageName = $payment_receipt->getClientOriginalName();
+            $payment_receipt->move(public_path('payment_receipt'), $imageName);
+
+            $Payment->payment_receipt = 'payment_receipt/' . $imageName;
+        }
+
+
+        $Payment->save();
+
+        return redirect('dashboard')->with('success', 'Fund has request submitted');
     }
 
     public function WithdrawFunds()

@@ -1,100 +1,126 @@
-@extends("admin.Master")
+@extends('admin.Master')
 @section('title')
-Balance
+    Balance
 @endsection
-@section("content")
+@section('content')
+    <div class="page-body">
+        <div class="container-fluid">
+            <div class="page-header">
+                <div class="row">
+                    <div class="col">
+                        <div class="page-header-left">
+                            <h3>ACELERA</h3>
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="dashboard"><i data-feather="home"></i></a></li>
+                                <li class="breadcrumb-item">Recieve Fund </li>
 
-<div class="page-body">
-    <div class="container-fluid">
-        <div class="page-header">
-            <div class="row">
-                <div class="col">
-                    <div class="page-header-left">
-                        <h3>ACELERA</h3>
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="dashboard"><i data-feather="home"></i></a></li>
-                            <li class="breadcrumb-item">Balance </li>
 
-
-                        </ol>
+                            </ol>
+                        </div>
                     </div>
-                </div>
 
+                </div>
             </div>
         </div>
-    </div>
-    <!-- Container-fluid starts-->
-    <!-- Container-fluid starts-->
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="card">
-                    @if(Session::has('success'))
-                    <div class="alert alert-success">
-                        <p>{{session::get('success')}}</p>
-                    </div>
-                    @endif
-                    @if(Session::has('fail'))
-                    <div class="alert alert-danger">
-                        <p>{{session::get('fail')}}</p>
-                    </div>
-                    @endif
-                    <div class="card-header">
-                        <h5> LISTA DE BALANCES</h5>
-                        <a class="btn btn-pill btn-primary btn-air-primary pull-right" href="{{url('admin/add_balance')}}" data-toggle="tooltip" title="" role="button" data-bs-original-title="btn btn-primary">Agregar Balance
-                         </a>
-                    </div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table table-bordered display" id="advance-1">
-                                <thead>
-                                    <tr>
-                                        <th class="text-center">#</th>
-                                        <th>Nombre</th>
+        <!-- Container-fluid starts-->
+        <!-- Container-fluid starts-->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card">
+                        @if (Session::has('success'))
+                            <div class="alert alert-success">
+                                <p>{{ session::get('success') }}</p>
+                            </div>
+                        @endif
+                        @if (Session::has('fail'))
+                            <div class="alert alert-danger">
+                                <p>{{ session::get('fail') }}</p>
+                            </div>
+                        @endif
+                        <div class="card-header">
+                            <h5> Recieve Fund List</h5>
+                            {{-- <a class="btn btn-pill btn-primary btn-air-primary pull-right"
+                                href="{{ url('admin/add_balance') }}" data-toggle="tooltip" title="" role="button"
+                                data-bs-original-title="btn btn-primary">Agregar Balance
+                            </a> --}}
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="display" id="advance-1">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Payer/Backer</th>
+                                            <th>Project</th>
+                                            <th>Backer Email</th>
+                                            <th>Amount</th>
+                                            <th>Receipt</th>
+                                            <th>Status</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($transaction as $creditReload)
+                                            @php
+                                                $creditsDetails = \App\Models\Campaign::find(
+                                                    $creditReload->campaign_id,
+                                                );
+                                            @endphp
 
-                                        <th>Balance</th>
+                                            <tr>
+                                                <td>{{ $loop->iteration }}</td>
+                                                <td>{{ $creditReload->name }}</td>
+                                                <td>
+                                                    @if ($creditsDetails)
+                                                        {{ $creditsDetails->title }}
+                                                    @else
+                                                        Campaign details not found
+                                                    @endif
+                                                </td>
+                                                <td>{{ $creditReload->payer_email }}</td>
+                                                <td>{{ $creditReload->amount }}</td>
+                                                <td>
+                                                    @if ($creditReload->payment_receipt)
+                                                        <a href="{{ asset($creditReload->payment_receipt) }}"
+                                                            target="_blank">
+                                                            <img src="{{ asset($creditReload->payment_receipt) }}"
+                                                                alt="Payment Receipt" style="max-width: 100px;">
+                                                        </a>
+                                                    @else
+                                                        No receipt uploaded
+                                                    @endif
+                                                </td>
+                                                <td>
+                                                    @if ($creditReload->accepted)
+                                                        Accepted
+                                                    @else
+                                                        Pending
+                                                    @endif
+                                                </td>
+                                                <td>
+                                                    @if (!$creditReload->accepted)
+                                                        <a href="{{ route('accept', ['id' => $creditReload->id]) }}"
+                                                            class="btn btn-sm btn-success">Accept</a>
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
 
-
-                                        <th>Acción</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php $count = 1; ?>
-                                    @foreach($balance as $i => $data)
-
-                                    <tr>
-                                        <td class="text-center">{{ $count++ }}</td>
-                                        <td><a href="#" data-toggle="tooltip" title="User History">{{ \App\Models\User::getUserFullname($data->user_id) }}</a></td>
-
-                                        <td>{{ $data->amount }} </td>
-
-
-                                        <td>
-                                            <!-- <a href="{{ url('admin/edit_balance', ['id' => $data->id]) }}" class="btn btn-sm btn-success" type="submit">Edit</a> -->
-                                            <a href="{{ url('admin/delete_balance', ['id' => $data->id]) }}" class="btn btn-sm btn btn-danger" type="submit">Delete</a>
-                                        </td>
-                                    </tr>
-                                    @endforeach
-
-
-
-                                </tbody>
-                            </table>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <!-- DOM / jQuery  Ends-->
+
+
             </div>
-            <!-- DOM / jQuery  Ends-->
-
-
         </div>
+
+
+        <!-- Container-fluid Ends-->
+        <!-- Container-fluid Ends-->
     </div>
-
-
-    <!-- Container-fluid Ends-->
-    <!-- Container-fluid Ends-->
-</div>
-
-
-
 @endsection

@@ -1643,7 +1643,18 @@ class Admin extends Controller
             $transaction = Payment::all();
             $user_session = User::where('id', Session::get('LoggedIn'))->first();
 
-            return view('admin.transaction_report', compact('user_session', 'transaction'));
+            return view('admin.balance', compact('user_session', 'transaction'));
         }
+    }
+    public function accept($id)
+    {
+        // Accept credit reload request
+        $Payment = Payment::findOrFail($id);
+        $Payment->accepted = true;
+        $Payment->save();
+
+        // Implement any additional logic such as crediting the user's account
+
+        return back()->with('success', 'Fund  accepted');
     }
 }

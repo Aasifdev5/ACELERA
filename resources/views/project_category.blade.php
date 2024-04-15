@@ -74,28 +74,42 @@
                                             <div class="inner count-box">
                                                 <div class="bar">
                                                     <div class="bar-innner">
-                                                        <div class="skill-percent">
-                                                            <span class="count-text" data-speed="3000"
-                                                                data-stop="70">0</span>
-                                                            <span class="percent">%</span>
-                                                        </div>
-                                                        <div class="bar-fill" data-percent="70"></div>
+                                                        <?php
+                                                        // Assuming you are in a view file or a blade template
+                                                        $campaign = new \App\Models\Campaign(); // Or you retrieve the campaign object from somewhere else
+
+                                                        // Output the percentage raised in your HTML
+
+                                                        ?>
+                                                        @foreach ($percentRaisedArray as $projectId => $percentRaised)
+                                                            @if ($row->id == $projectId)
+                                                                <div class="skill-percent">
+                                                                    <span class="count-text" data-speed="3000"
+                                                                        data-stop="{{ $percentRaised }}">0</span>
+                                                                    <span class="percent">%</span>
+                                                                </div>
+
+
+                                                                <div class="bar-fill"
+                                                                    data-percent="{{ $percentRaised }}"></div>
+                                                            @endif
+                                                        @endforeach
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="project-one__goals">
-                                        <p class="project-one__goals-one"><span>$@if ($amount_prefilled)
-                                                    {{ implode(',', $amount_prefilled) }}
-                                                @else
-                                                    No amount prefilled
-                                                @endif
+                                        <p class="project-one__goals-one"><span>@foreach ($totalRaisedArray as $projectId => $Raised)
+                                            @if ($row->id == $projectId)
+                                                {{ $Raised }}
+                                            @endif
+                                        @endforeach
                                             </span>
-                                            <br>{{ __('Goal of') }} ${{ $row->goal }}
+                                            <br>{{ __('Goal of') }} BS {{ $row->goal }}
                                         </p>
                                         <p class="project-one__goals-one"><span class="odometer project-one__plus"
-                                                data-count="12"></span>
+                                                data-count="{{ \App\Models\Payment::where('campaign_id', $row->id)->where('accepted', 1)->get()->count() }}"></span>
                                             <br>{{ __('Backers We Got') }}
                                         </p>
                                     </div>

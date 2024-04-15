@@ -10,6 +10,16 @@
     }
 </style>
 <div class="container-fluid">
+    @if(Session::has('success'))
+    <div class="alert alert-success" style="background-color: green;">
+        <p style="color: #fff;">{{session::get('success')}}</p>
+    </div>
+    @endif
+    @if(Session::has('fail'))
+    <div class="alert alert-danger" style="background-color: red;">
+        <p style="color: #fff;">{{session::get('fail')}}</p>
+    </div>
+    @endif
     <div class="row">
         <!-- Sidebar -->
         <nav class="col-md-2 d-none d-md-block  sidebar" style="background-color: #2a0054;">
