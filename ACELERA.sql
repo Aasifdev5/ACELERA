@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 15, 2024 at 09:19 AM
+-- Generation Time: Apr 17, 2024 at 11:20 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -258,10 +258,10 @@ CREATE TABLE `campaigns` (
 --
 
 INSERT INTO `campaigns` (`id`, `user_id`, `category_id`, `title`, `slug`, `short_description`, `description`, `campaign_owner_commission`, `goal`, `min_amount`, `max_amount`, `recommended_amount`, `total_funded`, `total_payments`, `amount_prefilled`, `end_method`, `views`, `image`, `og_image`, `video`, `feature_image`, `status`, `country_id`, `address`, `is_funded`, `is_staff_picks`, `start_date`, `end_date`, `total_funded_last_upated_at`, `created_at`, `updated_at`) VALUES
-(18, 1, 9, 'AudioPhile – First Smart Wireless Headphones', 'audiophile-first-smart-wireless-headphones', 'Mauris non dignissim purus, ac commodo diam. Donec sit amet lacinia nulla. Aliquam quis purus.', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vulputate sed mauris vitae pellentesque. Nunc ut ullamcorper libero. Aenean fringilla mauris quis risus laoreet interdum. Quisque imperdiet orci in metus aliquam egestas. Fusce elit libero, imperdiet nec orci quis, convallis hendrerit nisl. Cras auctor nec purus at placerat. Nsectetur cing mauris quis risus laoreet elit. Suspe ndisse dolor sit amet suscipit sagittis leo. Entum estibulum metus aliquam egestas dignissim posuere. If you are going to use a auctor nec purus passage.</p>', NULL, 3600.00, NULL, NULL, 500.00, 0.00, 0, '830', 'goal_achieve', NULL, 'uploads/Projects/1712133331-v3SntSAo4G.jpg', 'uploads/meta/1711969317-VtUA8tyZ9n.jpg', NULL, '', 1, 48, 'ShenZhen', 0, NULL, '2024-04-04', '2024-06-07', '2024-04-14 00:09:07', '2024-04-01 05:31:57', '2024-04-14 00:09:07'),
+(18, 1, 9, 'AudioPhile – First Smart Wireless Headphones', 'audiophile-first-smart-wireless-headphones', 'Mauris non dignissim purus, ac commodo diam. Donec sit amet lacinia nulla.', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vulputate sed mauris vitae pellentesque. Nunc ut ullamcorper libero. Aenean fringilla mauris quis risus laoreet interdum. Quisque imperdiet orci in metus aliquam egestas. Fusce elit libero, imperdiet nec orci quis, convallis hendrerit nisl. Cras auctor nec purus at placerat. Nsectetur cing mauris quis risus laoreet elit. Suspe ndisse dolor sit amet suscipit sagittis leo. Entum estibulum metus aliquam egestas dignissim posuere. If you are going to use a auctor nec purus passage.</p>', NULL, 3600.00, NULL, NULL, NULL, 0.00, 0, NULL, 'goal_achieve', NULL, 'uploads/Projects/1712133331-v3SntSAo4G.jpg', 'uploads/meta/1711969317-VtUA8tyZ9n.jpg', NULL, '', 1, 48, 'ShenZhen', 0, NULL, '2024-04-04', '2024-06-07', '2024-04-14 00:09:07', '2024-04-01 05:31:57', '2024-04-16 22:26:36'),
 (29, 1, 15, 'Non qui dolor et et iste veniam.', 'non-qui-dolor-et-et-iste-veniam-1', 'Non amet dolor commodi nemo voluptas veritatis aperiam. Earum porro ad explicabo laboriosam nulla architecto eaque at. Voluptatem ipsam qui placeat est.', '<p>Voluptate quia quibusdam dolor dolore. Temporibus facilis quia sed iure necessitatibus soluta. Voluptatem pariatur esse quia et. Voluptatem quo cum est ea.</p>', NULL, 4511.28, NULL, NULL, 87.06, 501.15, 211544059, '27433198', 'goal_achieve', 7396, 'uploads/Projects/1712133375-VtLfwjsLDX.jpg', 'uploads/meta/1712065434-nqNcnZB2BU.jpg', NULL, 'https://via.placeholder.com/640x480.png/00dd00?text=molestiae', 0, 6, '118 Gottlieb Turnpike Suite 500New Deonteville, NY 45839', 0, 0, '2008-05-14', '2024-04-24', '2004-09-28 09:38:13', '2024-04-02 07:18:55', '2024-04-12 01:21:22'),
 (30, 1, 6, 'Aut distinctio molestiae accusamus sint reprehenderit aut et.', 'aut-distinctio-molestiae-accusamus-sint-reprehenderit-aut-et-1', 'Magnam exercitationem sunt ut odit. Hic veritatis magni qui.', '<p>Dolorum architecto in non aliquid omnis reiciendis quae. Accusamus non nam consectetur laborum culpa dignissimos.</p>', NULL, 5348.50, NULL, NULL, 35.22, 471.95, 91652508, '650', 'end_date', 3089, 'uploads/Projects/1712133411-jp1OBYXhvg.jpg', 'uploads/meta/1712066037-7OswKZKvlc.jpg', NULL, 'https://via.placeholder.com/640x480.png/00ff88?text=ad', 1, 2, '14596 Tate GardensSouth Ethelyn, FL 70648-6204', 0, 0, '2019-02-21', '2024-04-30', '2024-01-01 01:59:33', '2024-04-02 07:18:55', '2024-04-13 21:47:17'),
-(31, 1, 15, 'Dolor asperiores suscipit magni numquam.', 'dolor-asperiores-suscipit-magni-numquam-1', 'Officia repellat eum est quod eum nobis. Deserunt perferendis ut maiores cupiditate officia exercitationem. Labore est nesciunt eos quos aperiam ratione.', '<p>Accusantium iusto quis modi aut ut. Sed id unde praesentium. Beatae molestias dicta pariatur eum. Nihil voluptatum nisi id et aut quo. Est iusto velit praesentium pariatur maiores dolor.</p>', NULL, 8549.32, NULL, NULL, 43.69, 4719.36, 2949203, '2406', 'goal_achieve', 14809561, 'uploads/Projects/1712066183-qzmE2mOJVn.jpg', 'uploads/meta/1712066183-H316sGeour.jpg', NULL, 'https://via.placeholder.com/640x480.png/0077cc?text=reprehenderit', 1, NULL, '204 Christiansen CrescentLake Allison, MT 70434-8739', 0, 0, '1975-02-05', '2024-05-05', '2009-06-23 04:05:43', '2024-04-02 07:18:55', '2024-04-13 21:48:21'),
+(31, 28, 15, 'Dolor asperiores suscipit magni numquam.', 'dolor-asperiores-suscipit-magni-numquam-1', 'Officia repellat eum est quod eum nobis. Deserunt perferendis ut maiores cupiditate officia exercitationem. Labore est nesciunt eos quos aperiam ratione.', '<p>Accusantium iusto quis modi aut ut. Sed id unde praesentium. Beatae molestias dicta pariatur eum. Nihil voluptatum nisi id et aut quo. Est iusto velit praesentium pariatur maiores dolor.</p>', NULL, 8549.32, NULL, NULL, 43.69, 4719.36, 2949203, '2406', 'goal_achieve', 14809561, 'uploads/Projects/1712066183-qzmE2mOJVn.jpg', 'uploads/meta/1712066183-H316sGeour.jpg', NULL, 'https://via.placeholder.com/640x480.png/0077cc?text=reprehenderit', 1, NULL, '204 Christiansen CrescentLake Allison, MT 70434-8739', 0, 0, '1975-02-05', '2024-05-05', '2009-06-23 04:05:43', '2024-04-02 07:18:55', '2024-04-13 21:48:21'),
 (32, 1, 3, 'Iste qui deleniti quidem velit dolor sint.', 'iste-qui-deleniti-quidem-velit-dolor-sint-1', 'Veritatis perspiciatis qui voluptatem et aut voluptatem. Voluptatum nesciunt et modi. Quaerat deleniti sit reprehenderit qui nemo.', '<p>Omnis sit iure magnam laborum. Occaecati pariatur illo recusandae dolore corrupti. Qui veniam error eos a minima. Ut illum labore dolor quae velit. Quis dolor quis minima voluptates nihil.</p>', NULL, 1964.13, NULL, NULL, 77.86, 451.39, 3067026, '81598111', NULL, 7772, 'uploads/Projects/1712066128-skgCH5GYWr.jpg', 'uploads/meta/1712066128-PatM3tYXIm.jpg', NULL, 'https://via.placeholder.com/640x480.png/00eedd?text=quia', 0, 6, '359 Georgette ViaductWest Lacyport, AR 55365-3615', 0, 1, '2002-05-18', NULL, '2016-06-06 07:41:38', '2024-04-02 07:18:55', '2024-04-13 21:49:28'),
 (42, 3, 14, 'Unogesic MR 250mg/50mg/325mg Tablet wow', 'unogesic-mr-250mg50mg325mg-tablet-wow-1', 'MARKETER\r\nCurewell Drugs and Pharmaceuticals Pvt Ltd\r\nSALT COMPOSITION\r\nChlorzoxazone (250mg) + Diclofenac (50mg) + Paracetamol (325mg)\r\nSTORAGE\r\nStore below 30°C', '<p>Unogesic MR 250mg/50mg/325mg Tablet is a combination medicine used in the treatment of pain due to muscle spasms. It improves the movement of muscles and provides relief from pain and discomfort associated with muscle spasms. Unogesic MR 250mg/50mg/325mg Tablet should be taken with food. This will prevent you from getting an upset stomach. You should take it regularly as advised by your doctor. Do not take more or use it for a longer duration than recommended by your doctor. Using this medicine can cause some common side effects such as nausea, vomiting, heartburn, stomach pain, diarrhea, loss of appetite, and dryness in the mouth. If any of these side effects bother you or do not go away with time, you should let your doctor know. Your doctor may help with ways to reduce or prevent these side effects. The medicine may not be suitable for everybody. Before taking it, let your doctor know if you have any problems with your heart, kidneys, or liver. To make sure it is safe for you, let your doctor also know all the other medicines you are taking. Pregnant and breastfeeding mothers should first consult their doctors before using the medicine. USES OF UNOGESIC MR TABLET Treatment of Pain due to muscle spasm BENEFITS OF UNOGESIC MR TABLET In Treatment of Pain due to muscle spasm Unogesic MR 250mg/50mg/325mg Tablet is a combination medicine that is used to relieve pain, inflammation, and swelling in conditions that affect muscles. Also, it effectively relieves muscle stiffness or spasm, thereby improving muscle movement. It works by blocking chemical messengers in the brain that tell us we have pain. Take it as it is prescribed to get the most benefit. Do not take more or longer than needed as that can be dangerous. In general, you should take the lowest dose that works, for the shortest possible time. This will help you to go about your daily activities more easily and have a better, more active, quality of life.</p>', NULL, 5000.00, NULL, NULL, 375.00, NULL, NULL, '1000', 'goal_achieve', NULL, 'uploads/Projects/1712465958-VfWv9yeUEp.jpg', 'uploads/meta/1712465958-QQawXoZ4ri.jpg', NULL, '', 0, 102, 'Indore, Madhaya Pradesh, India', 0, NULL, '2024-04-10', '2024-04-17', NULL, '2024-04-06 23:29:18', '2024-04-13 21:49:50');
 
@@ -292,11 +292,11 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`id`, `uuid`, `name`, `image`, `is_feature`, `slug`, `meta_title`, `meta_description`, `meta_keywords`, `og_image`, `status`, `created_at`, `updated_at`) VALUES
-(3, 'd8cde16c-e98b-4991-adf9-f2b150789c90', 'Productivity', 'uploads/category/1711894889-NRPFi85om6.png', 'yes', 'Productivity', NULL, NULL, NULL, 'uploads/meta/1711894889-c7C4iAoMTz.png', 1, '2022-12-04 17:05:33', '2024-03-31 08:51:29'),
-(6, '57e18cf4-0050-4baf-8e10-3d9a65eaf8ed', 'Education', 'uploads/category/1711873444-trQS5wLXcg.png', 'no', 'Education', NULL, NULL, NULL, 'uploads/meta/1711873444-bKCFx43l6p.png', 1, '2022-12-04 17:05:33', '2024-03-31 02:54:04'),
-(7, '90cd37ac-b804-4095-a471-3651ec40718a', 'Design', 'uploads/category/1711952243-bxpq7BT3hU.png', 'no', 'Design', NULL, NULL, NULL, 'uploads/meta/1711873741-Pp45UkDnvf.png', 1, '2022-12-04 17:05:33', '2024-04-01 00:47:23'),
-(9, 'a1d1c370-5ce4-4bbc-9b27-5e8645282259', 'Technology', 'uploads/category/1711873546-zEEkXFlIHs.png', 'no', 'Technology', NULL, NULL, NULL, 'uploads/meta/1711873546-AhtaJbnpyt.png', 1, '2022-12-04 17:05:33', '2024-03-31 02:59:53'),
-(14, '86008391-2012-4caa-8a23-671590e5ce89', 'Medical', 'uploads/category/1711873644-7BrNKAri9h.png', 'no', 'Medical', NULL, NULL, NULL, 'uploads/meta/1711873644-LR7hxcxK2M.png', 1, '2024-03-31 01:43:56', '2024-03-31 02:57:24'),
+(3, 'd8cde16c-e98b-4991-adf9-f2b150789c90', 'Productividad', 'uploads/category/1711894889-NRPFi85om6.png', 'yes', 'Productividad', NULL, NULL, NULL, 'uploads/meta/1711894889-c7C4iAoMTz.png', 1, '2022-12-04 17:05:33', '2024-03-31 08:51:29'),
+(6, '57e18cf4-0050-4baf-8e10-3d9a65eaf8ed', 'Educación', 'uploads/category/1711873444-trQS5wLXcg.png', 'no', 'Educación', NULL, NULL, NULL, 'uploads/meta/1711873444-bKCFx43l6p.png', 1, '2022-12-04 17:05:33', '2024-03-31 02:54:04'),
+(7, '90cd37ac-b804-4095-a471-3651ec40718a', 'Diseño', 'uploads/category/1711952243-bxpq7BT3hU.png', 'no', 'Diseño', NULL, NULL, NULL, 'uploads/meta/1711873741-Pp45UkDnvf.png', 1, '2022-12-04 17:05:33', '2024-04-01 00:47:23'),
+(9, 'a1d1c370-5ce4-4bbc-9b27-5e8645282259', 'Tecnología', 'uploads/category/1711873546-zEEkXFlIHs.png', 'no', 'Tecnología', NULL, NULL, NULL, 'uploads/meta/1711873546-AhtaJbnpyt.png', 1, '2022-12-04 17:05:33', '2024-03-31 02:59:53'),
+(14, '86008391-2012-4caa-8a23-671590e5ce89', 'Médico', 'uploads/category/1711873644-7BrNKAri9h.png', 'no', 'Médico', NULL, NULL, NULL, 'uploads/meta/1711873644-LR7hxcxK2M.png', 1, '2024-03-31 01:43:56', '2024-03-31 02:57:24'),
 (15, 'd5a337f2-8f46-47ea-ab54-bb651bcafc2c', 'Videos', 'uploads/category/1711870592-6dexcokD6I.png', 'no', 'Videos', NULL, NULL, NULL, 'uploads/meta/1711870592-VnhTOQYtmd.png', 1, '2024-03-31 02:06:32', '2024-03-31 02:06:32');
 
 -- --------------------------------------------------------
@@ -433,7 +433,26 @@ INSERT INTO `chats` (`id`, `sender_id`, `receiver_id`, `campaign_id`, `message`,
 (109, 4, 3, 0, 'sd', 0, '2024-04-09 08:12:00', '2024-04-09 08:12:00', NULL),
 (110, 3, 4, 0, 'dfghf', 0, '2024-04-09 08:12:43', '2024-04-09 08:12:43', NULL),
 (111, 4, 3, 0, '[[[', 0, '2024-04-09 08:12:57', '2024-04-09 08:12:57', NULL),
-(112, 3, 4, 0, ']]]', 0, '2024-04-09 08:13:14', '2024-04-09 08:13:14', NULL);
+(112, 3, 4, 0, ']]]', 0, '2024-04-09 08:13:14', '2024-04-09 08:13:14', NULL),
+(113, 3, 4, 0, 'n', 0, '2024-04-17 01:54:38', '2024-04-17 01:54:38', NULL),
+(114, 4, 3, 0, 'd', 0, '2024-04-17 01:55:10', '2024-04-17 01:55:10', NULL),
+(115, 4, 3, 0, 'it is working', 0, '2024-04-17 02:00:33', '2024-04-17 02:00:33', NULL),
+(116, 3, 4, 0, 'yeah', 0, '2024-04-17 02:01:08', '2024-04-17 02:01:08', NULL),
+(117, 4, 3, 0, 'confuse', 0, '2024-04-17 02:03:13', '2024-04-17 02:03:13', NULL),
+(118, 3, 4, 0, 'tell me confesiion you have', 0, '2024-04-17 02:04:11', '2024-04-17 02:04:11', NULL),
+(119, 3, 1, 0, 'hi', 0, '2024-04-17 02:53:58', '2024-04-17 02:53:58', NULL),
+(120, 28, 28, 0, 'fuck you', 0, '2024-04-17 02:58:24', '2024-04-17 02:58:24', NULL),
+(121, 4, 28, 0, 'j', 0, '2024-04-17 03:00:31', '2024-04-17 03:00:31', NULL),
+(122, 28, 28, 0, 'y', 0, '2024-04-17 03:01:04', '2024-04-17 03:01:04', NULL),
+(123, 28, 4, 0, 'THIS IS TESTING FROM FULL STACK DEV', 0, '2024-04-17 03:02:49', '2024-04-17 03:02:49', NULL),
+(124, 4, 28, 0, 'sd', 0, '2024-04-17 03:04:51', '2024-04-17 03:04:51', NULL),
+(125, 28, 4, 0, 'f', 0, '2024-04-17 03:05:06', '2024-04-17 03:05:06', NULL),
+(126, 4, 28, 0, 'FROM', 0, '2024-04-17 03:10:10', '2024-04-17 03:10:10', NULL),
+(127, 4, 1, 0, 'd', 0, '2024-04-17 03:13:08', '2024-04-17 03:13:08', NULL),
+(128, 1, 4, 0, 'what happen', 0, '2024-04-17 03:14:12', '2024-04-17 03:14:12', NULL),
+(129, 29, 4, 0, 'chatting with mail notification', 0, '2024-04-17 03:22:53', '2024-04-17 03:22:53', NULL),
+(130, 29, 4, 0, 'chatting with mail notification', 0, '2024-04-17 03:22:57', '2024-04-17 03:22:57', NULL),
+(131, 4, 29, 0, 'yeah', 0, '2024-04-17 03:24:34', '2024-04-17 03:24:34', NULL);
 
 -- --------------------------------------------------------
 
@@ -11836,16 +11855,39 @@ INSERT INTO `notifications` (`id`, `uuid`, `sender_id`, `user_id`, `text`, `targ
 (29, '9ad2815e-6e71-4853-91ea-0c70bcf0d0ca', 3, 4, 'dfghf', 'http://127.0.0.1:8000/chat', 'yes', 2, '2024-04-09 08:12:43', '2024-04-09 08:17:58'),
 (30, '77159643-7d5d-43d4-867d-6da78f7e32f7', 4, 3, '[[[', 'http://127.0.0.1:8000/chat', 'yes', 2, '2024-04-09 08:12:57', '2024-04-09 08:17:27'),
 (31, 'be0ea40d-2fe9-4d38-9175-ca774b9a4b69', 3, 4, ']]]', 'http://127.0.0.1:8000/chat', 'yes', 2, '2024-04-09 08:13:14', '2024-04-09 08:17:58'),
-(32, '16117097-583a-4823-a3d1-5cea773cbbdb', 1, 1, 'Project status is unknown.', 'http://127.0.0.1:8000/project-details/non-qui-dolor-et-et-iste-veniam-1', 'no', 2, '2024-04-12 01:21:22', '2024-04-12 01:21:22'),
-(33, '720ad673-f95a-4147-a2bb-ace8e5be806d', 1, 1, 'Project has been approved.', 'http://127.0.0.1:8000/project-details/unogesic-mr-250mg50mg325mg-tablet-wow', 'no', 2, '2024-04-12 01:29:28', '2024-04-12 01:29:28'),
+(32, '16117097-583a-4823-a3d1-5cea773cbbdb', 1, 1, 'Project status is unknown.', 'http://127.0.0.1:8000/project-details/non-qui-dolor-et-et-iste-veniam-1', 'yes', 2, '2024-04-12 01:21:22', '2024-04-17 00:22:03'),
+(33, '720ad673-f95a-4147-a2bb-ace8e5be806d', 1, 1, 'Project has been approved.', 'http://127.0.0.1:8000/project-details/unogesic-mr-250mg50mg325mg-tablet-wow', 'yes', 2, '2024-04-12 01:29:28', '2024-04-17 00:22:03'),
 (34, '1fbba4c0-e899-497a-bf64-bf9a0e901dc3', 28, 28, 'A new user has registered on the platform.', 'http://127.0.0.1:8000/admin/users', 'no', 1, '2024-04-12 05:25:38', '2024-04-12 05:25:38'),
 (35, '4f3f8f95-9fda-4cbc-a40f-cadbd39efb79', 29, 29, 'A new user has registered on the platform.', 'http://127.0.0.1:8000/admin/users', 'no', 1, '2024-04-12 05:28:38', '2024-04-12 05:28:38'),
-(36, '1b2972b6-a34f-45e3-8043-e39be6969d17', 1, 1, 'Project has been approved.', 'http://127.0.0.1:8000/project-details/audiophile-first-smart-wireless-headphones-1', 'no', 2, '2024-04-13 21:45:02', '2024-04-13 21:45:02'),
-(37, '68c8c01e-0bb9-460c-8692-53bce08fe6e8', 1, 1, 'Project has been approved.', 'http://127.0.0.1:8000/project-details/audiophile-first-smart-wireless-headphones', 'no', 2, '2024-04-13 21:45:29', '2024-04-13 21:45:29'),
-(38, 'f2a4898a-f63c-4cc4-9804-319d6b6ce29a', 1, 1, 'Project has been approved.', 'http://127.0.0.1:8000/project-details/aut-distinctio-molestiae-accusamus-sint-reprehenderit-aut-et-1', 'no', 2, '2024-04-13 21:47:17', '2024-04-13 21:47:17'),
-(39, '0e701640-9d00-47e7-acff-678a0a5dd442', 1, 1, 'Project has been approved.', 'http://127.0.0.1:8000/project-details/dolor-asperiores-suscipit-magni-numquam-1', 'no', 2, '2024-04-13 21:48:21', '2024-04-13 21:48:21'),
-(40, '945fd99f-fd1f-45bb-a305-df95ae620418', 1, 1, 'Project status is unknown.', 'http://127.0.0.1:8000/project-details/iste-qui-deleniti-quidem-velit-dolor-sint-1', 'no', 2, '2024-04-13 21:49:28', '2024-04-13 21:49:28'),
-(41, '03006259-cd24-4ec9-8cba-cd1f0fd3fb3b', 1, 1, 'Project status is unknown.', 'http://127.0.0.1:8000/project-details/unogesic-mr-250mg50mg325mg-tablet-wow-1', 'no', 2, '2024-04-13 21:49:50', '2024-04-13 21:49:50');
+(36, '1b2972b6-a34f-45e3-8043-e39be6969d17', 1, 1, 'Project has been approved.', 'http://127.0.0.1:8000/project-details/audiophile-first-smart-wireless-headphones-1', 'yes', 2, '2024-04-13 21:45:02', '2024-04-17 00:22:03'),
+(37, '68c8c01e-0bb9-460c-8692-53bce08fe6e8', 1, 1, 'Project has been approved.', 'http://127.0.0.1:8000/project-details/audiophile-first-smart-wireless-headphones', 'yes', 2, '2024-04-13 21:45:29', '2024-04-17 00:22:03'),
+(38, 'f2a4898a-f63c-4cc4-9804-319d6b6ce29a', 1, 1, 'Project has been approved.', 'http://127.0.0.1:8000/project-details/aut-distinctio-molestiae-accusamus-sint-reprehenderit-aut-et-1', 'yes', 2, '2024-04-13 21:47:17', '2024-04-17 00:22:03'),
+(39, '0e701640-9d00-47e7-acff-678a0a5dd442', 1, 1, 'Project has been approved.', 'http://127.0.0.1:8000/project-details/dolor-asperiores-suscipit-magni-numquam-1', 'yes', 2, '2024-04-13 21:48:21', '2024-04-17 00:22:03'),
+(40, '945fd99f-fd1f-45bb-a305-df95ae620418', 1, 1, 'Project status is unknown.', 'http://127.0.0.1:8000/project-details/iste-qui-deleniti-quidem-velit-dolor-sint-1', 'yes', 2, '2024-04-13 21:49:28', '2024-04-17 00:22:03'),
+(41, '03006259-cd24-4ec9-8cba-cd1f0fd3fb3b', 1, 1, 'Project status is unknown.', 'http://127.0.0.1:8000/project-details/unogesic-mr-250mg50mg325mg-tablet-wow-1', 'yes', 2, '2024-04-13 21:49:50', '2024-04-17 00:22:03'),
+(42, '08440c65-d55a-491d-b3be-10131ae5497e', 1, 1, 'Project has been approved.', 'http://127.0.0.1:8000/project-details/audiophile-first-smart-wireless-headphones-1', 'yes', 2, '2024-04-16 22:24:19', '2024-04-17 00:22:03'),
+(43, '3ab5fb2e-604e-4144-8812-39d87359de80', 1, 1, 'Project has been approved.', 'http://127.0.0.1:8000/project-details/audiophile-first-smart-wireless-headphones', 'yes', 2, '2024-04-16 22:26:36', '2024-04-17 00:22:03'),
+(44, 'aeb22589-6655-4cfb-9018-dd5457e19b1f', 29, 29, 'You have a new backer on your Campaign', 'http://127.0.0.1:8000/chat', 'yes', 2, '2024-04-17 01:08:33', '2024-04-17 01:09:03'),
+(45, 'f2edce77-d505-49d1-8762-783f91ff4f3f', 29, 28, 'You have a new backer on your Campaign', 'http://127.0.0.1:8000/chat', 'yes', 2, '2024-04-17 01:15:38', '2024-04-17 02:59:18'),
+(46, '676bfbf3-c38a-4dbb-bc30-14fab37d6644', 3, 4, 'n', 'http://127.0.0.1:8000/chat', 'yes', 2, '2024-04-17 01:54:38', '2024-04-17 02:00:13'),
+(47, '7bc9a622-9000-4a66-b238-010fa74704cc', 4, 3, 'd', 'http://127.0.0.1:8000/chat', 'no', 2, '2024-04-17 01:55:10', '2024-04-17 01:55:10'),
+(48, '174fa506-97eb-4e68-a940-46517b90a42f', 4, 3, 'it is working', 'http://127.0.0.1:8000/chat', 'no', 2, '2024-04-17 02:00:33', '2024-04-17 02:00:33'),
+(49, 'd741da7c-1860-4d58-b913-7d0868b72fe0', 3, 4, 'yeah', 'http://127.0.0.1:8000/chat', 'yes', 2, '2024-04-17 02:01:08', '2024-04-17 02:01:46'),
+(50, '243ec4bb-b9cc-4756-95af-82e545b86f6b', 4, 3, 'confuse', 'http://127.0.0.1:8000/chat', 'yes', 2, '2024-04-17 02:03:13', '2024-04-17 02:03:42'),
+(51, 'b7a58765-16fa-4474-8c4c-248f1f7f4aff', 3, 4, 'tell me confesiion you have', 'http://127.0.0.1:8000/chat', 'yes', 2, '2024-04-17 02:04:11', '2024-04-17 02:04:30'),
+(52, '1f3b8273-e14f-4fbb-b94f-ed5285f92495', 3, 1, 'hi', 'http://127.0.0.1:8000/chat', 'no', 2, '2024-04-17 02:53:58', '2024-04-17 02:53:58'),
+(53, 'aa098a34-fc81-4eb6-9645-22d18f463341', 28, 28, 'fuck you', 'http://127.0.0.1:8000/chat', 'no', 2, '2024-04-17 02:58:24', '2024-04-17 02:58:24'),
+(54, '4d8a8dfd-adfe-405d-8a45-9b732c6f4e71', 4, 28, 'j', 'http://127.0.0.1:8000/chat', 'yes', 2, '2024-04-17 03:00:31', '2024-04-17 03:02:39'),
+(55, '28b97665-73e3-4d01-bae9-b30da199d9ec', 28, 28, 'y', 'http://127.0.0.1:8000/chat', 'no', 2, '2024-04-17 03:01:04', '2024-04-17 03:01:04'),
+(56, '2a491c80-b5c4-4882-a9e9-f179c0abc69e', 28, 4, 'THIS IS TESTING FROM FULL STACK DEV', 'http://127.0.0.1:8000/chat', 'no', 2, '2024-04-17 03:02:49', '2024-04-17 03:02:49'),
+(57, '1687b1eb-4be4-4d1d-b348-d720185a51a5', 4, 28, 'sd', 'http://127.0.0.1:8000/chat', 'no', 2, '2024-04-17 03:04:51', '2024-04-17 03:04:51'),
+(58, 'd4c37aa2-9c81-4fa4-8e5e-249921514041', 28, 4, 'f', 'http://127.0.0.1:8000/chat', 'no', 2, '2024-04-17 03:05:06', '2024-04-17 03:05:06'),
+(59, '1514c365-cdb4-41f6-92bc-0b1131570cd8', 4, 28, 'FROM', 'http://127.0.0.1:8000/chat', 'no', 2, '2024-04-17 03:10:10', '2024-04-17 03:10:10'),
+(60, '02a746b3-3ddf-412f-ab46-fc837b34a431', 4, 1, 'd', 'http://127.0.0.1:8000/chat', 'yes', 2, '2024-04-17 03:13:08', '2024-04-17 03:13:59'),
+(61, '6c9d61ba-604c-4161-ad90-9ed6ef310fbe', 1, 4, 'what happen', 'http://127.0.0.1:8000/chat', 'no', 2, '2024-04-17 03:14:12', '2024-04-17 03:14:12'),
+(62, 'f3a98909-2263-4557-9473-7eb49f40dbf6', 29, 4, 'chatting with mail notification', 'http://127.0.0.1:8000/chat', 'no', 2, '2024-04-17 03:22:56', '2024-04-17 03:22:56'),
+(63, '05378e7a-79ea-4538-aa8b-4a50be59ad5a', 29, 4, 'chatting with mail notification', 'http://127.0.0.1:8000/chat', 'no', 2, '2024-04-17 03:22:59', '2024-04-17 03:22:59'),
+(64, '564bf604-08b1-4d30-aa9a-0da9388cc1e9', 4, 29, 'yeah', 'http://127.0.0.1:8000/chat', 'no', 2, '2024-04-17 03:24:36', '2024-04-17 03:24:36');
 
 -- --------------------------------------------------------
 
@@ -11925,7 +11967,11 @@ CREATE TABLE `payments` (
 --
 
 INSERT INTO `payments` (`id`, `name`, `email`, `campaign_id`, `user_id`, `reward_id`, `amount`, `payment_receipt`, `accepted`, `status`, `payer_email`, `created_at`, `updated_at`) VALUES
-(1, 'alex', NULL, 18, 4, NULL, 580.00, 'payment_receipt/download.png', 1, 'initial', 'alex@gmail.com', '2024-04-14 00:17:43', '2024-04-14 00:44:19');
+(1, 'alex', NULL, 18, 4, NULL, 580.00, 'payment_receipt/download.png', 1, 'initial', 'alex@gmail.com', '2024-04-14 00:17:43', '2024-04-14 00:44:19'),
+(2, 'Radha', NULL, 30, 29, NULL, 198.00, 'payment_receipt/english-flag-vector-675964.jpg', 0, 'initial', 'arstech2a@gmail.com', '2024-04-17 00:51:58', '2024-04-17 00:51:58'),
+(3, 'Radha', NULL, 31, 29, NULL, 198.00, 'payment_receipt/IMG_4416_vo4r1a_1712164410.jpg', 0, 'initial', 'arstech2a@gmail.com', '2024-04-17 00:57:10', '2024-04-17 00:57:10'),
+(4, 'Radha', NULL, 31, 29, NULL, 163.00, 'payment_receipt/IMG_4416_vo4r1a_1712164410.jpg', 0, 'initial', 'arstech2a@gmail.com', '2024-04-17 01:08:33', '2024-04-17 01:08:33'),
+(5, 'Radha', NULL, 31, 29, NULL, 168.00, 'payment_receipt/IMG_4416_vo4r1a_1712164410.jpg', 0, 'initial', 'arstech2a@gmail.com', '2024-04-17 01:15:38', '2024-04-17 01:15:38');
 
 -- --------------------------------------------------------
 
@@ -16091,15 +16137,15 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `account_type`, `role`, `name`, `email`, `email_verified_at`, `password`, `custom_password`, `mobile_number`, `country`, `last_seen`, `is_online`, `is_active`, `status`, `about`, `photo_url`, `profile_photo`, `remember_token`, `ip_address`, `balance`, `is_system`, `is_subscribed`, `privacy`, `gender`, `created_by`, `deleted_at`, `language`, `is_super_admin`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 1, 'SUPER ADMINISTRADOR', 'admin@gmail.com', '2023-03-23 07:45:02', '$2y$10$9SbqzcUtyfeaf4019gajcOGQ4/k.XfIpeMXZp/ZERKUP0Z9GA02MK', NULL, '8878326802', 'india', '2024-04-14 02:35:35', 1, 1, 1, NULL, NULL, 'acl2.png', NULL, NULL, NULL, 1, 0, 1, 1, NULL, NULL, 'es', 1, '2023-03-23 07:45:02', '2024-04-14 02:35:35'),
+(1, 'admin', 1, 'SUPER ADMINISTRADOR', 'admin@gmail.com', '2023-03-23 07:45:02', '$2y$10$9SbqzcUtyfeaf4019gajcOGQ4/k.XfIpeMXZp/ZERKUP0Z9GA02MK', NULL, '8878326802', 'india', '2024-04-17 03:23:35', 0, 1, 1, NULL, NULL, 'acl2.png', NULL, NULL, NULL, 1, 0, 1, 1, NULL, NULL, 'es', 1, '2023-03-23 07:45:02', '2024-04-17 03:23:35'),
 (2, 'admin', NULL, 'Worker', 'worker@gmail.com', '2023-03-23 07:45:02', '$2y$10$TwlAHh5tVCO.ZGjAC74MVeFE0eltxZiYgB9.CTjimg7AOQXEiOlt.', NULL, '8878326802', 'india', '2024-01-29 17:12:05', 1, 1, 1, NULL, NULL, '68e78a4c175d72829e9bfa9592c76c35 (1).jpg', NULL, NULL, NULL, 1, 0, 1, 1, NULL, NULL, 'en', 0, '2023-03-23 07:45:02', '2024-01-29 17:12:05'),
-(3, 'creators', 2, 'arsh', 'arstech2@gmail.com', '2024-03-29 23:19:10', 'Berlin@3sss', NULL, '591591987654321', NULL, '2024-04-09 07:36:35', 1, 1, 1, NULL, NULL, '68e78a4c175d72829e9bfa9592c76c35 (1).jpg', NULL, '127.0.0.1', NULL, 0, NULL, 1, NULL, NULL, NULL, 'en', 0, '2024-03-29 23:14:46', '2024-04-09 07:36:35'),
-(4, 'creators', 2, 'alex', 'alex@gmail.com', '2024-03-29 23:19:10', 'Upwork', NULL, '591591591591987654321', NULL, '2024-04-14 00:05:01', 1, 1, 1, NULL, NULL, '1657090503-9ynVP5V0Tx.jpg', NULL, '127.0.0.1', NULL, 0, NULL, 1, NULL, NULL, NULL, 'en', 0, '2024-03-29 23:14:46', '2024-04-14 00:05:01'),
+(3, 'creators', 2, 'arsh', 'arstech2@gmail.com', '2024-03-29 23:19:10', 'Berlin@3sss', NULL, '591591987654321', NULL, '2024-04-17 01:53:38', 1, 1, 1, NULL, NULL, '68e78a4c175d72829e9bfa9592c76c35 (1).jpg', NULL, '127.0.0.1', NULL, 0, NULL, 1, NULL, NULL, NULL, 'en', 0, '2024-03-29 23:14:46', '2024-04-17 01:53:38'),
+(4, 'creators', 2, 'alex', 'alex@gmail.com', '2024-03-29 23:19:10', 'Upwork', NULL, '591591591591987654321', NULL, '2024-04-17 03:24:12', 1, 1, 1, NULL, NULL, '1657090503-9ynVP5V0Tx.jpg', NULL, '127.0.0.1', NULL, 0, NULL, 1, NULL, NULL, NULL, 'en', 0, '2024-03-29 23:14:46', '2024-04-17 03:24:12'),
 (25, 'creators', 2, 'Hales', 'hrnatrajinfotech@gmail.com', '2024-03-29 23:19:10', '64546465465465', NULL, '59198784654894658', NULL, '2024-04-08 07:20:42', 1, 1, 1, NULL, NULL, NULL, NULL, '127.0.0.1', NULL, 0, NULL, 1, NULL, NULL, NULL, '\'en\'', 0, '2024-04-06 15:26:38', '2024-04-08 07:20:42'),
 (26, 'backers', 2, 'park', 'hrnatrajinfotsdfech@gmail.com', NULL, '645654984489', NULL, '59187865613548', NULL, NULL, 0, 1, 1, NULL, NULL, NULL, NULL, '127.0.0.1', NULL, 0, NULL, 1, NULL, NULL, NULL, '\'en\'', 0, '2024-04-06 15:32:20', '2024-04-06 15:32:20'),
 (27, 'creators', 2, 'Muskan', 'muskan@gmail.com', NULL, 'Muskan123', NULL, '591789643210', NULL, NULL, 0, 1, 1, NULL, NULL, NULL, NULL, '127.0.0.1', NULL, 0, NULL, 1, NULL, NULL, NULL, '\'en\'', 0, '2024-04-06 15:38:50', '2024-04-06 15:38:50'),
-(28, 'creators', 2, 'dfsetr', 'ars3sssssss@gmail.com', NULL, 'dsdfsfsre', NULL, '59198756489787', NULL, NULL, 0, 1, 1, NULL, NULL, NULL, NULL, '127.0.0.1', NULL, 0, NULL, 1, NULL, NULL, NULL, '\'en\'', 0, '2024-04-12 05:25:26', '2024-04-12 05:25:26'),
-(29, 'backers', 2, 'Radha', 'arstech2a@gmail.com', NULL, 'Berlin123', NULL, '591987654315', NULL, NULL, 0, 1, 1, NULL, NULL, NULL, NULL, '127.0.0.1', NULL, 0, NULL, 1, NULL, NULL, NULL, '\'en\'', 0, '2024-04-12 05:28:34', '2024-04-12 05:28:34');
+(28, 'creators', 2, 'dfsetr', 'ars3sssssss@gmail.com', '2024-03-29 23:19:10', 'dsdfsfsre', NULL, '59198756489787', NULL, '2024-04-17 02:04:58', 1, 1, 1, NULL, NULL, NULL, NULL, '127.0.0.1', NULL, 0, NULL, 1, NULL, NULL, NULL, '\'en\'', 0, '2024-04-12 05:25:26', '2024-04-17 02:04:58'),
+(29, 'backers', 2, 'Radha', 'arstech2a@gmail.com', '2024-03-29 23:19:10', 'Berlin123', NULL, '591987654315', NULL, '2024-04-17 03:20:07', 1, 1, 1, NULL, NULL, NULL, NULL, '127.0.0.1', NULL, 0, NULL, 1, NULL, NULL, NULL, '\'en\'', 0, '2024-04-12 05:28:34', '2024-04-17 03:20:07');
 
 --
 -- Indexes for dumped tables
@@ -16387,7 +16433,7 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `chats`
 --
 ALTER TABLE `chats`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=113;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=132;
 
 --
 -- AUTO_INCREMENT for table `chat_messages`
@@ -16453,7 +16499,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `notifications`
 --
 ALTER TABLE `notifications`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 
 --
 -- AUTO_INCREMENT for table `pages`
@@ -16471,7 +16517,7 @@ ALTER TABLE `password_resets`
 -- AUTO_INCREMENT for table `payments`
 --
 ALTER TABLE `payments`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `payment_gateway`

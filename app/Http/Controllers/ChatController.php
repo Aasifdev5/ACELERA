@@ -7,6 +7,7 @@ use App\Events\ChatEvent;
 use App\Events\MessageSent;
 use App\Http\Controllers\Controller;
 
+use App\Mail\ComposeMail;
 use App\Models\Campaign;
 use App\Models\Chat;
 use App\Models\Page;
@@ -14,6 +15,7 @@ use App\Models\User;
 use App\Traits\SendNotification;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
@@ -82,6 +84,17 @@ public function sendChatMessage(Request $request)
 
 
 
+    $sender = User::find($validatedData['sender_id']);
+    $reciever = User::find($validatedData['receiver_id']);
+    // dd($campaign_owner);
+    $subject = "You have a new message";
+    $msg = str_ireplace("\r\n", "<br/>", $validatedData['message']);
+
+    // Assuming $name represents the name of the user
+    $name = $sender->name;
+
+    // Send email using the ComposeMail Mailable
+    Mail::to($reciever->email)->send(new ComposeMail($subject, $msg, $name));
     $text = $validatedData['message'];
     $target_url = url('chat');
 
