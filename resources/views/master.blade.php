@@ -149,8 +149,15 @@
                                             <span
                                                 style="position: absolute; top: 5px; left: 75%; transform: translate(-50%, -50%);"
                                                 class="badge rounded-pill bg-danger">
-                                                @if ($adminNotifications)
-                                                    {{ count($adminNotifications) }}
+                                                @php
+                                                 $Notifications=   \App\Models\Notification::where('user_type', 2)
+                                                        ->where('is_seen', 'no')
+                                                        ->where('user_id', $user_session->id)
+                                                        ->orderByDesc('created_at')
+                                                        ->paginate(5);
+                                                @endphp
+                                                @if ($Notifications)
+                                                    {{ count($Notifications) }}
                                                 @else
                                                     0
                                                 @endif
@@ -165,7 +172,7 @@
                                             <ul class="dropdown-list custom-scrollbar">
                                                 @isset($adminNotifications)
                                                     @forelse($adminNotifications as $notification)
-                                                        @if ($notification->sender)
+                                                        @if ($notification->user_id == $user_session->id)
                                                             <li>
                                                                 <a href="{{ route('notification.url', [$notification->uuid]) }}"
                                                                     class="message-user-item dropdown-item">
@@ -219,10 +226,11 @@
                                                 <div class="dropdown-divider"></div>
                                                 <form action="{{ route('notification.all-read') }}" method="POST">
                                                     @csrf
-                                                    <input type="hidden" name="user_id" value="{{ $user_session->id }}">
-                                                    <button type="submit" class="dropdown-item dropdown-footer">{{ __('Mark all as read') }}</button>
+                                                    <input type="hidden" name="user_id"
+                                                        value="{{ $user_session->id }}">
+                                                    <button type="submit"
+                                                        class="dropdown-item dropdown-footer">{{ __('Mark all as read') }}</button>
                                                 </form>
-
                                             @endif
                                         </div>
                                         <!-- Notification Dropdown End -->
@@ -240,36 +248,38 @@
                                             @else
                                                 <img src="{{ asset('149071.png') }}" alt="dummy-avatar"
                                                     style="width: 25px; height: 25px;">
-                                            @endif  {{ $user_session->name }}  <span
+                                            @endif {{ $user_session->name }} <span
                                                 class="caret"></span>
                                         </a>
                                         <ul class="shadow-box dropdown-menu" aria-labelledby="navbarDropdown">
                                             <li><a class="dropdown-item" href="{{ url('dashboard') }}"><i
-                                                        class="icofont icofont-finger-print"></i> {{ __('Dashboard') }}</a>
+                                                        class="icofont icofont-finger-print"></i>
+                                                    {{ __('Panel de Control') }}</a>
                                             </li>
 
                                             <li class="nav-item">
                                                 <a class="nav-link" href="{{ url('edit_profile') }}">
-                                                    <i class="icofont icofont-user-male"></i> {{ __('Edit Profile') }}
+                                                    <i class="icofont icofont-user-male"></i>
+                                                    {{ __('Editar Perfil') }}
                                                 </a>
                                             </li>
                                             <li class="nav-item">
                                                 <a class="nav-link" href="{{ url('change_password') }}">
-                                                    <i class="icofont icofont-ui-lock"></i> {{ __('Change Password') }}
+                                                    <i class="icofont icofont-ui-lock"></i>
+                                                    {{ __('Cambiar Contraseña') }}
                                                 </a>
                                             </li>
                                             <li class="nav-item">
                                                 <a class="nav-link" href="{{ url('logout') }}">
-                                                    <i class="fa fa-sign-out"></i>{{ __('Logout') }}
+                                                    <i class="fa fa-sign-out"></i>{{ __('Cerrar Sesión') }}
                                                 </a>
                                             </li>
                                         </ul>
                                     </li>
                                 @else
-
                                     <li style="margin-right:18px"><a href="{{ url('Userlogin') }}"> <i
-                                                class="icon-account"></i> {{ __('Login') }} </a></li>
-                                    <li><a href="{{ url('signup') }}"> / {{ __('Register') }}</a></li>
+                                                class="icon-account"></i> {{ __('Iniciar sesión') }} </a></li>
+                                    <li><a href="{{ url('signup') }}"> / {{ __('Registrarse') }}</a></li>
                                 @endif
 
                             </ul>
@@ -295,33 +305,33 @@
                                 <a href="#" class="mobile-nav__toggler"><i class="fa fa-bars"></i></a>
                                 <ul class="main-menu__list">
                                     <li class="{{ Request::is('/') ? 'current' : '' }}">
-                                        <a href="/">Home </a>
+                                        <a href="/">Inicio </a>
 
                                     </li>
                                     <li class="{{ Request::is('page/about') ? 'current' : '' }}">
                                         @foreach ($pages as $page)
                                             @if ($page->page_slug == 'about')
                                                 <a
-                                                    href="{{ url('page/' . $page->page_slug) }}">{{ __('About') }}</a>
+                                                    href="{{ url('page/' . $page->page_slug) }}">{{ __('Acerca de') }}</a>
                                             @endif
                                         @endforeach
 
 
                                     </li>
                                     <li class="{{ Request::is('projects') ? 'current' : '' }}">
-                                        <a href="{{ url('projects') }}">{{ __('Explore') }}</a>
+                                        <a href="{{ url('projects') }}">{{ __('Explorar') }}</a>
 
                                     </li>
 
                                     <li class="{{ Request::is('news') ? 'current' : '' }}">
-                                        <a href="{{ url('news') }}">{{ __('News') }}</a>
+                                        <a href="{{ url('news') }}">{{ __('Noticias') }}</a>
                                     </li>
 
                                     <li class="{{ Request::is('page/contact') ? 'current' : '' }}">
                                         @foreach ($pages as $page)
                                             @if ($page->page_slug == 'contact')
                                                 <a
-                                                    href="{{ url('page/' . $page->page_slug) }}">{{ __('Contact') }}</a>
+                                                    href="{{ url('page/' . $page->page_slug) }}">{{ __('Contacto') }}</a>
                                             @endif
                                         @endforeach
                                     </li>
@@ -348,10 +358,10 @@
                                 <div class="main-menu__btn-box">
                                     @if (!empty($user_session))
                                         <a href="{{ url('CreateProject') }}" class="thm-btn main-menu__btn"><i
-                                                class="icon-plus-symbol"></i>{{ __(' Add a Project') }}</a>
+                                                class="icon-plus-symbol"></i>{{ __(' Agregar un proyecto') }}</a>
                                     @else
                                         <a href="{{ url('signup') }}" class="thm-btn main-menu__btn"><i
-                                                class="icon-plus-symbol"></i> {{ __('Add a Project') }} </a>
+                                                class="icon-plus-symbol"></i> {{ __('Agregar un proyecto') }} </a>
                                     @endif
                                 </div>
                             </div>
@@ -390,7 +400,7 @@
                         <div class="col-xl-2 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="200ms">
                             <div class="footer-widget__column footer-widget__Explore">
                                 <div class="footer-widget__title-box">
-                                    <h3 class="footer-widget__title">{{ __('Explore') }}</h3>
+                                    <h3 class="footer-widget__title">{{ __('Explorar') }}</h3>
                                 </div>
                                 <ul class="footer-widget__Explore-list list-unstyled">
 
@@ -398,26 +408,26 @@
                                         @foreach ($pages as $page)
                                             @if ($page->page_slug == 'about')
                                                 <a
-                                                    href="{{ url('page/' . $page->page_slug) }}">{{ __('About') }}</a>
+                                                    href="{{ url('page/' . $page->page_slug) }}">{{ __('Acerca de') }}</a>
                                             @endif
                                         @endforeach
 
 
                                     </li>
                                     <li>
-                                        <a href="{{ url('projects') }}">{{ __('Explore') }}</a>
+                                        <a href="{{ url('projects') }}">{{ __('Explorar') }}</a>
 
                                     </li>
 
                                     <li>
-                                        <a href="{{ url('news') }}">{{ __('News') }}</a>
+                                        <a href="{{ url('news') }}">{{ __('Noticias') }}</a>
                                     </li>
 
                                     <li>
                                         @foreach ($pages as $page)
                                             @if ($page->page_slug == 'contact')
                                                 <a
-                                                    href="{{ url('page/' . $page->page_slug) }}">{{ __('Contact') }}</a>
+                                                    href="{{ url('page/' . $page->page_slug) }}">{{ __('Contacto') }}</a>
                                             @endif
                                         @endforeach
                                     </li>
@@ -427,7 +437,7 @@
                         <div class="col-xl-2 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="300ms">
                             <div class="footer-widget__column footer-widget__Fundraising">
                                 <div class="footer-widget__title-box">
-                                    <h3 class="footer-widget__title">{{ __('Fundraising') }}</h3>
+                                    <h3 class="footer-widget__title">{{ __('Recaudación de Fondos') }}</h3>
                                 </div>
                                 <ul class="footer-widget__Explore-list list-unstyled">
                                     @foreach ($category as $row)
@@ -443,7 +453,7 @@
                         <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="400ms">
                             <div class="footer-widget__column footer-widget__Contact">
                                 <div class="footer-widget__title-box">
-                                    <h3 class="footer-widget__title">{{ __('Contact') }}</h3>
+                                    <h3 class="footer-widget__title">{{ __('Contacto') }}</h3>
                                 </div>
                                 <ul class="footer-widget__Contact-list list-unstyled">
                                     <li>

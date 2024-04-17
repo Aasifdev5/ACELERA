@@ -1,6 +1,6 @@
 @extends('admin.Master')
 @section('title')
-    Balance
+Recibir Fondos
 @endsection
 @section('content')
     <div class="page-body">
@@ -12,7 +12,7 @@
                             <h3>ACELERA</h3>
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="dashboard"><i data-feather="home"></i></a></li>
-                                <li class="breadcrumb-item">Recieve Fund </li>
+                                <li class="breadcrumb-item">Recibir Fondos </li>
 
 
                             </ol>
@@ -39,7 +39,7 @@
                             </div>
                         @endif
                         <div class="card-header">
-                            <h5> Recieve Fund List</h5>
+                            <h5> Lista de Fondos Recibidos</h5>
                             {{-- <a class="btn btn-pill btn-primary btn-air-primary pull-right"
                                 href="{{ url('admin/add_balance') }}" data-toggle="tooltip" title="" role="button"
                                 data-bs-original-title="btn btn-primary">Agregar Balance
@@ -51,13 +51,13 @@
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>Payer/Backer</th>
-                                            <th>Project</th>
-                                            <th>Backer Email</th>
-                                            <th>Amount</th>
-                                            <th>Receipt</th>
-                                            <th>Status</th>
-                                            <th>Action</th>
+                                            <th>Pagador/Patrocinador</th>
+                                            <th>Proyecto</th>
+                                            <th>Correo Electrónico del Patrocinador</th>
+                                            <th>Monto</th>
+                                            <th>Recibo</th>
+                                            <th>Estado</th>
+                                            <th>Acción</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -93,15 +93,15 @@
                                                 </td>
                                                 <td>
                                                     @if ($creditReload->accepted)
-                                                        Accepted
+                                                    Aceptado
                                                     @else
-                                                        Pending
+                                                    Pendiente
                                                     @endif
                                                 </td>
                                                 <td>
                                                     @if (!$creditReload->accepted)
                                                         <a href="{{ route('accept', ['id' => $creditReload->id]) }}"
-                                                            class="btn btn-sm btn-success">Accept</a>
+                                                            class="btn btn-sm btn-success">Aceptar</a>
                                                     @endif
                                                 </td>
                                             </tr>

@@ -3,31 +3,7 @@
     {{ $campaign->slug }}
 @endsection
 @section('content')
-    <!--Page Header Start-->
-    <section class="page-header">
-        <div class="page-header-bg" style="background-image: url(assets/images/backgrounds/page-header-bg.jpg)">
-        </div>
-        <div class="page-header-shape-1 float-bob-x">
-            <img src="assets/images/shapes/page-header-shape-1.png" alt="">
-        </div>
-        <div class="page-header-shape-2 float-bob-y">
-            <img src="assets/images/shapes/page-header-shape-2.png" alt="">
-        </div>
-        <div class="page-header-shape-3 float-bob-x">
-            <img src="assets/images/shapes/page-header-shape-3.png" alt="">
-        </div>
-        <div class="container">
-            <div class="page-header__inner">
-                <ul class="thm-breadcrumb list-unstyled">
-                    <li><a href="/">{{ __('Home') }}</a></li>
-                    <li><span>/</span></li>
-                    <li>{{ __('Project') }}</li>
-                </ul>
-                <h2>{{ __('Project Details') }}</h2>
-            </div>
-        </div>
-    </section>
-    <!--Page Header End-->
+
 
     <!--Project Details Top Start-->
     <section class="project-details-top">
@@ -92,20 +68,20 @@
                                         @endif
 
                                     </h3>
-                                    <p>Pledged</p>
+                                    <p>Prometido</p>
                                 </div>
                             </li>
                             <li>
                                 <div class="project-details-top__list-content">
                                     <h3>{{ \App\Models\Payment::where('campaign_id', $campaign->id)->where('accepted', 1)->get()->count() }}
                                     </h3>
-                                    <p>{{ __('Backers') }}</p>
+                                    <p>{{ __('Patrocinadores') }}</p>
                                 </div>
                             </li>
                             <li>
                                 <div class="project-details-top__list-content">
                                     <h3>{{ $days_left }}</h3>
-                                    <p>{{ __('Days Left') }}</p>
+                                    <p>{{ __('Días Restantes') }}</p>
                                 </div>
                             </li>
                         </ul>
@@ -113,7 +89,7 @@
                             <!--Skill Box-->
                             <div class="progress-box">
                                 <div class="inner count-box">
-                                    <div class="text">{{ __('Raised') }}</div>
+                                    <div class="text">{{ __('Recaudado') }}</div>
                                     <div class="bar">
                                         <div class="bar-innner">
                                             @php
@@ -141,7 +117,7 @@
                                 </div>
                             </div>
                         </div>
-                        <p class="project-details-top__goal"><span>{{ __('Goal') }}:</span> {{ $campaign->goal }} BS
+                        <p class="project-details-top__goal"><span>{{ __('Meta') }}:</span> {{ $campaign->goal }} BS
                         </p>
                         <p class="project-details-top__text">{{ $campaign->short_description }}.</p>
                         <div class="project-details-top__person">
@@ -156,11 +132,11 @@
                                 @endif
                             </div>
                             <div class="project-details-top__person-content">
-                                <h5><span>by</span> {{ \App\Models\User::getUserFullname($campaign->user_id) }}</h5>
+                                <h5><span>Por</span> {{ \App\Models\User::getUserFullname($campaign->user_id) }}</h5>
                                 <p>{{ \App\Models\Campaign::where('user_id', $campaign->user_id)->get()->count() }}
-                                    {{ __('Campaigns') }} /
+                                    {{ __('Campañas') }} /
                                     {{ \App\Models\Payment::where('campaign_id', $campaign->id)->where('accepted', 1)->get()->count() }}
-                                    {{ __('Backed') }} </p>
+                                    {{ __('Apoyado/a') }} </p>
                             </div>
                         </div>
                         {{-- <ul class="list-unstyled project-details-top__money">
@@ -178,10 +154,10 @@
                             <div class="project-details-top__btn-box">
                                 @if (!empty($user_session))
                                     <a href="{{ url('back/') }}{{ '/' . $campaign->id }}"
-                                        class="thm-btn project-details-top__btn">{{ __('Back this Project') }}</a>
+                                        class="thm-btn project-details-top__btn">{{ __('Apoyar este Proyecto') }}</a>
                                 @else
                                     <a href="{{ url('signup') }}"
-                                        class="thm-btn project-details-top__btn">{{ __('Back this Project') }}</a>
+                                        class="thm-btn project-details-top__btn">{{ __('Apoyar este Proyecto') }}</a>
                                 @endif
 
                             </div>
@@ -206,9 +182,9 @@
                 <div class="col-xl-8 col-lg-7">
                     <div class="project-details__tab-box tabs-box">
                         <ul class="tab-buttons clearfix list-unstyled clearfix">
-                            <li data-tab="#story" class="tab-btn active-btn"><span>{{ __('Story') }}</span></li>
+                            <li data-tab="#story" class="tab-btn active-btn"><span>{{ __('Historia') }}</span></li>
 
-                            <li data-tab="#updates" class="tab-btn"><span>{{ __('Updates') }}</span></li>
+                            <li data-tab="#updates" class="tab-btn"><span>{{ __('Actualización') }}</span></li>
 
                         </ul>
                         <div class="tabs-content">
@@ -261,8 +237,8 @@
     <section class="similar-project">
         <div class="container">
             <div class="section-title text-center">
-                <span class="section-title__tagline">{{ __('Businesses You Can Back') }}</span>
-                <h2 class="section-title__title">{{ __('Checkout Our Similar') }} <br> {{ __('Projects') }}</h2>
+                <span class="section-title__tagline">{{ __('NEGOCIOS QUE PUEDES APOYAR') }}</span>
+                <h2 class="section-title__title">{{ __('Revisa Nuestros  Similares') }} <br> {{ __('Proyectos') }}</h2>
             </div>
             <div class="row">
                 <!--Project One Single Start-->
@@ -300,14 +276,14 @@
                                         <i class="fa fa-clock"></i>
                                     </div>
                                     <div class="text">
-                                        <p>{{ $days_left }} {{ __('Days Remaining') }}</p>
+                                        <p>{{ $days_left }} {{ __('Días Restantes') }}</p>
                                     </div>
                                 </div>
                                 <div class="progress-levels">
                                     <!--Skill Box-->
                                     <div class="progress-box">
                                         <div class="inner count-box">
-                                            <div class="text">{{ __('Raised') }}</div>
+                                            <div class="text">{{ __('Recaudado') }}</div>
                                             <div class="bar">
                                                 <div class="bar-innner">
                                                     <?php
@@ -336,13 +312,13 @@
                                     </div>
                                 </div>
                                 <div class="project-one__goals">
-                                    <p class="project-one__goals-one">{{ __('Achieved') }}:<span>BS @foreach ($totalRaisedArray as $projectId => $Raised)
+                                    <p class="project-one__goals-one">{{ __('Logrado') }}:<span>BS @foreach ($totalRaisedArray as $projectId => $Raised)
                                                 @if ($row->id == $projectId)
                                                     {{ $Raised }}
                                                 @endif
                                             @endforeach
                                         </span></p>
-                                    <p class="project-one__goals-one">{{ __('Goal') }}:<span>BS
+                                    <p class="project-one__goals-one">{{ __('Meta') }}:<span>BS
                                             {{ $row->goal }}</span></p>
                                 </div>
                             </div>

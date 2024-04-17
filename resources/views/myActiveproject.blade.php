@@ -1,6 +1,6 @@
 @extends('master')
 @section('title')
-{{ __('My Active Projects') }}
+{{ __('Mis Proyectos Activos') }}
 @endsection
 @section('content')
 <div class="page-body">
@@ -22,11 +22,11 @@
                         </div>
                     @endif
                     <div class="card-header">
-                        <h5>{{ __('Active Project List') }} </h5>
+                        <h5>{{ __('Lista de Proyectos Activos') }} </h5>
                         <br>
                         <a class="btn btn-pill btn-primary btn-air-primary pull-right" href="{{ url('dashboard') }}"
                             data-toggle="tooltip" title="" role="button"
-                            data-bs-original-title="btn btn-primary">{{ __('Back') }}
+                            data-bs-original-title="btn btn-primary">{{ __('Volver') }}
                         </a>
                     </div>
                     <div class="card-body">
@@ -36,11 +36,11 @@
                                     <tr>
                                         <th class="">#</th>
                                         <!-- <th>id</th> -->
-                                        <th> {{ __('Category') }} </th>
-                                        <th>{{ __('Title') }}</th>
-                                        <th> {{ __('Image') }} </th>
+                                        <th> {{ __('Categoría') }} </th>
+                                        <th>{{ __('Título') }}</th>
+                                        <th> {{ __('Imagen') }} </th>
 
-                                        <th>{{ __('Status') }}</th>
+                                        <th>{{ __('Estado') }}</th>
 
 
 

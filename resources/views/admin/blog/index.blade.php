@@ -13,7 +13,7 @@
                             <h3>ACELERA</h3>
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="dashboard"><i data-feather="home"></i></a></li>
-                                <li class="breadcrumb-item">Balance </li>
+                                <li class="breadcrumb-item">{{ $title }} </li>
 
 
                             </ol>
@@ -42,7 +42,7 @@
                         <div class="card-header">
                             <div class="item-title d-flex justify-content-between">
                                 <h2>{{__('Blog List')}}</h2>
-                                <a href="{{route('blog.create')}}" class="btn btn-success btn-sm"> <i class="fa fa-plus"></i> {{__('Add Blog')}} </a>
+                                <a href="{{route('blog.create')}}" class="btn btn-success btn-sm"> <i class="fa fa-plus"></i> {{__('Agregar Blog')}} </a>
                             </div>
                         </div>
                         <div class="card-body">
@@ -50,12 +50,12 @@
                                 <table class="table table-bordered display" id="advance-1">
                                     <thead>
                                         <tr>
-                                            <th>{{__('Image')}}</th>
-                                            <th>{{__('Title')}}</th>
-                                            <th>{{__('Category')}}</th>
+                                            <th>{{__('Imagen')}}</th>
+                                            <th>{{__('Título')}}</th>
+                                            <th>{{__('Categoría')}}</th>
                                             {{-- <th>{{__('Status')}}</th> --}}
-                                            <th>{{__('Name')}}</th>
-                                            <th>{{__('Action')}}</th>
+                                            <th>{{__('Nombre')}}</th>
+                                            <th>{{__('Acción')}}</th>
                                         </tr>
                                     </thead>
                                     <tbody>

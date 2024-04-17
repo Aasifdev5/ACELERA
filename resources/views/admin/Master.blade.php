@@ -243,7 +243,7 @@
 
 
 
-                        <li>
+                        {{-- <li>
                             <a href="#" class="btn btn-dropdown site-language" id="dropdownLanguage"
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 <img src="{{ asset(selectedLanguage(session()->get('local'))->flag) }}"
@@ -261,7 +261,7 @@
                                     </li>
                                 @endforeach
                             </ul>
-                        </li>
+                        </li> --}}
 
 
                         <li class="onhover-dropdown">
@@ -273,11 +273,11 @@
                                 </div>
                             </div>
                             <ul class="profile-dropdown onhover-show-div p-20">
-                                <li><a href="{{ url('admin/edit_profile') }}"><i data-feather="user"></i> {{ __('Edit Profile') }}</a></li>
+                                <li><a href="{{ url('admin/edit_profile') }}"><i data-feather="user"></i> {{ __('Editar Perfil') }}</a></li>
 
-                                <li><a href="{{ url('admin/change_password') }}"><i data-feather="lock"></i>{{ __('Change Password') }} </a></li>
-                                <li><a href="#"><i data-feather="settings"></i>{{ __('Settings') }} </a></li>
-                                <li><a href="{{ url('admin/logout') }}"><i data-feather="log-out"></i> {{ __('Logout') }}</a>
+                                <li><a href="{{ url('admin/change_password') }}"><i data-feather="lock"></i>{{ __('Cambiar Contraseña') }} </a></li>
+                                {{-- <li><a href="#"><i data-feather="settings"></i>{{ __('Settings') }} </a></li> --}}
+                                <li><a href="{{ url('admin/logout') }}"><i data-feather="log-out"></i> {{ __('Cerrar Sesión') }}</a>
                                 </li>
                             </ul>
                         </li>
@@ -330,114 +330,113 @@
                     @if ($user_session->is_super_admin == 1)
                         <ul class="sidebar-menu">
                             <li><a class="sidebar-header" href="{{ url('admin/dashboard') }}"><i
-                                        data-feather="home"></i><span> {{ __('Dashboard') }}</span></a>
+                                        data-feather="home"></i><span> {{ __('Panel de Control') }}</span></a>
 
                             </li>
 
 
                             </li>
                             <li><a class="sidebar-header" href="#"><i
-                                        data-feather="settings"></i><span>{{ __('Application Settings') }} </span><i
+                                        data-feather="settings"></i><span>{{ __('Configuraciones de Aplicación') }} </span><i
                                         class="fa fa-angle-right pull-right"></i></a>
                                 <ul class="sidebar-submenu">
 
-                                    <li><a href="{{ url('admin/smtp_setting') }}"><i class="fa fa-circle"></i>{{ __('SMTP Configuration') }}
+                                    <li><a href="{{ url('admin/smtp_setting') }}"><i class="fa fa-circle"></i>{{ __('Configuración SMTP') }}
                                         </a></li>
                                     <li><a href="{{ url('admin/payment_gateway') }}"><i
-                                                class="fa fa-circle"></i>{{ __('Payment Gateway') }}  </a></li>
+                                                class="fa fa-circle"></i>{{ __('Pasarela de Pago') }}  </a></li>
                                     <li><a href="{{ url('admin/social_lite_login') }}"><i
-                                                class="fa fa-circle"></i>{{ __('Socialite Setting') }}</a></li>
+                                                class="fa fa-circle"></i>{{ __('Configuración de Socialite') }}</a></li>
                                     <li><a href="{{ url('admin/website_setting') }}"><i class="fa fa-circle"></i>
-                                        {{ __('General Configuration') }} </a></li>
+                                        {{ __('Configuración General') }} </a></li>
                                 </ul>
                             </li>
                             <li><a class="sidebar-header" href="{{ url('admin/banners') }}"><i
-                                        data-feather="monitor"></i><span>{{ __('Home Page Setting') }} </span></a></li>
+                                        data-feather="monitor"></i><span>{{ __('Configuración de la Página de Inicio') }} </span></a></li>
 
                             <li class="">
                                 <a class="has-arrow sidebar-header" href="#">
                                     <i class="icofont icofont-social-blogger"></i>
-                                    <span>{{ __('Manage Blog') }}</span>
+                                    <span>{{ __('Administrar Blog') }}</span>
                                 </a>
                                 <ul class="sidebar-submenu">
                                     <li>
                                         <a href="{{ route('blog.create') }}">
                                             <i class="fa fa-circle"></i>
-                                            <span>{{ __('Add Blog') }}</span>
+                                            <span>{{ __('Agregar Blog') }}</span>
                                         </a>
                                     </li>
                                     <li>
                                         <a href="{{ route('blog.index') }}">
                                             <i class="fa fa-circle"></i>
-                                            <span>{{ __('All Blog') }}</span>
+                                            <span>{{ __('Todo el Blog') }}</span>
                                         </a>
                                     </li>
                                     <li>
                                         <a href="{{ route('blog.blog-comment-list') }}">
                                             <i class="fa fa-circle"></i>
-                                            <span>{{ __('Blog Comment List') }}</span>
+                                            <span>{{ __('Lista de Comentarios de Blog') }}</span>
                                         </a>
                                     </li>
                                     <li>
                                         <a href="{{ route('blog.blog-category.index') }}">
                                             <i class="fa fa-circle"></i>
-                                            <span>{{ __('Blog Category') }}</span>
+                                            <span>{{ __('Categoría de Blog') }}</span>
                                         </a>
                                     </li>
                                 </ul>
                             </li>
-                            <li><a class="sidebar-header" href="{{ url('admin/qrcode') }}"><i class="fa fa-empire"></i>  QR CODE </a></li>
-                            <li>
+                            <li><a class="sidebar-header" href="{{ url('admin/qrcode') }}"><i class="fa fa-empire"></i>  CÓDIGO QR </a></li>
+                            {{-- <li>
                                 <a class="sidebar-header" href="{{ route('role.index') }}">
                                     <i class="fa fa-key"></i>
                                     <span>{{ __('Roles') }}</span>
                                 </a>
-                            </li>
+                            </li> --}}
 
                             <li><a class="sidebar-header" href="{{ url('admin/pages') }}"><i
                                         data-feather="book"></i><span>{{ __('Pages') }} </span></a> </li>
                             <li>
                                 <a href="{{ url('admin/mail-templates') }}" class="sidebar-header">
-                                    <i data-feather="mail"></i><span>{{ __('Mail Templates') }} </span>
+                                    <i data-feather="mail"></i><span>{{ __('Plantillas de Correo') }} </span>
                                 </a>
                             </li>
-                            <li>
+                            {{-- <li>
                                 <a class="sidebar-header" href="#">
                                     <i class="fa fa-language"></i>
-                                    <span>{{ __('Manage Language') }}</span>
+                                    <span>{{ __('Administrar Idioma') }}</span>
                                 </a>
                                 <ul class="sidebar-submenu">
                                     <li>
                                         <a href="{{ url('admin/language') }}" class="sidebar-header">
                                             <i class="fa fa-circle"></i>
-                                            <span>{{ __('Language Settings') }}</span>
+                                            <span>{{ __('Configuraciones de Idioma') }}</span>
                                         </a>
                                     </li>
                                 </ul>
-                            </li>
+                            </li> --}}
                             <li><a class="sidebar-header" href="{{ url('admin/users') }}"><i
-                                        data-feather="users"></i><span>{{ __('Users Management') }} </span></a>
+                                        data-feather="users"></i><span>{{ __('Gestión de Usuarios') }} </span></a>
                             </li>
 
                             <li><a class="sidebar-header" href="#"><i data-feather="layers"></i><span>
-                                {{ __('Project Management') }} </span><i class="fa fa-angle-right pull-right"></i></a>
+                                {{ __('Gestión de Proyectos') }} </span><i class="fa fa-angle-right pull-right"></i></a>
                                 <ul class="sidebar-submenu">
                                     <li>
                                         <a href="{{ route('category.index') }}">
                                             <i class="fa fa-circle"></i>
-                                            <span>{{ __('Project Category') }}</span>
+                                            <span>{{ __('Categoría de Proyecto') }}</span>
                                         </a>
                                     </li>
                                     {{-- <li><a href="categories"><i class="fa fa-circle"></i>Project Category</a></li> --}}
-                                    <li><a href="{{ url('admin/Course_list') }}"><i class="fa fa-circle"></i>{{ __('Project
-                                        List') }}
+                                    <li><a href="{{ url('admin/Course_list') }}"><i class="fa fa-circle"></i>{{ __('Lista de Proyectos') }}
                                         </a></li>
 
                                 </ul>
                             </li>
 
                             <li><a class="sidebar-header" href="{{ url('admin/transactions_report') }}"><i
-                                        data-feather="dollar-sign"></i><span>{{ __('Recieve Fund') }} </span></a></li>
+                                        data-feather="dollar-sign"></i><span>{{ __('Recibir Fondos') }} </span></a></li>
 
                         </ul>
                     @endif

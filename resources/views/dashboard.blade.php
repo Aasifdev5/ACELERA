@@ -27,38 +27,38 @@
                 <ul class="nav flex-column">
                     <li class="nav-item">
                         <a class="nav-link active" href="{{ url('dashboard') }}">
-                            <i class="icofont icofont-finger-print"></i> {{ __('Dashboard') }}
+                            <i class="icofont icofont-finger-print"></i> {{ __('Panel de Control') }}
                         </a>
                     </li>
                     <li><a href="{{route('chat.index')}}" class="nav-link" ><i class="icofont icofont-social-google-buzz"></i> {{__('Chat')}}</a></li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('MyProject') }}">
-                            <i class="fa fa-bullhorn"></i>  {{ __('My Projects') }}
+                            <i class="fa fa-bullhorn"></i>  {{ __('Mis Proyectos') }}
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('CreateProject') }}">
-                            <i class="fa fa-plus-circle"></i> {{ __('Start a Project') }}
+                            <i class="fa fa-plus-circle"></i> {{ __('Iniciar un Proyecto') }}
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('MyPendingProject') }}">
-                            <i class="fa fa-clock-o"></i> {{ __('Pending Projects') }}
+                            <i class="fa fa-clock-o"></i> {{ __('Proyectos Pendientes') }}
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('MyActiveProject') }}">
-                            <i class="fa fa-clock-o"></i>{{ __('Active Projects') }}
+                            <i class="fa fa-clock-o"></i>{{ __('Proyectos Activos') }}
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('dashboard/payments') }}">
-                            <i class="fa fa-money"></i>{{ __('Payments') }}
+                            <i class="fa fa-money"></i>{{ __('Pagos') }}
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('dashboard/withdraw') }}">
-                            <i class="fa fa-credit-card"></i>{{ __('Withdraw') }}
+                            <i class="fa fa-credit-card"></i>{{ __('Retiro') }}
                         </a>
                     </li>
 

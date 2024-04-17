@@ -1,33 +1,9 @@
 @extends('master')
 @section('title')
-    {{ __('Explore') }} || {{ $title }}
+    {{ __('Explorar') }} || Proyectos
 @endsection
 @section('content')
-    <!--Page Header Start-->
-    <section class="page-header">
-        <div class="page-header-bg" style="background-image: url(assets/images/backgrounds/page-header-bg.jpg)">
-        </div>
-        <div class="page-header-shape-1 float-bob-x">
-            <img src="assets/images/shapes/page-header-shape-1.png" alt="">
-        </div>
-        <div class="page-header-shape-2 float-bob-y">
-            <img src="assets/images/shapes/page-header-shape-2.png" alt="">
-        </div>
-        <div class="page-header-shape-3 float-bob-x">
-            <img src="assets/images/shapes/page-header-shape-3.png" alt="">
-        </div>
-        <div class="container">
-            <div class="page-header__inner">
-                <ul class="thm-breadcrumb list-unstyled">
-                    <li><a href="/">{{ __('Home') }}</a></li>
-                    <li><span>/</span></li>
-                    <li>{{ __('Explore') }}</li>
-                </ul>
-                <h2>{{ $title }}</h2>
-            </div>
-        </div>
-    </section>
-    <!--Page Header End-->
+
 
     <!--Project Page Two Start-->
     <section class="project-page-two">
@@ -61,7 +37,7 @@
                                                 <i class="fa fa-clock"></i>
                                             </div>
                                             <div class="text">
-                                                <p>{{ $days_left }} {{ __('Days Remaining') }}</p>
+                                                <p>{{ $days_left }} {{ __('Días Restantes') }}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -108,11 +84,11 @@
                                             @endif
                                         @endforeach
                                             </span>
-                                            <br>{{ __('Goal of') }} BS {{ $row->goal }}
+                                            <br>{{ __('Meta de') }} BS {{ $row->goal }}
                                         </p>
                                         <p class="project-one__goals-one"><span class="odometer project-one__plus"
                                                 data-count="{{ \App\Models\Payment::where('campaign_id', $row->id)->where('accepted', 1)->get()->count() }}"></span>
-                                            <br>{{ __('Backers We Got') }}
+                                            <br>{{ __('Patrocinadores que Hemos Obtenido') }}
                                         </p>
                                     </div>
                                 </div>

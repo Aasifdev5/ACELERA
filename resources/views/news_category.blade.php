@@ -1,33 +1,9 @@
 @extends('master')
 @section('title')
-    News {{ __('') }} || {{ $title }}
+     {{ __('Noticias') }} || {{ $title }}
 @endsection
 @section('content')
-    <!--Page Header Start-->
-    <section class="page-header">
-        <div class="page-header-bg" style="background-image: url(assets/images/backgrounds/page-header-bg.jpg)">
-        </div>
-        <div class="page-header-shape-1 float-bob-x">
-            <img src="assets/images/shapes/page-header-shape-1.png" alt="">
-        </div>
-        <div class="page-header-shape-2 float-bob-y">
-            <img src="assets/images/shapes/page-header-shape-2.png" alt="">
-        </div>
-        <div class="page-header-shape-3 float-bob-x">
-            <img src="assets/images/shapes/page-header-shape-3.png" alt="">
-        </div>
-        <div class="container">
-            <div class="page-header__inner">
-                <ul class="thm-breadcrumb list-unstyled">
-                    <li><a href="/">{{ __('Home') }}</a></li>
-                    <li><span>/</span></li>
-                    <li>{{ __('News') }} <span>/</span> {{ $title }}</li>
-                </ul>
-                <h2>{{ $title }}</h2>
-            </div>
-        </div>
-    </section>
-    <!--Page Header End-->
+
 
 
     <section class="news-sidebar">
@@ -48,13 +24,12 @@
                                     <div class="news-sidebar__content-box">
                                         <ul class="list-unstyled news-sidebar__meta">
                                             <li><a href="{{ url('blog_details/') }}{{ '/' . $blog_details->slug }}"><i
-                                                        class="fas fa-user-circle"></i>{{ __('by
-                                                        Admin') }}</a>
+                                                        class="fas fa-user-circle"></i>{{ __('por Administrador') }}</a>
                                             </li>
                                             <li><a href="{{ url('blog_details/') }}{{ '/' . $blog_details->slug }}"><i
                                                         class="fas fa-comments"></i>@php
                                                         $blogComments = \App\Models\BlogComment::active()->where('blog_id', $blog_details->id)->whereNull('parent_id')->get();
-                                                    @endphp {{ @$blogComments->count() }} {{ __('Comments') }}</a>
+                                                    @endphp {{ @$blogComments->count() }} {{ __('Comentarios') }}</a>
                                             </li>
                                         </ul>
                                         <h3 class="news-sidebar__title">
@@ -66,7 +41,7 @@
 
                                         <div class="news-sidebar__bottom">
                                             <a href="{{ url('blog_details/') }}{{ '/' . $blog_details->slug }}"
-                                                class="news-sidebar__read-more">{{ __('Read More') }}</a>
+                                                class="news-sidebar__read-more">{{ __('LEER MÁS') }}</a>
                                             <a href="{{ url('blog_details/') }}{{ '/' . $blog_details->slug }}"
                                                 class="news-sidebar__arrow"><span class="icon-right-arrow"></span></a>
                                         </div>
@@ -84,12 +59,12 @@
                     <div class="sidebar">
                         <div class="sidebar__single sidebar__search">
                             <form action="#" class="sidebar__search-form">
-                                <input type="search" placeholder="Search here">
+                                <input type="search" placeholder="Buscar Aquí">
                                 <button type="submit"><i class="icon-magnifying-glass"></i></button>
                             </form>
                         </div>
                         <div class="sidebar__single sidebar__post">
-                            <h3 class="sidebar__title">{{ __('Latest Posts') }}</h3>
+                            <h3 class="sidebar__title">{{ __('Últimas Entradas') }}</h3>
                             <ul class="sidebar__post-list list-unstyled">
                                 @foreach ($latest_posts as $lp)
                                     <li>
@@ -112,7 +87,7 @@
                             </ul>
                         </div>
                         <div class="sidebar__single sidebar__category">
-                            <h3 class="sidebar__title">{{ __('Categories') }}</h3>
+                            <h3 class="sidebar__title">{{ __('Categorías') }}</h3>
                             <ul class="sidebar__category-list list-unstyled">
                                 @php
                                     $categoryList = \App\Models\BlogCategory::all();
@@ -127,7 +102,7 @@
                             </ul>
                         </div>
                         <div class="sidebar__single sidebar__tags">
-                            <h3 class="sidebar__title">{{ __('Tags') }}</h3>
+                            <h3 class="sidebar__title">{{ __('Etiquetas') }}</h3>
                             <div class="sidebar__tags-list">
                                 @php
                                     $tagList = \App\Models\Tag::all();
@@ -138,7 +113,7 @@
                             </div>
                         </div>
                         <div class="sidebar__single sidebar__comments">
-                            <h3 class="sidebar__title">{{ __('Comments') }}</h3>
+                            <h3 class="sidebar__title">{{ __('Comentarios') }}</h3>
                             <ul class="sidebar__comments-list list-unstyled">
                                 @foreach ($blogComments as $row)
                                     <li>

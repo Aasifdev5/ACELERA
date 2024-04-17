@@ -1,6 +1,6 @@
 @extends('master')
 @section('title')
- {{ __('My Projects') }}
+ {{ __('Mis Proyectos') }}
 @endsection
 @section('content')
 <div class="page-body">
@@ -22,11 +22,11 @@
                         </div>
                     @endif
                     <div class="card-header">
-                        <h5> {{ __('Project List') }} </h5>
+                        <h5> {{ __('Lista de Proyectos') }} </h5>
                         <br>
                         <a class="btn btn-pill btn-primary btn-air-primary pull-right" href="{{ url('dashboard') }}"
                             data-toggle="tooltip" title="" role="button"
-                            data-bs-original-title="btn btn-primary">{{ __('Back') }}
+                            data-bs-original-title="btn btn-primary">{{ __('Volver') }}
                         </a>
 
 
@@ -38,13 +38,13 @@
                                     <tr>
                                         <th class="">#</th>
                                         <!-- <th>id</th> -->
-                                        <th> {{ __('Category') }} </th>
-                                        <th>{{ __('Title') }}</th>
-                                        <th> {{ __('Image') }} </th>
+                                        <th> {{ __('Categoría') }} </th>
+                                        <th>{{ __('Título') }}</th>
+                                        <th> {{ __('Imagen') }} </th>
 
-                                        <th>{{ __('Status') }}</th>
+                                        <th>{{ __('Estado') }}</th>
 
-                                        <th>{{ __('Action') }} </th>
+                                        <th>{{ __('Acción') }} </th>
 
                                     </tr>
                                 </thead>

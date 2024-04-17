@@ -1,6 +1,6 @@
 @extends('master')
 @section('title')
-    Home
+Inicio
 @endsection
 @section('content')
     <!--Main Slider Start-->
@@ -39,24 +39,22 @@
                         <div class="row">
                             <div class="col-xl-7 col-lg-8">
                                 <div class="main-slider__content">
-                                    <p class="main-slider__sub-title">{{ __('Raising Money is Easy Now') }}!</p>
-                                    <h2 class="main-slider__title">{{ __('Ultimate') }} <br> {{ __('Crowdfunding') }}
-                                        <br> {{ __('Platforms') }}
+                                    <p class="main-slider__sub-title">{{ __('Ahora es fácil recaudar dinero') }}!</p>
+                                    <h2 class="main-slider__title">{{ __('Definitivo') }} <br> {{ __('Financiamiento colectivo') }}
+                                        <br> {{ __('Plataformas') }}
                                     </h2>
                                     <div class="main-slider__btn-box">
                                         @if (!empty($user_session))
                                             <a href="{{ url('CreateProject') }}"
-                                                class="thm-btn main-slider__btn">{{ __('Start a
-                                                                                                                                                                                                                                                Project') }}
+                                                class="thm-btn main-slider__btn">{{ __('Comenzar un proyecto') }}
                                             </a>
                                         @else
                                             <a href="{{ url('signup') }}"
-                                                class="thm-btn main-slider__btn">{{ __('Start a
-                                                                                                                                                                                                                                                Project') }}
+                                                class="thm-btn main-slider__btn">{{ __('Comenzar un proyecto') }}
                                             </a>
                                         @endif
 
-                                        <a href="team.html" class="main-slider__btn-two">{{ __('Speak with Expert') }} </a>
+                                        <a href="#" class="main-slider__btn-two">{{ __('Hablar con un experto') }} </a>
                                     </div>
                                 </div>
                             </div>
@@ -81,24 +79,22 @@
                         <div class="row">
                             <div class="col-xl-7 col-lg-8">
                                 <div class="main-slider__content">
-                                    <p class="main-slider__sub-title">{{ __('Raising Money is Easy Now') }}!</p>
-                                    <h2 class="main-slider__title">{{ __('Ultimate') }} <br> {{ __('Crowdfunding') }}
-                                        <br> {{ __('Platforms') }}
+                                    <p class="main-slider__sub-title">{{ __('Ahora es fácil recaudar dinero') }}!</p>
+                                    <h2 class="main-slider__title">{{ __('Definitivo') }} <br> {{ __('Financiamiento colectivo') }}
+                                        <br> {{ __('Plataformas') }}
                                     </h2>
                                     <div class="main-slider__btn-box">
                                         @if (!empty($user_session))
                                             <a href="{{ url('CreateProject') }}"
-                                                class="thm-btn main-slider__btn">{{ __('Start a
-                                                                                                                                                                                                                                                Project') }}
+                                                class="thm-btn main-slider__btn">{{ __('Comenzar un proyecto') }}
                                             </a>
                                         @else
                                             <a href="{{ url('signup') }}"
-                                                class="thm-btn main-slider__btn">{{ __('Start a
-                                                                                                                                                                                                                                                Project') }}
+                                                class="thm-btn main-slider__btn">{{ __('Comenzar un proyecto') }}
                                             </a>
                                         @endif
 
-                                        <a href="team.html" class="main-slider__btn-two">{{ __('Speak with Expert') }} </a>
+                                        <a href="#" class="main-slider__btn-two">{{ __('Hablar con un experto') }} </a>
                                     </div>
                                 </div>
                             </div>
@@ -123,24 +119,22 @@
                         <div class="row">
                             <div class="col-xl-7 col-lg-8">
                                 <div class="main-slider__content">
-                                    <p class="main-slider__sub-title">{{ __('Raising Money is Easy Now') }}!</p>
-                                    <h2 class="main-slider__title">{{ __('Ultimate') }} <br> {{ __('Crowdfunding') }}
-                                        <br> {{ __('Platforms') }}
+                                    <p class="main-slider__sub-title">{{ __('Ahora es fácil recaudar dinero') }}!</p>
+                                    <h2 class="main-slider__title">{{ __('Definitivo') }} <br> {{ __('Financiamiento colectivo') }}
+                                        <br> {{ __('Plataformas') }}
                                     </h2>
                                     <div class="main-slider__btn-box">
                                         @if (!empty($user_session))
                                             <a href="{{ url('CreateProject') }}"
-                                                class="thm-btn main-slider__btn">{{ __('Start a
-                                                                                                                                                                                                                                                Project') }}
+                                                class="thm-btn main-slider__btn">{{ __('Comenzar un proyecto') }}
                                             </a>
                                         @else
                                             <a href="{{ url('signup') }}"
-                                                class="thm-btn main-slider__btn">{{ __('Start a
-                                                                                                                                                                                                                                                Project') }}
+                                                class="thm-btn main-slider__btn">{{ __('Comenzar un proyecto') }}
                                             </a>
                                         @endif
 
-                                        <a href="team.html" class="main-slider__btn-two">{{ __('Speak with Expert') }} </a>
+                                        <a href="#" class="main-slider__btn-two">{{ __('Hablar con un experto') }} </a>
                                     </div>
                                 </div>
                             </div>
@@ -173,15 +167,15 @@
                     <div class="col-xl-6 col-lg-7">
                         <div class="categories-one__top-left">
                             <div class="section-title text-left">
-                                <span class="section-title__tagline">{{ __('Explore categories') }}</span>
-                                <h2 class="section-title__title">{{ __('Check Which Category Intrest You') }}</h2>
+                                <span class="section-title__tagline">{{ __('Explorar categorías') }}</span>
+                                <h2 class="section-title__title">{{ __('Ver en qué categoría estás interesado') }}</h2>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="categories-one__backers ">
                     <div class="categories-one__backers-tagline">
-                        <p>{{ __('Find it first on ACELERA.') }}</p>
+                        <p>{{ __('Encuéntralo primero en ACELERA') }}</p>
                     </div>
                     <div class="categories-one__backers-box">
                         <div class="categories-one__backers-icon">
@@ -190,7 +184,7 @@
                         <div class="categories-one__backers-content">
                             <!-- <h3 class="count-text" data-stop="37400" data-speed="2000"></h3> -->
                             <h3 class="odometer" data-count="37400">00</h3>
-                            <p>{{ __('Businesses Backers') }}</p>
+                            <p>{{ __('Patrocinadores empresariales') }}</p>
                         </div>
                     </div>
                 </div>
@@ -219,8 +213,7 @@
                     </div>
                 </div>
                 <p class="categories-one__bottom-text">
-                    {{ __('Discover projects just for you and get great recommendations
-                                                                                                    when you select your interests.') }}
+                    {{ __('Descubre proyectos solo para ti y obtén excelentes recomendaciones cuando selecciones tus intereses.') }}
                 </p>
             </div>
         </div>
@@ -232,8 +225,8 @@
         <div class="container">
             <div class="project-one__top">
                 <div class="section-title text-center">
-                    <span class="section-title__tagline">{{ __('Businesses You Can Back') }}</span>
-                    <h2 class="section-title__title">{{ __('Explore the Best Featured') }} <br> {{ __('Projects now') }}
+                    <span class="section-title__tagline">{{ __('EMPRESAS A LAS QUE PUEDES APOYAR') }}</span>
+                    <h2 class="section-title__title">{{ __('Explora los mejores proyectos destacados ahora') }} <br> {{ __('Días restantes') }}
                     </h2>
                 </div>
             </div>
@@ -293,14 +286,14 @@
                                             <i class="fa fa-clock"></i>
                                         </div>
                                         <div class="text">
-                                            <p>{{ $days_left }} {{ __('Days Remaining') }}</p>
+                                            <p>{{ $days_left }} {{ __('Días Restantes') }}</p>
                                         </div>
                                     </div>
                                     <div class="progress-levels">
                                         <!--Skill Box-->
                                         <div class="progress-box">
                                             <div class="inner count-box">
-                                                <div class="text">{{ __('Raised') }}</div>
+                                                <div class="text">{{ __('Recaudado') }}</div>
                                                 <div class="bar">
                                                     <div class="bar-innner">
                                                         <?php
@@ -332,14 +325,14 @@
                                         </div>
                                     </div>
                                     <div class="project-one__goals">
-                                        <p class="project-one__goals-one">{{ __('Achieved') }}:<span>BS  @foreach ($totalRaisedArray as $projectId => $Raised)
+                                        <p class="project-one__goals-one">{{ __('Logrado') }}:<span>BS  @foreach ($totalRaisedArray as $projectId => $Raised)
                                             @if ($row->id == $projectId)
                                                 {{ $Raised }}
                                             @endif
                                         @endforeach
                                             </span></p>
                                         <p class="project-one__goals-one">
-                                            {{ __('Goal') }}:<span>BS {{ $row->goal }}</span></p>
+                                            {{ __('Meta') }}:<span>BS {{ $row->goal }}</span></p>
                                     </div>
                                 </div>
                             </div>
@@ -362,16 +355,12 @@
                         <div class="col-xl-6">
                             <div class="why-choose-one__left">
                                 <div class="section-title text-left">
-                                    <span class="section-title__tagline">{{ __('our platform benefits') }}</span>
-                                    <h2 class="section-title__title">{{ __('Why you Should Choose') }} <br>
-                                        {{ __('ACELERA Platform') }} </h2>
+                                    <span class="section-title__tagline">{{ __('LOS BENEFICIOS DE NUESTRA PLATAFORMA') }}</span>
+                                    <h2 class="section-title__title">{{ __('Por qué Deberías Elegir la') }} <br>
+                                        {{ __('Plataforma ACELERA') }} </h2>
                                 </div>
                                 <div class="why-choose-one__left-text">
-                                    <p>{{ __('There are certain attributes of a profession and one has to catch hold of
-                                                                                                                                                                                        them in
-                                                                                                                                                                                        order to work efficiently and grow in that business. I share my experience
-                                                                                                                                                                                        as an
-                                                                                                                                                                                        interior designer, a profession of great esthetic.') }}
+                                    <p>{{ __('Hay ciertos atributos de una profesión y uno tiene que aprovecharlos para trabajar de manera eficiente y crecer en ese negocio. Comparto mi experiencia como diseñador/a de interiores, una profesión de gran estética.') }}
                                     </p>
                                 </div>
                                 <ul class="why-choose-one__points list-unstyled">
@@ -380,7 +369,7 @@
                                             <i class="icon-check-mark"></i>
                                         </div>
                                         <div class="content">
-                                            <h3 class="title">{{ __('100% Success Rates') }}</h3>
+                                            <h3 class="title">{{ __('Tasas de Éxito del 100%') }}</h3>
                                             <p class="text">{{ __('Lorem ipsum velit anod ips aliquet enean quis.') }}
                                             </p>
                                         </div>
@@ -390,16 +379,16 @@
                                             <i class="icon-check-mark"></i>
                                         </div>
                                         <div class="content">
-                                            <h3 class="title">{{ __('Millions in Funding') }}</h3>
+                                            <h3 class="title">{{ __('Millones en Financiamiento') }}</h3>
                                             <p class="text">{{ __('Lorem ipsum velit anod ips aliquet enean quis.') }}
                                             </p>
                                         </div>
                                     </li>
                                 </ul>
                                 @if (!empty($user_session))
-                                    <a href="{{ url('CreateProject') }}" class="thm-btn">{{ __('Make it Happen') }}</a>
+                                    <a href="{{ url('CreateProject') }}" class="thm-btn">{{ __('Haz que Suceda') }}</a>
                                 @else
-                                    <a href="{{ url('signup') }}" class="thm-btn">{{ __('Make it Happen') }}</a>
+                                    <a href="{{ url('signup') }}" class="thm-btn">{{ __('Haz que Suceda') }}</a>
                                 @endif
 
                             </div>
@@ -411,10 +400,10 @@
                                         <img src="assets/images/resources/why-choose-1.1.jpg" alt="">
                                     </div>
                                     <div class="why-choose-one__trusted">
-                                        <p>{{ __('Trusted by more') }} <br>{{ __('than') }} <span class="odometer"
+                                        <p>{{ __('Confiado por más') }} <br>{{ __('de') }} <span class="odometer"
                                                 data-count="3500">00</span>
                                             <br>
-                                            {{ __('clients') }}
+                                            {{ __('clientes') }}
                                         </p>
                                     </div>
                                 </div>
@@ -441,7 +430,7 @@
                                 </div>
                                 <div class="counter-one__count-box">
                                     <h3 class="odometer" data-count="790">00</h3>
-                                    <p class="counter-one__text">{{ __('Projects Completed') }}</p>
+                                    <p class="counter-one__text">{{ __('Proyectos Completados') }}</p>
                                 </div>
                             </div>
                         </div>
@@ -458,7 +447,7 @@
                                 </div>
                                 <div class="counter-one__count-box">
                                     <h3 class="odometer" data-count="260">00</h3>
-                                    <p class="counter-one__text">{{ __('Partner Fundings') }}</p>
+                                    <p class="counter-one__text">{{ __('Financiamientos de Socios') }}</p>
                                 </div>
                             </div>
                         </div>
@@ -476,7 +465,7 @@
                                 <div class="counter-one__count-box">
                                     <h3 class="odometer" data-count="86">00</h3>
                                     <span class="counter-one__letter">k</span>
-                                    <p class="counter-one__text">{{ __('Raised to Date') }}</p>
+                                    <p class="counter-one__text">{{ __('Recaudado Hasta la Fecha') }}</p>
                                 </div>
                             </div>
                         </div>
@@ -493,7 +482,7 @@
                                 </div>
                                 <div class="counter-one__count-box">
                                     <h3 class="odometer" data-count="940">00</h3>
-                                    <p class="counter-one__text">{{ __('Happy Customers') }}</p>
+                                    <p class="counter-one__text">{{ __('Clientes Satisfechos') }}</p>
                                 </div>
                             </div>
                         </div>
@@ -544,8 +533,8 @@
         <div class="container">
             <div class="recommended-one__top">
                 <div class="section-title text-center">
-                    <span class="section-title__tagline">{{ __('Businesses You Can Back') }}</span>
-                    <h2 class="section-title__title">{{ __('Recommended for you') }} <br>{{ __('Fresh Projects') }} </h2>
+                    <span class="section-title__tagline">{{ __('EMPRESAS A LAS QUE PUEDES APOYAR') }}</span>
+                    <h2 class="section-title__title">{{ __('Recomendado para ti') }} <br>{{ __('Proyectos Nuevos') }} </h2>
                 </div>
             </div>
             <div class="recommended-one__bottom">
@@ -601,7 +590,7 @@
                                                     <i class="fa fa-clock"></i>
                                                 </div>
                                                 <div class="text">
-                                                    <p>{{ $days_left }} {{ __('Days Remaining') }}</p>
+                                                    <p>{{ $days_left }} {{ __('Días Restantes') }}</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -640,11 +629,11 @@
                     @endforeach
 
                 </span>
-                <br>{{ __('Goal of') }} BS {{ $row->goal }}
+                <br>{{ __('Meta of') }} BS {{ $row->goal }}
             </p>
             <p class="project-one__goals-one"><span class="odometer project-one__plus"
                     data-count="{{ \App\Models\Payment::where('campaign_id', $row->id)->where('accepted', 1)->get()->count() }}"></span>
-                <br>{{ __('Backers We Got') }}
+                <br>{{ __('Patrocinadores que Obtuvimos') }}
             </p>
         </div>
         </div>
@@ -683,7 +672,7 @@
     <!--Individuals Work End-->
 
     <!--Testimonial One Start-->
-    <section class="testimonial-one">
+    {{-- <section class="testimonial-one">
         <div class="container">
             <div class="testimonial-one__slider">
                 <div class="testimonial-one__main-content">
@@ -877,7 +866,7 @@
                 <div id="testimonials-one__carousel-pagination"></div>
             </div>
         </div>
-    </section>
+    </section> --}}
     <!--Testimonial One End-->
 
     <!--Brand One Start-->
@@ -969,8 +958,8 @@
         <div class="news-one__bg-color"></div>
         <div class="container">
             <div class="section-title text-center">
-                <span class="section-title__tagline">{{ __('Direct from the Blog Posts') }}</span>
-                <h2 class="section-title__title">{{ __('Checkout Latest News') }} <br> {{ __('and Articles') }}</h2>
+                <span class="section-title__tagline">{{ __('DIRECTAMENTE DESDE LAS ENTRADAS DEL BLOG') }}</span>
+                <h2 class="section-title__title">{{ __('Consulta las Últimas Noticias') }} <br> {{ __('y Artículos') }}</h2>
             </div>
             <div class="row">
                 @foreach ($blogs as $row)
@@ -995,7 +984,7 @@
                                 <ul class="news-one__meta list-unstyled">
                                     <li>
                                         <a href="{{ url('blog_details/') }}{{ '/' . $row->slug }}"><i
-                                                class="fas fa-user-circle"></i>{{ __('by Admin') }}</a>
+                                                class="fas fa-user-circle"></i>{{ __('por Administrador') }}</a>
                                     </li>
                                     <li>
                                         @php
@@ -1006,7 +995,7 @@
                                         @endphp
                                         <a href="{{ url('blog_details/') }}{{ '/' . $row->slug }}"><i
                                                 class="fas fa-comments"></i>{{ @$blogComments->count() }}
-                                            {{ __('Comments') }}</a>
+                                            {{ __('Comentarios') }}</a>
                                     </li>
                                 </ul>
                                 <h3 class="news-one__title"><a
@@ -1015,7 +1004,7 @@
                                 <div class="news-one__bottom">
                                     <div class="news-one__button">
                                         <a
-                                            href="{{ url('blog_details/') }}{{ '/' . $row->slug }}">{{ __('Read more') }}</a>
+                                            href="{{ url('blog_details/') }}{{ '/' . $row->slug }}">{{ __('LEER MÁS') }}</a>
                                     </div>
                                     <div class="news-one__arrow">
                                         <a href="{{ url('blog_details/') }}{{ '/' . $row->slug }}"><span
@@ -1048,16 +1037,16 @@
                         <span class="icon-fundraiser"></span>
                     </div>
                     <div class="content">
-                        <p>{{ __('Your story starts from here') }}</p>
-                        <h3>{{ __('Ready to raise funds for idea?') }}</h3>
+                        <p>{{ __('Tu historia comienza desde aquí') }}</p>
+                        <h3>{{ __('Listo/a para recaudar fondos para una idea?') }}</h3>
                     </div>
                 </div>
                 <div class="ready-one__right">
                     @if (!empty($user_session))
                         <a href="{{ url('CreateProject') }}"
-                            class="thm-btn ready-one__btn">{{ __('Make it Happen') }}</a>
+                            class="thm-btn ready-one__btn">{{ __('Haz que Suceda') }}</a>
                     @else
-                        <a href="{{ url('signup') }}" class="thm-btn ready-one__btn">{{ __('Make it Happen') }}</a>
+                        <a href="{{ url('signup') }}" class="thm-btn ready-one__btn">{{ __('Haz que Suceda') }}</a>
                     @endif
 
                 </div>

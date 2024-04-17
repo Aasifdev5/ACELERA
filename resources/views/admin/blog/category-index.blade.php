@@ -19,7 +19,7 @@
                                 <nav aria-label="breadcrumb">
                                     <ul class="breadcrumb">
                                         <li class="breadcrumb-item"><a
-                                                href="{{ url('admin/dashboard') }}">{{ __('Dashboard') }}</a></li>
+                                                href="{{ url('admin/dashboard') }}">{{ __('Panel') }}</a></li>
                                         <li class="breadcrumb-item active" aria-current="page">{{ __('Blogs') }}</li>
                                     </ul>
                                 </nav>
@@ -44,7 +44,7 @@
                                 <h2>{{ __('Blog Category') }}</h2>
                                 <button class="btn btn-success btn-sm pull-right" type="button" data-bs-toggle="modal"
                                     data-bs-target="#add-todo-modal">
-                                    <i class="fa fa-plus"></i> {{ __('Add Blog Category') }}
+                                    <i class="fa fa-plus"></i> {{ __('Agregar Categoría de Blog') }}
                                 </button>
                             </div>
                             <div class="card-body">
@@ -52,9 +52,9 @@
                                     <table id="advance-1" class="row-border data-table-filter table-style">
                                         <thead>
                                             <tr>
-                                                <th>{{ __('Name') }}</th>
-                                                <th>{{ __('Status') }}</th>
-                                                <th>{{ __('Action') }}</th>
+                                                <th>{{ __('Nombre') }}</th>
+                                                <th>{{ __('Estado') }}</th>
+                                                <th>{{ __('Acción') }}</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -65,9 +65,9 @@
                                                     </td>
                                                     <td>
                                                         @if ($category->status == 1)
-                                                            <span class="status bg-green">{{ __('Active') }}</span>
+                                                            <span class="status bg-green">{{ __('Activo') }}</span>
                                                         @else
-                                                            <span class="status bg-red">{{ __('Deactivated') }}</span>
+                                                            <span class="status bg-red">{{ __('Desactivado') }}</span>
                                                         @endif
                                                     </td>
                                                     <td>

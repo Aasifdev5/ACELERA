@@ -976,7 +976,7 @@ class Admin extends Controller
         $campaign->goal = $request->goal;
         $campaign->min_amount = $request->min_amount;
         $campaign->max_amount = $request->max_amount;
-        $campaign->recommended_amount = $request->recommended_amount;
+        $campaign->short_description = $request->short_description;
         $campaign->amount_prefilled = $request->amount_prefilled;
         $campaign->end_method = $request->end_method;
         $campaign->video = $request->video;

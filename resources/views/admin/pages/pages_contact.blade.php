@@ -3,31 +3,7 @@
 {{stripslashes($page_info->page_title)}}
 @endsection
 @section('content')
-<!--Page Header Start-->
-<section class="page-header">
-    <div class="page-header-bg" style="background-image: url(assets/images/backgrounds/page-header-bg.jpg)">
-    </div>
-    <div class="page-header-shape-1 float-bob-x">
-        <img src="assets/images/shapes/page-header-shape-1.png" alt="">
-    </div>
-    <div class="page-header-shape-2 float-bob-y">
-        <img src="assets/images/shapes/page-header-shape-2.png" alt="">
-    </div>
-    <div class="page-header-shape-3 float-bob-x">
-        <img src="assets/images/shapes/page-header-shape-3.png" alt="">
-    </div>
-    <div class="container">
-        <div class="page-header__inner">
-            <ul class="thm-breadcrumb list-unstyled">
-                <li><a href="/">Home</a></li>
-                <li><span>/</span></li>
-                <li>{{ stripslashes($page_info->page_title) }}</li>
-            </ul>
-            <h2>{{ stripslashes($page_info->page_title) }}</h2>
-        </div>
-    </div>
-</section>
-<!--Page Header End-->
+
 <br>
 <div class="container" style="margin-bottom: 50px">
 <!-- Start Contat Page -->
@@ -62,37 +38,37 @@
            {!! Form::open(array('url' => 'contact_send','class'=>'row','id'=>'contact_form','role'=>'form')) !!}
             <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
               <div class="form-group mb-3">
-                <label>Name</label>
-                <input type="text" name="name" id="name" class="form-control" placeholder="Name" required>
+                <label>Nombre</label>
+                <input type="text" name="name" id="name" class="form-control" placeholder="Nombre" required>
               </div>
             </div>
             <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
               <div class="form-group mb-3">
-				<label>Email</label>
-                <input type="email" name="email" id="email" class="form-control" placeholder="Email" required>
+				<label>Correo Electrónico</label>
+                <input type="email" name="email" id="email" class="form-control" placeholder="Correo Electrónico" required>
               </div>
             </div>
             <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
               <div class="form-group mb-3">
-				<label>Phone</label>
-                <input type="text" name="phone" id="phone" class="form-control" placeholder="Phone Number">
+				<label>Teléfono</label>
+                <input type="text" name="phone" id="phone" class="form-control" placeholder="Teléfono">
               </div>
             </div>
             <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
               <div class="form-group mb-3">
-				<label>Subject</label>
-                <input type="text" name="subject" id="subject" class="form-control" placeholder="Subject" required>
+				<label>Asunto</label>
+                <input type="text" name="subject" id="subject" class="form-control" placeholder="Asunto" required>
               </div>
             </div>
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
               <div class="form-group mb-3">
-              <label>Message</label>
-                <textarea name="message" id="message" class="form-control" cols="30" rows="4" placeholder="Your Message..." required></textarea>
+              <label>Mensaje</label>
+                <textarea name="message" id="message" class="form-control" cols="30" rows="4" placeholder="Mensaje..." required></textarea>
               </div>
             </div>
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
               <div class="form-group">
-                <button type="submit" class="btn btn-sm btn-block btn-primary">Submit</button>
+                <button type="submit" class="btn btn-sm btn-block btn-primary">Enviar</button>
               </div>
             </div>
           {!! Form::close() !!}

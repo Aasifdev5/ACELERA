@@ -12,14 +12,14 @@
                         <div class="breadcrumb__content">
                             <div class="breadcrumb__content__left">
                                 <div class="breadcrumb__title">
-                                    <h2>{{ __('Blog Comment') }}</h2>
+                                    <h2>{{ __('Comentario de Blog') }}</h2>
                                 </div>
                             </div>
                             <div class="breadcrumb__content__right">
                                 <nav aria-label="breadcrumb">
                                     <ul class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="{{url('admin.dashboard')}}">{{__('Dashboard')}}</a></li>
-                                        <li class="breadcrumb-item active" aria-current="page">{{ __('Blog Comment') }}</li>
+                                        <li class="breadcrumb-item"><a href="{{url('admin.dashboard')}}">{{__('Panel')}}</a></li>
+                                        <li class="breadcrumb-item active" aria-current="page">{{ __('Comentario de Blog') }}</li>
                                     </ul>
                                 </nav>
                             </div>
@@ -30,7 +30,7 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <h2>{{ __('Blog Comment List') }}</h2>
+                                <h2>{{ __('Lista de Comentarios de Blog') }}</h2>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -38,10 +38,10 @@
                                         <thead>
                                         <tr>
                                             <th>{{ __('Blog') }}</th>
-                                            <th>{{ __('User') }}</th>
-                                            <th>{{ __('Comment') }}</th>
-                                            <th>{{ __('Status') }}</th>
-                                            <th>{{__('Action')}}</th>
+                                            <th>{{ __('Usuario') }}</th>
+                                            <th>{{ __('Comentario') }}</th>
+                                            <th>{{ __('Estado') }}</th>
+                                            <th>{{__('Acción')}}</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -61,8 +61,8 @@
                                                 <td>
                                                     <span id="hidden_id" style="display: none">{{$comment->id}}</span>
                                                     <select name="status" class="status label-inline font-weight-bolder mb-1 badge badge-info">
-                                                        <option value="1" @if($comment->status == 1) selected @endif>{{ __('Active') }}</option>
-                                                        <option value="0" @if($comment->status != 1) selected @endif>{{ __('Disabled') }}</option>
+                                                        <option value="1" @if($comment->status == 1) selected @endif>{{ __('Activo') }}</option>
+                                                        <option value="0" @if($comment->status != 1) selected @endif>{{ __('Desactivado') }}</option>
                                                     </select>
                                                 </td>
 

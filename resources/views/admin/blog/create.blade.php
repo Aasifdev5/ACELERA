@@ -33,20 +33,20 @@
                                             <div class="breadcrumb__content">
                                                 <div class="breadcrumb__content__left">
                                                     <div class="breadcrumb__title">
-                                                        <h2>{{ __('Add Blog') }}</h2>
+                                                        <h2>{{ __('Agregar Blog') }}</h2>
                                                     </div>
                                                 </div>
                                                 <div class="breadcrumb__content__right">
                                                     <nav aria-label="breadcrumb">
                                                         <ul class="breadcrumb">
                                                             <li class="breadcrumb-item"><a
-                                                                    href="{{ url('admin/dashboard') }}">{{ __('Dashboard') }}</a>
+                                                                    href="{{ url('admin/dashboard') }}">{{ __('Panel') }}</a>
                                                             </li>
                                                             <li class="breadcrumb-item"><a
-                                                                    href="{{ url('admin/blog') }}">{{ __('All Blog') }}</a>
+                                                                    href="{{ url('admin/blog') }}">{{ __('Todo el Blog') }}</a>
                                                             </li>
                                                             <li class="breadcrumb-item active" aria-current="page">
-                                                                {{ __('Add Blog') }}</li>
+                                                                {{ __('Agregar Blog') }}</li>
                                                         </ul>
                                                     </nav>
                                                 </div>
@@ -57,17 +57,17 @@
                                         <div class="col-md-12">
                                             <div class="customers__area bg-style mb-30">
                                                 <div class="item-title d-flex justify-content-between">
-                                                    <h2>{{ __('Add Blog') }}</h2>
+                                                    <h2>{{ __('Agregar Blog') }}</h2>
                                                 </div>
                                                 <form action="{{ route('blog.store') }}" method="post"
                                                     class="form-horizontal" enctype="multipart/form-data">
                                                     @csrf
                                                     <input type="hidden" name="user_id" value="{{ $user_session->id }}">
                                                     <div class="input__group mb-25">
-                                                        <label>{{ __('Title') }} <span
+                                                        <label>{{ __('Título') }} <span
                                                                 class="text-danger">*</span></label>
                                                         <input type="text" name="title" value="{{ old('title') }}"
-                                                            placeholder="{{ __('Title') }}" class="form-control slugable"
+                                                            placeholder="{{ __('Título') }}" class="form-control slugable"
                                                             onkeyup="slugable()">
                                                         @if ($errors->has('title'))
                                                             <span class="text-danger"><i
@@ -90,7 +90,7 @@
                                                     </div>
 
                                                     <div class="input__group mb-25">
-                                                        <label for="blog_category_id"> {{ __('Blog Category') }} </label>
+                                                        <label for="blog_category_id"> {{ __('Categoría del Blog') }} </label>
                                                         <select name="blog_category_id" class="form-control"
                                                             id="blog_category_id">
                                                             <option value="">--{{ __('Select Option') }}--</option>
@@ -101,7 +101,7 @@
                                                         </select>
                                                     </div>
                                                     <div class="input__group mb-25">
-                                                        <label for="tag_ids"> {{ __('Tag') }} </label>
+                                                        <label for="tag_ids"> {{ __('Etiqueta') }} </label>
                                                         <select name="tag_ids[]" multiple id="tag_ids"
                                                             class="multiple-basic-single form-control">
                                                             @foreach ($tags as $tag)
@@ -111,7 +111,7 @@
                                                         </select>
                                                     </div>
                                                     <div class="input__group mb-25">
-                                                        <label>{{ __('Details') }} <span
+                                                        <label>{{ __('Detalles') }} <span
                                                                 class="text-danger">*</span></label>
                                                         <textarea name="details" class="editor">{{ old('details') }}</textarea>
 
@@ -124,7 +124,7 @@
                                                     </div>
 
                                                     <div class="row">
-                                                        <label>{{ __('Image') }}</label>
+                                                        <label>{{ __('Imagen ') }}</label>
                                                         <div class="col-md-3">
                                                             <div class="upload-img-box mb-25">
                                                                 <img src="">
@@ -133,7 +133,7 @@
                                                                     onchange="previewFile(this)">
                                                                 <div class="upload-img-box-icon">
                                                                     <i class="fa fa-camera"></i>
-                                                                    <p class="m-0">{{ __('Image') }}</p>
+                                                                    <p class="m-0">{{ __('Imagen ') }}</p>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -142,15 +142,15 @@
                                                                     class="fas fa-exclamation-triangle"></i>
                                                                 {{ $errors->first('image') }}</span>
                                                         @endif
-                                                        <p>{{ __('Accepted Files') }}: JPEG, JPG, PNG <br>
-                                                            {{ __('Recommend Size') }}: 870 x 500 (1MB)</p>
+                                                        <p>{{ __('Archivos Aceptados') }}: JPEG, JPG, PNG <br>
+                                                            {{ __('Tamaño Recomendado') }}: 870 x 500 (1MB)</p>
                                                     </div>
 
                                                     <div class="input__group mb-25">
-                                                        <label>{{ __('Meta Title') }}</label>
+                                                        <label>{{ __('Título Meta') }}</label>
                                                         <input type="text" name="meta_title"
                                                             value="{{ old('meta_title') }}"
-                                                            placeholder="{{ __('Meta title') }}" class="form-control">
+                                                            placeholder="{{ __('Título Meta') }}" class="form-control">
                                                         @if ($errors->has('meta_title'))
                                                             <span class="text-danger"><i
                                                                     class="fas fa-exclamation-triangle"></i>
@@ -159,10 +159,10 @@
                                                     </div>
 
                                                     <div class="input__group mb-25">
-                                                        <label>{{ __('Meta Description') }}</label>
+                                                        <label>{{ __('Descripción Meta') }}</label>
                                                         <input type="text" name="meta_description"
                                                             value="{{ old('meta_description') }}"
-                                                            placeholder="{{ __('meta description') }}"
+                                                            placeholder="{{ __('Descripción Meta') }}"
                                                             class="form-control">
                                                         @if ($errors->has('meta_description'))
                                                             <span class="text-danger"><i
@@ -172,10 +172,10 @@
                                                     </div>
 
                                                     <div class="input__group mb-25">
-                                                        <label>{{ __('Meta Keywords') }}</label>
+                                                        <label>{{ __('Palabras Clave Meta') }}</label>
                                                         <input type="text" name="meta_keywords"
                                                             value="{{ old('meta_keywords') }}"
-                                                            placeholder="{{ __('meta keywords') }}" class="form-control">
+                                                            placeholder="{{ __('Palabras Clave Meta') }}" class="form-control">
                                                         @if ($errors->has('meta_keywords'))
                                                             <span class="text-danger"><i
                                                                     class="fas fa-exclamation-triangle"></i>
@@ -184,7 +184,7 @@
                                                     </div>
 
                                                     <div class="input__group mb-25">
-                                                        <label>{{ __('OG Image') }}</label>
+                                                        <label>{{ __('Imagen OG') }}</label>
                                                         <div class="upload-img-box">
                                                             <img src="">
                                                             <input type="file" class="form-control" name="og_image"
@@ -192,7 +192,7 @@
                                                                 onchange="previewFile(this)">
                                                             <div class="upload-img-box-icon">
                                                                 <i class="fa fa-camera"></i>
-                                                                <p class="m-0">{{ __('OG Image') }}</p>
+                                                                <p class="m-0">{{ __('Imagen OG') }}</p>
                                                             </div>
                                                         </div>
                                                         @if ($errors->has('og_image'))
@@ -200,15 +200,15 @@
                                                                     class="fas fa-exclamation-triangle"></i>
                                                                 {{ $errors->first('og_image') }}</span>
                                                         @endif
-                                                        <p><span class="text-black">{{ __('Accepted Files') }}:</span>
+                                                        <p><span class="text-black">{{ __('Archivos Aceptados') }}:</span>
                                                             PNG, JPG <br> <span
-                                                                class="text-black">{{ __('Recommend Size') }}:</span> 1200
+                                                                class="text-black">{{ __('Tamaño Recomendado') }}:</span> 1200
                                                             x 627</p>
                                                     </div>
 
                                                     <div class="row mb-3">
                                                         <div class="col-md-12 text-right">
-                                                            <button class="btn btn-primary" type="submit">Save</button>
+                                                            <button class="btn btn-primary" type="submit">Guardar</button>
                                                         </div>
                                                     </div>
 

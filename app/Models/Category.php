@@ -32,20 +32,7 @@ class Category extends Model
         }
     }
 
-    public function courses()
-    {
-        return $this->hasMany(Course::class, 'category_id');
-    }
 
-    public function activeCourses()
-    {
-        return $this->hasMany(Course::class, 'category_id')->where('status', 1);
-    }
-
-    public function subcategories()
-    {
-        return $this->hasMany(Subcategory::class);
-    }
 
     public function scopeActive($query)
     {

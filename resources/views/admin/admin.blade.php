@@ -9,7 +9,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="icon" href="{{ asset('site_favicon/') }}<?php echo '/' . $general_setting->site_favicon; ?>" type="image/x-icon">
     <link rel="shortcut icon" href="{{ asset('site_favicon/') }}<?php echo '/' . $general_setting->site_favicon; ?>" type="image/x-icon">
-    <title>{{ $general_setting->site_name }} || Admin</title>
+    <title>{{ $general_setting->site_name }} || Administrador</title>
     <!-- Google font-->
     <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
     <link
@@ -60,8 +60,8 @@
                     <div class="card mt-4">
                         <div class="card-body">
                             <div class="text-center">
-                                <h4>Admin Login</h4>
-                                <h6>Enter your username and password </h6>
+                                <h4>Inicio de Sesión de Administrador</h4>
+                                <h6>Ingresa tu nombre de usuario y contraseña </h6>
                             </div>
                             <form class="theme-form" action="{{ url('admin/log') }}" method="post">
                                 @if (Session::has('success'))
@@ -78,7 +78,7 @@
                                 @csrf
 
                                 <div class="mb-3">
-                                    <label class="col-form-label pt-0">Email</label>
+                                    <label class="col-form-label pt-0">Correo Electrónico</label>
                                     <input class="form-control" type="email" name="email">
                                     <p class="text-danger" style="color: red">
                                         @error('email')
@@ -87,7 +87,7 @@
                                     </p>
                                 </div>
                                 <div class="mb-3">
-                                    <label class="col-form-label">Password</label>
+                                    <label class="col-form-label">Contraseña</label>
                                     <input class="form-control" type="password" name="pass">
                                     <p class="text-danger">
                                         @error('pass')
@@ -97,14 +97,14 @@
                                 </div>
                                 <div class="checkbox p-0">
                                     <input id="checkbox1" type="checkbox">
-                                    <label for="checkbox1">Remember me</label>
+                                    <label for="checkbox1">Recordarme</label>
                                 </div>
                                 <div class="form-row mt-3">
-                                    <button class="btn btn-primary btn-block w-100" type="submit">Login</button>
+                                    <button class="btn btn-primary btn-block w-100" type="submit">Iniciar sesión</button>
                                 </div>
                                 <div class="form-row mt-3">
                                     <a href="forget_password" class="btn btn-secondary btn-block w-100" type="submit">
-                                        Forget Password</a>
+                                        Olvidé Contraseña</a>
                                 </div>
                                 <!-- <div class="login-divider"></div> -->
                                 <!-- <div class="social mt-3">

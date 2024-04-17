@@ -6,31 +6,7 @@
     @php
         $general_setting = getApplicationsettings();
     @endphp
-    <!--Page Header Start-->
-    <section class="page-header">
-        <div class="page-header-bg" style="background-image: url(assets/images/backgrounds/page-header-bg.jpg)">
-        </div>
-        <div class="page-header-shape-1 float-bob-x">
-            <img src="assets/images/shapes/page-header-shape-1.png" alt="">
-        </div>
-        <div class="page-header-shape-2 float-bob-y">
-            <img src="assets/images/shapes/page-header-shape-2.png" alt="">
-        </div>
-        <div class="page-header-shape-3 float-bob-x">
-            <img src="assets/images/shapes/page-header-shape-3.png" alt="">
-        </div>
-        <div class="container">
-            <div class="page-header__inner">
-                <ul class="thm-breadcrumb list-unstyled">
-                    <li><a href="/">{{ __('Home') }}</a></li>
-                    <li><span>/</span></li>
-                    <li>{{ __('News Details') }}</li>
-                </ul>
-                <h2>{{ __('News Details') }} || {{ $blog_details->slug }}</h2>
-            </div>
-        </div>
-    </section>
-    <!--Page Header End-->
+
 
     <!--News Details Start-->
     <section class="news-details">
@@ -47,10 +23,10 @@
                         </div>
                         <div class="news-details__content">
                             <ul class="list-unstyled news-details__meta">
-                                <li><a href="#"><i class="fas fa-user-circle"></i>{{ __('by Admin') }} </a>
+                                <li><a href="#"><i class="fas fa-user-circle"></i>{{ __('por Administrador') }} </a>
                                 </li>
                                 <li><a href="#"><i class="fas fa-comments"></i> {{ @$blogComments->count() }}
-                                    {{ __('Comments') }} </a>
+                                    {{ __('Comentarios') }} </a>
                                 </li>
                             </ul>
                             <h3 class="news-details__title">{{ $blog_details->title }}</h3>
@@ -58,7 +34,7 @@
                         </div>
                         <div class="news-details__bottom">
                             <p class="news-details__tags">
-                                <span>{{ __('Tags') }}</span>
+                                <span>{{ __('Etiquetas') }}</span>
                                 @php
                                     $tagNames = [];
                                     if (!empty($blog_details->id)) {
@@ -82,16 +58,11 @@
                                 <a href="{{ $general_setting->footer_instagram_link }}"><i class="fab fa-instagram"></i></a>
                             </div>
                         </div>
-                        <div class="news-details__pagenation-box">
-                            <ul class="list-unstyled news-details__pagenation">
-                                <li>{{ __('The life of entrepreneur & business co-founders') }}</li>
-                                <li>{{ __('Survived not only five centuries') }}</li>
-                            </ul>
-                        </div>
+
                         <!-- Customer Comments and Reply Section-->
                         <div class="blog-comments-section mt-4">
                             <div class="appendCommentList">
-                                <h6 class="blog-comment-title">{{ @$blogComments->count() }} {{ __('comments') }}</h6>
+                                <h6 class="blog-comment-title">{{ @$blogComments->count() }} {{ __('Comentarios') }}</h6>
                                 <br>
                                 @foreach ($blogComments as $blogComment)
                                     <!-- Main Comment -->
@@ -217,12 +188,12 @@
                     <div class="sidebar">
                         <div class="sidebar__single sidebar__search">
                             <form action="#" class="sidebar__search-form">
-                                <input type="search" placeholder="Search here">
+                                <input type="search" placeholder="Buscar Aquí">
                                 <button type="submit"><i class="icon-magnifying-glass"></i></button>
                             </form>
                         </div>
                         <div class="sidebar__single sidebar__post">
-                            <h3 class="sidebar__title">{{ __('Latest Posts') }}</h3>
+                            <h3 class="sidebar__title">{{ __('Últimas Entradas') }}</h3>
                             <ul class="sidebar__post-list list-unstyled">
                                 @foreach ($latest_posts as $lp)
                                     <li>
@@ -246,7 +217,7 @@
                             </ul>
                         </div>
                         <div class="sidebar__single sidebar__category">
-                            <h3 class="sidebar__title">{{ __('Home') }}Categories</h3>
+                            <h3 class="sidebar__title">Categorías</h3>
                             <ul class="sidebar__category-list list-unstyled">
                                 @php
                                     $categoryList = \App\Models\BlogCategory::all();
@@ -264,7 +235,7 @@
                             </ul>
                         </div>
                         <div class="sidebar__single sidebar__tags">
-                            <h3 class="sidebar__title">{{ __('Tags') }}</h3>
+                            <h3 class="sidebar__title">{{ __('Etiquetas') }}</h3>
                             <div class="sidebar__tags-list">
                                 @php
                                     $tagList = \App\Models\Tag::all();
@@ -277,7 +248,7 @@
                             </div>
                         </div>
                         <div class="sidebar__single sidebar__comments">
-                            <h3 class="sidebar__title">{{ __('Comments') }}</h3>
+                            <h3 class="sidebar__title">{{ __('Comentarios') }}</h3>
                             <ul class="sidebar__comments-list list-unstyled">
                                 @foreach ($blogComments as $row)
                                     <li>

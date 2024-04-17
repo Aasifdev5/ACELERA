@@ -1,6 +1,6 @@
 @extends('admin.Master')
 @section('title')
-    Project List
+    Lista de Proyectos
 @endsection
 @section('content')
     <div class="page-body">
@@ -12,8 +12,8 @@
                             <h3>ACELERA</h3>
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="dashboard"><i data-feather="home"></i></a></li>
-                                <li class="breadcrumb-item">Project Management</li>
-                                <li class="breadcrumb-item">Project List</li>
+                                <li class="breadcrumb-item">Gestión de Proyectos</li>
+                                <li class="breadcrumb-item">Lista de Proyectos</li>
 
                             </ol>
                         </div>
@@ -39,11 +39,11 @@
                             </div>
                         @endif
                         <div class="card-header">
-                            <h5> Project List </h5>
-                            <a class="btn btn-pill btn-primary btn-air-primary pull-right" href="Add_Course_list"
+                            <h5> Lista de Proyectos </h5>
+                            {{-- <a class="btn btn-pill btn-primary btn-air-primary pull-right" href="Add_Course_list"
                                 data-toggle="tooltip" title="" role="button"
-                                data-bs-original-title="btn btn-primary">Add Project
-                            </a>
+                                data-bs-original-title="btn btn-primary">Agregar Proyecto
+                            </a> --}}
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -52,13 +52,13 @@
                                         <tr>
                                             <th class="">#</th>
                                             <!-- <th>id</th> -->
-                                            <th> Category </th>
-                                            <th>Title</th>
-                                            <th> Image </th>
+                                            <th> Categoría </th>
+                                            <th>Título</th>
+                                            <th> Imagen </th>
 
-                                            <th>Status</th>
+                                            <th>Estado</th>
 
-                                            <th>Action </th>
+                                            <th>Acción </th>
 
                                         </tr>
                                     </thead>

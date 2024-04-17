@@ -25,9 +25,9 @@
                                         @csrf
 
                                         <div class="input__group mb-25">
-                                            <label for="name"> {{ __('Name') }} </label>
+                                            <label for="name"> {{ __('Nombre') }} </label>
                                             <input type="text" name="name" id="name" value="{{ old('name') }}"
-                                                class="form-control flat-input" placeholder="{{ __('Name') }}">
+                                                class="form-control flat-input" placeholder="{{ __('Nombre') }}">
                                             @if ($errors->has('name'))
                                                 <span class="text-danger"><i class="fas fa-exclamation-triangle"></i>
                                                     {{ $errors->first('name') }}</span>
@@ -35,7 +35,7 @@
                                         </div>
 
                                         <div class="input__group mb-25">
-                                            <label for="is_feature"> {{ __('Feature') }} </label>
+                                            <label for="is_feature"> {{ __('Función') }} </label>
                                             <div>
                                                 <label class="text-black"> <input type="checkbox" name="is_feature"
                                                         id="is_feature" value="yes"
@@ -46,28 +46,28 @@
 
                                         <div class="custom-form-group mb-25">
                                             <label for="image" class="text-lg-right text-black mb-2">
-                                                {{ __('Image') }} </label>
+                                                {{ __('Imagen') }} </label>
                                             <div class="upload-img-box mb-25">
                                                 <img src="">
                                                 <input type="file" name="image" id="image" accept="image/*"
                                                     onchange="previewFile(this)">
                                                 <div class="upload-img-box-icon">
                                                     <i class="fa fa-camera"></i>
-                                                    <p class="m-0">{{ __('Image') }}</p>
+                                                    <p class="m-0">{{ __('Imagen') }}</p>
                                                 </div>
                                             </div>
                                             @if ($errors->has('image'))
                                                 <span class="text-danger"><i class="fas fa-exclamation-triangle"></i>
                                                     {{ $errors->first('image') }}</span>
                                             @endif
-                                            <p>{{ __('Accepted Image Files') }}: PNG <br> {{ __('Recommend Size') }}: 60 x
+                                            <p>{{ __('Archivos Aceptados') }}: PNG <br> {{ __('Tamaño Recomendado') }}: 60 x
                                                 60 (1MB)</p>
                                         </div>
 
                                         <div class="input__group mb-25">
-                                            <label>{{ __('Meta Title') }}</label>
+                                            <label>{{ __('Título Meta') }}</label>
                                             <input type="text" name="meta_title" value="{{ old('meta_title') }}"
-                                                placeholder="{{ __('Meta title') }}" class="form-control">
+                                                placeholder="{{ __('Título Meta') }}" class="form-control">
                                             @if ($errors->has('meta_title'))
                                                 <span class="text-danger"><i class="fas fa-exclamation-triangle"></i>
                                                     {{ $errors->first('meta_title') }}</span>
@@ -75,10 +75,10 @@
                                         </div>
 
                                         <div class="input__group mb-25">
-                                            <label>{{ __('Meta Description') }}</label>
+                                            <label>{{ __('Descripción Meta') }}</label>
                                             <input type="text" name="meta_description"
                                                 value="{{ old('meta_description') }}"
-                                                placeholder="{{ __('meta description') }}" class="form-control">
+                                                placeholder="{{ __('Descripción Meta') }}" class="form-control">
                                             @if ($errors->has('meta_description'))
                                                 <span class="text-danger"><i class="fas fa-exclamation-triangle"></i>
                                                     {{ $errors->first('meta_description') }}</span>
@@ -86,9 +86,9 @@
                                         </div>
 
                                         <div class="input__group mb-25">
-                                            <label>{{ __('Meta Keywords') }}</label>
+                                            <label>{{ __('Palabras Clave Meta') }}</label>
                                             <input type="text" name="meta_keywords" value="{{ old('meta_keywords') }}"
-                                                placeholder="{{ __('meta keywords') }}" class="form-control">
+                                                placeholder="{{ __('Palabras Clave Meta') }}" class="form-control">
                                             @if ($errors->has('meta_keywords'))
                                                 <span class="text-danger"><i class="fas fa-exclamation-triangle"></i>
                                                     {{ $errors->first('meta_keywords') }}</span>
@@ -96,27 +96,27 @@
                                         </div>
 
                                         <div class="input__group mb-25">
-                                            <label>{{ __('OG Image') }}</label>
+                                            <label>{{ __('Imagen OG') }}</label>
                                             <div class="upload-img-box">
                                                 <img src="">
                                                 <input type="file" name="og_image" id="og_image" accept="image/*"
                                                     onchange="previewFile(this)">
                                                 <div class="upload-img-box-icon">
                                                     <i class="fa fa-camera"></i>
-                                                    <p class="m-0">{{ __('OG Image') }}</p>
+                                                    <p class="m-0">{{ __('Imagen OG') }}</p>
                                                 </div>
                                             </div>
                                             @if ($errors->has('og_image'))
                                                 <span class="text-danger"><i class="fas fa-exclamation-triangle"></i>
                                                     {{ $errors->first('og_image') }}</span>
                                             @endif
-                                            <p><span class="text-black">{{ __('Accepted Files') }}:</span> PNG, JPG <br>
-                                                <span class="text-black">{{ __('Recommend Size') }}:</span> 1200 x 627
+                                            <p><span class="text-black">{{ __('Archivos Aceptados') }}:</span> PNG, JPG <br>
+                                                <span class="text-black">{{ __('Tamaño Recomendado') }}:</span> 1200 x 627
                                             </p>
                                         </div>
                                         <div class="input__group mb-25">
                                             <div class="">
-                                                <button class="btn btn-primary" type="submit">Save</button>
+                                                <button class="btn btn-primary" type="submit">Guardar</button>
                                             </div>
                                         </div>
                                     </form>

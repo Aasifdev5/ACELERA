@@ -20,7 +20,7 @@
                             <div class="col-md-12">
                                 <div class="customers__area bg-style mb-30">
                                     <div class="item-title d-flex justify-content-between">
-                                        <h2>{{ __('Edit Blog') }}</h2>
+                                        <h2>{{ __('Editar Blog') }}</h2>
                                     </div>
                                     <form action="{{ url('admin/blog/update', [$blog->uuid]) }}" method="post"
                                         class="theme-form form-horizontal" enctype="multipart/form-data">
@@ -37,9 +37,9 @@
                                         @csrf
 
                                         <div class="input__group mb-25">
-                                            <label>{{ __('Title') }} <span class="text-danger">*</span></label>
+                                            <label>{{ __('Título') }} <span class="text-danger">*</span></label>
                                             <input type="text" name="title" value="{{ $blog->title }}"
-                                                placeholder="{{ __('Title') }}" class="form-control slugable"
+                                                placeholder="{{ __('Título') }}" class="form-control slugable"
                                                 onkeyup="slugable()">
                                             @if ($errors->has('title'))
                                                 <span class="text-danger"><i class="fas fa-exclamation-triangle"></i>
@@ -59,7 +59,7 @@
                                         </div>
                                         <br>
                                         <div class="input__group mb-25">
-                                            <label for="blog_category_id"> {{ __('Blog category') }} </label>
+                                            <label for="blog_category_id"> {{ __('Categoría del Blog') }} </label>
                                             <select name="blog_category_id" id="blog_category_id" class="form-control">
                                                 <option value="">--{{ __('Select Option') }}--</option>
                                                 @foreach ($blogCategories as $blogCategory)
@@ -71,7 +71,7 @@
                                         </div>
                                         <br>
                                         <div class="input__group mb-25">
-                                            <label>Status</label>
+                                            <label>Estado</label>
                                             <select name="status" id="status" class="form-control">
                                                 <option value="">--{{ __('Select Option') }}--</option>
                                                 <option value="1" @if ($blog->status == 1) selected @endif>
@@ -82,7 +82,7 @@
                                         </div>
                                         <br>
                                         <div class="input__group mb-25">
-                                            <label for="tag_ids"> {{ __('Tag') }} </label>
+                                            <label for="tag_ids"> {{ __('Etiqueta') }} </label>
                                             <select name="tag_ids[]" multiple id="tag_ids"
                                                 class="multiple-basic-single form-control">
                                                 @foreach ($tags as $tag)
@@ -95,7 +95,7 @@
                                         <br>
                                         <br>
                                         <div class="input__group mb-25">
-                                            <label>{{ __('Details') }} <span class="text-danger">*</span></label>
+                                            <label>{{ __('Detalles') }} <span class="text-danger">*</span></label>
                                             <textarea name="details" class="editor">{{ $blog->details }}</textarea>
 
                                             @if ($errors->has('details'))
@@ -106,7 +106,7 @@
                                         </div>
                                         <br>
                                         <div class="row">
-                                            <label>{{ __('OG Image') }}</label>
+                                            <label>{{ __('Imagen OG') }}</label>
                                             <div class="col-md-3">
                                                 <div class="upload-img-box mb-25">
                                                     @if ($blog->image)
@@ -125,16 +125,16 @@
                                                     <span class="text-danger"><i class="fas fa-exclamation-triangle"></i>
                                                         {{ $errors->first('image') }}</span>
                                                 @endif
-                                                <p>{{ __('Accepted Files') }}: JPEG, JPG, PNG <br>
-                                                    {{ __('Recommend Size') }}: 870 x 500 (1MB)</p>
+                                                <p>{{ __('Archivos Aceptados') }}: JPEG, JPG, PNG <br>
+                                                    {{ __('Tamaño Recomendado') }}: 870 x 500 (1MB)</p>
                                             </div>
                                         </div>
                                         <br>
                                         <div class="input__group mb-25">
-                                            <label>{{ __('Meta Title') }}</label>
+                                            <label>{{ __('Título Meta') }}</label>
                                             <input type="text" name="meta_title"
                                                 value="{{ old('meta_title', $blog->meta_title) }}"
-                                                placeholder="{{ __('Meta title') }}" class="form-control">
+                                                placeholder="{{ __('Título Meta') }}" class="form-control">
                                             @if ($errors->has('meta_title'))
                                                 <span class="text-danger"><i class="fas fa-exclamation-triangle"></i>
                                                     {{ $errors->first('meta_title') }}</span>
@@ -142,10 +142,10 @@
                                         </div>
                                         <br>
                                         <div class="input__group mb-25">
-                                            <label>{{ __('Meta Description') }}</label>
+                                            <label>{{ __('Descripción Meta') }}</label>
                                             <input type="text" name="meta_description"
                                                 value="{{ old('meta_description', $blog->meta_description) }}"
-                                                placeholder="{{ __('meta description') }}" class="form-control">
+                                                placeholder="{{ __('Descripción Meta') }}" class="form-control">
                                             @if ($errors->has('meta_description'))
                                                 <span class="text-danger"><i class="fas fa-exclamation-triangle"></i>
                                                     {{ $errors->first('meta_description') }}</span>
@@ -153,10 +153,10 @@
                                         </div>
                                         <br>
                                         <div class="input__group mb-25">
-                                            <label>{{ __('Meta Keywords') }}</label>
+                                            <label>{{ __('Palabras Clave Meta') }}</label>
                                             <input type="text" name="meta_keywords"
                                                 value="{{ old('meta_keywords', $blog->meta_keywords) }}"
-                                                placeholder="{{ __('meta keywords') }}" class="form-control">
+                                                placeholder="{{ __('Palabras Clave Meta') }}" class="form-control">
                                             @if ($errors->has('meta_keywords'))
                                                 <span class="text-danger"><i class="fas fa-exclamation-triangle"></i>
                                                     {{ $errors->first('meta_keywords') }}</span>
@@ -164,7 +164,7 @@
                                         </div>
                                         <br>
                                         <div class="input__group mb-25">
-                                            <label>{{ __('OG Image') }}</label>
+                                            <label>{{ __('Imagen OG') }}</label>
                                             <div class="upload-img-box">
                                                 @if ($blog->og_image != null && $blog->og_image != '')
                                                     <img src="{{ getImageFile($blog->og_image) }}">
@@ -182,13 +182,13 @@
                                                 <span class="text-danger"><i class="fas fa-exclamation-triangle"></i>
                                                     {{ $errors->first('og_image') }}</span>
                                             @endif
-                                            <p><span class="text-black">{{ __('Accepted Files') }}:</span> PNG, JPG <br>
-                                                <span class="text-black">{{ __('Recommend Size') }}:</span> 1200 x 627</p>
+                                            <p><span class="text-black">{{ __('Archivos Aceptados') }}:</span> PNG, JPG <br>
+                                                <span class="text-black">{{ __('Tamaño Recomendado') }}:</span> 1200 x 627</p>
                                         </div>
 
                                         <div class="row mb-3">
                                             <div class="col-md-12 text-right">
-                                                <button class="btn btn-primary" type="submit">Update</button>
+                                                <button class="btn btn-primary" type="submit">Actualizar</button>
                                             </div>
                                         </div>
 

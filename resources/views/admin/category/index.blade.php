@@ -40,11 +40,11 @@
                                     <table id="advance-1" class="row-border data-table-filter table-style">
                                         <thead>
                                             <tr>
-                                                <th>{{ __('Image') }}</th>
-                                                <th>{{ __('Name') }}</th>
-                                                <th>{{ __('Feature') }}</th>
-                                                <th>{{ __('Total Project') }}</th>
-                                                <th>{{ __('Action') }}</th>
+                                                <th>{{ __('Imagen') }}</th>
+                                                <th>{{ __('Nombre') }}</th>
+                                                <th>{{ __('Función') }}</th>
+
+                                                <th>{{ __('Acción') }}</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -68,9 +68,7 @@
                                                             <span class="status blocked">{{ __('No') }}</span>
                                                         @endif
                                                     </td>
-                                                    <td>
-                                                        {{ @$category->courses->count() }}
-                                                    </td>
+
                                                     <td>
                                                         <div class="action__buttons">
                                                             <a href="{{ route('category.edit', [$category->uuid]) }}"
