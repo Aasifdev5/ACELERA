@@ -21,24 +21,25 @@ use App\Models\Country;
 use App\Models\GeneralSetting;
 
 
+use App\Models\Like;
+
+
+
 use App\Models\Notification;
-
-
-
 use App\Models\Page;
+
+
 use App\Models\PasswordReset;
 
 
 use App\Models\Payment;
 
-
 use App\Models\Role;
 
 use App\Models\User;
-
 use App\Notifications\NewUserRegisteredNotification;
-use App\Notifications\ResetPasswordNotification;
 
+use App\Notifications\ResetPasswordNotification;
 use App\Notifications\UserRegisteredNotification;
 use App\Notifications\VerifyEmailNotification;
 use App\Traits\SendNotification;
@@ -380,6 +381,44 @@ class UserController extends Controller
             return Redirect()->with('fail', 'You have to login first');
         }
     }
+    public function storeLikes(Request $request)
+{
+    $projectId = $request->projectId;
+    $userId = Session::get('LoggedIn'); // Get the currently logged-in user ID
+
+    // Check if user already liked the project
+    $like = Like::where('project_id', $projectId)->where('user_id', $userId)->first();
+
+    if (!$like) {
+        // Create a new Like record if user hasn't liked before
+        $like = Like::create([
+            'project_id' => $projectId,
+            'user_id' => $userId,
+        ]);
+    }
+
+    // Get the updated like count for the project
+    $likeCount = Like::where('project_id', $projectId)->count();
+
+    // Return response (optional)
+    return response()->json([
+        'success' => true,
+        'likeCount' => $likeCount,
+    ]);
+}
+public function checkLike(Request $request)
+{
+    $projectId = $request->projectId; // Get the project ID
+    $userId = Session::get('LoggedIn'); // Get the currently logged-in user ID
+
+    // Check if user already liked the project
+    $like = Like::where('project_id', $projectId)->where('user_id', $userId)->exists();
+
+    // Return response
+    return response()->json([
+        'liked' => $like,
+    ]);
+}
 
     public function update_project(Request $request)
     {
@@ -630,7 +669,7 @@ class UserController extends Controller
             'category' => 'required',
             'title' => 'required',
             'image' => 'required',
-            'og_image' => 'required',
+
             'description' => 'required',
             // 'short_description' => 'required|max:200',
             'goal' => 'required',

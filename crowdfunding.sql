@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 17, 2024 at 11:20 AM
+-- Generation Time: Apr 20, 2024 at 12:21 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -11709,6 +11709,30 @@ INSERT INTO `languages` (`id`, `language`, `iso_code`, `flag`, `rtl`, `status`, 
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `likes`
+--
+
+CREATE TABLE `likes` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `project_id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `likes`
+--
+
+INSERT INTO `likes` (`id`, `project_id`, `user_id`, `created_at`, `updated_at`) VALUES
+(12, 18, 4, '2024-04-20 03:19:52', '2024-04-20 03:19:52'),
+(13, 31, 4, '2024-04-20 03:26:28', '2024-04-20 03:26:28'),
+(14, 30, 4, '2024-04-20 03:33:19', '2024-04-20 03:33:19'),
+(15, 18, 3, '2024-04-20 04:27:08', '2024-04-20 04:27:08');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `mail_templates`
 --
 
@@ -11798,7 +11822,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (25, '2024_01_17_071550_create_banners_table', 13),
 (26, '2024_01_17_085258_create_ads_table', 14),
 (27, '2024_01_17_104036_create_calendars_table', 15),
-(28, '2024_01_17_140951_create_credit_reload_promotions_table', 16);
+(28, '2024_01_17_140951_create_credit_reload_promotions_table', 16),
+(29, '2024_01_16_172130_create_attentions_table', 17);
 
 -- --------------------------------------------------------
 
@@ -16137,10 +16162,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `account_type`, `role`, `name`, `email`, `email_verified_at`, `password`, `custom_password`, `mobile_number`, `country`, `last_seen`, `is_online`, `is_active`, `status`, `about`, `photo_url`, `profile_photo`, `remember_token`, `ip_address`, `balance`, `is_system`, `is_subscribed`, `privacy`, `gender`, `created_by`, `deleted_at`, `language`, `is_super_admin`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 1, 'SUPER ADMINISTRADOR', 'admin@gmail.com', '2023-03-23 07:45:02', '$2y$10$9SbqzcUtyfeaf4019gajcOGQ4/k.XfIpeMXZp/ZERKUP0Z9GA02MK', NULL, '8878326802', 'india', '2024-04-17 03:23:35', 0, 1, 1, NULL, NULL, 'acl2.png', NULL, NULL, NULL, 1, 0, 1, 1, NULL, NULL, 'es', 1, '2023-03-23 07:45:02', '2024-04-17 03:23:35'),
+(1, 'admin', 1, 'SUPER ADMINISTRADOR', 'admin@gmail.com', '2023-03-23 07:45:02', '$2y$10$9SbqzcUtyfeaf4019gajcOGQ4/k.XfIpeMXZp/ZERKUP0Z9GA02MK', NULL, '8878326802', 'india', '2024-04-20 04:27:35', 0, 1, 1, NULL, NULL, 'acl2.png', NULL, NULL, NULL, 1, 0, 1, 1, NULL, NULL, 'es', 1, '2023-03-23 07:45:02', '2024-04-20 04:27:35'),
 (2, 'admin', NULL, 'Worker', 'worker@gmail.com', '2023-03-23 07:45:02', '$2y$10$TwlAHh5tVCO.ZGjAC74MVeFE0eltxZiYgB9.CTjimg7AOQXEiOlt.', NULL, '8878326802', 'india', '2024-01-29 17:12:05', 1, 1, 1, NULL, NULL, '68e78a4c175d72829e9bfa9592c76c35 (1).jpg', NULL, NULL, NULL, 1, 0, 1, 1, NULL, NULL, 'en', 0, '2023-03-23 07:45:02', '2024-01-29 17:12:05'),
-(3, 'creators', 2, 'arsh', 'arstech2@gmail.com', '2024-03-29 23:19:10', 'Berlin@3sss', NULL, '591591987654321', NULL, '2024-04-17 01:53:38', 1, 1, 1, NULL, NULL, '68e78a4c175d72829e9bfa9592c76c35 (1).jpg', NULL, '127.0.0.1', NULL, 0, NULL, 1, NULL, NULL, NULL, 'en', 0, '2024-03-29 23:14:46', '2024-04-17 01:53:38'),
-(4, 'creators', 2, 'alex', 'alex@gmail.com', '2024-03-29 23:19:10', 'Upwork', NULL, '591591591591987654321', NULL, '2024-04-17 03:24:12', 1, 1, 1, NULL, NULL, '1657090503-9ynVP5V0Tx.jpg', NULL, '127.0.0.1', NULL, 0, NULL, 1, NULL, NULL, NULL, 'en', 0, '2024-03-29 23:14:46', '2024-04-17 03:24:12'),
+(3, 'creators', 2, 'arsh', 'arstech2@gmail.com', '2024-03-29 23:19:10', 'Berlin@3sss', NULL, '591591987654321', NULL, '2024-04-20 04:28:47', 1, 1, 1, NULL, NULL, '68e78a4c175d72829e9bfa9592c76c35 (1).jpg', NULL, '127.0.0.1', NULL, 0, NULL, 1, NULL, NULL, NULL, 'en', 0, '2024-03-29 23:14:46', '2024-04-20 04:28:47'),
+(4, 'creators', 2, 'alex', 'alex@gmail.com', '2024-03-29 23:19:10', 'Upwork', NULL, '591591591591987654321', NULL, '2024-04-20 02:51:08', 1, 1, 1, NULL, NULL, '1657090503-9ynVP5V0Tx.jpg', NULL, '127.0.0.1', NULL, 0, NULL, 1, NULL, NULL, NULL, 'en', 0, '2024-03-29 23:14:46', '2024-04-20 02:51:08'),
 (25, 'creators', 2, 'Hales', 'hrnatrajinfotech@gmail.com', '2024-03-29 23:19:10', '64546465465465', NULL, '59198784654894658', NULL, '2024-04-08 07:20:42', 1, 1, 1, NULL, NULL, NULL, NULL, '127.0.0.1', NULL, 0, NULL, 1, NULL, NULL, NULL, '\'en\'', 0, '2024-04-06 15:26:38', '2024-04-08 07:20:42'),
 (26, 'backers', 2, 'park', 'hrnatrajinfotsdfech@gmail.com', NULL, '645654984489', NULL, '59187865613548', NULL, NULL, 0, 1, 1, NULL, NULL, NULL, NULL, '127.0.0.1', NULL, 0, NULL, 1, NULL, NULL, NULL, '\'en\'', 0, '2024-04-06 15:32:20', '2024-04-06 15:32:20'),
 (27, 'creators', 2, 'Muskan', 'muskan@gmail.com', NULL, 'Muskan123', NULL, '591789643210', NULL, NULL, 0, 1, 1, NULL, NULL, NULL, NULL, '127.0.0.1', NULL, 0, NULL, 1, NULL, NULL, NULL, '\'en\'', 0, '2024-04-06 15:38:50', '2024-04-06 15:38:50'),
@@ -16274,6 +16299,12 @@ ALTER TABLE `languages`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `languages_language_unique` (`language`),
   ADD UNIQUE KEY `languages_iso_code_unique` (`iso_code`);
+
+--
+-- Indexes for table `likes`
+--
+ALTER TABLE `likes`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `mail_templates`
@@ -16484,6 +16515,12 @@ ALTER TABLE `languages`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT for table `likes`
+--
+ALTER TABLE `likes`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
 -- AUTO_INCREMENT for table `mail_templates`
 --
 ALTER TABLE `mail_templates`
@@ -16493,7 +16530,7 @@ ALTER TABLE `mail_templates`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `notifications`

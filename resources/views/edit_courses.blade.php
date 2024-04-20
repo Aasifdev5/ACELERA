@@ -44,7 +44,7 @@
                     <div class="col-sm-8">
                         <input type="text" class="form-control" id="title" value="{{ $project_detail->title }}" name="title" placeholder="Title">
                         {!! $errors->has('title') ? '<p class="help-block">' . $errors->first('title') . '</p>' : '' !!}
-                        <p class="text-info">{{ __('Gran información de título') }}</p>
+
                     </div>
                 </div>
 
@@ -58,9 +58,7 @@
 
                 <div class="form-group {{ $errors->has('description') ? 'has-error' : '' }}">
                     <label for="description" class="col-sm-3 control-label">{{ __('Descripción') }} <span class="field-required">*</span></label>
-                    <div class="col-sm-12">
-                        <div class="alert alert-info">{{ __('Limitación de Inserción de Imagen') }}  </div>
-                    </div>
+
                     <div class="col-sm-12">
                         <textarea name="description" class="editor form-control description" rows="8">{{ $project_detail->description }}</textarea>
                         {!! $errors->has('description') ? '<p class="help-block">' . $errors->first('description') . '</p>' : '' !!}
@@ -95,7 +93,7 @@
                         </label> <br />
 
                         {!! $errors->has('end_method') ? '<p class="help-block">' . $errors->first('end_method') . '</p>' : '' !!}
-                        <p class="text-info">{{ __('Texto de Información de Método de Finalización') }} </p>
+
                     </div>
                 </div>
 
@@ -117,49 +115,23 @@
                 </div>
 
 
-                <div class="form-group {{ $errors->has('video') ? 'has-error' : '' }}">
-                    <label for="video" class="col-sm-4 control-label">{{ __('Video') }}</label>
-                    <div class="col-sm-8">
-                        <input type="text" class="form-control" id="video" value="{{ old('video') }}" name="video" placeholder="Video">
-                        {!! $errors->has('video') ? '<p class="help-block">' . $errors->first('video') . '</p>' : '' !!}
-                        <p class="text-info"> {{ __('Texto de Información de Video') }}</p>
-                    </div>
-                </div>
 
-                <div class="input__group mb-25">
-                    <label>{{ __('Imagen OG') }}</label>
-                    <div class="upload-img-box">
-                        <img src="{{ $project_detail->og_image ? asset($project_detail->og_image) : '' }}" id="og_image_preview" style="max-width: 100%; max-height: 200px;" />
-                        <input type="file" name="og_image" id="og_image" accept="image/*" onchange="previewFile(this)">
-                        <div class="upload-img-box-icon">
-                            <i class="fa fa-camera"></i>
-                            <p class="m-0">{{ __('Imagen OG') }}</p>
-                        </div>
-                    </div>
-                    @if ($errors->has('og_image'))
-                    <span class="text-danger"><i class="fas fa-exclamation-triangle"></i> {{ $errors->first('og_image') }}</span>
-                    @endif
-                    <p><span class="text-black">{{ __('Archivos Aceptados') }}:</span> {{ __('PNG, JPG') }} <br>
-                        <span class="text-black">{{ __('Tamaño Recomendado') }}:</span> 1200 x 627
-                    </p>
-                </div>
+
 
                 <div class="form-group {{ $errors->has('country_id') ? 'has-error' : '' }}">
-                    <label for="country_id" class="col-sm-4 control-label">{{ __('País ') }} <span class="field-required">*</span></label>
+                    <label for="country_id" class="col-sm-4 control-label">{{ __('Departamento ') }} <span class="field-required">*</span></label>
                     <div class="col-sm-8">
                         <select class="form-control select2" name="country_id">
-                            <option value="">{{ __('Select a Country') }}</option>
-                            @foreach ($countries as $country)
-                            @php
-                            // Assuming $country['name'] is a JSON string
-                            $countryData = json_decode($country['name'], true);
-
-                            // Access the "en" value
-                            $englishValue = isset($countryData['en']) ? $countryData['en'] : '';
-                            @endphp
-                            <option value="{{ $country->id }}" {{ $project_detail->country_id == $country->id ? 'selected' : '' }}>{{ $englishValue }}</option>
-                            <!-- Add more table cells for additional fields as needed -->
-                            @endforeach
+                            <option value="">{{ __('Selecciona un departamento') }}</option>
+                            <option value="Santa Cruz" @if($project_detail->country_id=="Santa Cruz") selected @endif >Santa Cruz</option>
+    <option value="Beni" @if($project_detail->country_id=="Beni") selected @endif >Beni</option>
+    <option value="La Paz" @if($project_detail->country_id=="La Paz") selected @endif >La Paz</option>
+    <option value="Oruro" @if($project_detail->country_id=="Oruro") selected @endif >Oruro</option>
+    <option value="Cochabamba" @if($project_detail->country_id=="Cochabamba") selected @endif >Cochabamba</option>
+    <option value="Potosi" @if($project_detail->country_id=="Potosi") selected @endif >Potosi</option>
+    <option value="Pando" @if($project_detail->country_id=="Pando") selected @endif >Pando</option>
+    <option value="Chuquisaca" @if($project_detail->country_id=="Chuquisaca") selected @endif >Chuquisaca</option>
+    <option value="Tarija" @if($project_detail->country_id=="Tarija") selected @endif >Tarija</option>
                         </select>
                         {!! $errors->has('country_id') ? '<p class="help-block">' . $errors->first('country_id') . '</p>' : '' !!}
                     </div>
@@ -167,9 +139,9 @@
 
 
                 <div class="form-group {{ $errors->has('address') ? 'has-error' : '' }}">
-                    <label for="address" class="col-sm-4 control-label">{{ __('Dirección') }}</label>
+                    <label for="address" class="col-sm-4 control-label">{{ __('Escribe tu dirección') }}</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" id="address" value="{{ $project_detail->address }}" name="address" placeholder="Address">
+                        <input type="text" class="form-control" id="address" value="{{ $project_detail->address }}" name="address" placeholder="Escribe tu dirección">
                         {!! $errors->has('address') ? '<p class="help-block">' . $errors->first('address') . '</p>' : '' !!}
                     </div>
                 </div>

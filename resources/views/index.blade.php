@@ -1,6 +1,6 @@
 @extends('master')
 @section('title')
-Inicio
+    Inicio
 @endsection
 @section('content')
     <!--Main Slider Start-->
@@ -40,7 +40,8 @@ Inicio
                             <div class="col-xl-7 col-lg-8">
                                 <div class="main-slider__content">
                                     <p class="main-slider__sub-title">{{ __('Ahora es fácil recaudar dinero') }}!</p>
-                                    <h2 class="main-slider__title">{{ __('Definitivo') }} <br> {{ __('Financiamiento colectivo') }}
+                                    <h2 class="main-slider__title">{{ __('Definitivo') }} <br>
+                                        {{ __('Financiamiento colectivo') }}
                                         <br> {{ __('Plataformas') }}
                                     </h2>
                                     <div class="main-slider__btn-box">
@@ -54,7 +55,8 @@ Inicio
                                             </a>
                                         @endif
 
-                                        <a href="#" class="main-slider__btn-two">{{ __('Hablar con un experto') }} </a>
+                                        <a href="#" class="main-slider__btn-two">{{ __('Hablar con un experto') }}
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -80,7 +82,8 @@ Inicio
                             <div class="col-xl-7 col-lg-8">
                                 <div class="main-slider__content">
                                     <p class="main-slider__sub-title">{{ __('Ahora es fácil recaudar dinero') }}!</p>
-                                    <h2 class="main-slider__title">{{ __('Definitivo') }} <br> {{ __('Financiamiento colectivo') }}
+                                    <h2 class="main-slider__title">{{ __('Definitivo') }} <br>
+                                        {{ __('Financiamiento colectivo') }}
                                         <br> {{ __('Plataformas') }}
                                     </h2>
                                     <div class="main-slider__btn-box">
@@ -94,7 +97,8 @@ Inicio
                                             </a>
                                         @endif
 
-                                        <a href="#" class="main-slider__btn-two">{{ __('Hablar con un experto') }} </a>
+                                        <a href="#" class="main-slider__btn-two">{{ __('Hablar con un experto') }}
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -120,7 +124,8 @@ Inicio
                             <div class="col-xl-7 col-lg-8">
                                 <div class="main-slider__content">
                                     <p class="main-slider__sub-title">{{ __('Ahora es fácil recaudar dinero') }}!</p>
-                                    <h2 class="main-slider__title">{{ __('Definitivo') }} <br> {{ __('Financiamiento colectivo') }}
+                                    <h2 class="main-slider__title">{{ __('Definitivo') }} <br>
+                                        {{ __('Financiamiento colectivo') }}
                                         <br> {{ __('Plataformas') }}
                                     </h2>
                                     <div class="main-slider__btn-box">
@@ -134,7 +139,8 @@ Inicio
                                             </a>
                                         @endif
 
-                                        <a href="#" class="main-slider__btn-two">{{ __('Hablar con un experto') }} </a>
+                                        <a href="#" class="main-slider__btn-two">{{ __('Hablar con un experto') }}
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -196,9 +202,16 @@ Inicio
                             <div class="col-xl-2 col-lg-4 col-md-6 wow fadeInLeft" data-wow-delay="100ms">
                                 <div class="categories-one__single">
                                     <div class="categories-one__icon">
-                                        <a href="{{ url('project_category/') }}{{ '/' . $category->slug }}"><img
-                                                src="{{ getImageFile($category->image_path) }}"
-                                                alt="{{ $category->name }}"></a>
+                                        <a href="{{ url('project_category/') }}/{{ $category->slug }}">
+                                            @if (empty($category->icon))
+                                                <img src="{{ getImageFile($category->image_path) }}"
+                                                    alt="{{ $category->name }}">
+                                            @else
+                                                {!! $category->icon !!}
+                                            @endif
+
+                                        </a>
+
 
                                     </div>
                                     <a href="{{ url('project_category/') }}{{ '/' . $category->slug }}">
@@ -226,7 +239,8 @@ Inicio
             <div class="project-one__top">
                 <div class="section-title text-center">
                     <span class="section-title__tagline">{{ __('EMPRESAS A LAS QUE PUEDES APOYAR') }}</span>
-                    <h2 class="section-title__title">{{ __('Explora los mejores proyectos destacados ahora') }} <br> {{ __('Días restantes') }}
+                    <h2 class="section-title__title">{{ __('Explora los mejores proyectos destacados ahora') }} <br>
+                        {{ __('Días restantes') }}
                     </h2>
                 </div>
             </div>
@@ -256,6 +270,7 @@ Inicio
                     }
                 }
             }'>
+
                     <!--Project One Single Start-->
                     @foreach ($project as $row)
                         <div class="item">
@@ -264,9 +279,62 @@ Inicio
                                     <div class="project-one__img">
                                         <img src="{{ getImageFile($row->image) }}" alt="">
                                     </div>
-                                    <div class="project-one__icon">
-                                        <i class="far fa-heart"></i>
-                                    </div>
+                                    @if (!empty($user_session))
+                                    @php
+                                    $like = \App\Models\Like::where('project_id', $row->id)
+                                        ->where('user_id', $user_session->id)
+                                        ->exists();
+
+                                    $likeCount = \App\Models\Like::where('project_id', $row->id)->count();
+                                @endphp
+
+                                <div class="project-one__icon">
+                                    <i class="far fa-heart{{ $like ? ' fas text-danger' : '' }}"
+                                        id="heart-icon{{ $row->id }}"
+                                        data-project-id="{{ $row->id }}"></i>
+                                    <br>
+                                    <span id="like-count{{ $row->id }}" class="like-count">
+                                        <i class="fas fa-thumbs-up"></i> {{ $likeCount }}
+                                    </span>
+                                </div>
+
+                                <style>
+                                    .like-count {
+                                        color: #4CAF50; /* Green */
+                                        font-size: 18px;
+                                        font-weight: bold;
+                                    }
+                                    .like-count i {
+                                        margin-right: 5px;
+                                    }
+                                </style>
+
+                                    @else
+                                    @php
+                                    $likeCount = \App\Models\Like::where('project_id', $row->id)->count();
+                                @endphp
+
+                                <div class="project-one__icon">
+                                    <a href="{{ url('signup') }}">
+                                        <i class="far fa-heart" id="heart-icon{{ $row->id }}"></i>
+                                    </a>
+                                    <br>
+                                    <span id="like-count{{ $row->id }}" class="like-count">
+                                        <i class="fas fa-thumbs-up"></i> {{ $likeCount }}
+                                    </span>
+                                </div>
+                                <style>
+                                    .like-count {
+                                        color: #4CAF50; /* Green */
+                                        font-size: 18px;
+                                        font-weight: bold;
+                                    }
+                                    .like-count i {
+                                        margin-right: 5px;
+                                    }
+                                </style>
+
+                                    @endif
                                 </div>
                                 <div class="project-one__content">
                                     <div class="project-one__tag">
@@ -274,7 +342,6 @@ Inicio
                                             $category = \App\Models\Category::find($row->category_id);
                                             $days_left = $row->days_left();
                                             $amount_prefilled = $row->amount_prefilled();
-
                                         @endphp
                                         <p>{{ $category->name }}</p>
                                     </div>
@@ -299,9 +366,6 @@ Inicio
                                                         <?php
                                                         // Assuming you are in a view file or a blade template
                                                         $campaign = new \App\Models\Campaign(); // Or you retrieve the campaign object from somewhere else
-
-                                                        // Output the percentage raised in your HTML
-
                                                         ?>
                                                         @foreach ($percentRaisedArray as $projectId => $percentRaised)
                                                             @if ($row->id == $projectId)
@@ -310,35 +374,105 @@ Inicio
                                                                         data-stop="{{ $percentRaised }}">0</span>
                                                                     <span class="percent">%</span>
                                                                 </div>
-
-
                                                                 <div class="bar-fill"
                                                                     data-percent="{{ $percentRaised }}"></div>
                                                             @endif
                                                         @endforeach
-
-
-
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="project-one__goals">
-                                        <p class="project-one__goals-one">{{ __('Logrado') }}:<span>BS  @foreach ($totalRaisedArray as $projectId => $Raised)
-                                            @if ($row->id == $projectId)
-                                                {{ $Raised }}
-                                            @endif
-                                        @endforeach
+                                        <p class="project-one__goals-one">{{ __('Logrado') }}:<span
+                                                id="like-count{{ $row->id }}">BS @foreach ($totalRaisedArray as $projectId => $Raised)
+                                                    @if ($row->id == $projectId)
+                                                        {{ $Raised }}
+                                                    @endif
+                                                @endforeach
                                             </span></p>
-                                        <p class="project-one__goals-one">
-                                            {{ __('Meta') }}:<span>BS {{ $row->goal }}</span></p>
+                                        <p class="project-one__goals-one">{{ __('Meta') }}:<span>BS
+                                                {{ $row->goal }}</span></p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     @endforeach
 
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+                    @if (!empty($user_session))
+                        <script>
+                            $(document).ready(function() {
+                                // Handle like button click
+                                $('[id^="heart-icon"]').click(function() {
+                                    var projectId = $(this).data('project-id');
+                                    var icon = $(this);
+
+                                    // Send AJAX request to like the project
+                                    $.ajax({
+                                        type: 'POST',
+                                        url: "{{ url('checkLike') }}", // Use named route
+                                        data: {
+                                            projectId: projectId,
+                                            _token: $('meta[name="csrf-token"]').attr('content') // Include CSRF token
+                                        },
+                                        success: function(data) {
+                                            if (data.liked) {
+                                                // Update UI to reflect the like
+                                                icon.addClass('fas text-danger');
+
+                                                // Update like count if needed (assuming you have an element with id like-count{projectId})
+                                                var countText = $('#like-count' + projectId);
+                                                if (countText.length) {
+                                                    var count = parseInt(countText.text().replace('BS ', ''));
+                                                    countText.text('BS ' + (count + 1));
+                                                }
+                                            } else {
+                                                alert('Failed to like.');
+                                            }
+                                        },
+                                        error: function(jqXHR, textStatus, errorThrown) {
+                                            console.error("AJAX Like Request Failed:", textStatus, errorThrown);
+                                            // Handle any errors that might occur during the AJAX request
+                                            alert('Failed to like.');
+                                        }
+                                    });
+                                });
+
+                                // Handle like button click
+                                $('[id^="heart-icon"]').click(function() {
+                                    var projectId = $(this).data('project-id');
+                                    var icon = $(this);
+
+                                    $.ajax({
+                                        type: 'POST',
+                                        url: "{{ url('like') }}", // Use the named route
+                                        data: {
+                                            projectId: projectId,
+                                        },
+                                        headers: {
+                                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                        },
+                                        success: function(data) {
+                                            if (data.success) {
+                                                // Update the UI to reflect the increase in likes
+                                                var countText = $('#like-count' + projectId);
+                                                var count = parseInt(countText.text().replace('BS ', ''));
+                                                countText.text('BS ' + (count + 1));
+
+                                                // Toggle heart icon
+                                                if (!icon.hasClass('fas')) {
+                                                    icon.addClass('fas text-danger');
+                                                }
+                                            } else {
+                                                alert('Failed to like.');
+                                            }
+                                        }
+                                    });
+                                });
+                            });
+                        </script>
+                    @endif
                 </div>
             </div>
         </div>
@@ -355,7 +489,8 @@ Inicio
                         <div class="col-xl-6">
                             <div class="why-choose-one__left">
                                 <div class="section-title text-left">
-                                    <span class="section-title__tagline">{{ __('LOS BENEFICIOS DE NUESTRA PLATAFORMA') }}</span>
+                                    <span
+                                        class="section-title__tagline">{{ __('LOS BENEFICIOS DE NUESTRA PLATAFORMA') }}</span>
                                     <h2 class="section-title__title">{{ __('Por qué Deberías Elegir la') }} <br>
                                         {{ __('Plataforma ACELERA') }} </h2>
                                 </div>
@@ -534,7 +669,8 @@ Inicio
             <div class="recommended-one__top">
                 <div class="section-title text-center">
                     <span class="section-title__tagline">{{ __('EMPRESAS A LAS QUE PUEDES APOYAR') }}</span>
-                    <h2 class="section-title__title">{{ __('Recomendado para ti') }} <br>{{ __('Proyectos Nuevos') }} </h2>
+                    <h2 class="section-title__title">{{ __('Recomendado para ti') }} <br>{{ __('Proyectos Nuevos') }}
+                    </h2>
                 </div>
             </div>
             <div class="recommended-one__bottom">
@@ -959,7 +1095,8 @@ Inicio
         <div class="container">
             <div class="section-title text-center">
                 <span class="section-title__tagline">{{ __('DIRECTAMENTE DESDE LAS ENTRADAS DEL BLOG') }}</span>
-                <h2 class="section-title__title">{{ __('Consulta las Últimas Noticias') }} <br> {{ __('y Artículos') }}</h2>
+                <h2 class="section-title__title">{{ __('Consulta las Últimas Noticias') }} <br> {{ __('y Artículos') }}
+                </h2>
             </div>
             <div class="row">
                 @foreach ($blogs as $row)

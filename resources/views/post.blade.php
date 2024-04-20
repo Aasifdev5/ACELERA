@@ -47,7 +47,7 @@
                             <input type="text" class="form-control" id="title" value="{{ old('title') }}"
                                 name="title" placeholder="Title">
                             {!! $errors->has('title') ? '<p class="help-block">' . $errors->first('title') . '</p>' : '' !!}
-                            <p class="text-info">{{ __('Gran información de título') }}</p>
+
                         </div>
                     </div>
 
@@ -64,13 +64,11 @@
                     <div class="form-group {{ $errors->has('description') ? 'has-error' : '' }}">
                         <label for="description" class="col-sm-3 control-label">{{ __('Descripción') }} <span
                                 class="field-required">*</span></label>
-                        <div class="col-sm-12">
-                            <div class="alert alert-info"> {{ __(' Limitación de Inserción de Imagen') }} </div>
-                        </div>
+
                         <div class="col-sm-12">
                             <textarea name="description" class="form-control description" rows="8">{{ old('description') }}</textarea>
                             {!! $errors->has('description') ? '<p class="help-block">' . $errors->first('description') . '</p>' : '' !!}
-                            <p class="text-info"> {{ __('Texto de Información de Descripción') }}</p>
+                            <p class="text-info"> {{ __('Describe tu proyecto en detalle') }}</p>
                         </div>
                     </div>
 
@@ -79,11 +77,11 @@
                         <h3> <i class="fa fa-money"></i> {{ __('Obtendrás el 80% del Total Recaudado') }}</h3>
                     </div>
                     <div class="form-group {{ $errors->has('goal') ? 'has-error' : '' }}">
-                        <label for="goal" class="col-sm-4 control-label">{{ __('Meta') }} <span
+                        <label for="goal" class="col-sm-4 control-label">{{ __('Monto a recaudar') }} <span
                                 class="field-required">*</span></label>
                         <div class="col-sm-8">
                             <input type="number" class="form-control" id="goal" value="{{ old('goal') }}"
-                                name="goal" placeholder="Goal">
+                                name="goal" placeholder="Monto a recaudar">
                             {!! $errors->has('goal') ? '<p class="help-block">' . $errors->first('goal') . '</p>' : '' !!}
                         </div>
                     </div>
@@ -128,7 +126,7 @@
                             </label> <br />
 
                             {!! $errors->has('end_method') ? '<p class="help-block">' . $errors->first('end_method') . '</p>' : '' !!}
-                            <p class="text-info"> {{ __('Texto de Información de Método de Finalización') }}</p>
+
                         </div>
                     </div>
 
@@ -152,54 +150,23 @@
                             60 (1MB)</p>
                     </div>
 
-                    <div class="form-group {{ $errors->has('video') ? 'has-error' : '' }}">
-                        <label for="video" class="col-sm-4 control-label">{{ __('Video') }}</label>
-                        <div class="col-sm-8">
-                            <input type="text" class="form-control" id="video" value="{{ old('video') }}"
-                                name="video" placeholder="Video">
-                            {!! $errors->has('video') ? '<p class="help-block">' . $errors->first('video') . '</p>' : '' !!}
-                            <p class="text-info"> {{ __('Texto de Información de Video') }}</p>
-                        </div>
-                    </div>
-                    <div class="input__group mb-25">
-                        <label>{{ __('Imagen OG') }}</label>
-                        <div class="upload-img-box">
-                            <img src="">
-                            <input type="file" name="og_image" id="og_image" accept="image/*"
-                                onchange="previewFile(this)">
-                            <div class="upload-img-box-icon">
-                                <i class="fa fa-camera"></i>
-                                <p class="m-0">{{ __('Imagen OG') }}</p>
-                            </div>
-                        </div>
-                        @if ($errors->has('og_image'))
-                            <span class="text-danger"><i class="fas fa-exclamation-triangle"></i>
-                                {{ $errors->first('og_image') }}</span>
-                        @endif
-                        <p><span class="text-black">{{ __('Archivos Aceptados') }}:</span> PNG, JPG <br>
-                            <span class="text-black">{{ __('Tamaño Recomendado') }}:</span> 1200 x 627
-                        </p>
-                    </div>
+
+
                     <div class="form-group {{ $errors->has('country_id') ? 'has-error' : '' }}">
-                        <label for="country_id" class="col-sm-4 control-label">{{ __('País') }} <span
+                        <label for="country_id" class="col-sm-4 control-label">{{ __('Departamento') }} <span
                                 class="field-required">*</span></label>
                         <div class="col-sm-8">
                             <select class="form-control select2" name="country_id">
-                                <option value="">{{ __('') }}Select a Country</option>
-                                @foreach ($countries as $country)
-                                @php
-                                // Assuming $country['name'] is a JSON string
-                                $countryData = json_decode($country['name'], true);
-
-                                // Access the "en" value
-                                $englishValue = isset($countryData['en']) ? $countryData['en'] : '';
-                                @endphp
-
-
-                                    <option value="{{ $country->id }}">{{ $englishValue }}</option>
-                                    <!-- Add more table cells for additional fields as needed -->
-
-                                @endforeach
+                                <option value="">{{ __('Selecciona un departamento') }}</option>
+                                <option value="Santa Cruz">Santa Cruz</option>
+                                <option value="Beni">Beni</option>
+                                <option value="La Paz">La Paz</option>
+                                <option value="Oruro">Oruro</option>
+                                <option value="Cochabamba">Cochabamba</option>
+                                <option value="Potosi">Potosi</option>
+                                <option value="Pando">Pando</option>
+                                <option value="Chuquisaca">Chuquisaca</option>
+                                <option value="Tarija">Tarija</option>
                             </select>
 
                             {!! $errors->has('country_id') ? '<p class="help-block">' . $errors->first('country_id') . '</p>' : '' !!}
@@ -208,10 +175,10 @@
 
 
                     <div class="form-group {{ $errors->has('address') ? 'has-error' : '' }}">
-                        <label for="address" class="col-sm-4 control-label">{{ __('Dirección') }}</label>
+                        <label for="address" class="col-sm-4 control-label">{{ __('Escribe tu dirección') }}</label>
                         <div class="col-sm-8">
                             <input type="text" class="form-control" id="address" value="{{ old('address') }}"
-                                name="address" placeholder="Address">
+                                name="address" placeholder="Escribe tu dirección">
                             {!! $errors->has('address') ? '<p class="help-block">' . $errors->first('address') . '</p>' : '' !!}
                         </div>
                     </div>

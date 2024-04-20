@@ -592,7 +592,7 @@
                                 @if (!empty($user_session))
                                     <a href="{{ url('back/') }}{{ '/' . $campaign->id }}"
                                         class="thm-btn project-details-top__btn">{{ __('Apoyar este Proyecto') }}</a>
-                                    <a class="btn btn-sm btn-dark"
+                                    <a class="thm-btn project-details-top__btn" style="margin-top: 3px"
                                         onclick="openChat('{{ $campaign->user_id }}', '{{ \App\Models\User::getUserInfo($campaign->user_id)->name }}', '{{ !empty(\App\Models\User::getUserInfo($campaign->user_id)->profile_photo) ? asset('profile_photo/' . \App\Models\User::getUserInfo($campaign->user_id)->profile_photo) : asset('149071.png') }}','{{ \App\Models\User::getUserInfo($campaign->user_id)->last_seen }}');">Chat</a>
 
 
@@ -670,10 +670,10 @@
                                                         <input class="form-control input-txt-bx"
                                                             id="message" type="text"
                                                             name="message"
-                                                            placeholder="Type a message...">
+                                                            placeholder="Escribe un mensaje...">
                                                         <button
                                                             class="btn btn-primary input-group-text"
-                                                            type="submit">{{ __('SEND') }}</button>
+                                                            type="submit">{{ __('ENVIAR') }}</button>
                                                     </div>
                                                 </form>
                                             </div>
@@ -737,60 +737,57 @@
 
 
             function openChat(receiverId, receiverName, receiverImage, lastSeen) {
-                // Show the chat section
-                $('.chat').show();
+    // Show the chat section
+    $('.chat').show();
 
-                // Set the receiver_id
-                $('.receiver_id').val(receiverId);
+    // Set the receiver_id
+    $('.receiver_id').val(receiverId);
 
-                // Update the chat header name
-                $('.chat-header .name').text(receiverName);
+    // Update the chat header name
+    $('.chat-header .name').text(receiverName);
 
-                // Update the chat header image
-                if (receiverImage && receiverImage.trim() !== '') {
-                    $('.chat-header img').attr('src', receiverImage);
-                    $('.chat-header img').css({
-                        'width': '40px',
-                        'height': '40px'
-                    });
-                } else {
-                    $('.chat-header img').attr('src', '{{ asset('149071.png') }}');
-                    $('.chat-header img').css({
-                        'width': '40px',
-                        'height': '40px'
-                    });
-                }
+    // Update the chat header image
+    if (receiverImage && receiverImage.trim() !== '') {
+        $('.chat-header img').attr('src', receiverImage);
+        $('.chat-header img').css({
+            'width': '40px',
+            'height': '40px'
+        });
+    } else {
+        $('.chat-header img').attr('src', '{{ asset('149071.png') }}');
+        $('.chat-header img').css({
+            'width': '40px',
+            'height': '40px'
+        });
+    }
 
+    // Convert the timestamp to a Date object
+    var lastSeenDate = new Date(lastSeen);
 
-                // Convert the timestamp to a Date object
-                var lastSeenDate = new Date(lastSeen);
+    // Format the last seen time
+    var lastSeenFormatted = formatDate(lastSeenDate);
 
-                // Format the last seen time
-                var lastSeenFormatted = formatDate(lastSeenDate);
+    // Update the last seen status to Spanish
+    $('.chat-header .status.digits').text('Última vez ' + lastSeenFormatted);
 
-                // Update the last seen status
-                $('.chat-header .status.digits').text('Last Seen ' + lastSeenFormatted);
-
-                // Fetch messages for the selected receiver
-                fetchChatMessages(receiverId);
-            }
-
-
-            // Function to format date into human-readable format
-            function formatDate(date) {
-                var hours = date.getHours();
-                var minutes = date.getMinutes();
-                var ampm = hours >= 12 ? 'PM' : 'AM';
-                hours = hours % 12;
-                hours = hours ? hours : 12; // Handle midnight (0 hours)
-                minutes = minutes < 10 ? '0' + minutes : minutes;
-                var strTime = hours + ':' + minutes + ' ' + ampm;
-                // Concatenate date with time
-                var formattedDateTime = date.toLocaleDateString() + ' ' + strTime;
-                return formattedDateTime;
-            }
+    // Fetch messages for the selected receiver
+    fetchChatMessages(receiverId);
+}
 
 
+// Function to format date into human-readable format
+function formatDate(date) {
+    var hours = date.getHours();
+    var minutes = date.getMinutes();
+    var ampm = hours >= 12 ? 'PM' : 'AM';
+    hours = hours % 12;
+    hours = hours ? hours : 12; // Handle midnight (0 hours)
+    minutes = minutes < 10 ? '0' + minutes : minutes;
+    var strTime = hours + ':' + minutes + ' ' + ampm;
+    // Concatenate date with time
+    var formattedDateTime = date.toLocaleDateString() + ' ' + strTime;
+    return formattedDateTime;
+}
             function sendMessage() {
                 let message = $('#message').val();
                 let receiverId = $('.receiver_id').val();

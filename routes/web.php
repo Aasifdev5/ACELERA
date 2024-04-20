@@ -101,7 +101,8 @@ Route::group(['middleware' => 'prevent-back-history',SetLocale::class], function
     Route::get('/chat', [ChatController::class, 'index'])->name('chat.index');
     Route::get('/chat/messages', [ChatController::class, 'getChatMessages'])->name('chat.messages');
     Route::post('/chat/send', [ChatController::class, 'sendChatMessage'])->name('chat.send');
-
+    Route::post('/like', [UserController::class,'storeLikes'])->name('storeLikes');
+    Route::post('checkLike', [UserController::class, 'checkLike'])->name('checkLike');
     Route::get('/MyPendingProject', [UserController::class, 'MyPendingProject'])->name('MyPendingProject')->middleware('isLoggedIn');
     Route::get('/news-category/{id}', [UserController::class, 'news_category'])->name('news_category');
     Route::get('/MyProject', [UserController::class, 'MyProject'])->name('MyProject')->middleware('isLoggedIn');
