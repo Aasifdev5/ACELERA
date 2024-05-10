@@ -383,42 +383,38 @@ class UserController extends Controller
     }
     public function storeLikes(Request $request)
 {
-    $projectId = $request->projectId;
-    $userId = Session::get('LoggedIn'); // Get the currently logged-in user ID
 
-    // Check if user already liked the project
-    $like = Like::where('project_id', $projectId)->where('user_id', $userId)->first();
 
-    if (!$like) {
-        // Create a new Like record if user hasn't liked before
-        $like = Like::create([
-            'project_id' => $projectId,
-            'user_id' => $userId,
-        ]);
-    }
 
+    // Create a new Like record
+   $data= Like::create([
+        'project_id' => $request->projectId,
+    ]);
+    // dd($data);
     // Get the updated like count for the project
-    $likeCount = Like::where('project_id', $projectId)->count();
+    $likeCount = Like::where('project_id', $request->projectId)->count();
 
     // Return response (optional)
     return response()->json([
         'success' => true,
         'likeCount' => $likeCount,
+        'message' => 'Liked Successfully'
     ]);
 }
-public function checkLike(Request $request)
-{
-    $projectId = $request->projectId; // Get the project ID
-    $userId = Session::get('LoggedIn'); // Get the currently logged-in user ID
 
-    // Check if user already liked the project
-    $like = Like::where('project_id', $projectId)->where('user_id', $userId)->exists();
+    public function checkLike(Request $request)
+    {
+        $projectId = $request->projectId; // Get the project ID
+        $userId = Session::get('LoggedIn'); // Get the currently logged-in user ID
 
-    // Return response
-    return response()->json([
-        'liked' => $like,
-    ]);
-}
+        // Check if user already liked the project
+        $like = Like::where('project_id', $projectId)->exists();
+
+        // Return response
+        return response()->json([
+            'liked' => $like,
+        ]);
+    }
 
     public function update_project(Request $request)
     {

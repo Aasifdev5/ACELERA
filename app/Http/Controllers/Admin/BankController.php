@@ -4,22 +4,27 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Bank;
-use Illuminate\Http\Request;
+use App\Models\User;
 use App\Traits\General;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class BankController extends Controller
 {
     use General;
     public function index()
     {
-        $data['title'] = 'Bank Account';
-        $data['navApplicationSettingParentActiveClass'] = 'mm-active';
-        $data['subNavPaymentOptionsSettingsActiveClass'] = 'mm-active';
-        $data['bankSettingsActiveClass'] = 'active';
+        if (Session::has('LoggedIn')) {
+            $data['user_session'] = User::where('id', Session::get('LoggedIn'))->first();
+            $data['title'] = 'Bank Account';
+            $data['navApplicationSettingParentActiveClass'] = 'mm-active';
+            $data['subNavPaymentOptionsSettingsActiveClass'] = 'mm-active';
+            $data['bankSettingsActiveClass'] = 'active';
 
-        $data['banks'] = Bank::query()->paginate(25);
+            $data['banks'] = Bank::query()->paginate(25);
 
-        return view('admin.application_settings.bank.index', $data);
+            return view('admin.application_settings.bank.index', $data);
+        }
     }
 
     public function store(Request $request)
@@ -55,14 +60,17 @@ class BankController extends Controller
 
     public function edit($id)
     {
-        $data['title'] = 'Bank Edit';
-        $data['navApplicationSettingParentActiveClass'] = 'mm-active';
-        $data['subNavPaymentOptionsSettingsActiveClass'] = 'mm-active';
-        $data['bankSettingsActiveClass'] = 'active';
+        if (Session::has('LoggedIn')) {
+            $data['user_session'] = User::where('id', Session::get('LoggedIn'))->first();
+            $data['title'] = 'Bank Edit';
+            $data['navApplicationSettingParentActiveClass'] = 'mm-active';
+            $data['subNavPaymentOptionsSettingsActiveClass'] = 'mm-active';
+            $data['bankSettingsActiveClass'] = 'active';
 
-        $data['bank'] = Bank::find($id);
+            $data['bank'] = Bank::find($id);
 
-        return view('admin.application_settings.bank.edit', $data);
+            return view('admin.application_settings.bank.edit', $data);
+        }
     }
 
     public function update(Request $request, $id)

@@ -273,206 +273,121 @@
 
                     <!--Project One Single Start-->
                     @foreach ($project as $row)
-                        <div class="item">
-                            <div class="project-one__single">
-                                <div class="project-one__img-box">
-                                    <div class="project-one__img">
-                                        <img src="{{ getImageFile($row->image) }}" alt="">
-                                    </div>
-                                    @if (!empty($user_session))
-                                    @php
-                                    $like = \App\Models\Like::where('project_id', $row->id)
-                                        ->where('user_id', $user_session->id)
-                                        ->exists();
-
+                    <div class="item">
+                        <div class="project-one__single">
+                            <div class="project-one__img-box">
+                                <div class="project-one__img">
+                                    <img src="{{ getImageFile($row->image) }}" alt="">
+                                </div>
+                                @php
                                     $likeCount = \App\Models\Like::where('project_id', $row->id)->count();
                                 @endphp
-
                                 <div class="project-one__icon">
-                                    <i class="far fa-heart{{ $like ? ' fas text-danger' : '' }}"
-                                        id="heart-icon{{ $row->id }}"
-                                        data-project-id="{{ $row->id }}"></i>
+                                    <i class="far fa-heart" id="heart-icons{{ $row->id }}" data-project-id="{{ $row->id }}"></i>
                                     <br>
-                                    <span id="like-count{{ $row->id }}" class="like-count">
-                                        <i class="fas fa-thumbs-up"></i> {{ $likeCount }}
+                                    <span id="like-count{{ $row->id }}" class="like-count" style="color:#fff">
+                                        {{ $likeCount }}
                                     </span>
                                 </div>
-
-                                <style>
-                                    .like-count {
-                                        color: #4CAF50; /* Green */
-                                        font-size: 18px;
-                                        font-weight: bold;
-                                    }
-                                    .like-count i {
-                                        margin-right: 5px;
-                                    }
-                                </style>
-
-                                    @else
+                            </div>
+                            <div class="project-one__content">
+                                <div class="project-one__tag">
                                     @php
-                                    $likeCount = \App\Models\Like::where('project_id', $row->id)->count();
-                                @endphp
-
-                                <div class="project-one__icon">
-                                    <a href="{{ url('signup') }}">
-                                        <i class="far fa-heart" id="heart-icon{{ $row->id }}"></i>
-                                    </a>
-                                    <br>
-                                    <span id="like-count{{ $row->id }}" class="like-count">
-                                        <i class="fas fa-thumbs-up"></i> {{ $likeCount }}
-                                    </span>
+                                        $category = \App\Models\Category::find($row->category_id);
+                                        $days_left = $row->days_left();
+                                        $amount_prefilled = $row->amount_prefilled();
+                                    @endphp
+                                    <p>{{ $category->name }}</p>
                                 </div>
-                                <style>
-                                    .like-count {
-                                        color: #4CAF50; /* Green */
-                                        font-size: 18px;
-                                        font-weight: bold;
-                                    }
-                                    .like-count i {
-                                        margin-right: 5px;
-                                    }
-                                </style>
-
-                                    @endif
+                                <h5 class="project-one__title" style="height: 50px; overflow: visible;"><a href="{{ url('project-details/') }}/{{ $row->slug }}">{{ $row->title }}</a></h5>
+                                <div class="project-one__remaing">
+                                    <div class="icon">
+                                        <i class="fa fa-clock"></i>
+                                    </div>
+                                    <div class="text">
+                                        <p>{{ $days_left }} {{ __('Días Restantes') }}</p>
+                                    </div>
                                 </div>
-                                <div class="project-one__content">
-                                    <div class="project-one__tag">
-                                        @php
-                                            $category = \App\Models\Category::find($row->category_id);
-                                            $days_left = $row->days_left();
-                                            $amount_prefilled = $row->amount_prefilled();
-                                        @endphp
-                                        <p>{{ $category->name }}</p>
-                                    </div>
-                                    <h3 class="project-one__title"><a
-                                            href="{{ url('project-details/') }}{{ '/' . $row->slug }}">{{ $row->title }}</a>
-                                    </h3>
-                                    <div class="project-one__remaing">
-                                        <div class="icon">
-                                            <i class="fa fa-clock"></i>
-                                        </div>
-                                        <div class="text">
-                                            <p>{{ $days_left }} {{ __('Días Restantes') }}</p>
-                                        </div>
-                                    </div>
-                                    <div class="progress-levels">
-                                        <!--Skill Box-->
-                                        <div class="progress-box">
-                                            <div class="inner count-box">
-                                                <div class="text">{{ __('Recaudado') }}</div>
-                                                <div class="bar">
-                                                    <div class="bar-innner">
-                                                        <?php
-                                                        // Assuming you are in a view file or a blade template
-                                                        $campaign = new \App\Models\Campaign(); // Or you retrieve the campaign object from somewhere else
-                                                        ?>
+                                <div class="progress-levels">
+                                    <!--Skill Box-->
+                                    <div class="progress-box">
+                                        <div class="inner count-box">
+                                            <div class="bar">
+                                                <div class="bar-innner">
+                                                    <div class="skill-percent">
                                                         @foreach ($percentRaisedArray as $projectId => $percentRaised)
                                                             @if ($row->id == $projectId)
-                                                                <div class="skill-percent">
-                                                                    <span class="count-text" data-speed="3000"
-                                                                        data-stop="{{ $percentRaised }}">0</span>
-                                                                    <span class="percent">%</span>
-                                                                </div>
-                                                                <div class="bar-fill"
-                                                                    data-percent="{{ $percentRaised }}"></div>
+                                                                <span class="count-text" data-speed="3000" data-stop="{{ $percentRaised }}">0</span>
+                                                                <span class="percent">%</span>
                                                             @endif
                                                         @endforeach
                                                     </div>
+                                                    <div class="bar-fill" data-percent="{{ $percentRaised }}"></div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="project-one__goals">
-                                        <p class="project-one__goals-one">{{ __('Logrado') }}:<span
-                                                id="like-count{{ $row->id }}">BS @foreach ($totalRaisedArray as $projectId => $Raised)
-                                                    @if ($row->id == $projectId)
-                                                        {{ $Raised }}
-                                                    @endif
-                                                @endforeach
-                                            </span></p>
-                                        <p class="project-one__goals-one">{{ __('Meta') }}:<span>BS
-                                                {{ $row->goal }}</span></p>
-                                    </div>
+                                </div>
+                                <div class="project-one__goals">
+                                    <p class="project-one__goals-one">{{ __('Logrado') }}:<span id="like-count{{ $row->id }}">BS @foreach ($totalRaisedArray as $projectId => $Raised)
+                                        @if ($row->id == $projectId)
+                                            {{ $Raised }}
+                                        @endif
+                                    @endforeach</span></p>
+                                    <p class="project-one__goals-one">{{ __('Meta') }}:<span>BS {{ $row->goal }}</span></p>
                                 </div>
                             </div>
                         </div>
-                    @endforeach
+                    </div>
 
-                    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-                    @if (!empty($user_session))
-                        <script>
-                            $(document).ready(function() {
-                                // Handle like button click
-                                $('[id^="heart-icon"]').click(function() {
-                                    var projectId = $(this).data('project-id');
-                                    var icon = $(this);
+                @endforeach
 
-                                    // Send AJAX request to like the project
-                                    $.ajax({
-                                        type: 'POST',
-                                        url: "{{ url('checkLike') }}", // Use named route
-                                        data: {
-                                            projectId: projectId,
-                                            _token: $('meta[name="csrf-token"]').attr('content') // Include CSRF token
-                                        },
-                                        success: function(data) {
-                                            if (data.liked) {
-                                                // Update UI to reflect the like
-                                                icon.addClass('fas text-danger');
+                <script>
+                    $(document).ready(function() {
+                        toastr.options = {
+                            "closeButton": true,
+                            "progressBar": true,
+                            "positionClass": "toast-top-right",
+                            "preventDuplicates": true,
+                            "showDuration": "300",
+                            "hideDuration": "1000",
+                            "timeOut": "5000",
+                            "extendedTimeOut": "1000",
+                        };
 
-                                                // Update like count if needed (assuming you have an element with id like-count{projectId})
-                                                var countText = $('#like-count' + projectId);
-                                                if (countText.length) {
-                                                    var count = parseInt(countText.text().replace('BS ', ''));
-                                                    countText.text('BS ' + (count + 1));
-                                                }
-                                            } else {
-                                                alert('Failed to like.');
+                        $('[id^="heart-icons"]').click(function() {
+                            var projectId = $(this).data('project-id');
+                            var icon = $(this);
+
+                            $.ajax({
+                                type: 'POST',
+                                url: "{{ route('like') }}", // Use the named route
+                                data: {
+                                    projectId: projectId,
+                                },
+                                headers: {
+                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                },
+                                success: function(data) {
+                                    if (data.success) {
+                                        toastr.success(data.message, "", {
+                                            onHidden: function() {
+                                                window.location.reload(); // Reload the page after toastr is hidden
                                             }
-                                        },
-                                        error: function(jqXHR, textStatus, errorThrown) {
-                                            console.error("AJAX Like Request Failed:", textStatus, errorThrown);
-                                            // Handle any errors that might occur during the AJAX request
-                                            alert('Failed to like.');
-                                        }
-                                    });
-                                });
-
-                                // Handle like button click
-                                $('[id^="heart-icon"]').click(function() {
-                                    var projectId = $(this).data('project-id');
-                                    var icon = $(this);
-
-                                    $.ajax({
-                                        type: 'POST',
-                                        url: "{{ url('like') }}", // Use the named route
-                                        data: {
-                                            projectId: projectId,
-                                        },
-                                        headers: {
-                                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                                        },
-                                        success: function(data) {
-                                            if (data.success) {
-                                                // Update the UI to reflect the increase in likes
-                                                var countText = $('#like-count' + projectId);
-                                                var count = parseInt(countText.text().replace('BS ', ''));
-                                                countText.text('BS ' + (count + 1));
-
-                                                // Toggle heart icon
-                                                if (!icon.hasClass('fas')) {
-                                                    icon.addClass('fas text-danger');
-                                                }
-                                            } else {
-                                                alert('Failed to like.');
-                                            }
-                                        }
-                                    });
-                                });
+                                        });
+                                    } else {
+                                        toastr.error(data.message); // Display error message
+                                    }
+                                },
+                                error: function(xhr, status, error) {
+                                    console.error(xhr.responseText);
+                                    toastr.error("Like Request Failed. Please try again later.");
+                                }
                             });
-                        </script>
-                    @endif
+                        });
+
+                    });
+                </script>
                 </div>
             </div>
         </div>
@@ -664,7 +579,7 @@
     <!--Newsletter End-->
 
     <!--Recommended One Start-->
-    <section class="recommended-one">
+    {{-- <section class="recommended-one">
         <div class="container">
             <div class="recommended-one__top">
                 <div class="section-title text-center">
@@ -701,88 +616,128 @@
            }'>
                     <!--Recommended One Single Start-->
                     @foreach ($project as $row)
-                        <div class="item">
-                            <div class="recommended-one__single">
-                                <div class="recommended-one__img-box">
-                                    <div class="recommended-one__img">
-                                        <img src="{{ getImageFile($row->image) }}" alt="">
-                                    </div>
-                                    <div class="recomanded-one__icon">
-                                        <i class="far fa-heart"></i>
-                                    </div>
-                                    <div class="recommended-one__content">
-                                        <div class="recommended-one__tag-and-remaining">
-                                            <div class="recommended-one-tag">
-                                                @php
-                                                    $category = \App\Models\Category::find($row->category_id);
-                                                    $days_left = $row->days_left();
-                                                    $amount_prefilled = $row->amount_prefilled();
+                    <div class="item">
+                        <div class="recommended-one__single">
+                            <div class="recommended-one__img-box">
+                                <div class="recommended-one__img">
+                                    <img src="{{ getImageFile($row->image) }}" alt="">
+                                </div>
+                                @php
+                                    $likeCount = \App\Models\Like::where('project_id', $row->id)->count();
+                                @endphp
+                                <div class="recomanded-one__icon">
+                                    <i class="far fa-heart" id="heart-icon{{ $row->id }}" data-project-id="{{ $row->id }}"></i>
+                                    <br>
+                                    <span id="like-count{{ $row->id }}" class="like-count" style="color:#fff">
+                                        {{ $likeCount }}
+                                    </span>
+                                </div>
+                            </div>
 
-                                                @endphp
-                                                <p>{{ $category->name }}</p>
-                                            </div>
-                                            <div class="recommended-one__remaing">
-                                                <div class="icon">
-                                                    <i class="fa fa-clock"></i>
-                                                </div>
-                                                <div class="text">
-                                                    <p>{{ $days_left }} {{ __('Días Restantes') }}</p>
+                            <div class="recommended-one__content">
+                                <div class="recommended-one__tag-and-remaining">
+                                    <div class="recommended-one-tag">
+                                        @php
+                                            $category = \App\Models\Category::find($row->category_id);
+                                            $days_left = $row->days_left();
+                                            $amount_prefilled = $row->amount_prefilled();
+                                        @endphp
+                                        <p>{{ $category->name }}</p>
+                                    </div>
+                                    <div class="recommended-one__remaing">
+                                        <div class="icon">
+                                            <i class="fa fa-clock"></i>
+                                        </div>
+                                        <div class="text">
+                                            <p>{{ $days_left }} {{ __('Días Restantes') }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h3 class="recommended-one__title"><a href="{{ url('project-details/') }}/{{ $row->slug }}">{{ $row->title }}</a></h3>
+                                <div class="progress-levels">
+                                    <!--Skill Box-->
+                                    <div class="progress-box">
+                                        <div class="inner count-box">
+                                            <div class="bar">
+                                                <div class="bar-innner">
+                                                    <div class="skill-percent">
+                                                        @foreach ($percentRaisedArray as $projectId => $percentRaised)
+                                                            @if ($row->id == $projectId)
+                                                                <span class="count-text" data-speed="3000" data-stop="{{ $percentRaised }}">0</span>
+                                                                <span class="percent">%</span>
+                                                            @endif
+                                                        @endforeach
+                                                    </div>
+                                                    <div class="bar-fill" data-percent="{{ $percentRaised }}"></div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <h3 class="recommended-one__title"><a
-                                                href="{{ url('project-details/') }}{{ '/' . $row->slug }}">{{ $row->title }}</a>
-                                        </h3>
-                                        <div class="progress-levels">
-                                            <!--Skill Box-->
-                                            <div class="progress-box">
-                                                <div class="inner count-box">
-                                                    <div class="bar">
-                                                        <div class="bar-innner">
-                                                            <div class="skill-percent">
-                                                                @foreach ($percentRaisedArray as $projectId => $percentRaised)
-                                                                    @if ($row->id == $projectId)
-                                                                        <span class="count-text" data-speed="3000"
-                                                                            data-stop="{{ $percentRaised }}">0</span>
-                                                                        <span class="percent">%</span>
-                                                            </div>
-                                                            <div class="bar-fill" data-percent="{{ $percentRaised }}">
-                                                            </div>
-                    @endif
-                    @endforeach
+                                    </div>
+                                </div>
+                                <div class="project-one__goals">
+                                    <p class="project-one__goals-one">{{ __('Logrado') }}:<span id="like-count{{ $row->id }}">BS @foreach ($totalRaisedArray as $projectId => $Raised)
+                                        @if ($row->id == $projectId)
+                                            {{ $Raised }}
+                                        @endif
+                                    @endforeach</span></p>
+                                    <p class="project-one__goals-one">{{ __('Meta') }}:<span>BS {{ $row->goal }}</span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
 
-                </div>
-            </div>
-        </div>
-        </div>
-        </div>
-        <div class="project-one__goals">
-            <p class="project-one__goals-one"><span>BS
-                    @foreach ($totalRaisedArray as $projectId => $Raised)
-                        @if ($row->id == $projectId)
-                            {{ $Raised }}
-                        @endif
-                    @endforeach
-
-                </span>
-                <br>{{ __('Meta of') }} BS {{ $row->goal }}
-            </p>
-            <p class="project-one__goals-one"><span class="odometer project-one__plus"
-                    data-count="{{ \App\Models\Payment::where('campaign_id', $row->id)->where('accepted', 1)->get()->count() }}"></span>
-                <br>{{ __('Patrocinadores que Obtuvimos') }}
-            </p>
-        </div>
-        </div>
-        </div>
-        </div>
-        </div>
-        @endforeach
+                <script>
+                    $(document).ready(function() {
+                        toastr.options = {
+                            "closeButton": true,
+                            "progressBar": true,
+                            "positionClass": "toast-top-right",
+                            "preventDuplicates": true,
+                            "showDuration": "300",
+                            "hideDuration": "1000",
+                            "timeOut": "5000",
+                            "extendedTimeOut": "1000",
+                        };
 
 
+                        $('[id^="heart-icon"]').click(function() {
+                            var projectId = $(this).data('project-id');
+                            var icon = $(this);
+
+                            $.ajax({
+                                type: 'POST',
+                                url: "{{ route('like') }}", // Use the named route
+                                data: {
+                                    projectId: projectId,
+                                },
+                                headers: {
+                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                },
+                                success: function(data) {
+                                    if (data.success) {
+                                        toastr.success(data.message, "", {
+                                            onHidden: function() {
+                                                window.location.reload(); // Reload the page after toastr is hidden
+                                            }
+                                        });
+                                    } else {
+                                        toastr.error(data.message); // Display error message
+                                    }
+                                },
+                                error: function(xhr, status, error) {
+                                    console.error(xhr.responseText);
+                                    toastr.error("Like Request Failed. Please try again later.");
+                                }
+                            });
+                        });
+                    });
+                </script>
+
         </div>
         </div>
         </div>
-    </section>
+    </section> --}}
     <!--Recommended One End-->
 
     <!--Individuals Work Start-->

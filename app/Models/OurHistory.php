@@ -5,11 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Currency extends Model
+class OurHistory extends Model
 {
     use HasFactory;
-
-    protected $fillable = [
-        'current_currency'
-    ];
 }

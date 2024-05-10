@@ -9,9 +9,11 @@ use App\Models\ClientLogo;
 use App\Models\InstructorSupport;
 use App\Models\OurHistory;
 use App\Models\TeamMember;
+use App\Models\User;
 use App\Traits\General;
 use App\Traits\ImageSaveTrait;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class AboutUsController extends Controller
 {
@@ -19,15 +21,18 @@ class AboutUsController extends Controller
 
     public function galleryArea()
     {
-        $data['title'] = 'Gallery Area';
-        $data['navApplicationSettingParentActiveClass'] = 'mm-active';
-        $data['subNavAboutUsSettingsActiveClass'] = 'mm-active';
-        $data['subNavGalleryAreaActiveClass'] = 'active';
+        if (Session::has('LoggedIn')) {
+            $data['user_session'] = User::where('id', Session::get('LoggedIn'))->first();
+            $data['title'] = 'Gallery Area';
+            $data['navApplicationSettingParentActiveClass'] = 'mm-active';
+            $data['subNavAboutUsSettingsActiveClass'] = 'mm-active';
+            $data['subNavGalleryAreaActiveClass'] = 'active';
 
-        $data['aboutUsGeneral'] = AboutUsGeneral::first();
+            $data['aboutUsGeneral'] = AboutUsGeneral::first();
 
 
-        return view('admin.application_settings.about.gallery-area', $data);
+            return view('admin.application_settings.about.gallery-area', $data);
+        }
     }
 
     public function galleryAreaUpdate(Request $request)
@@ -49,15 +54,15 @@ class AboutUsController extends Controller
         $about->gallery_area_subtitle = $request->gallery_area_subtitle;
 
 
-        if ($request->file('gallery_first_image')){
+        if ($request->file('gallery_first_image')) {
             $about->gallery_first_image = $this->updateImage('about_us_general', $request->gallery_first_image, $about->gallery_first_image, 'null', 'null');
         }
 
-        if ($request->file('gallery_second_image')){
-            $about->gallery_second_image= $this->updateImage('about_us_general', $request->gallery_second_image, $about->gallery_second_image, 'null', 'null');
+        if ($request->file('gallery_second_image')) {
+            $about->gallery_second_image = $this->updateImage('about_us_general', $request->gallery_second_image, $about->gallery_second_image, 'null', 'null');
         }
 
-        if ($request->file('gallery_third_image')){
+        if ($request->file('gallery_third_image')) {
             $about->gallery_third_image = $this->updateImage('about_us_general', $request->gallery_third_image, $about->gallery_third_image, 'null', 'null');
         }
 
@@ -69,15 +74,18 @@ class AboutUsController extends Controller
 
     public function ourHistory()
     {
-        $data['title'] = 'Our History';
-        $data['navApplicationSettingParentActiveClass'] = 'mm-active';
-        $data['subNavAboutUsSettingsActiveClass'] = 'mm-active';
-        $data['subNavOurHistoryActiveClass'] = 'active';
+        if (Session::has('LoggedIn')) {
+            $data['user_session'] = User::where('id', Session::get('LoggedIn'))->first();
+            $data['title'] = 'Our History';
+            $data['navApplicationSettingParentActiveClass'] = 'mm-active';
+            $data['subNavAboutUsSettingsActiveClass'] = 'mm-active';
+            $data['subNavOurHistoryActiveClass'] = 'active';
 
-        $data['aboutUsGeneral'] = AboutUsGeneral::first();
-        $data['ourHistories'] = OurHistory::all();
+            $data['aboutUsGeneral'] = AboutUsGeneral::first();
+            $data['ourHistories'] = OurHistory::all();
 
-        return view('admin.application_settings.about.our-history', $data);
+            return view('admin.application_settings.about.our-history', $data);
+        }
     }
 
     public function ourHistoryUpdate(Request $request)
@@ -96,7 +104,7 @@ class AboutUsController extends Controller
         if ($request['our_histories']) {
             if (count($request['our_histories']) > 0) {
                 foreach ($request['our_histories'] as $ourHistory) {
-                    if ($ourHistory['year'] || $ourHistory['title'] || $ourHistory['subtitle']){
+                    if ($ourHistory['year'] || $ourHistory['title'] || $ourHistory['subtitle']) {
                         if (@$ourHistory['id']) {
                             $history = OurHistory::find($ourHistory['id']);
                             $history->updated_at = $now;
@@ -112,7 +120,7 @@ class AboutUsController extends Controller
                     }
                 }
             }
-            OurHistory::whereNotIn('id',$notInId)->delete();
+            OurHistory::whereNotIn('id', $notInId)->delete();
         }
 
         OurHistory::where('updated_at', '!=', $now)->delete();
@@ -123,14 +131,17 @@ class AboutUsController extends Controller
 
     public function upgradeSkill()
     {
-        $data['title'] = 'Upgrade Skill';
-        $data['navApplicationSettingParentActiveClass'] = 'mm-active';
-        $data['subNavAboutUsSettingsActiveClass'] = 'mm-active';
-        $data['subNavUpgradeSkillActiveClass'] = 'active';
+        if (Session::has('LoggedIn')) {
+            $data['user_session'] = User::where('id', Session::get('LoggedIn'))->first();
+            $data['title'] = 'Upgrade Skill';
+            $data['navApplicationSettingParentActiveClass'] = 'mm-active';
+            $data['subNavAboutUsSettingsActiveClass'] = 'mm-active';
+            $data['subNavUpgradeSkillActiveClass'] = 'active';
 
-        $data['aboutUsGeneral'] = AboutUsGeneral::first();
+            $data['aboutUsGeneral'] = AboutUsGeneral::first();
 
-        return view('admin.application_settings.about.upgrade-skill', $data);
+            return view('admin.application_settings.about.upgrade-skill', $data);
+        }
     }
 
     public function upgradeSkillUpdate(Request $request)
@@ -158,15 +169,18 @@ class AboutUsController extends Controller
 
     public function teamMember()
     {
-        $data['title'] = 'Team Member';
-        $data['navApplicationSettingParentActiveClass'] = 'mm-active';
-        $data['subNavAboutUsSettingsActiveClass'] = 'mm-active';
-        $data['subNavTeamMemberActiveClass'] = 'active';
+        if (Session::has('LoggedIn')) {
+            $data['user_session'] = User::where('id', Session::get('LoggedIn'))->first();
+            $data['title'] = 'Team Member';
+            $data['navApplicationSettingParentActiveClass'] = 'mm-active';
+            $data['subNavAboutUsSettingsActiveClass'] = 'mm-active';
+            $data['subNavTeamMemberActiveClass'] = 'active';
 
-        $data['aboutUsGeneral'] = AboutUsGeneral::first();
-        $data['teamMembers'] = TeamMember::all();
+            $data['aboutUsGeneral'] = AboutUsGeneral::first();
+            $data['teamMembers'] = TeamMember::all();
 
-        return view('admin.application_settings.about.team-member', $data);
+            return view('admin.application_settings.about.team-member', $data);
+        }
     }
 
     public function teamMemberUpdate(Request $request)
@@ -194,7 +208,7 @@ class AboutUsController extends Controller
         if ($request['team_members']) {
             if (count(@$request['team_members']) > 0) {
                 foreach ($request['team_members'] as $team_member) {
-                    if (@$team_member['name'] || @$team_member['designation']  || @$team_member['image']){
+                    if (@$team_member['name'] || @$team_member['designation']  || @$team_member['image']) {
                         if (@$team_member['id']) {
                             $team = TeamMember::find($team_member['id']);
                             if (@$team_member['image']) {
@@ -224,82 +238,21 @@ class AboutUsController extends Controller
         return redirect()->back();
     }
 
-    public function instructorSupport()
-    {
-        $data['title'] = 'Instructor Support';
-        $data['navApplicationSettingParentActiveClass'] = 'mm-active';
-        $data['subNavAboutUsSettingsActiveClass'] = 'mm-active';
-        $data['subNavInstructorSupportActiveClass'] = 'active';
 
-        $data['aboutUsGeneral'] = AboutUsGeneral::first();
-        $data['instructorSupports'] = InstructorSupport::all();
 
-        return view('admin.application_settings.about.instructor-support', $data);
-    }
-
-    public function instructorSupportUpdate(Request $request)
-    {
-        $request->validate([
-            'instructor_support_title' => 'required|max:255',
-            'instructor_support_subtitle' => 'required'
-        ]);
-
-        $about = AboutUsGeneral::first();
-        if (!$about) {
-            $about = new AboutUsGeneral();
-        }
-        $about->instructor_support_title = $request->instructor_support_title;
-        $about->instructor_support_subtitle = $request->instructor_support_subtitle;
-        $about->save();
-
-        $now = now();
-        if ($request['instructor_supports']) {
-            if (count(@$request['instructor_supports']) > 0) {
-                foreach ($request['instructor_supports'] as $instructor_support) {
-                    if (@$instructor_support['logo'] || @$instructor_support['title'] || @$instructor_support['subtitle'] ||
-                        @$instructor_support['button_name'])
-                    {
-                        if (@$instructor_support['id']) {
-                            $instructor = InstructorSupport::find($instructor_support['id']);
-                            if (@$instructor_support['logo']) {
-                                $instructor->logo = $this->updateImage('instructor_support', @$instructor_support['logo'], $instructor->logo, 'null', 'null');
-                            }
-                        } else {
-                            $instructor = new InstructorSupport();
-                            if (@$instructor_support['logo']) {
-                                $instructor->logo = $this->saveImage('instructor_support', @$instructor_support['logo'], 'null', 'null');
-                            }
-                        }
-
-                        $instructor->title = @$instructor_support['title'];
-                        $instructor->subtitle = @$instructor_support['subtitle'];
-                        $instructor->button_name = @$instructor_support['button_name'];
-                        $instructor->button_link = @$instructor_support['button_link'];
-                        $instructor->updated_at = $now;
-                        $instructor->save();
-                    }
-                }
-            }
-        }
-
-        InstructorSupport::where('updated_at', '!=', $now)->get()->map(function ($q) {
-            $this->deleteFile($q->logo);
-            $q->delete();
-        });
-
-        $this->showToastrMessage('success', __('Updated Successful'));
-        return redirect()->back();
-    }
 
     public function client()
     {
-        $data['title'] = 'Client';
-        $data['navApplicationSettingParentActiveClass'] = 'mm-active';
-        $data['subNavAboutUsSettingsActiveClass'] = 'mm-active';
-        $data['subNavClientActiveClass'] = 'active';
-        $data['clients'] = ClientLogo::all();
+        if (Session::has('LoggedIn')) {
+            $data['user_session'] = User::where('id', Session::get('LoggedIn'))->first();
+            $data['title'] = 'Client';
+            $data['navApplicationSettingParentActiveClass'] = 'mm-active';
+            $data['subNavAboutUsSettingsActiveClass'] = 'mm-active';
+            $data['subNavClientActiveClass'] = 'active';
+            $data['clients'] = ClientLogo::all();
 
-        return view('admin.application_settings.about.client', $data);
+            return view('admin.application_settings.about.client', $data);
+        }
     }
 
     public function clientUpdate(Request $request)
@@ -308,7 +261,7 @@ class AboutUsController extends Controller
         if ($request['client_details']) {
             if (count(@$request['client_details']) > 0) {
                 foreach ($request['client_details'] as $client_detail) {
-                    if (@$client_detail['name'] || @$client_detail['logo']){
+                    if (@$client_detail['name'] || @$client_detail['logo']) {
                         if (@$client_detail['id']) {
                             $client_logo = ClientLogo::find($client_detail['id']);
                             if (@$client_detail['logo']) {
@@ -336,6 +289,4 @@ class AboutUsController extends Controller
         $this->showToastrMessage('success', __('Updated Successful'));
         return redirect()->back();
     }
-
-
 }

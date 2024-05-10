@@ -101,7 +101,7 @@ Route::group(['middleware' => 'prevent-back-history',SetLocale::class], function
     Route::get('/chat', [ChatController::class, 'index'])->name('chat.index');
     Route::get('/chat/messages', [ChatController::class, 'getChatMessages'])->name('chat.messages');
     Route::post('/chat/send', [ChatController::class, 'sendChatMessage'])->name('chat.send');
-    Route::post('/like', [UserController::class,'storeLikes'])->name('storeLikes');
+    Route::post('/like', [UserController::class,'storeLikes'])->name('like');
     Route::post('checkLike', [UserController::class, 'checkLike'])->name('checkLike');
     Route::get('/MyPendingProject', [UserController::class, 'MyPendingProject'])->name('MyPendingProject')->middleware('isLoggedIn');
     Route::get('/news-category/{id}', [UserController::class, 'news_category'])->name('news_category');
@@ -165,7 +165,7 @@ Route::group(['prefix' => 'admin'], function () {
             Route::post('meta/update/{uuid}', [SettingController::class, 'updateMeta'])->name('meta.update');
 
             // Route::get('site-share-content', [SettingController::class, 'siteShareContent'])->name('site-share-content');
-            Route::get('map-api-key', [SettingController::class, 'mapApiKey'])->name('map-api-key')->middleware('isDemo');
+            Route::get('map-api-key', [SettingController::class, 'mapApiKey'])->name('map-api-key');
 
             Route::get('color-settings', [SettingController::class, 'colorSettings'])->name('color-settings');
             Route::get('font-settings', [SettingController::class, 'fontSettings'])->name('font-settings');
@@ -179,8 +179,8 @@ Route::group(['prefix' => 'admin'], function () {
 
 
             //Start:: Social Login Settings
-            Route::get('social-login-settings', [SettingController::class, 'socialLoginSettings'])->name('social-login-settings')->middleware('isDemo');;
-            Route::post('social-settings-update', [SettingController::class, 'socialLoginSettingsUpdate'])->name('social-login-settings.update')->middleware('isDemo');;
+            Route::get('social-login-settings', [SettingController::class, 'socialLoginSettings'])->name('social-login-settings');
+            Route::post('social-settings-update', [SettingController::class, 'socialLoginSettingsUpdate'])->name('social-login-settings.update');
 
             //Start:: Cookie Settings
             Route::get('cookie-settings', [SettingController::class, 'cookieSettings'])->name('cookie-settings');
@@ -215,9 +215,9 @@ Route::group(['prefix' => 'admin'], function () {
             //End:: Home Settings
 
             //Start:: Mail Config
-            Route::get('mail-configuration', [SettingController::class, 'mailConfiguration'])->name('mail-configuration')->middleware('isDemo');
-            Route::post('send-test-mail', [SettingController::class, 'sendTestMail'])->name('send.test.mail')->middleware('isDemo');
-            Route::post('save-setting', [SettingController::class, 'saveSetting'])->name('save.setting')->middleware('isDemo');
+            Route::get('mail-configuration', [SettingController::class, 'mailConfiguration'])->name('mail-configuration');
+            Route::post('send-test-mail', [SettingController::class, 'sendTestMail'])->name('send.test.mail');
+            Route::post('save-setting', [SettingController::class, 'saveSetting'])->name('save.setting');
             //End:: Mail Config
 
 
@@ -253,7 +253,7 @@ Route::group(['prefix' => 'admin'], function () {
             Route::get('contact-us-cms', [ContactUsController::class, 'contactUsCMS'])->name('contact.cms');
             // End:: Contact Us
 
-            Route::get('payment-method', [SettingController::class, 'paymentMethod'])->name('payment_method_settings')->middleware('isDemo');
+            Route::get('payment-method', [SettingController::class, 'paymentMethod'])->name('payment_method_settings');
 
             //start:: Bank
             Route::group(['prefix' => 'bank'], function () {

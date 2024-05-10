@@ -163,83 +163,85 @@
                                     data-feather="maximize"></i></a></li>
 
 
-                                    <li class="admin-notification-menu position-relative">
-                                        <a href="#" class="btn btn-dropdown site-language position-relative" id="dropdownNotification"
-                                            data-bs-toggle="dropdown" aria-expanded="false">
-                                            <span style="position: absolute; top: 5px; left: 75%; transform: translate(-50%, -50%);"
-                                                class="badge rounded-pill bg-danger">
-                                                @if ($adminNotifications)
-                                                    {{ count($adminNotifications) }}
-                                                @else
-                                                    0
-                                                @endif
-                                            </span>
-                                            <i data-feather="bell"></i>
-                                        </a>
+                        <li class="admin-notification-menu position-relative">
+                            <a href="#" class="btn btn-dropdown site-language position-relative"
+                                id="dropdownNotification" data-bs-toggle="dropdown" aria-expanded="false">
+                                <span
+                                    style="position: absolute; top: 5px; left: 75%; transform: translate(-50%, -50%);"
+                                    class="badge rounded-pill bg-danger">
+                                    @if ($adminNotifications)
+                                        {{ count($adminNotifications) }}
+                                    @else
+                                        0
+                                    @endif
+                                </span>
+                                <i data-feather="bell"></i>
+                            </a>
 
-                                        <!-- Notification Dropdown Start -->
-                                        <div class="dropdown-menu" aria-labelledby="dropdownNotification">
-                                            <ul class="dropdown-list custom-scrollbar">
-                                                @isset($adminNotifications)
-                                                    @forelse($adminNotifications as $notification)
-                                                        @if ($notification->sender)
-                                                            <li>
-                                                                <a href="{{ route('notification.url', [$notification->uuid]) }}"
-                                                                    class="message-user-item dropdown-item">
-                                                                    <div class="message-user-item-left">
-                                                                        <div class="single-notification-item d-flex align-items-center">
-                                                                            <div class="flex-shrink-0">
-                                                                                <div class="user-img-wrap position-relative radius-50">
+                            <!-- Notification Dropdown Start -->
+                            <div class="dropdown-menu" aria-labelledby="dropdownNotification">
+                                <ul class="dropdown-list custom-scrollbar">
+                                    @isset($adminNotifications)
+                                        @forelse($adminNotifications as $notification)
+                                            @if ($notification->sender)
+                                                <li>
+                                                    <a href="{{ route('notification.url', [$notification->uuid]) }}"
+                                                        class="message-user-item dropdown-item">
+                                                        <div class="message-user-item-left">
+                                                            <div
+                                                                class="single-notification-item d-flex align-items-center">
+                                                                <div class="flex-shrink-0">
+                                                                    <div class="user-img-wrap position-relative radius-50">
 
-                                                                                    @if (!empty(\App\Models\User::getUserInfo($notification->sender_id)->profile_photo))
-                                                                                    <img src="{{ asset('profile_photo/') }}<?php echo '/' . \App\Models\User::getUserInfo($notification->sender_id)->profile_photo; ?>"
-                                                                                        alt="img"
-                                                                                         style="width: 50px; height: 50px; border-radius: 50%;">
-                                                                                @else
-                                                                                    <img src="{{ asset('149071.png') }}"
-                                                                                        alt="dummy-avatar"
-                                                                                        style="width: 50px; height: 50px; border-radius: 50%;">
-                                                                                @endif
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="flex-grow-1 ms-2">
-                                                                                <h6 class="color-heading font-14">
-                                                                                    {{ $notification->sender->name }}
-                                                                                </h6>
-                                                                                <p class="font-13 mb-0">
-                                                                                    {{ __($notification->text) }}
-                                                                                </p>
-                                                                                <div class="font-11 color-gray mt-1">
-                                                                                    {{ $notification->created_at->diffForHumans() }}
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
+                                                                        @if (!empty(\App\Models\User::getUserInfo($notification->sender_id)->profile_photo))
+                                                                            <img src="{{ asset('profile_photo/') }}<?php echo '/' . \App\Models\User::getUserInfo($notification->sender_id)->profile_photo; ?>"
+                                                                                alt="img"
+                                                                                style="width: 50px; height: 50px; border-radius: 50%;">
+                                                                        @else
+                                                                            <img src="{{ asset('149071.png') }}"
+                                                                                alt="dummy-avatar"
+                                                                                style="width: 50px; height: 50px; border-radius: 50%;">
+                                                                        @endif
                                                                     </div>
-                                                                </a>
-                                                            </li>
-                                                        @endif
-                                                    @empty
-                                                        <li>
-                                                            <p class="text-center">{{ __('No Data Found') }}</p>
-                                                        </li>
-                                                    @endforelse
-                                                @else
-                                                    <li>
-                                                        <p class="text-center">{{ __('No Notifications Found') }}</p>
-                                                    </li>
-                                                @endisset
-                                            </ul>
-                                            @if ($adminNotifications && count($adminNotifications) > 0)
-                                                <div class="dropdown-divider"></div>
-                                                <form action="{{ route('notification.all-read') }}" method="POST">
-                                                    @csrf
-                                                    <button type="submit"
-                                                        class="dropdown-item dropdown-footer">{{ __('Mark all as read') }}</button>
-                                                </form>
+                                                                </div>
+                                                                <div class="flex-grow-1 ms-2">
+                                                                    <h6 class="color-heading font-14">
+                                                                        {{ $notification->sender->name }}
+                                                                    </h6>
+                                                                    <p class="font-13 mb-0">
+                                                                        {{ __($notification->text) }}
+                                                                    </p>
+                                                                    <div class="font-11 color-gray mt-1">
+                                                                        {{ $notification->created_at->diffForHumans() }}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </li>
                                             @endif
-                                        </div>
-                                        <!-- Notification Dropdown End -->
-                                    </li>
+                                        @empty
+                                            <li>
+                                                <p class="text-center">{{ __('No Data Found') }}</p>
+                                            </li>
+                                        @endforelse
+                                    @else
+                                        <li>
+                                            <p class="text-center">{{ __('No Notifications Found') }}</p>
+                                        </li>
+                                    @endisset
+                                </ul>
+                                @if ($adminNotifications && count($adminNotifications) > 0)
+                                    <div class="dropdown-divider"></div>
+                                    <form action="{{ route('notification.all-read') }}" method="POST">
+                                        @csrf
+                                        <button type="submit"
+                                            class="dropdown-item dropdown-footer">{{ __('Mark all as read') }}</button>
+                                    </form>
+                                @endif
+                            </div>
+                            <!-- Notification Dropdown End -->
+                        </li>
 
 
 
@@ -273,11 +275,14 @@
                                 </div>
                             </div>
                             <ul class="profile-dropdown onhover-show-div p-20">
-                                <li><a href="{{ url('admin/edit_profile') }}"><i data-feather="user"></i> {{ __('Editar Perfil') }}</a></li>
+                                <li><a href="{{ url('admin/edit_profile') }}"><i data-feather="user"></i>
+                                        {{ __('Editar Perfil') }}</a></li>
 
-                                <li><a href="{{ url('admin/change_password') }}"><i data-feather="lock"></i>{{ __('Cambiar Contraseña') }} </a></li>
+                                <li><a href="{{ url('admin/change_password') }}"><i
+                                            data-feather="lock"></i>{{ __('Cambiar Contraseña') }} </a></li>
                                 {{-- <li><a href="#"><i data-feather="settings"></i>{{ __('Settings') }} </a></li> --}}
-                                <li><a href="{{ url('admin/logout') }}"><i data-feather="log-out"></i> {{ __('Cerrar Sesión') }}</a>
+                                <li><a href="{{ url('admin/logout') }}"><i data-feather="log-out"></i>
+                                        {{ __('Cerrar Sesión') }}</a>
                                 </li>
                             </ul>
                         </li>
@@ -337,22 +342,111 @@
 
                             </li>
                             <li><a class="sidebar-header" href="#"><i
-                                        data-feather="settings"></i><span>{{ __('Configuraciones de Aplicación') }} </span><i
-                                        class="fa fa-angle-right pull-right"></i></a>
+                                        data-feather="settings"></i><span>{{ __('Configuraciones de Aplicación') }}
+                                    </span><i class="fa fa-angle-right pull-right"></i></a>
                                 <ul class="sidebar-submenu">
 
-                                    <li><a href="{{ url('admin/smtp_setting') }}"><i class="fa fa-circle"></i>{{ __('Configuración SMTP') }}
+                                    <li><a href="{{ url('admin/smtp_setting') }}"><i
+                                                class="fa fa-circle"></i>{{ __('Configuración SMTP') }}
                                         </a></li>
                                     <li><a href="{{ url('admin/payment_gateway') }}"><i
-                                                class="fa fa-circle"></i>{{ __('Pasarela de Pago') }}  </a></li>
+                                                class="fa fa-circle"></i>{{ __('Pasarela de Pago') }} </a></li>
                                     <li><a href="{{ url('admin/social_lite_login') }}"><i
-                                                class="fa fa-circle"></i>{{ __('Configuración de Socialite') }}</a></li>
+                                                class="fa fa-circle"></i>{{ __('Configuración de Socialite') }}</a>
+                                    </li>
                                     <li><a href="{{ url('admin/website_setting') }}"><i class="fa fa-circle"></i>
-                                        {{ __('Configuración General') }} </a></li>
+                                            {{ __('Configuración General') }} </a></li>
                                 </ul>
                             </li>
+
+                            <li>
+                                <a class="sidebar-header" href="#">
+                                    <i data-feather="settings"></i>
+                                    <span>{{ __('Application Settings') }}</span>
+                                </a>
+                                <ul class="sidebar-submenu">
+
+                                    <li class="">
+                                        <a href="{{ route('settings.general_setting') }}">
+                                            <i class="fa fa-circle"></i>
+                                            <span>{{ __('Global Settings') }}</span>
+                                        </a>
+                                    </li>
+
+
+
+                                    <li class="">
+                                        <a href="{{ route('settings.location.country.index') }}">
+                                            <i class="fa fa-circle"></i>
+                                            <span>{{ __('Location Settings') }}</span>
+                                        </a>
+                                    </li>
+
+
+                                    {{-- <li class="">
+                            <a href="{{ route('settings.theme-setting') }}">
+                                <i class="fa fa-circle"></i>
+                                <span>{{__('Home Settings')}}</span>
+                            </a>
+                        </li> --}}
+
+
+
+                                    <li class="">
+                                        <a href="{{ route('settings.mail-configuration') }}">
+                                            <i class="fa fa-circle"></i>
+                                            <span>{{ __('Mail Configuration') }}</span>
+                                        </a>
+                                    </li>
+
+
+                                    <li class="">
+                                        <a href="{{ route('settings.payment_method_settings') }}">
+                                            <i class="fa fa-circle"></i>
+                                            <span>{{ __('Payment Options') }}</span>
+                                        </a>
+                                    </li>
+
+
+
+
+                                    {{-- <li class="">
+                            <a href="{{ route('settings.faq.cms') }}">
+                                <i class="fa fa-circle"></i>
+                                <span>{{__('FAQ')}}</span>
+                            </a>
+                        </li> --}}
+                                    <li class="">
+                                        <a href="{{ route('settings.support-ticket.cms') }}">
+                                            <i class="fa fa-circle"></i>
+                                            <span>{{ __('Support Ticket') }}</span>
+                                        </a>
+                                    </li>
+
+                                    <li class="">
+                                        <a href="{{ route('settings.about.gallery-area') }}">
+                                            <i class="fa fa-circle"></i>
+                                            <span>{{ __('About Us') }}</span>
+                                        </a>
+                                    </li>
+
+                                    <li class="">
+                                        <a href="{{ route('settings.contact.cms') }}">
+                                            <i class="fa fa-circle"></i>
+                                            <span>{{ __('Contact Us') }}</span>
+                                        </a>
+                                    </li>
+
+
+
+
+
+                                </ul>
+                            </li>
+
                             <li><a class="sidebar-header" href="{{ url('admin/banners') }}"><i
-                                        data-feather="monitor"></i><span>{{ __('Configuración de la Página de Inicio') }} </span></a></li>
+                                        data-feather="monitor"></i><span>{{ __('Configuración de la Página de Inicio') }}
+                                    </span></a></li>
 
                             <li class="">
                                 <a class="has-arrow sidebar-header" href="#">
@@ -386,7 +480,8 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li><a class="sidebar-header" href="{{ url('admin/qrcode') }}"><i class="fa fa-empire"></i>  CÓDIGO QR </a></li>
+                            <li><a class="sidebar-header" href="{{ url('admin/qrcode') }}"><i
+                                        class="fa fa-empire"></i> CÓDIGO QR </a></li>
                             {{-- <li>
                                 <a class="sidebar-header" href="{{ route('role.index') }}">
                                     <i class="fa fa-key"></i>
@@ -420,7 +515,8 @@
                             </li>
 
                             <li><a class="sidebar-header" href="#"><i data-feather="layers"></i><span>
-                                {{ __('Gestión de Proyectos') }} </span><i class="fa fa-angle-right pull-right"></i></a>
+                                        {{ __('Gestión de Proyectos') }} </span><i
+                                        class="fa fa-angle-right pull-right"></i></a>
                                 <ul class="sidebar-submenu">
                                     <li>
                                         <a href="{{ route('category.index') }}">
@@ -429,19 +525,20 @@
                                         </a>
                                     </li>
                                     {{-- <li><a href="categories"><i class="fa fa-circle"></i>Project Category</a></li> --}}
-                                    <li><a href="{{ url('admin/Course_list') }}"><i class="fa fa-circle"></i>{{ __('Lista de Proyectos') }}
+                                    <li><a href="{{ url('admin/Course_list') }}"><i
+                                                class="fa fa-circle"></i>{{ __('Lista de Proyectos') }}
                                         </a></li>
 
                                 </ul>
                             </li>
 
                             <li><a class="sidebar-header" href="{{ url('admin/transactions_report') }}"><i
-                                        data-feather="dollar-sign"></i><span>{{ __('Recibir Fondos') }} </span></a></li>
+                                        data-feather="dollar-sign"></i><span>{{ __('Recibir Fondos') }} </span></a>
+                            </li>
 
                         </ul>
                     @endif
                     @if ($user_session->is_super_admin == 0 and $user_session->account_type == 'admin')
-
                     @endif
                 </div>
             </div>

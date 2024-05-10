@@ -11,11 +11,13 @@ use App\Models\TicketDepartment;
 use App\Models\TicketMessages;
 use App\Models\TicketPriority;
 use App\Models\TicketRelatedService;
+use App\Models\User;
 use App\Tools\Repositories\Crud;
 use App\Traits\General;
 use App\Traits\ImageSaveTrait;
-use Illuminate\Http\Request;
 use Auth;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class SupportTicketController extends Controller
 {
@@ -34,9 +36,8 @@ class SupportTicketController extends Controller
 
     public function ticketIndex()
     {
-        if (!Auth::user()->can('support_ticket')) {
-            abort('403');
-        } // end permission checking
+        if (Session::has('LoggedIn')) {
+            $data['user_session'] = User::where('id', Session::get('LoggedIn'))->first();
 
         $data['title'] = 'Support Ticket List';
         $data['navSupportTicketParentActiveClass'] = 'mm-active';
@@ -44,13 +45,13 @@ class SupportTicketController extends Controller
         $data['tickets'] = $this->modalTicket->getOrderById('DESC', 25);
 
         return view('admin.support_ticket.index', $data);
+        }
     }
 
     public function ticketOpen()
     {
-        if (!Auth::user()->can('support_ticket')) {
-            abort('403');
-        } // end permission checking
+        if (Session::has('LoggedIn')) {
+            $data['user_session'] = User::where('id', Session::get('LoggedIn'))->first();
 
         $data['title'] = 'Support Ticket List';
         $data['navSupportTicketParentActiveClass'] = 'mm-active';
@@ -58,13 +59,13 @@ class SupportTicketController extends Controller
         $data['tickets'] = Ticket::where('status', 1)->paginate(25);
 
         return view('admin.support_ticket.open', $data);
+        }
     }
 
     public function ticketShow($uuid)
     {
-        if (!Auth::user()->can('support_ticket')) {
-            abort('403');
-        } // end permission checking
+        if (Session::has('LoggedIn')) {
+            $data['user_session'] = User::where('id', Session::get('LoggedIn'))->first();
 
         $data['title'] = 'Support Ticket Replies';
         $data['navSupportTicketParentActiveClass'] = 'mm-active';
@@ -74,14 +75,13 @@ class SupportTicketController extends Controller
         $data['last_message'] = TicketMessages::where('ticket_id', $data['ticket']->id)->whereNotNull('sender_user_id')->latest()->first();
 
         return view('admin.support_ticket.details', $data);
+        }
     }
 
 
     public function ticketDelete($uuid)
     {
-        if (!Auth::user()->can('support_ticket')) {
-            abort('403');
-        } // end permission checking
+
 
         $ticket = Ticket::where('uuid', $uuid)->firstOrFail();
         TicketMessages::where('ticket_id', $ticket->id)->get()->map(function ($q) {
@@ -95,9 +95,6 @@ class SupportTicketController extends Controller
 
     public function changeTicketStatus(Request $request)
     {
-        if (!Auth::user()->can('support_ticket')) {
-            abort('403');
-        } // end permission checking
 
         $ticket = Ticket::findOrFail($request->id);
         $ticket->status = $request->status;
@@ -110,9 +107,7 @@ class SupportTicketController extends Controller
 
     public function messageStore(Request $request)
     {
-        if (!Auth::user()->can('support_ticket')) {
-            abort('403');
-        } // end permission checking
+
 
         $request->validate([
             'message' => 'required',
@@ -137,9 +132,8 @@ class SupportTicketController extends Controller
 
     public function Department()
     {
-        if (!Auth::user()->can('support_ticket')) {
-            abort('403');
-        } // end permission checking
+        if (Session::has('LoggedIn')) {
+            $data['user_session'] = User::where('id', Session::get('LoggedIn'))->first();
 
         $data['title'] = 'Support Ticket Department Field';
         $data['navApplicationSettingParentActiveClass'] = 'mm-active';
@@ -148,13 +142,11 @@ class SupportTicketController extends Controller
         $data['departments'] = TicketDepartment::all();
 
         return view('admin.application_settings.support_ticket.ticket-department-list', $data);
+        }
     }
 
     public function DepartmentStore(Request $request)
     {
-        if (!Auth::user()->can('support_ticket')) {
-            abort('403');
-        } // end permission checking
 
         $request->validate([
             'name' => 'required|max:255'
@@ -182,9 +174,7 @@ class SupportTicketController extends Controller
 
     public function departmentDelete($uuid)
     {
-        if (!Auth::user()->can('support_ticket')) {
-            abort('403');
-        } // end permission checking
+
 
         $this->modelTicketDepartment->deleteByUuid($uuid);
         $this->showToastrMessage('success', __('Deleted Successful'));
@@ -193,9 +183,8 @@ class SupportTicketController extends Controller
 
     public function Priority()
     {
-        if (!Auth::user()->can('support_ticket')) {
-            abort('403');
-        } // end permission checking
+        if (Session::has('LoggedIn')) {
+            $data['user_session'] = User::where('id', Session::get('LoggedIn'))->first();
 
         $data['title'] = 'Support Ticket Priority Field';
         $data['navApplicationSettingParentActiveClass'] = 'mm-active';
@@ -204,13 +193,12 @@ class SupportTicketController extends Controller
         $data['priorities'] = TicketPriority::all();
 
         return view('admin.application_settings.support_ticket.ticket-priority-list', $data);
+        }
     }
 
     public function PriorityStore(Request $request)
     {
-        if (!Auth::user()->can('support_ticket')) {
-            abort('403');
-        } // end permission checking
+
 
         $request->validate([
             'name' => 'required|max:255'
@@ -238,9 +226,7 @@ class SupportTicketController extends Controller
 
     public function priorityDelete($uuid)
     {
-        if (!Auth::user()->can('support_ticket')) {
-            abort('403');
-        } // end permission checking
+
 
         $this->modelTicketPriority->deleteByUuid($uuid);
         $this->showToastrMessage('success', __('Deleted Successful'));
@@ -250,9 +236,8 @@ class SupportTicketController extends Controller
 
     public function RelatedService()
     {
-        if (!Auth::user()->can('support_ticket')) {
-            abort('403');
-        } // end permission checking
+        if (Session::has('LoggedIn')) {
+            $data['user_session'] = User::where('id', Session::get('LoggedIn'))->first();
 
         $data['title'] = 'Support Ticket Related Service Field';
         $data['navApplicationSettingParentActiveClass'] = 'mm-active';
@@ -261,13 +246,12 @@ class SupportTicketController extends Controller
         $data['services'] = TicketRelatedService::all();
 
         return view('admin.application_settings.support_ticket.ticket-related-service-list', $data);
+        }
     }
 
     public function RelatedServiceStore(Request $request)
     {
-        if (!Auth::user()->can('support_ticket')) {
-            abort('403');
-        } // end permission checking
+
 
         $request->validate([
             'name' => 'required|max:255'
@@ -295,9 +279,7 @@ class SupportTicketController extends Controller
 
     public function relatedServiceDelete($uuid)
     {
-        if (!Auth::user()->can('support_ticket')) {
-            abort('403');
-        } // end permission checking
+
 
         $this->modelTicketService->deleteByUuid($uuid);
         $this->showToastrMessage('success', __('Deleted Successful'));

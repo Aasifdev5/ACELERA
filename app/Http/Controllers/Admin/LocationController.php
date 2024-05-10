@@ -6,8 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Models\City;
 use App\Models\Country;
 use App\Models\State;
+use App\Models\User;
 use App\Traits\General;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 use PHPUnit\Framework\Constraint\Count;
 
@@ -16,24 +18,30 @@ class LocationController extends Controller
     use General;
     public function countryIndex()
     {
-        $data['title'] = 'Country Setting';
-        $data['navApplicationSettingParentActiveClass'] = 'mm-active';
-        $data['subNavLocationSettingsActiveClass'] = 'mm-active';
-        $data['subNavCountryActiveClass'] = 'active';
-        $data['countries'] = Country::paginate(25);
+        if (Session::has('LoggedIn')) {
+            $data['user_session'] = User::where('id', Session::get('LoggedIn'))->first();
+            $data['title'] = 'Country Setting';
+            $data['navApplicationSettingParentActiveClass'] = 'mm-active';
+            $data['subNavLocationSettingsActiveClass'] = 'mm-active';
+            $data['subNavCountryActiveClass'] = 'active';
+            $data['countries'] = Country::paginate(25);
 
-        return view('admin.application_settings.location.country', $data);
+            return view('admin.application_settings.location.country', $data);
+        }
     }
 
     public function countryEdit($id)
     {
-        $data['title'] = 'Country Setting';
-        $data['navApplicationSettingParentActiveClass'] = 'mm-active';
-        $data['subNavLocationSettingsActiveClass'] = 'mm-active';
-        $data['subNavCountryActiveClass'] = 'active';
-        $data['country'] = Country::findOrFail($id);
+        if (Session::has('LoggedIn')) {
+            $data['user_session'] = User::where('id', Session::get('LoggedIn'))->first();
+            $data['title'] = 'Country Setting';
+            $data['navApplicationSettingParentActiveClass'] = 'mm-active';
+            $data['subNavLocationSettingsActiveClass'] = 'mm-active';
+            $data['subNavCountryActiveClass'] = 'active';
+            $data['country'] = Country::findOrFail($id);
 
-        return view('admin.application_settings.location.country-edit', $data);
+            return view('admin.application_settings.location.country-edit', $data);
+        }
     }
 
     public function countryStore(Request $request)
@@ -92,14 +100,17 @@ class LocationController extends Controller
 
     public function stateIndex()
     {
-        $data['title'] = 'State Setting';
-        $data['navApplicationSettingParentActiveClass'] = 'mm-active';
-        $data['subNavLocationSettingsActiveClass'] = 'mm-active';
-        $data['subNavStateActiveClass'] = 'active';
-        $data['countries'] = Country::all();
-        $data['states'] = State::paginate(25);
+        if (Session::has('LoggedIn')) {
+            $data['user_session'] = User::where('id', Session::get('LoggedIn'))->first();
+            $data['title'] = 'State Setting';
+            $data['navApplicationSettingParentActiveClass'] = 'mm-active';
+            $data['subNavLocationSettingsActiveClass'] = 'mm-active';
+            $data['subNavStateActiveClass'] = 'active';
+            $data['countries'] = Country::all();
+            $data['states'] = State::paginate(25);
 
-        return view('admin.application_settings.location.state', $data);
+            return view('admin.application_settings.location.state', $data);
+        }
     }
 
     public function stateStore(Request $request)
@@ -120,14 +131,17 @@ class LocationController extends Controller
 
     public function stateEdit($id)
     {
-        $data['title'] = 'State Setting';
-        $data['navApplicationSettingParentActiveClass'] = 'mm-active';
-        $data['subNavLocationSettingsActiveClass'] = 'mm-active';
-        $data['subNavStateActiveClass'] = 'active';
-        $data['countries'] = Country::all();
-        $data['state'] = State::findOrFail($id);
+        if (Session::has('LoggedIn')) {
+            $data['user_session'] = User::where('id', Session::get('LoggedIn'))->first();
+            $data['title'] = 'State Setting';
+            $data['navApplicationSettingParentActiveClass'] = 'mm-active';
+            $data['subNavLocationSettingsActiveClass'] = 'mm-active';
+            $data['subNavStateActiveClass'] = 'active';
+            $data['countries'] = Country::all();
+            $data['state'] = State::findOrFail($id);
 
-        return view('admin.application_settings.location.state-edit', $data);
+            return view('admin.application_settings.location.state-edit', $data);
+        }
     }
 
     public function stateUpdate(Request $request, $id)
@@ -157,15 +171,18 @@ class LocationController extends Controller
 
     public function cityIndex()
     {
-        $data['title'] = 'City Setting';
-        $data['navApplicationSettingParentActiveClass'] = 'mm-active';
-        $data['subNavLocationSettingsActiveClass'] = 'mm-active';
-        $data['subNavCityActiveClass'] = 'active';
-        $data['countries'] = Country::all();
-        $data['states'] = State::all();
-        $data['cities'] = City::paginate(25);
+        if (Session::has('LoggedIn')) {
+            $data['user_session'] = User::where('id', Session::get('LoggedIn'))->first();
+            $data['title'] = 'City Setting';
+            $data['navApplicationSettingParentActiveClass'] = 'mm-active';
+            $data['subNavLocationSettingsActiveClass'] = 'mm-active';
+            $data['subNavCityActiveClass'] = 'active';
+            $data['countries'] = Country::all();
+            $data['states'] = State::all();
+            $data['cities'] = City::paginate(25);
 
-        return view('admin.application_settings.location.city', $data);
+            return view('admin.application_settings.location.city', $data);
+        }
     }
 
     public function cityStore(Request $request)
@@ -186,14 +203,17 @@ class LocationController extends Controller
 
     public function cityEdit($id)
     {
-        $data['title'] = 'State Setting';
-        $data['navApplicationSettingParentActiveClass'] = 'mm-active';
-        $data['subNavLocationSettingsActiveClass'] = 'mm-active';
-        $data['subNavCityActiveClass'] = 'active';
-        $data['states'] = State::all();
-        $data['city'] = city::findOrFail($id);
+        if (Session::has('LoggedIn')) {
+            $data['user_session'] = User::where('id', Session::get('LoggedIn'))->first();
+            $data['title'] = 'State Setting';
+            $data['navApplicationSettingParentActiveClass'] = 'mm-active';
+            $data['subNavLocationSettingsActiveClass'] = 'mm-active';
+            $data['subNavCityActiveClass'] = 'active';
+            $data['states'] = State::all();
+            $data['city'] = city::findOrFail($id);
 
-        return view('admin.application_settings.location.city-edit', $data);
+            return view('admin.application_settings.location.city-edit', $data);
+        }
     }
 
     public function cityUpdate(Request $request, $id)
@@ -220,7 +240,4 @@ class LocationController extends Controller
         $this->showToastrMessage('success', __('Deleted Successful'));
         return redirect()->back();
     }
-
-
-
 }

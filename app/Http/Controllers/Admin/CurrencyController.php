@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Currency;
+use App\Models\User;
 use App\Traits\General;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 
 class CurrencyController extends Controller
@@ -13,6 +15,8 @@ class CurrencyController extends Controller
     use General;
     public function index()
     {
+        if (Session::has('LoggedIn')) {
+            $data['user_session'] = User::where('id', Session::get('LoggedIn'))->first();
         $data['title'] = 'Currency Setting';
         $data['navApplicationSettingParentActiveClass'] = 'mm-active';
         $data['subNavGlobalSettingsActiveClass'] = 'mm-active';
@@ -20,16 +24,20 @@ class CurrencyController extends Controller
         $data['currencies'] = Currency::all();
 
         return view('admin.application_settings.general.currency', $data);
+        }
     }
 
     public function edit($id)
     {
+        if (Session::has('LoggedIn')) {
+            $data['user_session'] = User::where('id', Session::get('LoggedIn'))->first();
         $data['title'] = 'Edit Currency';
         $data['navApplicationSettingParentActiveClass'] = 'mm-active';
         $data['subNavGlobalSettingsActiveClass'] = 'mm-active';
         $data['subNavCurrencyActiveClass'] = 'active';
         $data['currency'] = Currency::findOrFail($id);
         return view('admin.application_settings.general.currency-edit', $data);
+        }
     }
 
 

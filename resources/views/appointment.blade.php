@@ -3,442 +3,442 @@
     {{ $campaign->slug }}
 @endsection
 @section('content')
-<style>
-    .chat-box .toogle-bar {
-        display: none;
-    }
-
-    .chat-box .chat-menu {
-        max-width: 340px;
-    }
-
-    .chat-box .people-list .search {
-        position: relative;
-    }
-
-    .chat-box .people-list .search .form-control {
-        background-color: #f1f4fb;
-        border: 1px solid #f6f7fb;
-    }
-
-    .chat-box .people-list .search .form-control::-webkit-input-placeholder {
-        color: #aaaaaa;
-    }
-
-    .chat-box .people-list .search .form-control::-moz-placeholder {
-        color: #aaaaaa;
-    }
-
-    .chat-box .people-list .search .form-control:-ms-input-placeholder {
-        color: #aaaaaa;
-    }
-
-    .chat-box .people-list .search .form-control::-ms-input-placeholder {
-        color: #aaaaaa;
-    }
-
-    .chat-box .people-list .search .form-control::placeholder {
-        color: #aaaaaa;
-    }
-
-    .chat-box .people-list .search i {
-        position: absolute;
-        right: 10px;
-        top: 10px;
-        font-size: 14px;
-        color: #e8ebf2;
-    }
-
-    .chat-box .people-list ul {
-        padding: 0;
-        list-style-type: none;
-    }
-
-    .chat-box .people-list ul li {
-        padding-bottom: 20px;
-    }
-
-    .chat-box .people-list ul li:last-child {
-        padding-bottom: 0;
-    }
-
-    .chat-box .user-image {
-        float: left;
-        width: 52px;
-        height: 52px;
-        margin-right: 5px;
-    }
-
-    .chat-box .about {
-        float: left;
-        margin-top: 5px;
-        padding-left: 10px;
-    }
-
-    .chat-box .about .name {
-        color: #2a3142;
-        letter-spacing: 1px;
-        font-weight: 600;
-    }
-
-    .chat-box .status {
-        color: #aaaaaa;
-        letter-spacing: 1px;
-        font-size: 12px;
-        margin-top: 5px;
-    }
-
-    .chat-box .status .chat-status {
-        font-weight: 600;
-        color: #313131;
-    }
-
-    .chat-box .status p {
-        font-size: 14px;
-    }
-
-    .chat-box .chat-right-aside .chat .chat-header {
-        padding: 15px;
-        border-bottom: 1px solid #f6f7fb;
-    }
-
-    .chat-box .chat-right-aside .chat .chat-header img {
-        float: left;
-        width: 50px;
-        height: 50px;
-        -webkit-box-shadow: 1px 1px 4px 1px #e8ebf2;
-        box-shadow: 1px 1px 4px 1px #e8ebf2;
-    }
-
-    .chat-box .chat-right-aside .chat .chat-header .chat-menu-icons {
-        margin-top: 15px;
-    }
-
-    .chat-box .chat-right-aside .chat .chat-header .chat-menu-icons li {
-        margin-right: 24px;
-    }
-
-    .chat-box .chat-right-aside .chat .chat-header .chat-menu-icons li a i {
-        color: #777777;
-        font-size: 25px;
-        cursor: pointer;
-    }
-
-    .chat-box .chat-right-aside .chat .chat-msg-box {
-        padding: 20px;
-        overflow-y: auto;
-        height: 560px;
-        margin-bottom: 90px;
-    }
-
-    .chat-box .chat-right-aside .chat .chat-msg-box .chat-user-img {
-        margin-top: -35px;
-    }
-
-    .chat-box .chat-right-aside .chat .chat-msg-box .message-data {
-        margin-bottom: 10px;
-    }
-
-    .chat-box .chat-right-aside .chat .chat-msg-box .message-data-time {
-        letter-spacing: 1px;
-        font-size: 12px;
-        color: #aaaaaa;
-        font-family: work-Sans, sans-serif;
-    }
-
-    .chat-box .chat-right-aside .chat .chat-msg-box .message {
-        color: #2a3142;
-        padding: 20px;
-        line-height: 1.9;
-        letter-spacing: 1px;
-        font-size: 14px;
-        margin-bottom: 30px;
-        width: 50%;
-        position: relative;
-    }
-
-    .chat-box .chat-right-aside .chat .chat-msg-box .my-message {
-        border: 1px solid #f6f7fb;
-        border-radius: 10px;
-        border-top-left-radius: 0;
-    }
-
-    .chat-box .chat-right-aside .chat .chat-msg-box .other-message {
-        background-color: #f6f6f6;
-        border-radius: 10px;
-        border-top-right-radius: 0;
-    }
-
-    .chat-box .chat-right-aside .chat .chat-message {
-        padding: 20px;
-        border-top: 1px solid #f1f4fb;
-        position: absolute;
-        width: calc(100% - 15px);
-        background-color: #fff;
-        bottom: 0;
-    }
-
-    .chat-box .chat-right-aside .chat .chat-message .smiley-box {
-        background: #eff0f1;
-        padding: 10px;
-        display: block;
-        border-radius: 4px;
-        margin-right: 0.5rem;
-    }
-
-    .chat-box .chat-right-aside .chat .chat-message .text-box {
-        position: relative;
-    }
-
-    .chat-box .chat-right-aside .chat .chat-message .text-box .input-txt-bx {
-        height: 50px;
-        border: 2px solid #4466f2;
-        padding-left: 18px;
-        font-size: 12px;
-        letter-spacing: 1px;
-    }
-
-    .chat-box .chat-right-aside .chat .chat-message .text-box i {
-        position: absolute;
-        right: 20px;
-        top: 20px;
-        font-size: 20px;
-        color: #e8ebf2;
-        cursor: pointer;
-    }
-
-    .chat-box .chat-right-aside .chat .chat-message .text-box .btn {
-        font-size: 16px;
-        font-weight: 500;
-    }
-
-    .chat-box .chat-menu {
-        border-left: 1px solid #f6f7fb;
-    }
-
-    .chat-box .chat-menu .tab-pane {
-        padding: 0 15px;
-    }
-
-    .chat-box .chat-menu ul li .about .status i {
-        font-size: 10px;
-    }
-
-    .chat-box .chat-menu .user-profile {
-        margin-top: 30px;
-    }
-
-    .chat-box .chat-menu .user-profile .user-content h5 {
-        margin: 25px 0;
-    }
-
-    .chat-box .chat-menu .user-profile .user-content hr {
-        margin: 25px 0;
-    }
-
-    .chat-box .chat-menu .user-profile .user-content p {
-        font-size: 16px;
-    }
-
-    .chat-box .chat-menu .user-profile .image {
-        position: relative;
-    }
-
-    .chat-box .chat-menu .user-profile .image .icon-wrapper {
-        position: absolute;
-        bottom: 0;
-        left: 55%;
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-pack: center;
-        -ms-flex-pack: center;
-        justify-content: center;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        align-items: center;
-        height: 35px;
-        width: 35px;
-        border-radius: 50%;
-        background-color: #fff;
-        cursor: pointer;
-        overflow: hidden;
-        margin: 0 auto;
-        font-size: 14px;
-        -webkit-box-shadow: 1px 1px 3px 1px #f6f7fb;
-        box-shadow: 1px 1px 3px 1px #f6f7fb;
-    }
-
-    .chat-box .chat-menu .user-profile .image .avatar img {
-        border-radius: 50%;
-        border: 5px solid #f6f7fb;
-    }
-
-    .chat-box .chat-menu .user-profile .border-right {
-        border-right: 1px solid #f6f7fb;
-    }
-
-    .chat-box .chat-menu .user-profile .follow {
-        margin-top: 0;
-    }
-
-    .chat-box .chat-menu .user-profile .follow .follow-num {
-        font-size: 22px;
-        color: #000;
-    }
-
-    .chat-box .chat-menu .user-profile .follow span {
-        color: #1b252a;
-        font-size: 14px;
-        letter-spacing: 1px;
-    }
-
-    .chat-box .chat-menu .user-profile .social-media a {
-        color: #aaaaaa;
-        font-size: 15px;
-        padding: 0 7px;
-    }
-
-    .chat-box .chat-menu .user-profile .chat-profile-contact p {
-        font-size: 14px;
-        color: #aaaaaa;
-    }
-
-    .chat-box .chat-menu .nav {
-        margin-bottom: 20px;
-    }
-
-    .chat-box .chat-menu .nav-tabs .nav-item {
-        width: 33.33%;
-    }
-
-    .chat-box .chat-menu .nav-tabs .nav-item a {
-        padding: 15px !important;
-        color: #aaaaaa !important;
-        letter-spacing: 1px;
-        font-size: 14px;
-        font-weight: 600;
-        height: 80px;
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        align-items: center;
-        -webkit-box-pack: center;
-        -ms-flex-pack: center;
-        justify-content: center;
-    }
-
-    .chat-box .chat-menu .nav-tabs .nav-item .material-border {
-        border-width: 1px;
-        border-color: #4466f2;
-    }
-
-    .chat-box .chat-menu .nav-tabs .nav-item .nav-link.active {
-        color: #000 !important;
-    }
-
-    .chat-box .chat-history .call-content {
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        align-items: center;
-        -webkit-box-pack: center;
-        -ms-flex-pack: center;
-        justify-content: center;
-        min-width: 300px;
-    }
-
-    .chat-box .chat-history .total-time h2 {
-        font-size: 50px;
-        color: #eff0f1;
-        font-weight: 600;
-        margin-bottom: 30px;
-    }
-
-    .chat-box .chat-history .receiver-img {
-        margin-top: 55px;
-    }
-
-    .chat-box .chat-history .receiver-img img {
-        border-radius: 5px;
-    }
-
-    .chat-box .chat-history .call-icons {
-        margin-bottom: 35px;
-    }
-
-    .chat-box .chat-history .call-icons ul li {
-        width: 60px;
-        height: 60px;
-        border: 1px solid #f6f7fb;
-        border-radius: 50%;
-        padding: 12px;
-    }
-
-    .chat-box .chat-history .call-icons ul li+li {
-        margin-left: 10px;
-    }
-
-    .chat-box .chat-history .call-icons ul li a {
-        color: #999;
-        font-size: 25px;
-    }
-
-    .chat-left-aside>.media {
-        margin-bottom: 15px;
-    }
-
-    .chat-left-aside .people-list {
-        height: 625px;
-    }
-
-    .chat-left-aside ul li {
-        position: relative;
-    }
-
-    .status-circle {
-        width: 10px;
-        height: 10px;
-        position: absolute;
-        top: 40px;
-        left: 40px;
-        border-radius: 50%;
-        border: 2px solid #fff;
-    }
-
-    .away {
-        background-color: #ff9f40;
-    }
-
-    .online {
-        background-color: #22af47;
-    }
-
-    .offline {
-        background-color: #ff5370;
-    }
-
-    .chat-container .aside-chat-left {
-        width: 320px;
-    }
-
-    .chat-container .chat-right-aside {
-        width: 320px;
-    }
-
-    .call-chat-sidebar {
-        max-width: 320px;
-    }
-
-    .call-chat-sidebar .card .card-body,
-    .chat-body .card .card-body {
-        padding: 15px;
-    }
-</style>
+    <style>
+        .chat-box .toogle-bar {
+            display: none;
+        }
+
+        .chat-box .chat-menu {
+            max-width: 340px;
+        }
+
+        .chat-box .people-list .search {
+            position: relative;
+        }
+
+        .chat-box .people-list .search .form-control {
+            background-color: #f1f4fb;
+            border: 1px solid #f6f7fb;
+        }
+
+        .chat-box .people-list .search .form-control::-webkit-input-placeholder {
+            color: #aaaaaa;
+        }
+
+        .chat-box .people-list .search .form-control::-moz-placeholder {
+            color: #aaaaaa;
+        }
+
+        .chat-box .people-list .search .form-control:-ms-input-placeholder {
+            color: #aaaaaa;
+        }
+
+        .chat-box .people-list .search .form-control::-ms-input-placeholder {
+            color: #aaaaaa;
+        }
+
+        .chat-box .people-list .search .form-control::placeholder {
+            color: #aaaaaa;
+        }
+
+        .chat-box .people-list .search i {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            font-size: 14px;
+            color: #e8ebf2;
+        }
+
+        .chat-box .people-list ul {
+            padding: 0;
+            list-style-type: none;
+        }
+
+        .chat-box .people-list ul li {
+            padding-bottom: 20px;
+        }
+
+        .chat-box .people-list ul li:last-child {
+            padding-bottom: 0;
+        }
+
+        .chat-box .user-image {
+            float: left;
+            width: 52px;
+            height: 52px;
+            margin-right: 5px;
+        }
+
+        .chat-box .about {
+            float: left;
+            margin-top: 5px;
+            padding-left: 10px;
+        }
+
+        .chat-box .about .name {
+            color: #2a3142;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .chat-box .status {
+            color: #aaaaaa;
+            letter-spacing: 1px;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+        .chat-box .status .chat-status {
+            font-weight: 600;
+            color: #313131;
+        }
+
+        .chat-box .status p {
+            font-size: 14px;
+        }
+
+        .chat-box .chat-right-aside .chat .chat-header {
+            padding: 15px;
+            border-bottom: 1px solid #f6f7fb;
+        }
+
+        .chat-box .chat-right-aside .chat .chat-header img {
+            float: left;
+            width: 50px;
+            height: 50px;
+            -webkit-box-shadow: 1px 1px 4px 1px #e8ebf2;
+            box-shadow: 1px 1px 4px 1px #e8ebf2;
+        }
+
+        .chat-box .chat-right-aside .chat .chat-header .chat-menu-icons {
+            margin-top: 15px;
+        }
+
+        .chat-box .chat-right-aside .chat .chat-header .chat-menu-icons li {
+            margin-right: 24px;
+        }
+
+        .chat-box .chat-right-aside .chat .chat-header .chat-menu-icons li a i {
+            color: #777777;
+            font-size: 25px;
+            cursor: pointer;
+        }
+
+        .chat-box .chat-right-aside .chat .chat-msg-box {
+            padding: 20px;
+            overflow-y: auto;
+            height: 560px;
+            margin-bottom: 90px;
+        }
+
+        .chat-box .chat-right-aside .chat .chat-msg-box .chat-user-img {
+            margin-top: -35px;
+        }
+
+        .chat-box .chat-right-aside .chat .chat-msg-box .message-data {
+            margin-bottom: 10px;
+        }
+
+        .chat-box .chat-right-aside .chat .chat-msg-box .message-data-time {
+            letter-spacing: 1px;
+            font-size: 12px;
+            color: #aaaaaa;
+            font-family: work-Sans, sans-serif;
+        }
+
+        .chat-box .chat-right-aside .chat .chat-msg-box .message {
+            color: #2a3142;
+            padding: 20px;
+            line-height: 1.9;
+            letter-spacing: 1px;
+            font-size: 14px;
+            margin-bottom: 30px;
+            width: 50%;
+            position: relative;
+        }
+
+        .chat-box .chat-right-aside .chat .chat-msg-box .my-message {
+            border: 1px solid #f6f7fb;
+            border-radius: 10px;
+            border-top-left-radius: 0;
+        }
+
+        .chat-box .chat-right-aside .chat .chat-msg-box .other-message {
+            background-color: #f6f6f6;
+            border-radius: 10px;
+            border-top-right-radius: 0;
+        }
+
+        .chat-box .chat-right-aside .chat .chat-message {
+            padding: 20px;
+            border-top: 1px solid #f1f4fb;
+            position: absolute;
+            width: calc(100% - 15px);
+            background-color: #fff;
+            bottom: 0;
+        }
+
+        .chat-box .chat-right-aside .chat .chat-message .smiley-box {
+            background: #eff0f1;
+            padding: 10px;
+            display: block;
+            border-radius: 4px;
+            margin-right: 0.5rem;
+        }
+
+        .chat-box .chat-right-aside .chat .chat-message .text-box {
+            position: relative;
+        }
+
+        .chat-box .chat-right-aside .chat .chat-message .text-box .input-txt-bx {
+            height: 50px;
+            border: 2px solid #4466f2;
+            padding-left: 18px;
+            font-size: 12px;
+            letter-spacing: 1px;
+        }
+
+        .chat-box .chat-right-aside .chat .chat-message .text-box i {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            font-size: 20px;
+            color: #e8ebf2;
+            cursor: pointer;
+        }
+
+        .chat-box .chat-right-aside .chat .chat-message .text-box .btn {
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .chat-box .chat-menu {
+            border-left: 1px solid #f6f7fb;
+        }
+
+        .chat-box .chat-menu .tab-pane {
+            padding: 0 15px;
+        }
+
+        .chat-box .chat-menu ul li .about .status i {
+            font-size: 10px;
+        }
+
+        .chat-box .chat-menu .user-profile {
+            margin-top: 30px;
+        }
+
+        .chat-box .chat-menu .user-profile .user-content h5 {
+            margin: 25px 0;
+        }
+
+        .chat-box .chat-menu .user-profile .user-content hr {
+            margin: 25px 0;
+        }
+
+        .chat-box .chat-menu .user-profile .user-content p {
+            font-size: 16px;
+        }
+
+        .chat-box .chat-menu .user-profile .image {
+            position: relative;
+        }
+
+        .chat-box .chat-menu .user-profile .image .icon-wrapper {
+            position: absolute;
+            bottom: 0;
+            left: 55%;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            height: 35px;
+            width: 35px;
+            border-radius: 50%;
+            background-color: #fff;
+            cursor: pointer;
+            overflow: hidden;
+            margin: 0 auto;
+            font-size: 14px;
+            -webkit-box-shadow: 1px 1px 3px 1px #f6f7fb;
+            box-shadow: 1px 1px 3px 1px #f6f7fb;
+        }
+
+        .chat-box .chat-menu .user-profile .image .avatar img {
+            border-radius: 50%;
+            border: 5px solid #f6f7fb;
+        }
+
+        .chat-box .chat-menu .user-profile .border-right {
+            border-right: 1px solid #f6f7fb;
+        }
+
+        .chat-box .chat-menu .user-profile .follow {
+            margin-top: 0;
+        }
+
+        .chat-box .chat-menu .user-profile .follow .follow-num {
+            font-size: 22px;
+            color: #000;
+        }
+
+        .chat-box .chat-menu .user-profile .follow span {
+            color: #1b252a;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+
+        .chat-box .chat-menu .user-profile .social-media a {
+            color: #aaaaaa;
+            font-size: 15px;
+            padding: 0 7px;
+        }
+
+        .chat-box .chat-menu .user-profile .chat-profile-contact p {
+            font-size: 14px;
+            color: #aaaaaa;
+        }
+
+        .chat-box .chat-menu .nav {
+            margin-bottom: 20px;
+        }
+
+        .chat-box .chat-menu .nav-tabs .nav-item {
+            width: 33.33%;
+        }
+
+        .chat-box .chat-menu .nav-tabs .nav-item a {
+            padding: 15px !important;
+            color: #aaaaaa !important;
+            letter-spacing: 1px;
+            font-size: 14px;
+            font-weight: 600;
+            height: 80px;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+        }
+
+        .chat-box .chat-menu .nav-tabs .nav-item .material-border {
+            border-width: 1px;
+            border-color: #4466f2;
+        }
+
+        .chat-box .chat-menu .nav-tabs .nav-item .nav-link.active {
+            color: #000 !important;
+        }
+
+        .chat-box .chat-history .call-content {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            min-width: 300px;
+        }
+
+        .chat-box .chat-history .total-time h2 {
+            font-size: 50px;
+            color: #eff0f1;
+            font-weight: 600;
+            margin-bottom: 30px;
+        }
+
+        .chat-box .chat-history .receiver-img {
+            margin-top: 55px;
+        }
+
+        .chat-box .chat-history .receiver-img img {
+            border-radius: 5px;
+        }
+
+        .chat-box .chat-history .call-icons {
+            margin-bottom: 35px;
+        }
+
+        .chat-box .chat-history .call-icons ul li {
+            width: 60px;
+            height: 60px;
+            border: 1px solid #f6f7fb;
+            border-radius: 50%;
+            padding: 12px;
+        }
+
+        .chat-box .chat-history .call-icons ul li+li {
+            margin-left: 10px;
+        }
+
+        .chat-box .chat-history .call-icons ul li a {
+            color: #999;
+            font-size: 25px;
+        }
+
+        .chat-left-aside>.media {
+            margin-bottom: 15px;
+        }
+
+        .chat-left-aside .people-list {
+            height: 625px;
+        }
+
+        .chat-left-aside ul li {
+            position: relative;
+        }
+
+        .status-circle {
+            width: 10px;
+            height: 10px;
+            position: absolute;
+            top: 40px;
+            left: 40px;
+            border-radius: 50%;
+            border: 2px solid #fff;
+        }
+
+        .away {
+            background-color: #ff9f40;
+        }
+
+        .online {
+            background-color: #22af47;
+        }
+
+        .offline {
+            background-color: #ff5370;
+        }
+
+        .chat-container .aside-chat-left {
+            width: 320px;
+        }
+
+        .chat-container .chat-right-aside {
+            width: 320px;
+        }
+
+        .call-chat-sidebar {
+            max-width: 320px;
+        }
+
+        .call-chat-sidebar .card .card-body,
+        .chat-body .card .card-body {
+            padding: 15px;
+        }
+    </style>
     <!--Project Details Top Start-->
     <section class="project-details-top">
         <div class="container">
@@ -449,7 +449,14 @@
                         <div class="project-details-top__img">
                             <img src="{{ getImageFile($campaign->image) }}" alt="">
                             <div class="project-details-top__icon">
-                                <i class="far fa-heart"></i>
+                                @php
+                                    $likeCount = \App\Models\Like::where('project_id', $campaign->id)->count();
+                                @endphp
+                                <i class="far fa-heart fas text-danger" id="heart-icon{{ $campaign->id }}" data-project-id="{{ $campaign->id }}"></i>
+                                <br>
+                                <span id="like-count{{ $campaign->id }}" class="like-count" style="color:#fff">
+                                    {{ $likeCount }}
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -464,7 +471,7 @@
                                     $days_left = $campaign->days_left();
                                     $amount_prefilled = $campaign->amount_prefilled();
                                     $countryNameJson = \App\Models\Country::where('id', $campaign->country_id)
-                                        ->pluck('name')
+                                        ->pluck('country_name')
                                         ->first();
                                     $countryData = json_decode($countryNameJson, true);
 
@@ -474,7 +481,7 @@
                                 @endphp
                                 <p>
                                     @if ($category)
-                                        {{ $category->name }}
+                                        {{ $category->country_name }}
                                     @endif
                                 </p>
                             </div>
@@ -594,9 +601,6 @@
                                         class="thm-btn project-details-top__btn">{{ __('Apoyar este Proyecto') }}</a>
                                     <a class="thm-btn project-details-top__btn" style="margin-top: 3px"
                                         onclick="openChat('{{ $campaign->user_id }}', '{{ \App\Models\User::getUserInfo($campaign->user_id)->name }}', '{{ !empty(\App\Models\User::getUserInfo($campaign->user_id)->profile_photo) ? asset('profile_photo/' . \App\Models\User::getUserInfo($campaign->user_id)->profile_photo) : asset('149071.png') }}','{{ \App\Models\User::getUserInfo($campaign->user_id)->last_seen }}');">Chat</a>
-
-
-
                                 @else
                                     <a href="{{ url('signup') }}"
                                         class="thm-btn project-details-top__btn">{{ __('Apoyar este Proyecto') }}</a>
@@ -627,24 +631,20 @@
                                     <div class="chat-header clearfix"><img class="rounded-circle"
                                             src="../assets/images/user/8.jpg" alt="">
                                         <div class="about">
-                                            <div class="name"> <span
-                                                    class="font-primary f-12"></span></div>
+                                            <div class="name"> <span class="font-primary f-12"></span></div>
                                             <div class="status digits"></div>
                                         </div>
-                                        <ul
-                                            class="list-inline float-start float-sm-end chat-menu-icons">
-                                            <li class="list-inline-item"><a href="#"><i
-                                                        class="icon-search"></i></a>
+                                        <ul class="list-inline float-start float-sm-end chat-menu-icons">
+                                            <li class="list-inline-item"><a href="#"><i class="icon-search"></i></a>
                                             </li>
-                                            <li class="list-inline-item"><a href="#"><i
-                                                        class="icon-clip"></i></a>
+                                            <li class="list-inline-item"><a href="#"><i class="icon-clip"></i></a>
                                             </li>
                                             <li class="list-inline-item"><a href="#"><i
                                                         class="icon-headphone-alt"></i></a></li>
                                             <li class="list-inline-item"><a href="#"><i
                                                         class="icon-video-camera"></i></a></li>
-                                            <li class="list-inline-item toogle-bar"><a
-                                                    href="#"><i class="icon-menu"></i></a>
+                                            <li class="list-inline-item toogle-bar"><a href="#"><i
+                                                        class="icon-menu"></i></a>
                                             </li>
                                         </ul>
                                     </div>
@@ -664,15 +664,13 @@
                                                     @csrf
                                                     <input type="hidden" name="sender_id"
                                                         value="{{ Session::get('LoggedIn') }}">
-                                                    <input type="hidden" class="receiver_id"
-                                                        name="receiver_id" value="">
+                                                    <input type="hidden" class="receiver_id" name="receiver_id"
+                                                        value="">
                                                     <div class="input-group text-box">
-                                                        <input class="form-control input-txt-bx"
-                                                            id="message" type="text"
-                                                            name="message"
+                                                        <input class="form-control input-txt-bx" id="message"
+                                                            type="text" name="message"
                                                             placeholder="Escribe un mensaje...">
-                                                        <button
-                                                            class="btn btn-primary input-group-text"
+                                                        <button class="btn btn-primary input-group-text"
                                                             type="submit">{{ __('ENVIAR') }}</button>
                                                     </div>
                                                 </form>
@@ -737,57 +735,58 @@
 
 
             function openChat(receiverId, receiverName, receiverImage, lastSeen) {
-    // Show the chat section
-    $('.chat').show();
+                // Show the chat section
+                $('.chat').show();
 
-    // Set the receiver_id
-    $('.receiver_id').val(receiverId);
+                // Set the receiver_id
+                $('.receiver_id').val(receiverId);
 
-    // Update the chat header name
-    $('.chat-header .name').text(receiverName);
+                // Update the chat header name
+                $('.chat-header .name').text(receiverName);
 
-    // Update the chat header image
-    if (receiverImage && receiverImage.trim() !== '') {
-        $('.chat-header img').attr('src', receiverImage);
-        $('.chat-header img').css({
-            'width': '40px',
-            'height': '40px'
-        });
-    } else {
-        $('.chat-header img').attr('src', '{{ asset('149071.png') }}');
-        $('.chat-header img').css({
-            'width': '40px',
-            'height': '40px'
-        });
-    }
+                // Update the chat header image
+                if (receiverImage && receiverImage.trim() !== '') {
+                    $('.chat-header img').attr('src', receiverImage);
+                    $('.chat-header img').css({
+                        'width': '40px',
+                        'height': '40px'
+                    });
+                } else {
+                    $('.chat-header img').attr('src', '{{ asset('149071.png') }}');
+                    $('.chat-header img').css({
+                        'width': '40px',
+                        'height': '40px'
+                    });
+                }
 
-    // Convert the timestamp to a Date object
-    var lastSeenDate = new Date(lastSeen);
+                // Convert the timestamp to a Date object
+                var lastSeenDate = new Date(lastSeen);
 
-    // Format the last seen time
-    var lastSeenFormatted = formatDate(lastSeenDate);
+                // Format the last seen time
+                var lastSeenFormatted = formatDate(lastSeenDate);
 
-    // Update the last seen status to Spanish
-    $('.chat-header .status.digits').text('Última vez ' + lastSeenFormatted);
+                // Update the last seen status to Spanish
+                $('.chat-header .status.digits').text('Última vez ' + lastSeenFormatted);
 
-    // Fetch messages for the selected receiver
-    fetchChatMessages(receiverId);
-}
+                // Fetch messages for the selected receiver
+                fetchChatMessages(receiverId);
+            }
 
 
-// Function to format date into human-readable format
-function formatDate(date) {
-    var hours = date.getHours();
-    var minutes = date.getMinutes();
-    var ampm = hours >= 12 ? 'PM' : 'AM';
-    hours = hours % 12;
-    hours = hours ? hours : 12; // Handle midnight (0 hours)
-    minutes = minutes < 10 ? '0' + minutes : minutes;
-    var strTime = hours + ':' + minutes + ' ' + ampm;
-    // Concatenate date with time
-    var formattedDateTime = date.toLocaleDateString() + ' ' + strTime;
-    return formattedDateTime;
-}
+            // Function to format date into human-readable format
+            function formatDate(date) {
+                var hours = date.getHours();
+                var minutes = date.getMinutes();
+                var ampm = hours >= 12 ? 'PM' : 'AM';
+                hours = hours % 12;
+                hours = hours ? hours : 12; // Handle midnight (0 hours)
+                minutes = minutes < 10 ? '0' + minutes : minutes;
+                var strTime = hours + ':' + minutes + ' ' + ampm;
+                // Concatenate date with time
+                var formattedDateTime = date.toLocaleDateString() + ' ' + strTime;
+                return formattedDateTime;
+            }
+
             function sendMessage() {
                 let message = $('#message').val();
                 let receiverId = $('.receiver_id').val();
@@ -880,7 +879,6 @@ function formatDate(date) {
                         <ul class="tab-buttons clearfix list-unstyled clearfix">
                             <li data-tab="#story" class="tab-btn active-btn"><span>{{ __('Historia') }}</span></li>
 
-                            <li data-tab="#updates" class="tab-btn"><span>{{ __('Actualización') }}</span></li>
 
                         </ul>
                         <div class="tabs-content">
@@ -893,32 +891,7 @@ function formatDate(date) {
                             <!--tab-->
 
                             <!--tab-->
-                            <div class="tab " id="updates">
-                                <div class="project-details__updates">
-                                    <div class="project-details__updates-single">
-                                        <div class="project-details__updates-title-box">
-                                            <p class="project-details__updates-sub-title">20 {{ __('Hours Ago') }}</p>
-                                            <h5 class="project-details__updates-title">
-                                                {{ __('This is the first update of
-                                                                                                                                                                                                our
-                                                                                                                                                                                                new project') }}
-                                            </h5>
-                                        </div>
-                                        <p class="project-details__updates-text-1">Lorem ipsum dolor sit amet,
-                                            consectetur adipiscing elit. Praesent vulputate sed mauris vitae
-                                            pellentesque. Nunc ut ullamcorper libero. Aenean fringilla mauris quis
-                                            risus laoreet interdum. Quisque imperdiet orci in metus aliquam egestas.
-                                            Fusce elit libero, imperdiet nec orci quis, convallis hendrerit nisl.
-                                            Cras auctor nec purus at placerat.</p>
 
-                                        <div class="project-details__updates-img">
-                                            <img src="assets/images/project/project-details-updates-img-1.jpg"
-                                                alt="">
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
 
                         </div>
                     </div>
@@ -945,9 +918,16 @@ function formatDate(date) {
                                 <div class="project-one__img">
                                     <img src="{{ getImageFile($row->image) }}" alt="">
                                 </div>
-                                <div class="project-one__icon">
-                                    <i class="far fa-heart"></i>
-                                </div>
+                                @php
+                                $likeCount = \App\Models\Like::where('project_id', $row->id)->count();
+                            @endphp
+                            <div class="project-one__icon">
+                                <i class="far fa-heart" id="heart-icons{{ $row->id }}" data-project-id="{{ $row->id }}"></i>
+                                <br>
+                                <span id="like-count{{ $row->id }}" class="like-count" style="color:#fff">
+                                    {{ $likeCount }}
+                                </span>
+                            </div>
                             </div>
                             <div class="project-one__content">
                                 <div class="project-one__tag">
@@ -1021,6 +1001,52 @@ function formatDate(date) {
                         </div>
                     </div>
                 @endforeach
+                <script>
+                    $(document).ready(function() {
+                            toastr.options = {
+                                "closeButton": true,
+                                "progressBar": true,
+                                "positionClass": "toast-top-right",
+                                "preventDuplicates": true,
+                                "showDuration": "300",
+                                "hideDuration": "1000",
+                                "timeOut": "5000",
+                                "extendedTimeOut": "1000",
+                            };
+
+
+                            $('[id^="heart-icon"]').click(function() {
+                                var projectId = $(this).data('project-id');
+                                var icon = $(this);
+
+                                $.ajax({
+                                    type: 'POST',
+                                    url: "{{ route('like') }}", // Use the named route
+                                    data: {
+                                        projectId: projectId,
+                                    },
+                                    headers: {
+                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                    },
+                                    success: function(data) {
+                                        if (data.success) {
+                                            toastr.success(data.message, "", {
+                                                onHidden: function() {
+                                                    window.location.reload(); // Reload the page after toastr is hidden
+                                                }
+                                            });
+                                        } else {
+                                            toastr.error(data.message); // Display error message
+                                        }
+                                    },
+                                    error: function(xhr, status, error) {
+                                        console.error(xhr.responseText);
+                                        toastr.error("Like Request Failed. Please try again later.");
+                                    }
+                                });
+                            });
+                        });
+                </script>
 
             </div>
         </div>
