@@ -43,7 +43,6 @@ class BankController extends Controller
         $bank->status = $request->status;
         $bank->save();
 
-        $this->showToastrMessage('success', __('Bank Created Successful'));
         return redirect()->back();
     }
 
@@ -87,7 +86,7 @@ class BankController extends Controller
         $bank->account_number = $request->account_number;
         $bank->status = $request->status;
         $bank->save();
-        $this->showToastrMessage('success', __('Bank Updated Successful'));
+
         return redirect()->route('settings.bank.index');
     }
 
@@ -95,7 +94,7 @@ class BankController extends Controller
     {
         $bank = Bank::find($id);
         $bank->delete();
-        $this->showToastrMessage('success', __('Bank Deleted Successful'));
-        return redirect()->route('settings.bank.index');
+
+        return response()->json(['success' => true, 'message' => __('Deleted Successfully')]);
     }
 }

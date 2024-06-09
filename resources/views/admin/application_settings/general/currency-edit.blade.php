@@ -1,40 +1,44 @@
-@extends('layouts.admin')
-
+@extends('admin.Master')
+@section('title')
+    {{ $title }}
+@endsection
 @section('content')
-    <!-- Page content area start -->
-    <div class="page-content">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="breadcrumb__content">
-                        <div class="breadcrumb__content__left">
-                            <div class="breadcrumb__title">
-                                <h2>{{ __('Application Settings') }}</h2>
-                            </div>
+<div class="page-body">
+<!-- Page content area start -->
+<div class="page-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="breadcrumb__content">
+                    <div class="breadcrumb__content__left">
+                        <div class="breadcrumb__title">
+                            <h2>{{ __('Application Settings') }}</h2>
                         </div>
-                        <div class="breadcrumb__content__right">
-                            <nav aria-label="breadcrumb">
-                                <ul class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">{{__('Dashboard')}}</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">{{ __(@$title) }}</li>
-                                </ul>
-                            </nav>
-                        </div>
+                    </div>
+                    <div class="breadcrumb__content__right">
+                        <nav aria-label="breadcrumb">
+                            <ul class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="{{url('admin\dashboard')}}">{{__('Dashboard')}}</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">{{ __(@$title) }}</li>
+                            </ul>
+                        </nav>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-lg-3 col-md-4">
-                    @include('admin.application_settings.sidebar')
-                </div>
-                <div class="col-lg-9 col-md-8">
-                    <div class="customers__area bg-style mb-30">
-                        <div class="item-title d-flex justify-content-between">
-                            <h2>{{ __('Edit Currency') }}</h2>
-                            <a href="{{ route('settings.currency.index') }}" class="btn btn-success btn-sm" >
-                                <i class="fa fa-arrow-left"></i> {{ __('Back') }}
-                            </a>
-                        </div>
+        </div>
+        <div class="row">
+            <div class="card col-lg-3 col-md-4">
+                @include('admin.application_settings.sidebar')
+            </div>
+            <div class="col-lg-9 col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>{{ __('Edit Currency') }}</h2>
+                        <a href="{{ route('settings.currency.index') }}" class="btn btn-success btn-sm pull-right" >
+                            <i class="fa fa-arrow-left"></i> {{ __('Back') }}
+                        </a>
+                    </div>
+                    <div class="card-body">
                         <form action="{{route('settings.currency.update', [$currency->id])}}" method="post" class="form-horizontal">
                             @csrf
                             @method('patch')
@@ -42,7 +46,7 @@
                                 <div class="col-12">
                                     <div class="input__group mb-25">
                                         <label for="currency_code">{{ __('Currency ISO Code') }}</label>
-                                        <input type="text" name="currency_code" id="currency_code" placeholder="{{ __('Type currency code') }}" value="{{ $currency->currency_code }}" required>
+                                        <input type="text" name="currency_code" class="form-control" id="currency_code" placeholder="{{ __('Type currency code') }}" value="{{ $currency->currency_code }}" required>
                                         @if ($errors->has('currency_code'))
                                             <span class="text-danger"><i class="fas fa-exclamation-triangle"></i> {{ $errors->first('currency_code') }}</span>
                                         @endif
@@ -51,7 +55,7 @@
                                 <div class="col-12">
                                     <div class="input__group mb-25">
                                         <label for="symbol">{{ __('Symbol') }}</label>
-                                        <input type="text" name="symbol" id="symbol" placeholder="{{ __('Type symbol') }}" value="{{ $currency->symbol }}" required>
+                                        <input type="text" name="symbol" class="form-control" id="symbol" placeholder="{{ __('Type symbol') }}" value="{{ $currency->symbol }}" required>
                                         @if ($errors->has('symbol'))
                                             <span class="text-danger"><i class="fas fa-exclamation-triangle"></i> {{ $errors->first('symbol') }}</span>
                                         @endif
@@ -60,7 +64,7 @@
                                 <div class="col-12">
                                     <div class="input__group mb-25">
                                         <label for="currency_placement">{{ __('Currency Placement') }}</label>
-                                        <select name="currency_placement" id="" required>
+                                        <select name="currency_placement" class="form-control select2" id="" required>
                                             <option value="">--{{ __('Select Option') }}--</option>
                                             <option value="before" @if($currency->currency_placement == 'before') selected @endif>{{ __('Before Amount') }}</option>
                                             <option value="after" @if($currency->currency_placement == 'after') selected @endif>{{ __('After Amount') }}</option>
@@ -82,15 +86,19 @@
 
                             <div class="row mb-3">
                                 <div class="col-md-12 text-right">
-                                    @updateButton
+                                    <button type="submit" class="btn btn-primary btn-sm">{{ __('Update') }}</button>
                                 </div>
                             </div>
 
                         </form>
                     </div>
+
                 </div>
             </div>
         </div>
     </div>
-    <!-- Page content area end -->
+</div>
+<!-- Page content area end -->
+</div>
+
 @endsection

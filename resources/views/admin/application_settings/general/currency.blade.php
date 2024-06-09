@@ -27,19 +27,21 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-3 col-md-4">
+                    <div class="card col-lg-3 col-md-4">
                         @include('admin.application_settings.sidebar')
                     </div>
                     <div class="col-lg-9 col-md-8">
-                        <div class="customers__area bg-style mb-30">
-                            <div class="item-title d-flex justify-content-between">
+
+                        <div class="card">
+                            <div class="card-header">
                                 <h2>{{ __('Currency') }}</h2>
-                                <button class="btn btn-success btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#add-todo-modal">
+                                <button class="btn btn-success btn-sm pull-right" type="button" data-bs-toggle="modal" data-bs-target="#add-todo-modal">
                                     <i class="fa fa-plus"></i> {{ __('Add Currency') }}
                                 </button>
 
                             </div>
-                            <div class="table-responsive">
+                            <div class="card-body">
+                                <div class="table-responsive">
                                     <table id="advance-1" class="row-border data-table-filter table-style">
                                         <thead>
                                         <tr>
@@ -65,17 +67,16 @@
                                                 </td>
                                                 <td>
                                                     <div class="action__buttons">
-                                                        <a href="{{ route('settings.currency.edit', [$currency->id, Str::slug($currency->currency_code)]) }}" class=" btn-action mr-1 edit" data-toggle="tooltip" title="Edit">
-                                                            <img src="{{asset('admin/images/icons/edit-2.svg')}}" alt="edit">
+                                                        <a href="{{ route('settings.currency.edit', [$currency->id, Str::slug($currency->currency_code)]) }}" title="Edit" class="btn btn-icon waves-effect waves-light btn-success m-b-5 m-r-5" data-toggle="tooltip"> <i class="fa fa-edit"></i>
                                                         </a>
-                                                        <button class="btn-action ms-2 deleteItem" data-formid="delete_row_form_{{$currency->id}}">
-                                                            <img src="{{asset('admin/images/icons/trash-2.svg')}}" alt="trash">
-                                                        </button>
 
-                                                        <form action="{{ route('settings.currency.delete', $currency->id) }}" method="post" id="delete_row_form_{{ $currency->id }}">
+                                                        <a href="{{ route('settings.currency.delete', $currency->id) }}" class="btn btn-icon waves-effect waves-light btn-danger m-b-5" onclick="return confirm('{{trans('do you want to delete')}}')" data-toggle="tooltip" title="{{trans('remove')}}"> <i class="fa fa-remove"></i>
+
+                                                        </a>
+                                                        {{-- <form action="{{ route('settings.currency.delete', $currency->id) }}" method="post" id="delete_row_form_{{ $currency->id }}">
                                                             {{ method_field('DELETE') }}
                                                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                                        </form>
+                                                        </form> --}}
                                                     </div>
                                                 </td>
                                             </tr>
@@ -83,6 +84,8 @@
                                         </tbody>
                                     </table>
                             </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -98,7 +101,7 @@
                         <h5 class="modal-title">{{ __('Add Currency') }}</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <form action="{{ route('settings.currency.store') }}" method="post">
+                    <form id="currencyForm" action="{{ route('settings.currency.store') }}" method="post">
                         @csrf
                         <div class="modal-body">
                             <div class="row">
@@ -154,6 +157,31 @@
         </div>
         <!-- Add Modal section end -->
     </div>
+<script>
 
+// Handle form submission via AJAX
+document.getElementById('currencyForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent the default form submission
+
+    // Serialize form data
+    var formData = new FormData(this);
+
+    // Send AJAX request
+    axios.post('{{ route("settings.currency.store") }}', formData)
+        .then(function(response) {
+            console.log(response);
+            // Display Toastr message based on the response
+            toastr.success(response.data.message);
+
+            // Redirect to the desired route after displaying the message
+            window.location.href = '{{ route("settings.currency.index") }}';
+        })
+        .catch(function(error) {
+            // Handle error if needed
+            console.error(error);
+        });
+});
+
+</script>
 @endsection
 

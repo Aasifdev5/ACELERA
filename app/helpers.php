@@ -203,7 +203,58 @@ function get_currency_symbol()
 
     return '';
 }
+if (!function_exists('updateEnv')) {
+    function updateEnv($values)
+    {
+        if (count($values) > 0) {
+            foreach ($values as $envKey => $envValue) {
+                setEnvironmentValue($envKey,$envValue);
+            }
+            return true;
+        }
+    }
+}
+function setEnvironmentValue($envKey, $envValue)
+{
+    try {
+        $envFile = app()->environmentFilePath();
+        $str = file_get_contents($envFile);
+        $str .= "\n"; // In case the searched variable is in the last line without \n
+        $keyPosition = strpos($str, "{$envKey}=");
+        if($keyPosition) {
+            if (PHP_OS_FAMILY === 'Windows') {
+                $endOfLinePosition = strpos($str, "\n", $keyPosition);
+            } else {
+                $endOfLinePosition = strpos($str, PHP_EOL, $keyPosition);
+            }
+            $oldLine = substr($str, $keyPosition, $endOfLinePosition - $keyPosition);
+            $envValue = str_replace(chr(92), "\\\\", $envValue);
+            $envValue = str_replace('"', '\"', $envValue);
+            $newLine = "{$envKey}=\"{$envValue}\"";
+            if ($oldLine != $newLine) {
+                $str = str_replace($oldLine, $newLine, $str);
+                $str = substr($str, 0, -1);
+                $fp = fopen($envFile, 'w');
+                fwrite($fp, $str);
+                fclose($fp);
+            }
+        }else if(strtoupper($envKey) == $envKey){
+            $envValue = str_replace(chr(92), "\\\\", $envValue);
+            $envValue = str_replace('"', '\"', $envValue);
+            $newLine = "{$envKey}=\"{$envValue}\"\n";
+            $str .= $newLine;
+            $str = substr($str, 0, -1);
+            $fp = fopen($envFile, 'w');
+            fwrite($fp, $str);
+            fclose($fp);
+        }
+        return true;
+    }catch (\Exception $e){
+        return false;
+    }
 
+
+}
 function getPaymentMethodName($input = null)
 {
     $output = [
@@ -479,18 +530,20 @@ function getPaymentMethodConversionRate($input = null)
 }
 function get_option($option_key, $default = NULL)
 {
+
     $system_settings = config('settings');
 
-    if ($option_key && isset($system_settings[$option_key])) {
+    if ($system_settings && isset($system_settings[$option_key])) {
         return $system_settings[$option_key];
-    } elseif ($option_key && isset($system_settings[strtolower($option_key)])) {
+    } elseif ($system_settings && isset($system_settings[strtolower($option_key)])) {
         return $system_settings[strtolower($option_key)];
-    } elseif ($option_key && isset($system_settings[strtoupper($option_key)])) {
+    } elseif ($system_settings && isset($system_settings[strtoupper($option_key)])) {
         return $system_settings[strtoupper($option_key)];
     } else {
         return $default;
     }
 }
+
 function getCategory()
 {
     $category = Category::orderby('id', 'desc')->take(6)->get();

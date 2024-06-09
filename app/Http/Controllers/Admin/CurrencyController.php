@@ -62,7 +62,7 @@ class CurrencyController extends Controller
         }
 
 
-        $this->showToastrMessage('success', __('Created Successful'));
+
         return redirect()->route('settings.currency.index');
     }
 
@@ -85,8 +85,9 @@ class CurrencyController extends Controller
             Currency::where('id', $currency->id)->update(['current_currency' => 'on']);
             Currency::where('id', '!=', $currency->id)->update(['current_currency' => 'off']);
         }
+        session()->flash('success', 'Updated Successful');
 
-        $this->showToastrMessage('success', __('Updated Successful'));
+
         return redirect()->route('settings.currency.index');
     }
 
@@ -94,8 +95,8 @@ class CurrencyController extends Controller
     {
         $item = Currency::findOrFail($id);
         $item->delete();
+        session()->flash('success', 'Deleted Successful');
 
-        $this->showToastrMessage('success', __('Deleted Successful'));
         return redirect()->back();
     }
 }

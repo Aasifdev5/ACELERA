@@ -4,7 +4,10 @@ import Echo from 'laravel-echo';
 import 'toastr/toastr.scss';
 import toastr from 'toastr';
 
-window.toastr = toastr;
+window.toastr = require('toastr');
+toastr.options = {
+    "positionClass": "toast-bottom-right"
+};
 window.Pusher = require('pusher-js');
 
 window.Echo = new Echo({

@@ -68,7 +68,6 @@ class AboutUsController extends Controller
 
         $about->save();
 
-        $this->showToastrMessage('success', __('Updated Successful'));
         return redirect()->back();
     }
 
@@ -125,7 +124,6 @@ class AboutUsController extends Controller
 
         OurHistory::where('updated_at', '!=', $now)->delete();
 
-        $this->showToastrMessage('success', __('Updated Successful'));
         return redirect()->back();
     }
 
@@ -163,7 +161,6 @@ class AboutUsController extends Controller
         $about->upgrade_skill_button_name = $request->upgrade_skill_button_name;
         $about->save();
 
-        $this->showToastrMessage('success', __('Updated Successful'));
         return redirect()->back();
     }
 
@@ -234,7 +231,6 @@ class AboutUsController extends Controller
             $q->delete();
         });
 
-        $this->showToastrMessage('success', __('Updated Successful'));
         return redirect()->back();
     }
 
@@ -286,7 +282,40 @@ class AboutUsController extends Controller
             $q->delete();
         });
 
-        $this->showToastrMessage('success', __('Updated Successful'));
         return redirect()->back();
+    }
+    public function clientDelete(Request $request)
+    {
+
+        try {
+            $client = ClientLogo::findOrFail($request->id);
+            $client->delete();
+
+            return response()->json(['success' => 'Client deleted successfully']);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Failed to delete client'], 500);
+        }
+    }
+    public function memberDelete(Request $request)
+    {
+        try {
+            $member = TeamMember::findOrFail($request->id);
+            $member->delete();
+
+            return response()->json(['success' => 'Member deleted successfully']);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Failed to delete member'], 500);
+        }
+    }
+    public function historyDelete(Request $request)
+    {
+        try {
+            $history = OurHistory::findOrFail($request->id);
+            $history->delete();
+
+            return response()->json(['success' => 'Our history deleted successfully']);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Failed to delete our history'], 500);
+        }
     }
 }

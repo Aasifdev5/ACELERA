@@ -168,7 +168,6 @@ class SupportTicketController extends Controller
         $item->name = $request->name;
         $item->save();
 
-        $this->showToastrMessage('success', __($msg));
         return redirect()->back();
     }
 
@@ -177,8 +176,9 @@ class SupportTicketController extends Controller
 
 
         $this->modelTicketDepartment->deleteByUuid($uuid);
-        $this->showToastrMessage('success', __('Deleted Successful'));
-        return redirect()->back();
+
+        return response()->json(['success' => true, 'message' => __('Deleted Successfully')]);
+
     }
 
     public function Priority()
@@ -220,7 +220,7 @@ class SupportTicketController extends Controller
         $item->name = $request->name;
         $item->save();
 
-        $this->showToastrMessage('success', __($msg));
+
         return redirect()->back();
     }
 
@@ -229,8 +229,8 @@ class SupportTicketController extends Controller
 
 
         $this->modelTicketPriority->deleteByUuid($uuid);
-        $this->showToastrMessage('success', __('Deleted Successful'));
-        return redirect()->back();
+
+        return response()->json(['success' => true, 'message' => __('Deleted Successfully')]);
     }
 
 
@@ -273,7 +273,6 @@ class SupportTicketController extends Controller
         $item->name = $request->name;
         $item->save();
 
-        $this->showToastrMessage('success', __($msg));
         return redirect()->back();
     }
 
@@ -282,7 +281,7 @@ class SupportTicketController extends Controller
 
 
         $this->modelTicketService->deleteByUuid($uuid);
-        $this->showToastrMessage('success', __('Deleted Successful'));
-        return redirect()->back();
+        return response()->json(['success' => true, 'message' => 'Successfully deleted']);
+
     }
 }

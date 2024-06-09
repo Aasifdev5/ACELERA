@@ -1,5 +1,7 @@
-@extends('layouts.admin')
-
+@extends('admin.Master')
+@section('title')
+    {{ $title }}
+@endsection
 @section('content')
     <!-- Page content area start -->
     <div class="page-content">
@@ -25,7 +27,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-4 col-md-4">
+                <div class="card col-lg-4 col-md-4">
                     @include('admin.application_settings.home-sidebar')
                 </div>
                 <div class="col-lg-8 col-md-8">

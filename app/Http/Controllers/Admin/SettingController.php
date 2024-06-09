@@ -139,125 +139,6 @@ class SettingController extends Controller
                 $this->deleteFile(get_option('home_special_feature_third_logo'));
                 $option->option_value = $this->saveImage('setting', $request->home_special_feature_third_logo, null, null);
                 $option->save();
-            } elseif ($request->hasFile('course_logo') && $key == 'course_logo') {
-                $request->validate([
-                    'course_logo' => 'mimes:png|dimensions:min_width=60,min_height=60,max_width=60,max_height=60'
-                ]);
-                $this->deleteFile(get_option('course_logo'));
-                $option->option_value = $this->saveImage('setting', $request->course_logo, null, null);
-                $option->save();
-            } elseif ($request->hasFile('product_section_logo') && $key == 'product_section_logo') {
-                $request->validate([
-                    'product_section_logo' => 'mimes:png|dimensions:min_width=60,min_height=60,max_width=60,max_height=60'
-                ]);
-                $this->deleteFile(get_option('product_section_logo'));
-                $option->option_value = $this->saveImage('setting', $request->product_section_logo, null, null);
-                $option->save();
-            } elseif ($request->hasFile('category_course_logo') && $key == 'category_course_logo') {
-                $request->validate([
-                    'category_course_logo' => 'mimes:png|dimensions:min_width=60,min_height=60,max_width=60,max_height=60'
-                ]);
-                $this->deleteFile(get_option('category_course_logo'));
-                $option->option_value = $this->saveImage('setting', $request->category_course_logo, null, null);
-                $option->save();
-            } elseif ($request->hasFile('upcoming_course_logo') && $key == 'upcoming_course_logo') {
-                $request->validate([
-                    'upcoming_course_logo' => 'mimes:png|dimensions:min_width=60,min_height=60,max_width=60,max_height=60'
-                ]);
-                $this->deleteFile(get_option('upcoming_course_logo'));
-                $option->option_value = $this->saveImage('setting', $request->upcoming_course_logo, null, null);
-                $option->save();
-            } elseif ($request->hasFile('bundle_course_logo') && $key == 'bundle_course_logo') {
-                $request->validate([
-                    'bundle_course_logo' => 'mimes:png|dimensions:min_width=60,min_height=60,max_width=60,max_height=60'
-                ]);
-                $this->deleteFile(get_option('bundle_course_logo'));
-                $option->option_value = $this->saveImage('setting', $request->bundle_course_logo, null, null);
-                $option->save();
-            } elseif ($request->hasFile('top_category_logo') && $key == 'top_category_logo') {
-                $request->validate([
-                    'top_category_logo' => 'mimes:png|dimensions:min_width=60,min_height=60,max_width=60,max_height=60'
-                ]);
-                $this->deleteFile(get_option('top_category_logo'));
-                $option->option_value = $this->saveImage('setting', $request->top_category_logo, null, null);
-                $option->save();
-            } elseif ($request->hasFile('top_instructor_logo') && $key == 'top_instructor_logo') {
-                $request->validate([
-                    'top_instructor_logo' => 'mimes:png|dimensions:min_width=70,min_height=70,max_width=70,max_height=70'
-                ]);
-                $this->deleteFile(get_option('top_instructor_logo'));
-                $option->option_value = $this->saveImage('setting', $request->top_instructor_logo, null, null);
-                $option->save();
-            } elseif ($request->hasFile('become_instructor_video_logo') && $key == 'become_instructor_video_logo') {
-                $request->validate([
-                    'become_instructor_video_logo' => 'mimes:png|dimensions:min_width=70,min_height=70,max_width=70,max_height=70'
-                ]);
-                $this->deleteFile(get_option('become_instructor_video_logo'));
-                $option->option_value = $this->saveImage('setting', $request->become_instructor_video_logo, null, null);
-                $option->save();
-            } elseif ($request->hasFile('customer_say_logo') && $key == 'customer_say_logo') {
-                $request->validate([
-                    'customer_say_logo' => 'mimes:png|dimensions:min_width=64,min_height=64,max_width=64,max_height=64'
-                ]);
-                $this->deleteFile(get_option('customer_say_logo'));
-                $option->option_value = $this->saveImage('setting', $request->customer_say_logo, null, null);
-                $option->save();
-            } elseif ($request->hasFile('customer_say_first_image') && $key == 'customer_say_first_image') {
-                $request->validate([
-                    'customer_say_first_image' => 'mimes:png'
-                ]);
-                $this->deleteFile(get_option('customer_say_first_image'));
-                $option->option_value = $this->saveImage('setting', $request->customer_say_first_image, null, null);
-                $option->save();
-            } elseif ($request->hasFile('customer_say_second_image') && $key == 'customer_say_second_image') {
-                $request->validate([
-                    'customer_say_second_image' => 'mimes:png'
-                ]);
-                $this->deleteFile(get_option('customer_say_second_image'));
-                $option->option_value = $this->saveImage('setting', $request->customer_say_second_image, null, null);
-                $option->save();
-            } elseif ($request->hasFile('customer_say_third_image') && $key == 'customer_say_third_image') {
-                $request->validate([
-                    'customer_say_third_image' => 'mimes:png'
-                ]);
-                $this->deleteFile(get_option('customer_say_third_image'));
-                $option->option_value = $this->saveImage('setting', $request->customer_say_third_image, null, null);
-                $option->save();
-            } elseif ($request->hasFile('customer_say_fourth_image') && $key == 'customer_say_fourth_image') {
-                $request->validate([
-                    'customer_say_fourth_image' => 'mimes:png'
-                ]);
-                $this->deleteFile(get_option('customer_say_fourth_image'));
-                $option->option_value = $this->saveImage('setting', $request->customer_say_fourth_image, null, null);
-                $option->save();
-            } elseif ($request->hasFile('achievement_first_logo') && $key == 'achievement_first_logo') {
-                $request->validate([
-                    'achievement_first_logo' => 'mimes:png|dimensions:min_width=58,min_height=58,max_width=58,max_height=58'
-                ]);
-                $this->deleteFile(get_option('achievement_first_logo'));
-                $option->option_value = $this->saveImage('setting', $request->achievement_first_logo, null, null);
-                $option->save();
-            } elseif ($request->hasFile('achievement_second_logo') && $key == 'achievement_second_logo') {
-                $request->validate([
-                    'achievement_second_logo' => 'mimes:png|dimensions:min_width=58,min_height=58,max_width=58,max_height=58'
-                ]);
-                $this->deleteFile(get_option('achievement_second_logo'));
-                $option->option_value = $this->saveImage('setting', $request->achievement_second_logo, null, null);
-                $option->save();
-            } elseif ($request->hasFile('achievement_third_logo') && $key == 'achievement_third_logo') {
-                $request->validate([
-                    'achievement_third_logo' => 'mimes:png|dimensions:min_width=58,min_height=58,max_width=58,max_height=58'
-                ]);
-                $this->deleteFile(get_option('achievement_third_logo'));
-                $option->option_value = $this->saveImage('setting', $request->achievement_third_logo, null, null);
-                $option->save();
-            } elseif ($request->hasFile('achievement_four_logo') && $key == 'achievement_four_logo') {
-                $request->validate([
-                    'achievement_four_logo' => 'mimes:png|dimensions:min_width=58,min_height=58,max_width=58,max_height=58'
-                ]);
-                $this->deleteFile(get_option('achievement_four_logo'));
-                $option->option_value = $this->saveImage('setting', $request->achievement_four_logo, null, null);
-                $option->save();
             } elseif ($request->hasFile('sign_up_left_image') && $key == 'sign_up_left_image') {
                 $request->validate([
                     'sign_up_left_image' => 'mimes:png,svg'
@@ -265,36 +146,7 @@ class SettingController extends Controller
                 $this->deleteFile(get_option('sign_up_left_image'));
                 $option->option_value = $this->saveImage('setting', $request->sign_up_left_image, null, null);
                 $option->save();
-            } elseif ($request->hasFile('become_instructor_video_preview_image') && $key == 'become_instructor_video_preview_image') {
-                $request->validate([
-                    'become_instructor_video_preview_image' => 'mimes:png|dimensions:min_width=835,min_height=630,max_width=835,max_height=630'
-                ]);
-                $this->deleteFile(get_option('become_instructor_video_preview_image'));
-                $option->option_value = $this->saveImage('setting', $request->become_instructor_video_preview_image, null, null);
-                $option->save();
-            } elseif ($request->hasFile('become_instructor_video') && $key == 'become_instructor_video') {
-                $this->deleteVideoFile(get_option('become_instructor_video'));
-
-                $file_details = $this->uploadFileWithDetails('setting', $request->become_instructor_video);
-                if (!$file_details['is_uploaded']) {
-                    $this->showToastrMessage('error', __('Something went wrong! Failed to upload file'));
-                    return redirect()->back();
-                }
-
-                $option->option_value = $file_details['path'];
-                $option->save();
-            } elseif ($request->hasFile('certificate_font') && $key == 'certificate_font') {
-                $this->deleteVideoFile(get_option('certificate_font'));
-
-                $file_details = $this->uploadFontInLocal('setting', $request->certificate_font, 'certificate_font.ttf');
-                if (!$file_details['is_uploaded']) {
-                    $this->showToastrMessage('error', __('Something went wrong! Failed to upload file'));
-                    return redirect()->back();
-                }
-
-                $option->option_value = $file_details['path'];
-                $option->save();
-            } elseif ($key == 'TIMEZONE' || $key == 'FORCE_HTTPS') {
+            }  elseif ($key == 'TIMEZONE' || $key == 'FORCE_HTTPS') {
 
                 setEnvironmentValue($key, $value);
 
@@ -323,7 +175,7 @@ class SettingController extends Controller
             }
         }
 
-        $this->showToastrMessage('success', __('Successfully Updated'));
+
         Artisan::call('optimize:clear');
 
 
@@ -331,14 +183,6 @@ class SettingController extends Controller
         return redirect()->back();
     }
 
-    // public function siteShareContent()
-    // {
-    //     $data['title'] = 'Site Share Content Setting';
-    //     $data['navApplicationSettingParentActiveClass'] = 'mm-active';
-    //     $data['subNavGlobalSettingsActiveClass'] = 'mm-active';
-    //     $data['siteShareContentActiveClass'] = 'active';
-    //     return view('admin.application_settings.general.site-share-content', $data);
-    // }
 
     public function mapApiKey()
     {
@@ -387,28 +231,28 @@ class SettingController extends Controller
         $values['TWITTER_REDIRECT_URL'] = $request->TWITTER_REDIRECT_URL;
 
 
-        //        $envFile = app()->environmentFilePath();
-        //        $str = file_get_contents($envFile);
-        //        if (count($values) > 0) {
-        //            foreach ($values as $envKey => $envValue) {
-        //                $str .= "\n";
-        //                $keyPosition = strpos($str, "{$envKey}=");
-        //                $endOfLinePosition = strpos($str, "\n", $keyPosition);
-        //                $oldLine = substr($str, $keyPosition, $endOfLinePosition - $keyPosition);
-        //
-        //                if (!$keyPosition || !$endOfLinePosition || !$oldLine) {
-        //                    $str .= "{$envKey}=\"{$envValue}\"\n";
-        //                } else {
-        //                    $str = str_replace($oldLine, "{$envKey}=\"{$envValue}\"", $str);
-        //                }
-        //            }
-        //        }
-        //        $str = substr($str, 0, -1);
-        //        if (!file_put_contents($envFile, $str))
-        //            return false;
+               $envFile = app()->environmentFilePath();
+               $str = file_get_contents($envFile);
+               if (count($values) > 0) {
+                   foreach ($values as $envKey => $envValue) {
+                       $str .= "\n";
+                       $keyPosition = strpos($str, "{$envKey}=");
+                       $endOfLinePosition = strpos($str, "\n", $keyPosition);
+                       $oldLine = substr($str, $keyPosition, $endOfLinePosition - $keyPosition);
+
+                       if (!$keyPosition || !$endOfLinePosition || !$oldLine) {
+                           $str .= "{$envKey}=\"{$envValue}\"\n";
+                       } else {
+                           $str = str_replace($oldLine, "{$envKey}=\"{$envValue}\"", $str);
+                       }
+                   }
+               }
+               $str = substr($str, 0, -1);
+               if (!file_put_contents($envFile, $str))
+                   return false;
 
         Artisan::call('optimize:clear');
-        $this->showToastrMessage('success', __('Successfully Updated'));
+
         return redirect()->back();
     }
 
@@ -455,7 +299,8 @@ class SettingController extends Controller
         }
 
         $this->metaModel->updateByUuid($data, $uuid);
-        toastrMessage('success', 'Successfully Saved');
+        session()->flash('success', 'Updated Successful');
+
         return redirect()->route('settings.meta.index');
     }
 
@@ -505,7 +350,7 @@ class SettingController extends Controller
     public function saveSetting(Request $request)
     {
         $this->updateSettings($request);
-        $this->showToastrMessage('success', __('Successfully Saved'));
+
         return redirect()->back();
     }
 
@@ -600,7 +445,6 @@ class SettingController extends Controller
             $q->delete();
         });
 
-        $this->showToastrMessage('success', __('Updated Successful'));
         return redirect()->back();
     }
 
@@ -657,7 +501,6 @@ class SettingController extends Controller
             $q->delete();
         });
 
-        $this->showToastrMessage('success', __('Updated Successful'));
         return redirect()->back();
     }
 
@@ -698,12 +541,16 @@ class SettingController extends Controller
         return redirect()->back();
     }
 
+    public function questionAnsDelete(Request $request)
+{
+    try {
+        $question = SupportTicketQuestion::findOrFail($request->id);
+        $question->delete();
 
-    public function generateSiteMap()
-    {
-        set_time_limit(1200);
-        SitemapGenerator::create(url(''))->writeToFile(public_path('uploads/sitemap.xml'));
-        $filepath = public_path('uploads/sitemap.xml');
-        return Response::download($filepath);
+        return response()->json(['success' => 'Support ticket question deleted successfully']);
+    } catch (\Exception $e) {
+        return response()->json(['error' => 'Failed to delete support ticket question'], 500);
     }
+}
+
 }

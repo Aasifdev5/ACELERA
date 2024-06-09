@@ -1,5 +1,7 @@
 @extends('admin.Master')
-
+@section('title')
+    {{ $title }}
+@endsection
 @section('content')
     <!-- Page content area start -->
     <div class="page-body">
@@ -25,56 +27,63 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-3 col-md-4">
+                    <div class="card col-lg-3 col-md-4">
                         @include('admin.application_settings.sidebar')
                     </div>
                     <div class="col-lg-9 col-md-8">
-                        <div class="email-inbox__area bg-style">
-                            <div class="item-top mb-30"><h2>{{ __(@$title) }}</h2></div>
-                            <div class="table-responsive">
-                                <table id="advance-1" class="row-border data-table-filter table-style">
-                                    <thead>
-                                    <tr>
-                                        <th width="25%">{{__('Page Name')}}</th>
-                                        <th>{{__('Meta Content')}}</th>
-                                        <th width="5%">{{__('Action')}}</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    @foreach($metas as $meta)
+                        @if (session()->has('success'))
+    <script>
+        toastr.success('{{ session('success') }}');
+    </script>
+@endif
+                        <div class="card">
+                            <div class="card-header"><h2>{{ __(@$title) }}</h2></div>
+                            <div class="page-body">
+                                <div class="table-responsive">
+                                    <table id="advance-1" class="row-border data-table-filter table-style">
+                                        <thead>
                                         <tr>
-                                            <td>
-                                                {{$meta->page_name}}
-                                            </td>
-                                            <td>
-                                                <div class="mb-2">
-                                                    <b>{{ __('Meta Title') }}: </b> {{ $meta->meta_title }}
-                                                </div>
-                                                <div class="mb-2">
-                                                    <b>{{ __('Meta Description') }}: </b> {{ $meta->meta_description }}
-                                                </div>
-                                                <div>
-                                                    <b>{{ __('Meta Keywords') }}: </b> {{ $meta->meta_keyword }}
-                                                </div>
-                                                <div>
-                                                    <b>{{ __('OG Image') }}: </b> <a target="__blank" class="font-bold text-info" href="{{ getImageFile($meta->og_image) }}">{{ __("View") }}</a>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="action__buttons">
-                                                    <a href="{{route('settings.meta.edit', [$meta->uuid])}}" class="btn-action">
-                                                        <img src="{{asset('admin/images/icons/edit-2.svg')}}" alt="edit">
-                                                    </a>
-                                                </div>
-                                            </td>
+                                            <th width="25%">{{__('Page Name')}}</th>
+                                            <th>{{__('Meta Content')}}</th>
+                                            <th width="5%">{{__('Action')}}</th>
                                         </tr>
-                                    @endforeach
-                                    </tbody>
-                                </table>
-                                <div class="mt-3">
-                                    {{$metas->links()}}
+                                        </thead>
+                                        <tbody>
+                                        @foreach($metas as $meta)
+                                            <tr>
+                                                <td>
+                                                    {{$meta->page_name}}
+                                                </td>
+                                                <td>
+                                                    <div class="mb-2">
+                                                        <b>{{ __('Meta Title') }}: </b> {{ $meta->meta_title }}
+                                                    </div>
+                                                    <div class="mb-2">
+                                                        <b>{{ __('Meta Description') }}: </b> {{ $meta->meta_description }}
+                                                    </div>
+                                                    <div>
+                                                        <b>{{ __('Meta Keywords') }}: </b> {{ $meta->meta_keyword }}
+                                                    </div>
+                                                    <div>
+                                                        <b>{{ __('OG Image') }}: </b> <a target="__blank" class="font-bold text-info" href="{{ getImageFile($meta->og_image) }}">{{ __("View") }}</a>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="action__buttons">
+                                                        <a href="{{route('settings.meta.edit', [$meta->uuid])}}" title="Edit" class="btn btn-icon waves-effect waves-light btn-success m-b-5 m-r-5" data-toggle="tooltip"> <i class="fa fa-edit"></i>
+                                                        </a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                        </tbody>
+                                    </table>
+                                    <div class="mt-3">
+                                        {{$metas->links()}}
+                                    </div>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div>

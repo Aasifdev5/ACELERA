@@ -62,7 +62,6 @@ class LocationController extends Controller
         $country->continent = $request->continent;
         $country->save();
 
-        $this->showToastrMessage('success', __('Created Successful'));
         return redirect()->back();
     }
 
@@ -84,7 +83,7 @@ class LocationController extends Controller
         $country->continent = $request->continent;
         $country->save();
 
-        $this->showToastrMessage('success', __('Updated Successful'));
+
         return redirect()->back();
     }
 
@@ -93,8 +92,7 @@ class LocationController extends Controller
         $item = Country::findOrFail($id);
         $item->delete();
 
-        $this->showToastrMessage('success', __('Deleted Successful'));
-        return redirect()->back();
+        return response()->json(['success' => true, 'message' => __('Deleted Successfully')]);
     }
 
 
@@ -124,8 +122,6 @@ class LocationController extends Controller
         $country->country_id = $request->country_id;
         $country->name = $request->name;
         $country->save();
-
-        $this->showToastrMessage('success', __('Created Successful'));
         return redirect()->back();
     }
 
@@ -156,7 +152,6 @@ class LocationController extends Controller
         $country->name = $request->name;
         $country->save();
 
-        $this->showToastrMessage('success', __('Updated Successful'));
         return redirect()->back();
     }
 
@@ -165,8 +160,8 @@ class LocationController extends Controller
         $item = State::findOrFail($id);
         $item->delete();
 
-        $this->showToastrMessage('success', __('Deleted Successful'));
-        return redirect()->back();
+        return response()->json(['success' => true, 'message' => __('Deleted Successfully')]);
+
     }
 
     public function cityIndex()
@@ -197,7 +192,6 @@ class LocationController extends Controller
         $country->name = $request->name;
         $country->save();
 
-        $this->showToastrMessage('success', __('Created Successful'));
         return redirect()->back();
     }
 
@@ -228,7 +222,6 @@ class LocationController extends Controller
         $country->name = $request->name;
         $country->save();
 
-        $this->showToastrMessage('success', __('Updated Successful'));
         return redirect()->back();
     }
 
@@ -237,7 +230,7 @@ class LocationController extends Controller
         $item = City::findOrFail($id);
         $item->delete();
 
-        $this->showToastrMessage('success', __('Deleted Successful'));
-        return redirect()->back();
+
+        return response()->json(['success' => true, 'message' => __('Deleted Successfully')]);
     }
 }

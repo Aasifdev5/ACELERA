@@ -1,4 +1,4 @@
-<div class="email__sidebar bg-style">
+<div class="card-body">
     <div class="sidebar__item">
         <ul class="sidebar__mail__nav">
             <h2>{{__('Global Settings')}}</h2>

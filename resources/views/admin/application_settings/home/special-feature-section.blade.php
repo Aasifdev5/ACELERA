@@ -1,5 +1,7 @@
-@extends('layouts.admin')
-
+@extends('admin.Master')
+@section('title')
+    {{ $title }}
+@endsection
 @section('content')
     <!-- Page content area start -->
     <div class="page-content">
@@ -25,7 +27,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-3 col-md-4">
+                <div class="card col-lg-3 col-md-4">
                     @include('admin.application_settings.home-sidebar')
                 </div>
                 <div class="col-lg-9 col-md-8">
@@ -44,7 +46,7 @@
                                 </div>
                             </div>
                             @endif
-                            
+
                             <div class="row">
                                 <div class="custom-form-group mb-3 col-md-12 col-lg-3 col-xl-3 col-xxl-2">
                                     <label for="home_special_feature_first_logo" class=" text-lg-right text-black"> {{ __('First Logo') }} </label>

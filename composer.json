@@ -8,12 +8,7 @@
         "laravel"
     ],
     "license": "MIT",
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/vishalinfyom/coreui-templates"
-        }
-    ],
+
     "require": {
         "php": "^8.0",
         "ext-json": "*",
@@ -24,9 +19,6 @@
         "firebase/php-jwt": "^5.4",
         "fullcalendar/fullcalendar": "^3.10",
         "guzzlehttp/guzzle": "^7.2",
-        "infyomlabs/coreui-templates": "dev-develop",
-        "infyomlabs/laravel-generator": "^5.0",
-        "intervention/image": "^3.5",
         "lab404/laravel-impersonate": "^1.7",
         "ladumor/laravel-pwa": "^0.0.2",
         "laminas/laminas-diactoros": "^2.6.0",
@@ -36,6 +28,7 @@
         "laravel/telescope": "^4.7",
         "laravel/tinker": "^2.7",
         "laravel/ui": "^3.3",
+        "laravelcollective/html": "*",
         "league/flysystem-aws-s3-v3": "^3.0",
         "livewire/livewire": "^2.10",
         "mariuzzo/laravel-js-localization": "^1.9",

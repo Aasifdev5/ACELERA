@@ -27,89 +27,92 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-3 col-md-4">
+                    <div class="card col-lg-3 col-md-4">
                         @include('admin.application_settings.sidebar')
                     </div>
                     <div class="col-lg-9 col-md-8">
-                        <div class="email-inbox__area bg-style">
-                            <div class="item-top mb-30 d-flex justify-content-between">
+                        <div class="card">
+                            <div class="card-header">
                                 <h2>{{ __(@$title) }}</h2>
-                                <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#sendTestMail" class="btn btn-success btn-sm"> <i class="fa fa-envelope"></i> {{ __('Send Test Mail') }} </a>
+                                <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#sendTestMail" class="btn btn-success btn-sm pull-right"> <i class="fa fa-envelope"></i> {{ __('Send Test Mail') }} </a>
                             </div>
-                            <form action="{{ route('settings.save.setting')}}" method="post" class="form-horizontal" enctype="multipart/form-data">
-                                @csrf
-                                <div class="row">
-                                    <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 mb-3">
-                                        <div class="form-group text-black">
-                                            <label>{{__('MAIL DRIVER')}} </label>
-                                            <input type="text" name="MAIL_MAILER" value="{{get_option('MAIL_MAILER')}}" class="form-control">
+                            <div class="card-body">
+                                <form action="{{ route('settings.save.setting')}}" method="post" class="form-horizontal" enctype="multipart/form-data">
+                                    @csrf
+                                    <div class="row">
+                                        <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 mb-3">
+                                            <div class="form-group text-black">
+                                                <label>{{__('MAIL DRIVER')}} </label>
+                                                <input type="text" name="MAIL_MAILER" value="{{get_option('MAIL_MAILER')}}" class="form-control">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 mb-3">
+                                            <div class="form-group text-black">
+                                                <label>{{__('MAIL HOST')}} </label>
+                                                <input type="text" name="MAIL_HOST" value="{{get_option('MAIL_HOST')}}" class="form-control">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 mb-3">
+                                            <div class="form-group text-black">
+                                                <label>{{__('MAIL PORT')}} </label>
+                                                <input type="text" name="MAIL_PORT" value="{{get_option('MAIL_PORT')}}" class="form-control">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 mb-3">
+                                            <div class="form-group text-black">
+                                                <label>{{__('MAIL USERNAME')}} </label>
+                                                <input type="text" name="MAIL_USERNAME" value="{{get_option('MAIL_USERNAME')}}" class="form-control">
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 mb-3">
+                                            <div class="form-group text-black">
+                                                <label>{{__('MAIL PASSWORD')}} </label>
+                                                <input type="password" name="MAIL_PASSWORD" value="{{get_option('MAIL_PASSWORD')}}" class="form-control">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 mb-3">
+                                            <div class="form-group text-black">
+                                                <label>{{__('MAIL ENCRYPTION')}} <span class="text-danger">*</span></label>
+                                                <select name="MAIL_ENCRYPTION" class="form-control">
+                                                    <option value="tls" {{get_option('MAIL_ENCRYPTION') == 'tls' ? 'selected' : '' }} > tls </option>
+                                                    <option value="ssl" {{get_option('MAIL_ENCRYPTION') == 'ssl' ? 'selected' : '' }} > ssl </option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 mb-3">
+                                            <div class="form-group text-black">
+                                                <label>{{__('MAIL FROM ADDRESS')}} </label>
+                                                <input type="text" name="MAIL_FROM_ADDRESS" value="{{get_option('MAIL_FROM_ADDRESS')}}" class="form-control">
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 mb-3">
+                                            <div class="form-group text-black">
+                                                <label>{{__('MAIL FROM NAME')}} </label>
+                                                <input type="text" name="MAIL_FROM_NAME" value="{{get_option('MAIL_FROM_NAME')}}" class="form-control">
+                                            </div>
                                         </div>
                                     </div>
 
-                                    <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 mb-3">
-                                        <div class="form-group text-black">
-                                            <label>{{__('MAIL HOST')}} </label>
-                                            <input type="text" name="MAIL_HOST" value="{{get_option('MAIL_HOST')}}" class="form-control">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="input__group general-settings-btn">
+                                                <button type="submit" class="btn btn-primary float-right">{{__('Save')}}</button>
+                                            </div>
                                         </div>
                                     </div>
 
-                                    <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 mb-3">
-                                        <div class="form-group text-black">
-                                            <label>{{__('MAIL PORT')}} </label>
-                                            <input type="text" name="MAIL_PORT" value="{{get_option('MAIL_PORT')}}" class="form-control">
-                                        </div>
-                                    </div>
+                                </form>
+                            </div>
 
-                                    <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 mb-3">
-                                        <div class="form-group text-black">
-                                            <label>{{__('MAIL USERNAME')}} </label>
-                                            <input type="text" name="MAIL_USERNAME" value="{{get_option('MAIL_USERNAME')}}" class="form-control">
-                                        </div>
-                                    </div>
-
-
-                                    <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 mb-3">
-                                        <div class="form-group text-black">
-                                            <label>{{__('MAIL PASSWORD')}} </label>
-                                            <input type="password" name="MAIL_PASSWORD" value="{{get_option('MAIL_PASSWORD')}}" class="form-control">
-                                        </div>
-                                    </div>
-
-                                    <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 mb-3">
-                                        <div class="form-group text-black">
-                                            <label>{{__('MAIL ENCRYPTION')}} <span class="text-danger">*</span></label>
-                                            <select name="MAIL_ENCRYPTION" class="form-control">
-                                                <option value="tls" {{get_option('MAIL_ENCRYPTION') == 'tls' ? 'selected' : '' }} > tls </option>
-                                                <option value="ssl" {{get_option('MAIL_ENCRYPTION') == 'ssl' ? 'selected' : '' }} > ssl </option>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 mb-3">
-                                        <div class="form-group text-black">
-                                            <label>{{__('MAIL FROM ADDRESS')}} </label>
-                                            <input type="text" name="MAIL_FROM_ADDRESS" value="{{get_option('MAIL_FROM_ADDRESS')}}" class="form-control">
-                                        </div>
-                                    </div>
-
-
-                                    <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4 mb-3">
-                                        <div class="form-group text-black">
-                                            <label>{{__('MAIL FROM NAME')}} </label>
-                                            <input type="text" name="MAIL_FROM_NAME" value="{{get_option('MAIL_FROM_NAME')}}" class="form-control">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="input__group general-settings-btn">
-                                            <button type="submit" class="btn btn-primary float-right">{{__('Save')}}</button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </form>
                         </div>
                     </div>
                 </div>

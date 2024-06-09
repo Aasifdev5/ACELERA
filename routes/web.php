@@ -167,9 +167,6 @@ Route::group(['prefix' => 'admin'], function () {
             // Route::get('site-share-content', [SettingController::class, 'siteShareContent'])->name('site-share-content');
             Route::get('map-api-key', [SettingController::class, 'mapApiKey'])->name('map-api-key');
 
-            Route::get('color-settings', [SettingController::class, 'colorSettings'])->name('color-settings');
-            Route::get('font-settings', [SettingController::class, 'fontSettings'])->name('font-settings');
-            //End:: General Settings
 
 
             //Start:: Device Control Mode
@@ -182,9 +179,6 @@ Route::group(['prefix' => 'admin'], function () {
             Route::get('social-login-settings', [SettingController::class, 'socialLoginSettings'])->name('social-login-settings');
             Route::post('social-settings-update', [SettingController::class, 'socialLoginSettingsUpdate'])->name('social-login-settings.update');
 
-            //Start:: Cookie Settings
-            Route::get('cookie-settings', [SettingController::class, 'cookieSettings'])->name('cookie-settings');
-            Route::post('cookie-settings-update', [SettingController::class, 'cookieSettingsUpdate'])->name('cookie-settings.update');
 
 
             //Start:: Currency Settings
@@ -193,7 +187,7 @@ Route::group(['prefix' => 'admin'], function () {
                 Route::post('currency', [CurrencyController::class, 'store'])->name('store');
                 Route::get('edit/{id}/{slug?}', [CurrencyController::class, 'edit'])->name('edit');
                 Route::patch('update/{id}', [CurrencyController::class, 'update'])->name('update');
-                Route::delete('delete/{id}', [CurrencyController::class, 'delete'])->name('delete');
+                Route::get('delete/{id}', [CurrencyController::class, 'delete'])->name('delete');
             });
 
             //Start:: Home Settings
@@ -234,6 +228,7 @@ Route::group(['prefix' => 'admin'], function () {
                 Route::get('/', [SettingController::class, 'supportTicketCMS'])->name('cms');
                 Route::get('question-answer', [SettingController::class, 'supportTicketQuesAns'])->name('question');
                 Route::post('question-answer', [SettingController::class, 'supportTicketQuesAnsUpdate'])->name('question.update');
+                Route::post('questionAnsDelete', [SettingController::class, 'questionAnsDelete'])->name('questionAnsDelete');
 
                 Route::get('department', [SupportTicketController::class, 'Department'])->name('department');
                 Route::post('department', [SupportTicketController::class, 'DepartmentStore'])->name('department.store');
@@ -272,16 +267,18 @@ Route::group(['prefix' => 'admin'], function () {
 
                 Route::get('about-us-our-history', [AboutUsController::class, 'ourHistory'])->name('our-history');
                 Route::post('about-us-our-history', [AboutUsController::class, 'ourHistoryUpdate'])->name('our-history.update');
+                Route::post('historyDelete', [AboutUsController::class, 'historyDelete'])->name('historyDelete');
 
                 Route::get('about-us-upgrade-skill', [AboutUsController::class, 'upgradeSkill'])->name('upgrade-skill');
                 Route::post('about-us-upgrade-skill', [AboutUsController::class, 'upgradeSkillUpdate'])->name('upgrade-skill.update');
 
                 Route::get('about-us-team-member', [AboutUsController::class, 'teamMember'])->name('team-member');
                 Route::post('about-us-team-member', [AboutUsController::class, 'teamMemberUpdate'])->name('team-member.update');
-
+                Route::post('memberDelete', [AboutUsController::class, 'memberDelete'])->name('memberDelete');
 
                 Route::get('about-us-client', [AboutUsController::class, 'client'])->name('client');
                 Route::post('about-us-client', [AboutUsController::class, 'clientUpdate'])->name('client.update');
+                Route::post('clientDelete', [AboutUsController::class, 'clientDelete'])->name('clientDelete');
             });
             // End:: About Us
             Route::group(['prefix' => 'locations', 'as' => 'location.'], function () {
