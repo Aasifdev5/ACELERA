@@ -59,18 +59,75 @@
                                         {{ __('Select Permission') }} </label>
                                     <div class="col-lg-9">
                                         <div class="row text-black">
-                                            @foreach ($permissions as $permission)
-                                                <div class="col-md-4 mb-2">
-                                                    <div class="form-check mb-0 d-flex align-items-center">
-                                                        <input class="form-check-input" type="checkbox" name="permissions[]"
-                                                            id="permission{{ $permission->id }}"
-                                                            value="{{ $permission->id }}">
-                                                        <label class="form-check-label m-lg-1 mb-0 color-heading"
-                                                            for="permission{{ $permission->id }}">{{ ucwords(str_ireplace('_', ' ', $permission->name)) }}
-                                                        </label>
-                                                    </div>
+                                            <div class="permissions-tree">
+                                                @foreach ($permissions as $permission)
+                                                <div class="permission">
+                                                    <input class="form-check-input parent-permission" type="checkbox" name="permissions[]"
+                                                        id="permission{{ $permission->id }}" value="{{ $permission->id }}">
+                                                    <label class="form-check-label m-lg-1 mb-0 color-heading"
+                                                        for="permission{{ $permission->id }}">{{ ucwords(str_ireplace('_', ' ', $permission->name)) }}</label>
+
+                                                    <!-- Sub-permissions -->
+                                                    <ul class="sub-permissions">
+                                                        @foreach ($permission->children as $subPermission)
+                                                        <li class="sub-permission">
+                                                            <input class="form-check-input" type="checkbox" name="permissions[]"
+                                                                id="permission{{ $subPermission->id }}" value="{{ $subPermission->id }}">
+                                                            <label class="form-check-label m-lg-1 mb-0 color-heading"
+                                                                for="permission{{ $subPermission->id }}">{{ ucwords(str_ireplace('_', ' ', $subPermission->name)) }}</label>
+                                                        </li>
+                                                        @endforeach
+                                                    </ul>
                                                 </div>
-                                            @endforeach
+                                                @endforeach
+                                            </div>
+
+                                            <style>
+                                                .permissions-tree {
+                                                    font-family: Arial, sans-serif;
+                                                }
+
+                                                .permission {
+                                                    margin-bottom: 10px;
+                                                }
+
+                                                .permission label {
+                                                    display: inline-block;
+                                                    margin-left: 10px;
+                                                    vertical-align: middle;
+                                                }
+
+                                                .sub-permissions {
+                                                    margin-left: 20px;
+                                                    padding-left: 10px;
+                                                    border-left: 1px solid #ccc;
+                                                    list-style: none;
+                                                }
+
+                                                .sub-permissions .sub-permission {
+                                                    margin-bottom: 5px;
+                                                }
+
+                                                .sub-permissions label {
+                                                    margin-left: 5px;
+                                                }
+                                            </style>
+
+                                            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                                            <script>
+                                                $(document).ready(function() {
+                                                    // Toggle visibility of sub-permissions on parent permission click
+                                                    $('.permission .parent-permission').change(function() {
+                                                        $(this).siblings('.sub-permissions').toggle();
+                                                    });
+
+                                                    // Toggle visibility of sub-permissions on sub-permission click
+                                                    $('.sub-permission input[type="checkbox"]').change(function() {
+                                                        $(this).closest('.permission').find('.parent-permission').prop('checked', true);
+                                                    });
+                                                });
+                                            </script>
+
                                         </div>
                                         @if ($errors->has('permissions'))
                                             <span class="text-danger"><i class="fas fa-exclamation-triangle"></i>

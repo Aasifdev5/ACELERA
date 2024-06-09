@@ -38,42 +38,37 @@ function getCurrentLanguageName()
         return $language;
     }
 
-    $language = 'english';
+    $language = 'esp';
 
     return $language;
 }
+// Function to retrieve the default language
 function get_default_language()
 {
-    $language = Language::where('default_language', 'on')->first();
-    if ($language) {
-        $iso_code = $language->iso_code;
-        return $iso_code;
-    }
+  $language = Language::where('default_language', 'on')->first();
+  if ($language) {
+    $iso_code = $language->iso_code;
+    return $iso_code;
+  }
 
-    return 'en';
+  return 'en';
 }
-if (!function_exists('lang_path')) {
-    /**
-     * Get the path to the language folder.
-     *
-     * @param  string  $path
-     * @return string
-     */
-    function lang_path($path = '')
-    {
-        return app()->langPath($path);
-    }
-}
+
+// Function to retrieve all active languages
 function appLanguages()
 {
-    return Language::where('status', 1)->get();
+  return Language::where('status', 1)->get();
 }
 
+// Improved function for selected language with persistence
 function selectedLanguage($ln)
 {
     $language = Language::where('iso_code', $ln)->first();
     if (!$language) {
-        $language = Language::find(1);
+        $language = Language::where('default_language', 'on')->first();
+        if (!$language) {
+            $language = Language::find(1);
+        }
         $ln = $language->iso_code;
     }
 
@@ -81,6 +76,7 @@ function selectedLanguage($ln)
     App::setLocale($ln);
     return $language;
 }
+
 function adminNotifications()
 {
     return \App\Models\Notification::where('user_type', 1)->where('is_seen', 'no')->orderBy('created_at', 'DESC')->paginate(5);

@@ -6,16 +6,14 @@ use App\Http\Controllers\Admin\AdController;
 use App\Http\Controllers\Admin\BankController;
 use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\BlogCategoryController;
-
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\CategoryController;
-
 use App\Http\Controllers\Admin\ContactUsController;
+
 use App\Http\Controllers\Admin\CurrencyController;
 use App\Http\Controllers\Admin\HomeSettingController;
 use App\Http\Controllers\Admin\LanguageController;
 use App\Http\Controllers\Admin\LocationController;
-
 use App\Http\Controllers\Admin\RoleController;
 
 use App\Http\Controllers\Admin\SettingController;
@@ -25,10 +23,11 @@ use App\Http\Controllers\Admin\SupportTicketController;
 use App\Http\Controllers\Admin\TagController;
 
 use App\Http\Controllers\ChatController;
+
 use App\Http\Controllers\EmailAppController;
 use App\Http\Controllers\FacebookSocialiteController;
-
 use App\Http\Controllers\FundController;
+
 use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\MailTemplateController;
 use App\Http\Controllers\Pages;
@@ -38,7 +37,10 @@ use App\Http\Controllers\SubscriptionPlanController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VerificationController;
 use App\Http\Middleware\SetLocale;
+use App\Models\Language;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
+
 
 
 
@@ -76,7 +78,7 @@ Route::post('/ResetPassword', [UserController::class, 'ResetPassword'])->name('R
 
 
 
-Route::group(['middleware' => 'prevent-back-history',SetLocale::class], function () {
+Route::group(['middleware' => 'prevent-back-history', SetLocale::class], function () {
 
     Route::get('/index', [UserController::class, 'index'])->name('index');
     Route::get('/local/{ln}', function ($ln) {
@@ -101,7 +103,7 @@ Route::group(['middleware' => 'prevent-back-history',SetLocale::class], function
     Route::get('/chat', [ChatController::class, 'index'])->name('chat.index');
     Route::get('/chat/messages', [ChatController::class, 'getChatMessages'])->name('chat.messages');
     Route::post('/chat/send', [ChatController::class, 'sendChatMessage'])->name('chat.send');
-    Route::post('/like', [UserController::class,'storeLikes'])->name('like');
+    Route::post('/like', [UserController::class, 'storeLikes'])->name('like');
     Route::post('checkLike', [UserController::class, 'checkLike'])->name('checkLike');
     Route::get('/MyPendingProject', [UserController::class, 'MyPendingProject'])->name('MyPendingProject')->middleware('isLoggedIn');
     Route::get('/news-category/{id}', [UserController::class, 'news_category'])->name('news_category');
@@ -145,12 +147,31 @@ Route::get('/get-cities', [UserController::class, 'getCities'])->name('get-citie
 
 Route::group(['prefix' => 'admin'], function () {
 
-    Route::group(['middleware' => 'admin-prevent-back-history',SetLocale::class], function () {
+    Route::group(['middleware' => 'admin-prevent-back-history', SetLocale::class], function () {
         Route::resource('banners', BannerController::class)->names('admin.banners');
         Route::resource('ads', AdController::class)->names('admin.ads');
         Route::get('/local/{ln}', function ($ln) {
-            return redirect()->back()->with('local', $ln);
+            $language = Language::where('iso_code', $ln)->first();
+            if (!$language) {
+                $language = Language::where('default_language', 'on')->first();
+                if (!$language) {
+                    $language = Language::find(1);
+                }
+                $ln = $language->iso_code;
+            }
+
+            session(['local' => $ln]);
+            App::setLocale($ln);
+            return redirect()->back();
         });
+        Route::get('permissions/index', [Admin::class, 'Plist'])->name('permissions.index');
+        Route::get('permissions/create', [Admin::class, 'Pcreate'])->name('permissions.create');
+        Route::post('permissions', [Admin::class, 'Pstore'])->name('permissions.store');
+        Route::get('permissions/{id}/edit', [Admin::class, 'Pedit'])->name('permissions.edit');
+        Route::put('permissions/{id}', [Admin::class, 'Pupdate'])->name('permissions.update');
+        Route::delete('/permission/{id}', [Admin::class, 'pdestroy'])->name('permissions.delete');
+
+
         Route::get('/qrcode', [QRCodeController::class, 'index'])->name('qrcode.index');
         Route::get('/destroy_qrcode/{id}', [QRCodeController::class, 'destroy'])->name('destroy');
         Route::post('/qrcode/generate', [QRCodeController::class, 'generateQrCode'])->name('qrcode.generate');
@@ -300,11 +321,6 @@ Route::group(['prefix' => 'admin'], function () {
                 Route::patch('city/{id}', [LocationController::class, 'cityUpdate'])->name('city.update');
                 Route::delete('city/delete/{id}', [LocationController::class, 'cityDelete'])->name('city.delete');
             });
-
-
-
-
-
         });
         Route::get('notification-url/{uuid}', [Admin::class, 'notificationUrl'])->name('notification.url');
         Route::post('mark-all-as-read', [Admin::class, 'markAllAsReadNotification'])->name('notification.all-read');

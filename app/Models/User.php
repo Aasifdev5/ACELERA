@@ -31,7 +31,7 @@ class User extends Authenticatable
         'is_online',
         'about',
         'photo_url',
-        'activation_code',
+
         'is_active',
         'is_system',
         'email_verified_at',
@@ -45,7 +45,8 @@ class User extends Authenticatable
         'google_id',
         'ip_address',
         'account_type',
-        'mobile_number'
+        'mobile_number',
+        'permissions'
     ];
 
     public function sendPasswordResetNotification($token): void
@@ -58,7 +59,17 @@ class User extends Authenticatable
 
         return $userinfo;
     }
+    // Mutator for permissions attribute
+    public function setPermissionsAttribute($value)
+    {
+        $this->attributes['permissions'] = implode(',', $value);
+    }
 
+    // Accessor for permissions attribute
+    public function getPermissionsAttribute($value)
+    {
+        return explode(',', $value);
+    }
     public static function getUserFullname($id)
     {
         $userinfo = User::find($id);

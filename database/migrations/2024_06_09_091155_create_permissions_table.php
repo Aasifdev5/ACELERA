@@ -13,23 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('likes', function (Blueprint $table) {
+        Schema::create('permissions', function (Blueprint $table) {
             $table->id();
-            $table->Integer('project_id');
-
-            $table->Integer('user_id');
-
+            $table->string('name');
+            $table->foreignId('parent_id')->nullable()->constrained('permissions')->onDelete('cascade');
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
-        Schema::dropIfExists('likes');
+        Schema::dropIfExists('permissions');
     }
 };

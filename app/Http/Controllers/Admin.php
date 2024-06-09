@@ -20,6 +20,7 @@ use App\Models\PaidTopAd;
 use App\Models\PasswordReset;
 use App\Models\Payment;
 use App\Models\PaymentGateway;
+use App\Models\Permissions;
 use App\Models\PostingAds;
 use App\Models\Settings;
 use App\Models\Task;
@@ -456,6 +457,74 @@ class Admin extends Controller
 
         return back()->with('success', 'Deleted Succesuufully');
     }
+    public function Pcreate()
+    {
+        if (Session::has('LoggedIn')) {
+            $permissions = Permissions::all();
+            $user_session = User::where('id', Session::get('LoggedIn'))->first();
+            $title = 'Permission Create';
+            return view('admin.permissions.create', compact('user_session', 'permissions','title'));
+        }
+    }
+    public function Plist()
+    {
+        if (Session::has('LoggedIn')) {
+            $permissions = Permissions::all();
+            $user_session = User::where('id', Session::get('LoggedIn'))->first();
+            $title = 'Permission List';
+            return view('admin.permissions.index', compact('user_session', 'permissions','title'));
+        }
+    }
+    public function Pstore(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'parent_id' => 'nullable|exists:permissions,id'
+        ]);
+
+        Permissions::create([
+            'name' => $request->name,
+            'parent_id' => $request->parent_id
+        ]);
+
+        return redirect()->route('permissions.index')->with('success', 'Permission created successfully.');
+    }
+    public function Pedit(Request $request, $id)
+    {
+        if (Session::has('LoggedIn')) {
+            $permission = Permissions::findOrFail($id);
+            $permissions = Permissions::all();
+            $user_session = User::where('id', Session::get('LoggedIn'))->first();
+            $title = 'Permission Edit';
+            return view('admin.permissions.edit', compact('user_session', 'permission', 'permissions','title'));
+        }
+    }
+    public function Pupdate(Request $request, $id)
+{
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'parent_id' => 'nullable|exists:permissions,id',
+    ]);
+
+    $permission = Permissions::findOrFail($id);
+    $permission->name = $request->name;
+    $permission->parent_id = $request->parent_id;
+    $permission->save();
+
+    return redirect()->route('permissions.index')->with('success', 'Permission updated successfully');
+}
+public function pdestroy($id)
+{
+    try {
+        $permission = Permissions::findOrFail($id);
+        $permission->delete();
+        return response()->json(['success' => 'Permission deleted successfully.']);
+    } catch (\Exception $e) {
+        return response()->json(['error' => 'Failed to delete permission.'], 500);
+    }
+}
+
+
     public function registration(Request $request)
     {
         $user = new User();

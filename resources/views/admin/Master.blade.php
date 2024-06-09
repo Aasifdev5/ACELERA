@@ -245,7 +245,7 @@
 
 
 
-                        {{-- <li>
+                        <li>
                             <a href="#" class="btn btn-dropdown site-language" id="dropdownLanguage"
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 <img src="{{ asset(selectedLanguage(session()->get('local'))->flag) }}"
@@ -263,7 +263,7 @@
                                     </li>
                                 @endforeach
                             </ul>
-                        </li> --}}
+                        </li>
 
 
                         <li class="onhover-dropdown">
@@ -362,7 +362,7 @@
                             <li>
                                 <a class="sidebar-header" href="#">
                                     <i data-feather="settings"></i>
-                                    <span>{{ __('Application Settings') }}</span>
+                                    <span>{{ __('Application') }}</span>
                                 </a>
                                 <ul class="sidebar-submenu">
 
@@ -482,12 +482,18 @@
                             </li>
                             <li><a class="sidebar-header" href="{{ url('admin/qrcode') }}"><i
                                         class="fa fa-empire"></i> CÓDIGO QR </a></li>
-                            {{-- <li>
+                                        <li>
+                                            <a class="sidebar-header" href="{{ route('permissions.index') }}">
+                                                <i class="fa fa-key"></i>
+                                                <span>{{ __('Permissions') }}</span>
+                                            </a>
+                                        </li>
+                            <li>
                                 <a class="sidebar-header" href="{{ route('role.index') }}">
                                     <i class="fa fa-key"></i>
                                     <span>{{ __('Roles') }}</span>
                                 </a>
-                            </li> --}}
+                            </li>
 
                             <li><a class="sidebar-header" href="{{ url('admin/pages') }}"><i
                                         data-feather="book"></i><span>{{ __('Pages') }} </span></a> </li>
@@ -496,7 +502,7 @@
                                     <i data-feather="mail"></i><span>{{ __('Plantillas de Correo') }} </span>
                                 </a>
                             </li>
-                            {{-- <li>
+                            <li>
                                 <a class="sidebar-header" href="#">
                                     <i class="fa fa-language"></i>
                                     <span>{{ __('Administrar Idioma') }}</span>
@@ -509,7 +515,7 @@
                                         </a>
                                     </li>
                                 </ul>
-                            </li> --}}
+                            </li>
                             <li><a class="sidebar-header" href="{{ url('admin/users') }}"><i
                                         data-feather="users"></i><span>{{ __('Gestión de Usuarios') }} </span></a>
                             </li>
